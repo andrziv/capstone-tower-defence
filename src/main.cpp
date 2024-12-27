@@ -10,7 +10,9 @@ int main() {
     sf::CircleShape shape(50.f);
     shape.setOrigin(sf::Vector2f(50, 50));
     shape.setFillColor(sf::Color::Green);
-    sf::VertexArray drawable;
+    sf::VertexArray enemyPath;
+    enemyPath.setPrimitiveType(sf::PrimitiveType::LineStrip);
+
 
     sf::Vertex vertices[] {
         {{  0.0f,   430.0f}, sf::Color::Red, { 0.0f,  0.0f}},
@@ -28,17 +30,32 @@ int main() {
         {{730.0f,   1080.0f}, sf::Color::Red, {10.0f,  0.0f}}
     };
 
-    drawable.setPrimitiveType(sf::PrimitiveType::LineStrip);
     for (const auto & vertice : vertices) {
-        drawable.append(vertice);
+        enemyPath.append(vertice);
     }
+    Enemy everyoneIsMyEnemy(enemyPath, 5);
 
-    Enemy everyoneIsMyEnemy(drawable, 1);
+    sf::VertexArray drawnPath;
+    drawnPath.setPrimitiveType(sf::PrimitiveType::LineStrip);
 
     while (window.isOpen()) {
         while (const std::optional event = window.pollEvent()) {
-            if (event->is<sf::Event::Closed>())
+            if (event->is<sf::Event::Closed>()) {
                 window.close();
+                for (int i = 0; i < drawnPath.getVertexCount(); i++) {
+                    printf("{{  %ff,   %ff}, sf::Color::Red, { 0.0f,  0.0f}}", drawnPath.operator[](i).position.x, drawnPath.operator[](i).position.y);
+                    if (i != drawnPath.getVertexCount() - 1) {
+                        printf(",\n");
+                    } else {
+                        printf("\n");
+                    }
+                }
+            }
+            if (event->is<sf::Event::MouseButtonPressed>()) {
+                const auto mousePosition = event->getIf<sf::Event::MouseButtonPressed>()->position;
+                sf::Vertex mouseVertex{{static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y)}, sf::Color::Yellow, { 0.0f,  0.0f}};
+                drawnPath.append(mouseVertex);
+            }
         }
 
         everyoneIsMyEnemy.update();
@@ -46,7 +63,8 @@ int main() {
 
         window.clear();
         window.draw(shape);
-        window.draw(drawable);
+        window.draw(enemyPath);
+        window.draw(drawnPath);
         window.display();
     }
 }
