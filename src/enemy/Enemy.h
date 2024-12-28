@@ -17,6 +17,10 @@ class Enemy
     public:
         Enemy(sf::VertexArray *pathToFollow, const float speed) {
             this->path = pathToFollow;
+            if (this->path->getVertexCount() > 0) {
+                this->position.position.x = path->operator[](0).position.x;
+                this->position.position.y = path->operator[](0).position.y;
+            }
             this->speed = speed;
         }
 
