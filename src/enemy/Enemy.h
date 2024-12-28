@@ -10,29 +10,21 @@
 class Enemy
 {
     sf::Vertex position;
-    sf::VertexArray path;
+    sf::VertexArray *path;
+    int currentNodeTarget = 0;
     double speed;
 
-    void removeFirstPathVertex() {
-        for (int i = 0; i < path.getVertexCount(); i++) {
-            if (i != path.getVertexCount() - 1) {
-                path.operator[](i) = path.operator[](i + 1);
-            }
-        }
-        path.resize(path.getVertexCount() - 1);
-    }
-
     public:
-        Enemy(sf::VertexArray pathToFollow, float speed) {
-            this->path = std::move(pathToFollow);
+        Enemy(sf::VertexArray *pathToFollow, const float speed) {
+            this->path = pathToFollow;
             this->speed = speed;
         }
 
         void update() {
-            if (path.getVertexCount() > 0) {
+            if (path->getVertexCount() > 0 && currentNodeTarget < path->getVertexCount()) {
                 double distanceYetToTravel = speed;
-                while (distanceYetToTravel > 0 && path.getVertexCount() > 0) {
-                    const auto nextNode = path.operator[](0).position;
+                while (distanceYetToTravel > 0 && path->getVertexCount() - currentNodeTarget > 0) {
+                    const auto nextNode = path->operator[](currentNodeTarget).position;
                     double distanceToNextNode = std::abs(sqrt(pow(nextNode.x - position.position.x, 2) + pow(nextNode.y - position.position.y, 2)));
                     distanceYetToTravel -= std::max(static_cast<double>(0), distanceToNextNode);
                     distanceYetToTravel = std::max(static_cast<double>(0), distanceYetToTravel);
@@ -44,7 +36,7 @@ class Enemy
                         position.position.y += yRatio * distanceToTravel;
                     }
                     if (distanceToNextNode <= 0) {
-                        removeFirstPathVertex();
+                        currentNodeTarget++;
                     }
                 }
             }

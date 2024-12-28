@@ -33,7 +33,7 @@ int main() {
     for (const auto & vertice : vertices) {
         enemyPath.append(vertice);
     }
-    Enemy everyoneIsMyEnemy(enemyPath, 5);
+    Enemy everyoneIsMyEnemy(&enemyPath, 2);
 
     sf::VertexArray drawnPath;
     drawnPath.setPrimitiveType(sf::PrimitiveType::LineStrip);
@@ -55,6 +55,7 @@ int main() {
                 const auto mousePosition = event->getIf<sf::Event::MouseButtonPressed>()->position;
                 sf::Vertex mouseVertex{{static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y)}, sf::Color::Yellow, { 0.0f,  0.0f}};
                 drawnPath.append(mouseVertex);
+                enemyPath.resize(enemyPath.getVertexCount() - 1);
             }
         }
 
