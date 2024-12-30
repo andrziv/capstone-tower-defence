@@ -1,6 +1,7 @@
 #ifndef PROJECTILE_H
 #define PROJECTILE_H
 #include <algorithm>
+#include <cmath>
 #include <complex>
 #include <vector>
 
@@ -21,17 +22,16 @@ class Projectile {
     HitTexture hitTexture;
     std::vector<Enemy*> collisions;
 
-    Projectile(const int pierce, const int damage, const int speed, const HitTexture &hitTexture): angle(0) {
+    Projectile(const int pierce, const int damage, const int speed): angle(0) {
         this->pierce = pierce;
         this->damage = damage;
         this->speed = speed;
-        this->hitTexture = hitTexture;
     }
 
 public:
-    virtual ~Projectile() {}
+    virtual ~Projectile() = default;
 
-    Projectile(const int pierce, const int damage, const int speed, const float posX, const float posY, const float direction, const HitTexture &hitTexture) : Projectile(pierce, damage, speed, hitTexture) {
+    Projectile(const int pierce, const int damage, const int speed, const float posX, const float posY, const float direction) : Projectile(pierce, damage, speed) {
         this->pos.x = posX;
         this->pos.y = posY;
         this->angle = direction;
@@ -39,8 +39,8 @@ public:
     }
 
     void updatePosition() {
-        pos.x += this->speed * cos(angle);
-        pos.y += this->speed * sin(angle);
+        pos.x += static_cast<float>(this->speed) * std::cos(angle);
+        pos.y += static_cast<float>(this->speed) * std::sin(angle);
         hitTexture.setPosition(pos);
     }
 
@@ -49,18 +49,19 @@ public:
             collisions.push_back(collided);
             collidedWith(collided);
             pierce--;
+            printf("%s Collided.\n", id.c_str());
         }
     }
 
-    bool isColliding(Enemy *toCheck) {
+    [[nodiscard]] bool isColliding(Enemy* toCheck) const {
         return doCirclesOverlap(*hitTexture.getHitbox(), *toCheck->getHitTexture()->getHitbox());
     }
 
-    HitTexture getHitTexture() {
-        return hitTexture;
+    HitTexture *getHitTexture() {
+        return &hitTexture;
     }
 
-    bool isValid() const {
+    [[nodiscard]] bool isValid() const {
         return pierce > 0;
     }
 

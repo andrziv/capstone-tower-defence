@@ -15,15 +15,19 @@ class TowerManager {
     std::list<Tower> towers;
 
     public:
-        void update() const {
+        void update() {
             projectileManager.update();
         }
 
-        std::vector<Projectile> getActiveProjectiles() const {
+        void enemyInteractions(const std::vector<Enemy*> &enemies) const {
+            projectileManager.enemyInteractions(enemies);
+        }
+
+        [[nodiscard]] std::vector<Projectile*> getActiveProjectiles() const {
             return projectileManager.getActiveProjectiles();
         }
 
-        std::vector<Projectile> getInactiveProjectiles() const {
+        [[nodiscard]] std::vector<Projectile*> getInactiveProjectiles() const {
             return projectileManager.getInactiveProjectiles();
         }
 

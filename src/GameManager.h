@@ -24,23 +24,24 @@ public:
     void update() {
         enemyManager.update();
         towerManager.update();
+        towerManager.enemyInteractions(enemyManager.getAliveEnemies());
     }
 
-    [[nodiscard]] std::vector<sf::Drawable*> getDrawables() const {
-        const std::vector<Enemy> enemies = enemyManager.getAliveEnemies();
-        const std::vector<Projectile> projectiles = towerManager.getActiveProjectiles();
+    [[nodiscard]] std::vector<sf::Drawable*> getDrawables() {
+        const std::vector<Enemy*> enemies = enemyManager.getAliveEnemies();
+        const std::vector<Projectile*> projectiles = towerManager.getActiveProjectiles();
         std::vector<sf::Drawable*> drawables;
-        for (auto enemy : enemies) {
-            drawables.push_back(enemy.getHitTexture()->getDisplayEntity());
+        for (const auto enemy : enemies) {
+            drawables.push_back(enemy->getHitTexture()->getDisplayEntity());
         }
-        for (auto projectile : projectiles) {
-            drawables.push_back(projectile.getHitTexture().getDisplayEntity());
+        for (const auto projectile : projectiles) {
+            drawables.push_back(projectile->getHitTexture()->getDisplayEntity());
         }
         drawables.push_back(enemyManager.getEnemyPath());
         return drawables;
     }
 
-    // temp; just for testing atm
+    // TODO: temp; just for testing atm
     void shrinkEnemyPath() const {
         enemyManager.shrinkEnemyPath();
     }

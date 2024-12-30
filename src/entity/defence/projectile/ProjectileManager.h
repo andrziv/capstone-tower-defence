@@ -9,47 +9,56 @@
 
 #include "Projectile.h"
 #include "../../enemy/Enemy.h"
+#include "tower_projectile/dev/DevProjectile.h"
 
 class ProjectileManager {
-    std::list<Projectile> projectiles;
+    std::list<Projectile*> projectiles;
 
     public:
+        // TODO: temp; just for testing atm
+        ProjectileManager() {
+            auto *projectile1 = new DevProjectile(2, 1, 0, 782, 412);
+            auto *projectile2 = new DevProjectile(1, 1, 0, 985, 586);
+            addProjectile(projectile1);
+            addProjectile(projectile2);
+        }
+
         void update() const {
-            for (auto projectile : projectiles) {
-                if (projectile.isValid()) {
-                    projectile.updatePosition();
+            for (const auto &projectile : projectiles) {
+                if (projectile->isValid()) {
+                    projectile->updatePosition();
                 }
             }
         }
 
-        void enemyInteractions(std::vector<Enemy> enemies) {
-            for (auto projectile : projectiles) {
-                for (auto enemy : enemies) {
-                    if (projectile.isColliding(&enemy)) {
-                        projectile.onCollision(&enemy);
+        void enemyInteractions(const std::vector<Enemy*>& enemies) const {
+            for (const auto &projectile : projectiles) {
+                for (const auto &enemy : enemies) {
+                    if (projectile->isColliding(enemy)) {
+                        projectile->onCollision(enemy);
                     }
                 }
             }
         }
 
-        void addProjectile(Projectile projectile) {
+        void addProjectile(Projectile* projectile) {
             projectiles.push_back(projectile);
         }
 
-        std::vector<Projectile> getActiveProjectiles() const {
-            std::vector<Projectile> active;
-            for (auto projectile : projectiles) {
-                if (projectile.isValid()) {
+        [[nodiscard]] std::vector<Projectile*> getActiveProjectiles() const {
+            std::vector<Projectile*> active;
+            for (const auto& projectile : projectiles) {
+                if (projectile->isValid()) {
                     active.push_back(projectile);
                 }
             }
             return active;
         }
 
-        std::vector<Projectile> getInactiveProjectiles() const {
-            std::vector<Projectile> inactive;
-            for (auto projectile : projectiles) {
-                if (!projectile.isValid()) {
+        [[nodiscard]] std::vector<Projectile*> getInactiveProjectiles() const {
+            std::vector<Projectile*> inactive;
+            for (const auto& projectile : projectiles) {
+                if (!projectile->isValid()) {
                     inactive.push_back(projectile);
                 }
             }
@@ -57,8 +66,8 @@ class ProjectileManager {
         }
 
         void removeInactiveProjectiles() {
-            for (auto projectile : projectiles) {
-                if (projectile.isValid()) {
+            for (const auto& projectile : projectiles) {
+                if (projectile->isValid()) {
                     projectiles.remove(projectile);
                 }
             }

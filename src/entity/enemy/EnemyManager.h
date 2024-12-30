@@ -15,7 +15,7 @@ class EnemyManager {
     sf::VertexArray *enemyPath;
 
     public:
-        // just used for test atm
+        // TODO: temp; just for testing atm
         EnemyManager() {
             enemyPath = new sf::VertexArray();
             enemyPath->setPrimitiveType(sf::PrimitiveType::LineStrip);
@@ -54,19 +54,19 @@ class EnemyManager {
             }
         }
 
-        std::vector<Enemy> getAliveEnemies() const {
-            std::vector<Enemy> alive;
-            for (auto enemy : enemies) {
+        [[nodiscard]] std::vector<Enemy*> getAliveEnemies() {
+            std::vector<Enemy*> alive;
+            for (auto& enemy : enemies) {
                 if (enemy.isAlive()) {
-                    alive.push_back(enemy);
+                    alive.push_back(&enemy);
                 }
             }
             return alive;
         }
 
-        std::vector<Enemy> getDeadEnemies() const {
+        [[nodiscard]] std::vector<Enemy> getDeadEnemies() const {
             std::vector<Enemy> dead;
-            for (auto enemy : enemies) {
+            for (auto& enemy : enemies) {
                 if (!enemy.isAlive()) {
                     dead.push_back(enemy);
                 }
@@ -75,19 +75,18 @@ class EnemyManager {
         }
 
         void removeDeadEnemies() {
-            for (auto enemy : enemies) {
+            for (const auto& enemy : enemies) {
                 if (enemy.isAlive()) {
                     enemies.remove(enemy);
                 }
             }
         }
 
-        sf::VertexArray *getEnemyPath() const {
+        [[nodiscard]] sf::VertexArray *getEnemyPath() const {
             return enemyPath;
         }
 
-
-        // temp; just for testing atm
+        // TODO: temp; just for testing atm
         void shrinkEnemyPath() const {
             enemyPath->resize(enemyPath->getVertexCount() - 1);
         }
