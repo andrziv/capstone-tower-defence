@@ -1,7 +1,3 @@
-//
-// Created by aki on 12/29/24.
-//
-
 #ifndef TOWERMANAGER_H
 #define TOWERMANAGER_H
 #include <list>
@@ -15,7 +11,7 @@ class TowerManager {
     std::list<Tower> towers;
 
     public:
-        void update() {
+        void update() const {
             projectileManager.update();
         }
 

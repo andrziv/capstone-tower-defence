@@ -1,7 +1,3 @@
-//
-// Created by aki on 12/29/24.
-//
-
 #ifndef ENEMYMANAGER_H
 #define ENEMYMANAGER_H
 #include <list>

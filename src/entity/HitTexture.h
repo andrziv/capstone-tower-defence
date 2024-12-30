@@ -19,7 +19,7 @@ class HitTexture {
             this->hitbox->setOrigin(this->displayEntity->getGeometricCenter());
         }
 
-        sf::CircleShape *getHitbox() const {
+        [[nodiscard]] sf::CircleShape *getHitbox() const {
             return hitbox;
         }
 

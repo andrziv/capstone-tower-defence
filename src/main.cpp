@@ -3,14 +3,13 @@
 
 #include "GameManager.h"
 #include "GraphicsManager.h"
-#include "entity/enemy/Enemy.h"
 
 #define MAXSAMPLES 100
 int tickIndex = 0;
-double tickSum = 0;
-double ticklist[MAXSAMPLES];
+long tickSum = 0;
+long ticklist[MAXSAMPLES];
 
-double calcAverageTick(const double newTick) {
+double calcAverageTick(const long newTick) {
     tickSum -= ticklist[tickIndex];  /* subtract value falling off */
     tickSum += newTick;              /* add new value */
     ticklist[tickIndex] = newTick;   /* save new value so it can be subtracted later */
@@ -46,6 +45,7 @@ int main() {
 
     while (graphicsManager.isActive()) {
         std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
+        // TODO: move these keeb events to another section of the code
         while (const std::optional event = graphicsManager.pollEvent()) {
             if (event->is<sf::Event::Closed>()) {
                 graphicsManager.deactivate();
@@ -71,7 +71,7 @@ int main() {
         gameManager.update();
         graphicsManager.draw();
         std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-        const double fps = 1e9 / std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+        const long fps = 1e9 / std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
         text.setString(std::to_string(calcAverageTick(fps)).substr(0, 6));
     }
 }

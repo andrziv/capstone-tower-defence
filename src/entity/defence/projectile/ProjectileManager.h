@@ -1,7 +1,3 @@
-//
-// Created by aki on 12/29/24.
-//
-
 #ifndef PROJECTILEMANAGER_H
 #define PROJECTILEMANAGER_H
 #include <list>

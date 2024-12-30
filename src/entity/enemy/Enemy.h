@@ -44,7 +44,7 @@ class Enemy {
                     distanceYetToTravel -= std::max(static_cast<double>(0), distanceToNextNode);
                     distanceYetToTravel = std::max(static_cast<double>(0), distanceYetToTravel);
                     const auto distanceToTravel = std::min(speed, distanceToNextNode);
-                    if ((std::abs(nextNode.y - position.position.y) + std::abs(nextNode.x - position.position.x)) != 0) {
+                    if (std::abs(nextNode.y - position.position.y) + std::abs(nextNode.x - position.position.x) != 0) {
                         double xRatio = (nextNode.x - position.position.x) / (std::abs(nextNode.y - position.position.y) + std::abs(nextNode.x - position.position.x));
                         double yRatio = (nextNode.y - position.position.y) / (std::abs(nextNode.y - position.position.y) + std::abs(nextNode.x - position.position.x));
                         position.position.x += xRatio * distanceToTravel;
@@ -70,7 +70,7 @@ class Enemy {
             health -= toSubtract;
         }
 
-        bool isAlive() const {
+        [[nodiscard]] bool isAlive() const {
             return health > 0;
         }
 

@@ -25,7 +25,7 @@ public:
         drawables.remove(drawable);
     }
 
-    bool isActive() const {
+    [[nodiscard]] bool isActive() const {
         return window->isOpen();
     }
 
@@ -33,7 +33,7 @@ public:
         window->close();
     }
 
-    std::optional<sf::Event> pollEvent() const {
+    [[nodiscard]] std::optional<sf::Event> pollEvent() const {
         return window->pollEvent();
     }
 

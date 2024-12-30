@@ -1,7 +1,3 @@
-//
-// Created by aki on 12/29/24.
-//
-
 #ifndef COLLISIONDETECT_H
 #define COLLISIONDETECT_H
 

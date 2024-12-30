@@ -1,7 +1,3 @@
-//
-// Created by aki on 12/29/24.
-//
-
 #ifndef UUID_H
 #define UUID_H
 #include <random>
@@ -16,9 +12,9 @@ inline std::string get_uuid() {
     constexpr bool dash[] = { false, false, false, false, true, false, true, false, true, false, true, false, false, false, false, false };
 
     std::string res;
-    for (int i = 0; i < 16; i++) {
+    for (bool i : dash) {
         const auto v = "0123456789abcdef";
-        if (dash[i]) res += "-";
+        if (i) res += "-";
         res += v[dist(rng)];
         res += v[dist(rng)];
     }

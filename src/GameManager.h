@@ -1,7 +1,3 @@
-//
-// Created by aki on 12/29/24.
-//
-
 #ifndef GAMEMANAGER_H
 #define GAMEMANAGER_H
 
