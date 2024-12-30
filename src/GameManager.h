@@ -19,14 +19,14 @@ class GameManager {
     TowerManager towerManager;
 
 public:
-    GameManager() {}
+    GameManager() = default;
 
     void update() {
         enemyManager.update();
         towerManager.update();
     }
 
-    std::vector<sf::Drawable*> getDrawables() const {
+    [[nodiscard]] std::vector<sf::Drawable*> getDrawables() const {
         const std::vector<Enemy> enemies = enemyManager.getAliveEnemies();
         const std::vector<Projectile> projectiles = towerManager.getActiveProjectiles();
         std::vector<sf::Drawable*> drawables;
