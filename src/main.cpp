@@ -9,7 +9,7 @@ int tickIndex = 0;
 long tickSum = 0;
 long ticklist[MAXSAMPLES];
 
-double calcAverageTick(const long newTick) {
+long calcAverageTick(const long newTick) {
     tickSum -= ticklist[tickIndex];  /* subtract value falling off */
     tickSum += newTick;              /* add new value */
     ticklist[tickIndex] = newTick;   /* save new value so it can be subtracted later */
@@ -72,6 +72,6 @@ int main() {
         graphicsManager.draw();
         std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
         const long fps = 1e9 / std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
-        text.setString(std::to_string(calcAverageTick(fps)).substr(0, 6));
+        text.setString(std::to_string(calcAverageTick(fps)).substr(0, 3));
     }
 }

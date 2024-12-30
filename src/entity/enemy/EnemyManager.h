@@ -7,7 +7,7 @@
 
 
 class EnemyManager {
-    std::list<Enemy> enemies;
+    std::list<Enemy*> enemies;
     sf::VertexArray *enemyPath;
 
     public:
@@ -36,34 +36,34 @@ class EnemyManager {
                 enemyPath->append(vertice);
             }
 
-            const DevEnemy testEnemy1(enemyPath, 2, 1, sf::Color::Green, 50);
-            const DevEnemy testEnemy2(enemyPath, 4, 2, sf::Color::Blue, 54);
+            const auto testEnemy1 = new DevEnemy(enemyPath, 2, 1, sf::Color::Green, 50);
+            const auto testEnemy2 = new DevEnemy(enemyPath, 4, 2, sf::Color::Blue, 54);
             enemies.push_back(testEnemy1);
             enemies.push_back(testEnemy2);
         }
 
-        void update() {
-            for (auto &enemy : enemies) {
-                if (enemy.isAlive()) {
-                    enemy.updatePosition();
+        void update() const {
+            for (const auto &enemy : enemies) {
+                if (enemy->isAlive()) {
+                    enemy->updatePosition();
                 }
             }
         }
 
-        [[nodiscard]] std::vector<Enemy*> getAliveEnemies() {
+        [[nodiscard]] std::vector<Enemy*> getAliveEnemies() const {
             std::vector<Enemy*> alive;
             for (auto& enemy : enemies) {
-                if (enemy.isAlive()) {
-                    alive.push_back(&enemy);
+                if (enemy->isAlive()) {
+                    alive.push_back(enemy);
                 }
             }
             return alive;
         }
 
-        [[nodiscard]] std::vector<Enemy> getDeadEnemies() const {
-            std::vector<Enemy> dead;
+        [[nodiscard]] std::vector<Enemy*> getDeadEnemies() const {
+            std::vector<Enemy*> dead;
             for (auto& enemy : enemies) {
-                if (!enemy.isAlive()) {
+                if (!enemy->isAlive()) {
                     dead.push_back(enemy);
                 }
             }
@@ -72,7 +72,7 @@ class EnemyManager {
 
         void removeDeadEnemies() {
             for (const auto& enemy : enemies) {
-                if (enemy.isAlive()) {
+                if (enemy->isAlive()) {
                     enemies.remove(enemy);
                 }
             }

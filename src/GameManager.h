@@ -17,13 +17,13 @@ class GameManager {
 public:
     GameManager() = default;
 
-    void update() {
+    void update() const {
         enemyManager.update();
         towerManager.update();
         towerManager.enemyInteractions(enemyManager.getAliveEnemies());
     }
 
-    [[nodiscard]] std::vector<sf::Drawable*> getDrawables() {
+    [[nodiscard]] std::vector<sf::Drawable*> getDrawables() const {
         const std::vector<Enemy*> enemies = enemyManager.getAliveEnemies();
         const std::vector<Projectile*> projectiles = towerManager.getActiveProjectiles();
         std::vector<sf::Drawable*> drawables;
