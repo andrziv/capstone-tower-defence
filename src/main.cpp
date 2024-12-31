@@ -9,7 +9,7 @@ int tickIndex = 0;
 double tickSum = 0;
 double ticklist[MAXSAMPLES];
 
-double calcAverageTick(const double newTick) {
+int calcAverageTick(const double newTick) {
     tickSum -= ticklist[tickIndex];  /* subtract value falling off */
     tickSum += newTick;              /* add new value */
     ticklist[tickIndex] = newTick;   /* save new value so it can be subtracted later */
@@ -17,12 +17,12 @@ double calcAverageTick(const double newTick) {
         tickIndex = 0;
 
     /* return average */
-    return tickSum / MAXSAMPLES;
+    return static_cast<int>(tickSum / MAXSAMPLES);
 }
 
 int main() {
     GraphicsManager graphicsManager;
-    const GameManager gameManager;
+    GameManager gameManager;
 
     auto drawnPath = std::make_shared<sf::VertexArray>(sf::VertexArray());
     drawnPath->setPrimitiveType(sf::PrimitiveType::LineStrip);
@@ -69,7 +69,9 @@ int main() {
             }
         }
         gameManager.update();
+        graphicsManager.removeDrawables(gameManager.getRemovableDrawables());
         graphicsManager.draw();
+        gameManager.cleanup();
         std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
         const double fps = 1e9 / static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count());
         text->setString(std::to_string(calcAverageTick(fps)).substr(0, 3));

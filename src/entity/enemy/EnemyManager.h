@@ -75,11 +75,9 @@ class EnemyManager {
         }
 
         void removeDeadEnemies() {
-            for (const auto& enemy : enemies) {
-                if (enemy->isAlive()) {
-                    enemies.remove(enemy);
-                }
-            }
+            enemies.remove_if([](const Enemy* enemy) {
+                return !enemy->isAlive();
+            });
         }
 
         [[nodiscard]] std::shared_ptr<sf::VertexArray> getEnemyPath() const {

@@ -69,11 +69,9 @@ class ProjectileManager {
         }
 
         void removeInactiveProjectiles() {
-            for (const auto& projectile : projectiles) {
-                if (projectile->isValid()) {
-                    projectiles.remove(projectile);
-                }
-            }
+            projectiles.remove_if([](const std::unique_ptr<Projectile> &projectile) {
+                return !projectile->isValid();
+            });
         }
 };
 

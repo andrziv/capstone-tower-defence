@@ -37,6 +37,24 @@ public:
         return drawables;
     }
 
+    [[nodiscard]] std::vector<std::shared_ptr<sf::Drawable>> getRemovableDrawables() const {
+        const std::vector<Enemy*> enemies = enemyManager.getDeadEnemies();
+        const std::vector<Projectile*> projectiles = towerManager.getInactiveProjectiles();
+        std::vector<std::shared_ptr<sf::Drawable>> drawables;
+        for (const auto enemy : enemies) {
+            drawables.push_back(enemy->getHitTexture()->getDisplayEntity());
+        }
+        for (const auto projectile : projectiles) {
+            drawables.push_back(projectile->getHitTexture()->getDisplayEntity());
+        }
+        return drawables;
+    }
+
+    void cleanup() {
+        enemyManager.removeDeadEnemies();
+        towerManager.removeInactiveProjectiles();
+    }
+
     // TODO: temp; just for testing atm
     void shrinkEnemyPath() const {
         enemyManager.shrinkEnemyPath();

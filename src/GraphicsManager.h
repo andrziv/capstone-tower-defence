@@ -10,7 +10,7 @@ class GraphicsManager {
 public:
     GraphicsManager() {
         this->window = std::make_unique<sf::RenderWindow>(sf::RenderWindow(sf::VideoMode({1920, 1080}), "SFML works!"));
-        this->window->setFramerateLimit(144);
+        this->window->setFramerateLimit(60);
     }
 
     void addDrawable(const std::shared_ptr<sf::Drawable>& drawable) {
@@ -21,8 +21,14 @@ public:
         drawables.push_front(drawable);
     }
 
-    void removeDrawable(const std::shared_ptr<sf::Drawable>& drawable) {
-        drawables.remove(drawable);
+    void removeDrawable(const std::shared_ptr<sf::Drawable>& toRemove) {
+        drawables.remove(toRemove);
+    }
+
+    void removeDrawables(const std::vector<std::shared_ptr<sf::Drawable>>& toRemove) {
+        for (std::shared_ptr drawable : toRemove) {
+            drawables.remove(*toRemove.data());
+        }
     }
 
     [[nodiscard]] bool isActive() const {
