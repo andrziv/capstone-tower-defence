@@ -13,10 +13,14 @@ class ProjectileManager {
     public:
         // TODO: temp; just for testing atm
         ProjectileManager() {
-            auto *projectile1 = new DevProjectile(2, 1, 0, 782, 412);
+            auto *projectile1 = new DevProjectile(2, 1, 0, 782, 412, sf::Color(255, 98, 0), 4.f);
             auto *projectile2 = new DevProjectile(1, 1, 0, 985, 586);
+            auto *projectile3 = new DevProjectile(4, 1, 0, 527, 615, sf::Color(11, 91, 92), 6.f);
+            auto *projectile4 = new DevProjectile(4, 1, 0, 293, 787, sf::Color(11, 91, 92), 6.f);
             addProjectile(projectile1);
             addProjectile(projectile2);
+            addProjectile(projectile3);
+            addProjectile(projectile4);
         }
 
         void update() const {
@@ -29,9 +33,11 @@ class ProjectileManager {
 
         void enemyInteractions(const std::vector<Enemy*>& enemies) const {
             for (const auto &projectile : projectiles) {
-                for (const auto &enemy : enemies) {
-                    if (projectile->isColliding(enemy)) {
-                        projectile->onCollision(enemy);
+                if (projectile->isValid()) {
+                    for (const auto &enemy : enemies) {
+                        if (enemy->isAlive() && projectile->isColliding(enemy)) {
+                            projectile->onCollision(enemy);
+                        }
                     }
                 }
             }

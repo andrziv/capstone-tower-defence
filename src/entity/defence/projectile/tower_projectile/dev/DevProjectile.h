@@ -16,6 +16,15 @@ class DevProjectile final : public Projectile{
             getHitTexture()->getHitbox()->setRadius(2.f);
         }
 
+        DevProjectile(const int pierce, const int damage, const int speed, const float posX, const float posY, const sf::Color color) : DevProjectile(pierce, damage, speed, posX, posY) {
+            getHitTexture()->getDisplayEntity()->setFillColor(color);
+        }
+
+        DevProjectile(const int pierce, const int damage, const int speed, const float posX, const float posY, const sf::Color color, const float size) : DevProjectile(pierce, damage, speed, posX, posY, color) {
+            getHitTexture()->getDisplayEntity()->setRadius(size);
+            getHitTexture()->getHitbox()->setRadius(size);
+        }
+
     protected:
         void collidedWith(Enemy* collided) override {
             collided->subtractHealth(getDamage());

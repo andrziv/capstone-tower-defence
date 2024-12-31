@@ -22,7 +22,7 @@ long calcAverageTick(const long newTick) {
 
 int main() {
     GraphicsManager graphicsManager;
-    GameManager gameManager;
+    const GameManager gameManager;
 
     sf::VertexArray drawnPath;
     drawnPath.setPrimitiveType(sf::PrimitiveType::LineStrip);

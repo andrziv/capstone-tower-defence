@@ -38,8 +38,12 @@ class EnemyManager {
 
             const auto testEnemy1 = new DevEnemy(enemyPath, 2, 1, sf::Color::Green, 50);
             const auto testEnemy2 = new DevEnemy(enemyPath, 4, 2, sf::Color::Blue, 54);
+            const auto testEnemy3 = new DevEnemy(enemyPath, 6, 3, sf::Color(224, 58, 164), 60);
+            const auto testEnemy4 = new DevEnemy(enemyPath, 8, 10, sf::Color(92, 30, 11), 75);
             enemies.push_back(testEnemy1);
             enemies.push_back(testEnemy2);
+            enemies.push_back(testEnemy3);
+            enemies.push_back(testEnemy4);
         }
 
         void update() const {
