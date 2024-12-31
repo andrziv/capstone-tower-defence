@@ -4,12 +4,12 @@
 #include <list>
 
 class GraphicsManager {
-    sf::RenderWindow *window;
+    std::unique_ptr<sf::RenderWindow> window;
     std::list<sf::Drawable*> drawables;
 
 public:
     GraphicsManager() {
-        this->window = new sf::RenderWindow(sf::VideoMode({1920, 1080}), "SFML works!");
+        this->window = std::make_unique<sf::RenderWindow>(sf::RenderWindow(sf::VideoMode({1920, 1080}), "SFML works!"));
         this->window->setFramerateLimit(144);
     }
 
