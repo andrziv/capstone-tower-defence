@@ -4,7 +4,7 @@
 #include "../../Projectile.h"
 #include "../../../../enemy/Enemy.h"
 
-class DevProjectile final : public Projectile{
+class DevProjectile final : public Projectile {
 
     public:
         ~DevProjectile() override = default;
@@ -12,8 +12,8 @@ class DevProjectile final : public Projectile{
         DevProjectile(const int pierce, const int damage, const int speed, const float posX, const float posY) : Projectile(pierce, damage, speed, posX, posY, 0.f) {
             getHitTexture()->getDisplayEntity()->setFillColor(sf::Color::Yellow);
             getHitTexture()->getDisplayEntity()->setRadius(2.f);
-            getHitTexture()->getHitbox()->setFillColor(sf::Color::Transparent);
-            getHitTexture()->getHitbox()->setRadius(2.f);
+            getHitTexture()->setHitboxColor(sf::Color::Transparent);
+            getHitTexture()->setHitboxRadius(2.f);
         }
 
         DevProjectile(const int pierce, const int damage, const int speed, const float posX, const float posY, const sf::Color color) : DevProjectile(pierce, damage, speed, posX, posY) {
@@ -22,7 +22,7 @@ class DevProjectile final : public Projectile{
 
         DevProjectile(const int pierce, const int damage, const int speed, const float posX, const float posY, const sf::Color color, const float size) : DevProjectile(pierce, damage, speed, posX, posY, color) {
             getHitTexture()->getDisplayEntity()->setRadius(size);
-            getHitTexture()->getHitbox()->setRadius(size);
+            getHitTexture()->setHitboxRadius(size);
         }
 
     protected:

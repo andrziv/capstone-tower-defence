@@ -54,7 +54,7 @@ public:
     }
 
     [[nodiscard]] bool isColliding(Enemy* toCheck) const {
-        return doCirclesOverlap(*hitTexture.getHitbox(), *toCheck->getHitTexture()->getHitbox());
+        return doCirclesOverlap(hitTexture.getHitbox(), toCheck->getHitTexture()->getHitbox());
     }
 
     HitTexture *getHitTexture() {

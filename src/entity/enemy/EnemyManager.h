@@ -8,12 +8,12 @@
 
 class EnemyManager {
     std::list<Enemy*> enemies;
-    sf::VertexArray *enemyPath;
+    std::shared_ptr<sf::VertexArray> enemyPath;
 
     public:
         // TODO: temp; just for testing atm
         EnemyManager() {
-            enemyPath = new sf::VertexArray();
+            enemyPath = std::make_shared<sf::VertexArray>(sf::VertexArray());
             enemyPath->setPrimitiveType(sf::PrimitiveType::LineStrip);
 
             sf::Vertex vertices[] {
@@ -82,7 +82,7 @@ class EnemyManager {
             }
         }
 
-        [[nodiscard]] sf::VertexArray *getEnemyPath() const {
+        [[nodiscard]] std::shared_ptr<sf::VertexArray> getEnemyPath() const {
             return enemyPath;
         }
 

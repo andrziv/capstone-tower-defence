@@ -5,7 +5,7 @@
 
 class GraphicsManager {
     std::unique_ptr<sf::RenderWindow> window;
-    std::list<sf::Drawable*> drawables;
+    std::list<std::shared_ptr<sf::Drawable>> drawables;
 
 public:
     GraphicsManager() {
@@ -13,15 +13,15 @@ public:
         this->window->setFramerateLimit(144);
     }
 
-    void addDrawable(sf::Drawable* drawable) {
+    void addDrawable(const std::shared_ptr<sf::Drawable>& drawable) {
         drawables.push_back(drawable);
     }
 
-    void addPriorityDrawable(sf::Drawable* drawable) {
+    void addPriorityDrawable(const std::shared_ptr<sf::Drawable>& drawable) {
         drawables.push_front(drawable);
     }
 
-    void removeDrawable(sf::Drawable* drawable) {
+    void removeDrawable(const std::shared_ptr<sf::Drawable>& drawable) {
         drawables.remove(drawable);
     }
 
@@ -39,7 +39,7 @@ public:
 
     void draw() const {
         window->clear();
-        for (const auto drawable : drawables) {
+        for (const auto& drawable : drawables) {
             window->draw(*drawable);
         }
         window->display();

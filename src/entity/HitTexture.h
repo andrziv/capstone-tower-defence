@@ -1,33 +1,37 @@
 #ifndef HITTEXTURE_H
 #define HITTEXTURE_H
 
+#include <memory>
+
 #include "SFML/Graphics/CircleShape.hpp"
 
 class HitTexture {
-    sf::CircleShape *displayEntity;
-    sf::CircleShape *hitbox;
+    std::shared_ptr<sf::CircleShape> displayEntity;
+    std::shared_ptr<sf::CircleShape> hitbox;
 
     public:
         HitTexture() {
-            this->displayEntity = new sf::CircleShape();
-            this->hitbox = new sf::CircleShape();
+            this->displayEntity = std::make_shared<sf::CircleShape>(sf::CircleShape());
+            this->hitbox = std::make_shared<sf::CircleShape>(sf::CircleShape());
         }
 
-        HitTexture(sf::CircleShape *displayEntity, sf::CircleShape *hitbox) {
-            this->displayEntity = displayEntity;
-            this->hitbox = hitbox;
-            this->hitbox->setOrigin(this->displayEntity->getGeometricCenter());
+        [[nodiscard]] sf::CircleShape getHitbox() const {
+            return *hitbox;
         }
 
-        [[nodiscard]] sf::CircleShape *getHitbox() const {
-            return hitbox;
+        void setHitboxColor(const sf::Color color) const {
+            hitbox->setFillColor(color);
         }
 
-        sf::CircleShape *getDisplayEntity() const {
+        void setHitboxRadius(const float radius) const {
+            hitbox->setRadius(radius);
+        }
+
+        [[nodiscard]] std::shared_ptr<sf::CircleShape> getDisplayEntity() const {
             return displayEntity;
         }
 
-        void setPosition(const int x, const int y) const {
+        void setPosition(const float x, const float y) const {
             displayEntity->setPosition(sf::Vector2f(x - displayEntity->getRadius(), y - displayEntity->getRadius()));
             hitbox->setPosition(sf::Vector2f(x + (displayEntity->getRadius() - hitbox->getRadius()), y + (displayEntity->getRadius() - hitbox->getRadius())));
         }

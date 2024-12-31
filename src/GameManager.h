@@ -23,10 +23,10 @@ public:
         towerManager.enemyInteractions(enemyManager.getAliveEnemies());
     }
 
-    [[nodiscard]] std::vector<sf::Drawable*> getDrawables() const {
+    [[nodiscard]] std::vector<std::shared_ptr<sf::Drawable>> getDrawables() const {
         const std::vector<Enemy*> enemies = enemyManager.getAliveEnemies();
         const std::vector<Projectile*> projectiles = towerManager.getActiveProjectiles();
-        std::vector<sf::Drawable*> drawables;
+        std::vector<std::shared_ptr<sf::Drawable>> drawables;
         for (const auto enemy : enemies) {
             drawables.push_back(enemy->getHitTexture()->getDisplayEntity());
         }

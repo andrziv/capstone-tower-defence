@@ -9,11 +9,11 @@ class DevEnemy final : public Enemy{
     public:
         ~DevEnemy() override = default;
 
-        DevEnemy(sf::VertexArray *pathToFollow, const float speed, const int health, const sf::Color color, const float size) : Enemy(pathToFollow, speed, health) {
+        DevEnemy(const std::shared_ptr<sf::VertexArray>& pathToFollow, const float speed, const int health, const sf::Color color, const float size) : Enemy(pathToFollow, speed, health) {
             getHitTexture()->getDisplayEntity()->setFillColor(color);
             getHitTexture()->getDisplayEntity()->setRadius(size);
-            getHitTexture()->getHitbox()->setFillColor(sf::Color::Transparent);
-            getHitTexture()->getHitbox()->setRadius(size);
+            getHitTexture()->setHitboxColor(sf::Color::Transparent);
+            getHitTexture()->setHitboxRadius(size);
         }
 };
 

@@ -16,7 +16,7 @@ namespace sf {
 class Enemy {
     std::string id = get_uuid();
     sf::Vertex position;
-    sf::VertexArray *path;
+    std::shared_ptr<sf::VertexArray> path;
     int currentNodeTarget = 0;
     HitTexture hitTexture;
     int health;
@@ -25,7 +25,7 @@ class Enemy {
     public:
         virtual ~Enemy() = default;
 
-        Enemy(sf::VertexArray *pathToFollow, const float speed, const int health) {
+        Enemy(const std::shared_ptr<sf::VertexArray>& pathToFollow, const float speed, const int health) {
             this->path = pathToFollow;
             if (this->path->getVertexCount() > 0) {
                 this->position.position.x = path->operator[](0).position.x;

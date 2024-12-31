@@ -14,12 +14,12 @@ inline bool doCirclesOverlap(const sf::CircleShape& circle1, const sf::CircleSha
 
     // get distance between the circle's centers
     // use the Pythagorean Theorem to compute the distance
-    const float distX = x1 - x2;
-    const float distY = y1 - y2;
+    const double distX = x1 - x2;
+    const double distY = y1 - y2;
 
     // if the distance is less than the sum of the circle's
     // radii, the circles are touching!
-    if (const float distance = sqrt((distX * distX) + (distY * distY)); distance <= r1 + r2) {
+    if (const double distance = std::sqrt((distX * distX) + (distY * distY)); distance <= r1 + r2) {
         return true;
     }
     return false;
