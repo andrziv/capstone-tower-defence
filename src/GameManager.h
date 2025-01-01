@@ -17,23 +17,35 @@ class GameManager {
 public:
     GameManager() = default;
 
-    void update() const {
+    void update() {
         enemyManager.update();
         towerManager.update();
         towerManager.enemyInteractions(enemyManager.getAliveEnemies());
+        enemyManager.replaceDeadEnemiesWithChildren();
     }
 
     [[nodiscard]] std::vector<std::shared_ptr<sf::Drawable>> getDrawables() const {
+        std::vector<std::shared_ptr<sf::Drawable>> drawables;
+        drawables.push_back(enemyManager.getEnemyPath());
+
         const std::vector<Enemy*> enemies = enemyManager.getAliveEnemies();
         const std::vector<Projectile*> projectiles = towerManager.getActiveProjectiles();
-        std::vector<std::shared_ptr<sf::Drawable>> drawables;
         for (const auto enemy : enemies) {
             drawables.push_back(enemy->getHitTexture()->getDisplayEntity());
         }
         for (const auto projectile : projectiles) {
             drawables.push_back(projectile->getHitTexture()->getDisplayEntity());
         }
-        drawables.push_back(enemyManager.getEnemyPath());
+        return drawables;
+    }
+
+    // TODO: reminder to replace this with a more robust system that preferably doesn't require a completely separate set of lists
+    [[nodiscard]] std::vector<std::shared_ptr<sf::Drawable>> getNewDrawables() {
+        const std::vector<Enemy*> enemies = enemyManager.getUndrawnEnemies();
+        std::vector<std::shared_ptr<sf::Drawable>> drawables;
+        for (const auto enemy : enemies) {
+            drawables.push_back(enemy->getHitTexture()->getDisplayEntity());
+        }
         return drawables;
     }
 

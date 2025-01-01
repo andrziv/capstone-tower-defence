@@ -20,7 +20,7 @@ class Projectile {
     float angle;
     sf::Vector2f pos;
     HitTexture hitTexture;
-    std::vector<Enemy*> collisions;
+    std::vector<std::string> collisions;
 
     Projectile(const int pierce, const int damage, const int speed): angle(0) {
         this->pierce = pierce;
@@ -46,7 +46,7 @@ public:
 
     void onCollision(Enemy* collided) {
         if (!alreadyCollided(collided)) {
-            collisions.push_back(collided);
+            collisions.push_back(collided->getId());
             collidedWith(collided);
             pierce--;
             printf("%s Collided.\n", id.c_str());
@@ -73,8 +73,8 @@ public:
     }
 
 protected:
-    bool alreadyCollided(const Enemy* collided) {
-        return std::find(collisions.begin(), collisions.end(), collided) != collisions.end();
+    bool alreadyCollided(Enemy* collided) {
+        return std::find(collisions.begin(), collisions.end(), collided->getId()) != collisions.end();
     }
 
     virtual void collidedWith(Enemy* collided) {}

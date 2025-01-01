@@ -62,6 +62,19 @@ class Enemy {
             return position;
         }
 
+        void setPosition(const sf::Vector2f newPos) {
+            position.position = newPos;
+            hitTexture.setPosition(newPos);
+        }
+
+        [[nodiscard]] int getTargetNode() const {
+            return currentNodeTarget;
+        }
+
+        void setTargetNode(const int newTarget) {
+            currentNodeTarget = newTarget;
+        }
+
         HitTexture *getHitTexture() {
             return &hitTexture;
         }
@@ -74,11 +87,26 @@ class Enemy {
             return health > 0;
         }
 
+        virtual std::vector<Enemy*> getChildren() { return {}; }
+
+        std::string getId() {
+            return id;
+        }
+
+        void setId(const std::string &newId) {
+            id = newId;
+        }
+
         bool operator == (const Enemy &other) const {
             if(this->id == other.id) {
                 return true;
             }
             return false;
+        }
+
+    protected:
+        [[nodiscard]] std::shared_ptr<sf::VertexArray> getPathToFollow() const {
+            return path;
         }
 };
 

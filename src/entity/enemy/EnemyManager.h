@@ -4,11 +4,22 @@
 
 #include "Enemy.h"
 #include "special_enemy/dev/DevEnemy.h"
+#include "special_enemy/dev/LargeDevEnemy.h"
 
 
 class EnemyManager {
     std::list<Enemy*> enemies;
+    std::list<Enemy*> undrawnEnemies;
     std::shared_ptr<sf::VertexArray> enemyPath;
+
+    void addChildEnemy(Enemy* parentEnemy, const std::vector<Enemy*>& childEnemy) {
+        for (Enemy* child : childEnemy) {
+            child->setPosition(parentEnemy->getPosition().position);
+            child->setTargetNode(parentEnemy->getTargetNode());
+            child->setId(parentEnemy->getId());
+            addEnemy(child);
+        }
+    }
 
     public:
         // TODO: temp; just for testing atm
@@ -36,6 +47,7 @@ class EnemyManager {
                 enemyPath->append(vertice);
             }
 
+            /*
             const auto testEnemy1 = new DevEnemy(enemyPath, 2, 1, sf::Color::Green, 50);
             const auto testEnemy2 = new DevEnemy(enemyPath, 4, 2, sf::Color::Blue, 54);
             const auto testEnemy3 = new DevEnemy(enemyPath, 6, 3, sf::Color(224, 58, 164), 60);
@@ -44,6 +56,9 @@ class EnemyManager {
             enemies.push_back(testEnemy2);
             enemies.push_back(testEnemy3);
             enemies.push_back(testEnemy4);
+            */
+            const auto testLargeEnemy = new LargeDevEnemy(enemyPath);
+            enemies.push_back(testLargeEnemy);
         }
 
         void update() const {
@@ -51,6 +66,18 @@ class EnemyManager {
                 if (enemy->isAlive()) {
                     enemy->updatePosition();
                 }
+            }
+        }
+
+        void addEnemy(Enemy* newEnemy) {
+            enemies.push_back(newEnemy);
+            undrawnEnemies.push_back(newEnemy);
+        }
+
+        void addEnemies(const std::vector<Enemy*>& newEnemies) {
+            for (Enemy* enemy : newEnemies) {
+                enemies.push_back(enemy);
+                undrawnEnemies.push_back(enemy);
             }
         }
 
@@ -64,6 +91,17 @@ class EnemyManager {
             return alive;
         }
 
+        [[nodiscard]] std::vector<Enemy*> getUndrawnEnemies() {
+            std::vector<Enemy*> alive;
+            for (auto& enemy : undrawnEnemies) {
+                if (enemy->isAlive()) {
+                    alive.push_back(enemy);
+                }
+            }
+            undrawnEnemies.clear();
+            return alive;
+        }
+
         [[nodiscard]] std::vector<Enemy*> getDeadEnemies() const {
             std::vector<Enemy*> dead;
             for (auto& enemy : enemies) {
@@ -74,8 +112,22 @@ class EnemyManager {
             return dead;
         }
 
+        void replaceDeadEnemiesWithChildren() {
+            auto it = enemies.begin();
+            for(int i = 0; i < enemies.size(); i++){
+                if (!it.operator*()->isAlive()) {
+                    addChildEnemy(it.operator*(), it.operator*()->getChildren());
+                    //enemies.remove(it.operator*());
+                }
+                ++it;
+            }
+        }
+
         void removeDeadEnemies() {
             enemies.remove_if([](const Enemy* enemy) {
+                return !enemy->isAlive();
+            });
+            undrawnEnemies.remove_if([](const Enemy* enemy) {
                 return !enemy->isAlive();
             });
         }

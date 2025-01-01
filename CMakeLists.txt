@@ -10,7 +10,9 @@ FetchContent_Declare(SFML
     GIT_SHALLOW ON
     EXCLUDE_FROM_ALL
     SYSTEM)
-FetchContent_MakeAvailable(SFML)
+FetchContent_Declare(json
+        URL https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz)
+FetchContent_MakeAvailable(SFML json)
 
 add_executable(main src/main.cpp
         src/entity/HitTexture.cpp
@@ -39,5 +41,14 @@ add_executable(main src/main.cpp
         src/entity/enemy/special_enemy/dev/DevEnemy.h
         src/entity/HitTexture.h
         src/pathing/Path.cpp
+        src/entity/enemy/waves/WaveLoader.cpp
+        src/entity/enemy/waves/WaveLoader.h
+        src/entity/enemy/special_enemy/dev/SmallDevEnemy.cpp
+        src/entity/enemy/special_enemy/dev/SmallDevEnemy.h
+        src/entity/enemy/special_enemy/dev/MidDevEnemy.cpp
+        src/entity/enemy/special_enemy/dev/MidDevEnemy.h
+        src/entity/enemy/special_enemy/dev/LargeDevEnemy.cpp
+        src/entity/enemy/special_enemy/dev/LargeDevEnemy.h
 )
 target_link_libraries(main PRIVATE SFML::Graphics)
+target_link_libraries(main PRIVATE nlohmann_json::nlohmann_json)

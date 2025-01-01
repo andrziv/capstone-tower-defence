@@ -2,7 +2,6 @@
 #define HITTEXTURE_H
 
 #include <memory>
-
 #include "SFML/Graphics/CircleShape.hpp"
 
 class HitTexture {

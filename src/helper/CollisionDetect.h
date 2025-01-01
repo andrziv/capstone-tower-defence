@@ -19,7 +19,7 @@ inline bool doCirclesOverlap(const sf::CircleShape& circle1, const sf::CircleSha
 
     // if the distance is less than the sum of the circle's
     // radii, the circles are touching!
-    if (const double distance = std::sqrt((distX * distX) + (distY * distY)); distance <= r1 + r2) {
+    if (const double distance = std::sqrt(distX * distX + distY * distY); distance <= r1 + r2) {
         return true;
     }
     return false;

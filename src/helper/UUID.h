@@ -12,7 +12,7 @@ inline std::string get_uuid() {
     constexpr bool dash[] = { false, false, false, false, true, false, true, false, true, false, true, false, false, false, false, false };
 
     std::string res;
-    for (bool i : dash) {
+    for (const bool i : dash) {
         const auto v = "0123456789abcdef";
         if (i) res += "-";
         res += v[dist(rng)];

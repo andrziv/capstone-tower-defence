@@ -1,10 +1,13 @@
 #include <SFML/Graphics.hpp>
 #include <optional>
+#include <thread>
+#include <unistd.h>
 
 #include "GameManager.h"
 #include "GraphicsManager.h"
 
 #define MAXSAMPLES 100
+
 int tickIndex = 0;
 double tickSum = 0;
 double ticklist[MAXSAMPLES];
@@ -24,13 +27,11 @@ int main() {
     GraphicsManager graphicsManager;
     GameManager gameManager;
 
-    auto drawnPath = std::make_shared<sf::VertexArray>(sf::VertexArray());
+    const auto drawnPath = std::make_shared<sf::VertexArray>(sf::VertexArray());
     drawnPath->setPrimitiveType(sf::PrimitiveType::LineStrip);
 
-    for (const auto& drawable : gameManager.getDrawables()) {
-        graphicsManager.addDrawable(drawable);
-    }
-    graphicsManager.addDrawable(drawnPath);
+    graphicsManager.addDrawables(gameManager.getDrawables());
+    graphicsManager.addPriorityDrawable(drawnPath);
 
     sf::Font font;
     auto text = std::make_shared<sf::Text>(sf::Text(font));
@@ -68,10 +69,13 @@ int main() {
                 }
             }
         }
+
         gameManager.update();
+        graphicsManager.addDrawables(gameManager.getNewDrawables());
         graphicsManager.removeDrawables(gameManager.getRemovableDrawables());
         graphicsManager.draw();
         gameManager.cleanup();
+
         std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
         const double fps = 1e9 / static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count());
         text->setString(std::to_string(calcAverageTick(fps)).substr(0, 3));

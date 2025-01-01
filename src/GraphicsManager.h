@@ -17,8 +17,20 @@ public:
         drawables.push_back(drawable);
     }
 
+    void addDrawables(const std::vector<std::shared_ptr<sf::Drawable>>& newDrawables) {
+        for (const auto& drawable : newDrawables) {
+            drawables.push_back(drawable);
+        }
+    }
+
     void addPriorityDrawable(const std::shared_ptr<sf::Drawable>& drawable) {
         drawables.push_front(drawable);
+    }
+
+    void addPriorityDrawables(const std::vector<std::shared_ptr<sf::Drawable>>& newDrawables) {
+        for (const auto& drawable : newDrawables) {
+            drawables.push_back(drawable);
+        }
     }
 
     void removeDrawable(const std::shared_ptr<sf::Drawable>& toRemove) {
@@ -26,8 +38,8 @@ public:
     }
 
     void removeDrawables(const std::vector<std::shared_ptr<sf::Drawable>>& toRemove) {
-        for (std::shared_ptr drawable : toRemove) {
-            drawables.remove(*toRemove.data());
+        for (const std::shared_ptr<sf::Drawable>& drawable : toRemove) {
+            drawables.remove(drawable);
         }
     }
 

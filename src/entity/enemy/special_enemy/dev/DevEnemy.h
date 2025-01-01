@@ -4,7 +4,7 @@
 #include "../../Enemy.h"
 #include "../../../HitTexture.h"
 
-class DevEnemy final : public Enemy{
+class DevEnemy : public Enemy{
 
     public:
         ~DevEnemy() override = default;
