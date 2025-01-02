@@ -1,7 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <optional>
 #include <thread>
-#include <unistd.h>
 
 #include "GameManager.h"
 #include "GraphicsManager.h"

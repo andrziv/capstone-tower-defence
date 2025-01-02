@@ -20,7 +20,7 @@ class Enemy {
     int currentNodeTarget = 0;
     HitTexture hitTexture;
     int health;
-    double speed;
+    float speed;
 
     public:
         virtual ~Enemy() = default;
@@ -37,16 +37,16 @@ class Enemy {
 
         void updatePosition() {
             if (path->getVertexCount() > 0 && currentNodeTarget < path->getVertexCount()) {
-                double distanceYetToTravel = speed;
+                auto distanceYetToTravel = speed;
                 while (distanceYetToTravel > 0 && path->getVertexCount() - currentNodeTarget > 0) {
                     const auto nextNode = path->operator[](currentNodeTarget).position;
-                    double distanceToNextNode = std::abs(sqrt(pow(nextNode.x - position.position.x, 2) + pow(nextNode.y - position.position.y, 2)));
-                    distanceYetToTravel -= std::max(static_cast<double>(0), distanceToNextNode);
-                    distanceYetToTravel = std::max(static_cast<double>(0), distanceYetToTravel);
+                    auto distanceToNextNode = std::abs(sqrt(pow(nextNode.x - position.position.x, 2) + pow(nextNode.y - position.position.y, 2)));
+                    distanceYetToTravel -= std::max(static_cast<float>(0), distanceToNextNode);
+                    distanceYetToTravel = std::max(static_cast<float>(0), distanceYetToTravel);
                     const auto distanceToTravel = std::min(speed, distanceToNextNode);
                     if (std::abs(nextNode.y - position.position.y) + std::abs(nextNode.x - position.position.x) != 0) {
-                        double xRatio = (nextNode.x - position.position.x) / (std::abs(nextNode.y - position.position.y) + std::abs(nextNode.x - position.position.x));
-                        double yRatio = (nextNode.y - position.position.y) / (std::abs(nextNode.y - position.position.y) + std::abs(nextNode.x - position.position.x));
+                        auto xRatio = (nextNode.x - position.position.x) / (std::abs(nextNode.y - position.position.y) + std::abs(nextNode.x - position.position.x));
+                        auto yRatio = (nextNode.y - position.position.y) / (std::abs(nextNode.y - position.position.y) + std::abs(nextNode.x - position.position.x));
                         position.position.x += xRatio * distanceToTravel;
                         position.position.y += yRatio * distanceToTravel;
                         getHitTexture()->setPosition(position.position.x, position.position.y);
