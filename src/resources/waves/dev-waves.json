@@ -1,0 +1,538 @@
+{
+  "waves": [
+    {
+      "wave_number": 1,
+      "reward": 76,
+      "enemies": [
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 10
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 20
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 30
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 40
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 50
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 60
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 70
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 80
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 90
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 100
+        }
+      ]
+    },
+    {
+      "wave_number": 2,
+      "reward": 78,
+      "enemies": [
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 5
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 10
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 15
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 20
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 25
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 30
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 35
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 40
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 45
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 50
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 55
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 60
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 65
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 70
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 75
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 80
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 85
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 90
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 95
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 100
+        }
+      ]
+    },
+    {
+      "wave_number": 3,
+      "reward": 81,
+      "enemies": [
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 3
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 6
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 9
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 12
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 15
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 18
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 21
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 24
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 27
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 30
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 33
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 36
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 39
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 42
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 45
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 48
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 51
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 54
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 57
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 60
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 63
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 66
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 69
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 72
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 75
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 78
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 81
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 84
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 87
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 90
+        }
+      ]
+    },
+    {
+      "wave_number": 4,
+      "reward": 85,
+      "enemies": [
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 2
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 4
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 6
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 8
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 10
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 12
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 14
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 16
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 18
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 20
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 22
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 24
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 26
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 28
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 30
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 32
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 34
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 36
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 38
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 40
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 42
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 44
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 46
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 48
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 50
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 52
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 54
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 56
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 58
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 60
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 62
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 64
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 66
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 68
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 70
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 72
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 74
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 76
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 78
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 80
+        }
+      ]
+    },
+    {
+      "wave_number": 5,
+      "reward": 8097,
+      "enemies": [
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 50
+        },
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 100
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 33
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 8
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 10
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 12
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 0
+        }
+      ]
+    },
+    {
+      "wave_number": 6,
+      "reward": 8166,
+      "enemies": [
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 50
+        },
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 100
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 33
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 8
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 10
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 12
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 0
+        }
+      ]
+    },
+    {
+      "wave_number": 7,
+      "reward": 8236,
+      "enemies": [
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 50
+        },
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 100
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 30
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 40
+        }
+      ]
+    }
+  ]
+}
