@@ -3,7 +3,6 @@
 #include <list>
 
 #include "Enemy.h"
-#include "special_enemy/dev/DevEnemy.h"
 #include "special_enemy/dev/LargeDevEnemy.h"
 
 
