@@ -23,7 +23,7 @@ class Enemy {
     double speed;
 
     void initialize() {
-        if (this->path != nullptr and this->path->getVertexCount() > 0) {
+        if (this->path != nullptr && this->path->getVertexCount() > 0) {
             this->position.position.x = path->operator[](0).position.x;
             this->position.position.y = path->operator[](0).position.y;
         }

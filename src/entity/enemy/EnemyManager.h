@@ -69,7 +69,6 @@ class EnemyManager {
                 enemy->initialize(enemyPath);
                 enemies.push_back(enemy);
                 undrawnEnemies.push_back(enemy);
-
             }
         }
 

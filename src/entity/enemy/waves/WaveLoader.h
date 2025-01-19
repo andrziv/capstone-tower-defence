@@ -36,12 +36,12 @@ class WaveLoader {
     public:
         explicit WaveLoader(const std::string& file_path) {
             std::ifstream wavesFile(file_path);
-            nlohmann::json ex = nlohmann::json::parse(wavesFile);
+            nlohmann::json waveFileJson = nlohmann::json::parse(wavesFile);
             wavesFile.close();
-            auto shit = ex.at("waves");
-            auto items = shit.items();
+            auto wavesJson = waveFileJson.at("waves");
+            auto wavesJsonIterator = wavesJson.items();
             int counter = 0;
-            for (const auto& iteration_proxy_value : items) {
+            for (const auto& iteration_proxy_value : wavesJsonIterator) {
                 auto item = iteration_proxy_value.value();
                 auto wave_number = item.value("wave_number", 0);
                 auto coin_reward = item.value("reward", 0);
