@@ -22,20 +22,34 @@ class Enemy {
     int health;
     double speed;
 
+    void initialize() {
+        if (this->path != nullptr and this->path->getVertexCount() > 0) {
+            this->position.position.x = path->operator[](0).position.x;
+            this->position.position.y = path->operator[](0).position.y;
+        }
+    }
+
     public:
         virtual ~Enemy() = default;
 
         Enemy(const std::shared_ptr<sf::VertexArray>& pathToFollow, const float speed, const int health) {
             this->path = pathToFollow;
-            if (this->path->getVertexCount() > 0) {
-                this->position.position.x = path->operator[](0).position.x;
-                this->position.position.y = path->operator[](0).position.y;
+            if (path != nullptr) {
+                initialize();
             }
             this->speed = speed;
             this->health = health;
         }
 
+        void initialize(const std::shared_ptr<sf::VertexArray>& pathToFollow) {
+            this->path = pathToFollow;
+            initialize();
+        }
+
         void updatePosition() {
+            if (path == nullptr) {
+                return;
+            }
             if (path->getVertexCount() > 0 && currentNodeTarget < path->getVertexCount()) {
                 double distanceYetToTravel = speed;
                 while (distanceYetToTravel > 0 && path->getVertexCount() - currentNodeTarget > 0) {
@@ -87,7 +101,7 @@ class Enemy {
             return health > 0;
         }
 
-        virtual std::vector<Enemy*> getChildren() { return {}; }
+        virtual std::vector<std::shared_ptr<Enemy>> getChildren() { return {}; }
 
         std::string getId() {
             return id;

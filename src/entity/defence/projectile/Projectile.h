@@ -44,7 +44,7 @@ public:
         hitTexture.setPosition(pos);
     }
 
-    void onCollision(Enemy* collided) {
+    void onCollision(const std::shared_ptr<Enemy>& collided) {
         if (!alreadyCollided(collided)) {
             collisions.push_back(collided->getId());
             collidedWith(collided);
@@ -53,7 +53,7 @@ public:
         }
     }
 
-    [[nodiscard]] bool isColliding(Enemy* toCheck) const {
+    [[nodiscard]] bool isColliding(const std::shared_ptr<Enemy>& toCheck) const {
         return doCirclesOverlap(hitTexture.getHitbox(), toCheck->getHitTexture()->getHitbox());
     }
 
@@ -73,11 +73,11 @@ public:
     }
 
 protected:
-    bool alreadyCollided(Enemy* collided) {
+    bool alreadyCollided(const std::shared_ptr<Enemy>& collided) {
         return std::find(collisions.begin(), collisions.end(), collided->getId()) != collisions.end();
     }
 
-    virtual void collidedWith(Enemy* collided) {}
+    virtual void collidedWith(const std::shared_ptr<Enemy>& collided) {}
 
     void setPos(const sf::Vector2f& pos) {
         this->pos = pos;

@@ -32,7 +32,7 @@ class ProjectileManager {
             }
         }
 
-        void enemyInteractions(const std::vector<Enemy*>& enemies) const {
+        void enemyInteractions(const std::vector<std::shared_ptr<Enemy>>& enemies) const {
             for (const auto &projectile : projectiles) {
                 if (projectile->isValid()) {
                     for (const auto &enemy : enemies) {

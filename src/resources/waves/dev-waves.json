@@ -347,15 +347,15 @@
           "spawn_time_percent": 42
         },
         {
-          "type": "RED",
+          "type": "GREEN",
           "spawn_time_percent": 44
         },
         {
-          "type": "RED",
+          "type": "GREEN",
           "spawn_time_percent": 46
         },
         {
-          "type": "RED",
+          "type": "GREEN",
           "spawn_time_percent": 48
         },
         {
@@ -363,31 +363,31 @@
           "spawn_time_percent": 50
         },
         {
-          "type": "RED",
+          "type": "YELLOW",
           "spawn_time_percent": 52
         },
         {
-          "type": "RED",
+          "type": "YELLOW",
           "spawn_time_percent": 54
         },
         {
-          "type": "RED",
+          "type": "YELLOW",
           "spawn_time_percent": 56
         },
         {
-          "type": "RED",
+          "type": "PINK",
           "spawn_time_percent": 58
         },
         {
-          "type": "RED",
+          "type": "PINK",
           "spawn_time_percent": 60
         },
         {
-          "type": "RED",
+          "type": "PINK",
           "spawn_time_percent": 62
         },
         {
-          "type": "RED",
+          "type": "PINK",
           "spawn_time_percent": 64
         },
         {

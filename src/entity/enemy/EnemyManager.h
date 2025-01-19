@@ -8,12 +8,12 @@
 
 
 class EnemyManager {
-    std::list<Enemy*> enemies;
-    std::list<Enemy*> undrawnEnemies;
+    std::list<std::shared_ptr<Enemy>> enemies;
+    std::list<std::shared_ptr<Enemy>> undrawnEnemies;
     std::shared_ptr<sf::VertexArray> enemyPath;
 
-    void addChildEnemy(Enemy* parentEnemy, const std::vector<Enemy*>& childEnemy) {
-        for (Enemy* child : childEnemy) {
+    void addChildEnemy(const std::shared_ptr<Enemy>& parentEnemy, const std::vector<std::shared_ptr<Enemy>>& childEnemy) {
+        for (const std::shared_ptr<Enemy> & child : childEnemy) {
             child->setPosition(parentEnemy->getPosition().position);
             child->setTargetNode(parentEnemy->getTargetNode());
             child->setId(parentEnemy->getId());
@@ -47,17 +47,7 @@ class EnemyManager {
                 enemyPath->append(vertice);
             }
 
-            /*
-            const auto testEnemy1 = new DevEnemy(enemyPath, 2, 1, sf::Color::Green, 50);
-            const auto testEnemy2 = new DevEnemy(enemyPath, 4, 2, sf::Color::Blue, 54);
-            const auto testEnemy3 = new DevEnemy(enemyPath, 6, 3, sf::Color(224, 58, 164), 60);
-            const auto testEnemy4 = new DevEnemy(enemyPath, 8, 10, sf::Color(92, 30, 11), 75);
-            enemies.push_back(testEnemy1);
-            enemies.push_back(testEnemy2);
-            enemies.push_back(testEnemy3);
-            enemies.push_back(testEnemy4);
-            */
-            const auto testLargeEnemy = new LargeDevEnemy(enemyPath);
+            const auto testLargeEnemy = std::make_shared<LargeDevEnemy>(LargeDevEnemy(enemyPath));
             enemies.push_back(testLargeEnemy);
         }
 
@@ -69,20 +59,22 @@ class EnemyManager {
             }
         }
 
-        void addEnemy(Enemy* newEnemy) {
+        void addEnemy(const std::shared_ptr<Enemy>& newEnemy) {
             enemies.push_back(newEnemy);
             undrawnEnemies.push_back(newEnemy);
         }
 
-        void addEnemies(const std::vector<Enemy*>& newEnemies) {
-            for (Enemy* enemy : newEnemies) {
+        void addEnemies(const std::vector<std::shared_ptr<Enemy>>& newEnemies) {
+            for (const auto& enemy : newEnemies) {
+                enemy->initialize(enemyPath);
                 enemies.push_back(enemy);
                 undrawnEnemies.push_back(enemy);
+
             }
         }
 
-        [[nodiscard]] std::vector<Enemy*> getAliveEnemies() const {
-            std::vector<Enemy*> alive;
+        [[nodiscard]] std::vector<std::shared_ptr<Enemy>> getAliveEnemies() const {
+            std::vector<std::shared_ptr<Enemy>> alive;
             for (auto& enemy : enemies) {
                 if (enemy->isAlive()) {
                     alive.push_back(enemy);
@@ -91,8 +83,8 @@ class EnemyManager {
             return alive;
         }
 
-        [[nodiscard]] std::vector<Enemy*> getUndrawnEnemies() {
-            std::vector<Enemy*> alive;
+        [[nodiscard]] std::vector<std::shared_ptr<Enemy>> getUndrawnEnemies() {
+            std::vector<std::shared_ptr<Enemy>> alive;
             for (auto& enemy : undrawnEnemies) {
                 if (enemy->isAlive()) {
                     alive.push_back(enemy);
@@ -102,8 +94,8 @@ class EnemyManager {
             return alive;
         }
 
-        [[nodiscard]] std::vector<Enemy*> getDeadEnemies() const {
-            std::vector<Enemy*> dead;
+        [[nodiscard]] std::vector<std::shared_ptr<Enemy>> getDeadEnemies() const {
+            std::vector<std::shared_ptr<Enemy>> dead;
             for (auto& enemy : enemies) {
                 if (!enemy->isAlive()) {
                     dead.push_back(enemy);
@@ -124,10 +116,10 @@ class EnemyManager {
         }
 
         void removeDeadEnemies() {
-            enemies.remove_if([](const Enemy* enemy) {
+            enemies.remove_if([](const std::shared_ptr<Enemy>& enemy) {
                 return !enemy->isAlive();
             });
-            undrawnEnemies.remove_if([](const Enemy* enemy) {
+            undrawnEnemies.remove_if([](const std::shared_ptr<Enemy>& enemy) {
                 return !enemy->isAlive();
             });
         }

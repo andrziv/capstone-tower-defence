@@ -26,7 +26,7 @@ class DevProjectile final : public Projectile {
         }
 
     protected:
-        void collidedWith(Enemy* collided) override {
+        void collidedWith(const std::shared_ptr<Enemy> &collided) override {
             collided->subtractHealth(getDamage());
         }
 };

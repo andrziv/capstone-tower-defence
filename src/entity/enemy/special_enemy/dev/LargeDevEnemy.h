@@ -11,10 +11,10 @@ class LargeDevEnemy final : public DevEnemy {
             DevEnemy(pathToFollow, 4, 1, sf::Color::Green, 50.f) {
         }
 
-        std::vector<Enemy*> getChildren() override {
-            std::vector<Enemy*> children;
-            Enemy* enemy = new MidDevEnemy(getPathToFollow());
-            Enemy* enemy2 = new MidDevEnemy(getPathToFollow());
+        std::vector<std::shared_ptr<Enemy>> getChildren() override {
+            std::vector<std::shared_ptr<Enemy>> children;
+            const auto enemy = std::make_shared<MidDevEnemy>(MidDevEnemy(getPathToFollow()));
+            const auto enemy2 = std::make_shared<MidDevEnemy>(MidDevEnemy(getPathToFollow()));
             children.push_back(enemy);
             children.push_back(enemy2);
             return children;

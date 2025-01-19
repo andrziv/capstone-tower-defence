@@ -1,0 +1,25 @@
+#ifndef BASENORMALENEMY_H
+#define BASENORMALENEMY_H
+#include <memory>
+
+#include "../../Enemy.h"
+#include "SFML/Graphics/VertexArray.hpp"
+
+
+class DevEnemy;
+
+class BaseNormalEnemy : public Enemy {
+    public:
+        ~BaseNormalEnemy() override = default;
+
+        BaseNormalEnemy(const std::shared_ptr<sf::VertexArray>& pathToFollow, const float speed, const sf::Color color, const float size) : Enemy(pathToFollow, speed, 1) {
+            getHitTexture()->getDisplayEntity()->setFillColor(color);
+            getHitTexture()->getDisplayEntity()->setRadius(size);
+            getHitTexture()->setHitboxColor(sf::Color::Transparent);
+            getHitTexture()->setHitboxRadius(size);
+        }
+};
+
+
+
+#endif //BASENORMALENEMY_H

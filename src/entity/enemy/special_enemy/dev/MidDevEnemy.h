@@ -11,12 +11,9 @@ class MidDevEnemy final : public DevEnemy {
             DevEnemy(pathToFollow, 2, 1, sf::Color::Blue, 40.f) {
         }
 
-        std::vector<Enemy*> getChildren() override {
-            std::vector<Enemy*> children;
-            Enemy* enemy = new SmallDevEnemy(getPathToFollow());
-            enemy->setPosition(getPosition().position);
-            enemy->setTargetNode(getTargetNode());
-            enemy->setId(getId());
+        std::vector<std::shared_ptr<Enemy>> getChildren() override {
+            std::vector<std::shared_ptr<Enemy>> children;
+            const auto enemy = std::make_shared<SmallDevEnemy>(SmallDevEnemy(getPathToFollow()));
             children.push_back(enemy);
             return children;
         }

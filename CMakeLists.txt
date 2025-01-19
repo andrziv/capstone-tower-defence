@@ -49,6 +49,21 @@ add_executable(main src/main.cpp
         src/entity/enemy/special_enemy/dev/MidDevEnemy.h
         src/entity/enemy/special_enemy/dev/LargeDevEnemy.cpp
         src/entity/enemy/special_enemy/dev/LargeDevEnemy.h
+        src/entity/enemy/special_enemy/normal/red/RedEnemy.cpp
+        src/entity/enemy/special_enemy/normal/red/RedEnemy.h
+        src/entity/enemy/special_enemy/normal/yellow/YellowEnemy.cpp
+        src/entity/enemy/special_enemy/normal/yellow/YellowEnemy.h
+        src/entity/enemy/special_enemy/normal/pink/PinkEnemy.cpp
+        src/entity/enemy/special_enemy/normal/pink/PinkEnemy.h
+        src/entity/enemy/special_enemy/normal/green/GreenEnemy.cpp
+        src/entity/enemy/special_enemy/normal/green/GreenEnemy.h
+        src/entity/enemy/special_enemy/normal/blue/BlueEnemy.cpp
+        src/entity/enemy/special_enemy/normal/blue/BlueEnemy.h
+        src/entity/enemy/special_enemy/normal/BaseNormalEnemy.cpp
+        src/entity/enemy/special_enemy/normal/BaseNormalEnemy.h
+        src/entity/enemy/special_enemy/special/armoured/ArmouredEnemy.cpp
+        src/entity/enemy/special_enemy/special/armoured/ArmouredEnemy.h
+        src/entity/enemy/special_enemy/special/metal/MetalEnemy.cpp
+        src/entity/enemy/special_enemy/special/metal/MetalEnemy.h
 )
-target_link_libraries(main PRIVATE SFML::Graphics)
-target_link_libraries(main PRIVATE nlohmann_json::nlohmann_json)
+target_link_libraries(main PRIVATE SFML::Graphics nlohmann_json::nlohmann_json)

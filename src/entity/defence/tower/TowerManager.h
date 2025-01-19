@@ -15,7 +15,7 @@ class TowerManager {
             projectileManager.update();
         }
 
-        void enemyInteractions(const std::vector<Enemy*> &enemies) const {
+        void enemyInteractions(const std::vector<std::shared_ptr<Enemy>> &enemies) const {
             projectileManager.enemyInteractions(enemies);
         }
 
