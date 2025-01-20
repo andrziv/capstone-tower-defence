@@ -18,10 +18,13 @@ class ProjectileManager {
             std::unique_ptr<Projectile> projectile2 = std::make_unique<DevProjectile>(DevProjectile(1, 1, 0, 985, 586));
             std::unique_ptr<Projectile> projectile3 = std::make_unique<DevProjectile>(DevProjectile(4, 1, 0, 527, 615, sf::Color(11, 91, 92), 6.f));
             std::unique_ptr<Projectile> projectile4 = std::make_unique<DevProjectile>(DevProjectile(4, 1, 0, 293, 787, sf::Color(11, 91, 92), 6.f));
+            std::unique_ptr<Projectile> projectile5 = std::make_unique<DevProjectile>(DevProjectile(100, 10, 0, 293, 615, sf::Color(133, 0, 117), 10.f));
+
             addProjectile(projectile1);
             addProjectile(projectile2);
             addProjectile(projectile3);
             addProjectile(projectile4);
+            addProjectile(projectile5);
         }
 
         void update() const {
@@ -34,11 +37,15 @@ class ProjectileManager {
 
         void enemyInteractions(const std::vector<std::shared_ptr<Enemy>>& enemies) const {
             for (const auto &projectile : projectiles) {
-                if (projectile->isValid()) {
-                    for (const auto &enemy : enemies) {
-                        if (enemy->isAlive() && projectile->isColliding(enemy)) {
-                            projectile->onCollision(enemy);
-                        }
+                for (const auto &enemy : enemies) {
+                    if (!projectile->isValid()) {
+                        break;
+                    }
+                    if (!enemy->isAlive()) {
+                        continue;
+                    }
+                    if (projectile->isColliding(enemy)) {
+                        projectile->onCollision(enemy);
                     }
                 }
             }

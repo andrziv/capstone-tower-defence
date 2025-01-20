@@ -74,6 +74,14 @@ int main() {
                     gameManager.shrinkEnemyPath();
                 }
             }
+            // TODO: Temp, just for development and allowing us to increase the game speed to get to things faster
+            if (event->is<sf::Event::KeyPressed>()) {
+                if (const auto buttonPressed = event->getIf<sf::Event::KeyPressed>(); buttonPressed->code == sf::Keyboard::Key::Space) {
+                    graphicsManager.setFramerateLimit(240);
+                } else {
+                    graphicsManager.setFramerateLimit(60);
+                }
+            }
         }
 
         gameManager.update();
