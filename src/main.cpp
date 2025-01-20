@@ -35,6 +35,7 @@ int main() {
     sf::Font font;
     const auto fpsCounter = std::make_shared<sf::Text>(sf::Text(font));
     const auto waveCounter = std::make_shared<sf::Text>(sf::Text(font));
+    const auto lifeCounter = std::make_shared<sf::Text>(sf::Text(font));
     // TODO: fix the file address to target whatever is inside bin
     if (font.openFromFile("../../src/resources/fonts/LEMONMILK-Regular.otf")) {
         fpsCounter->setCharacterSize(24);
@@ -48,6 +49,12 @@ int main() {
         waveCounter->setStyle(sf::Text::Bold);
         waveCounter->setPosition(sf::Vector2f(1450, 0));
         graphicsManager.addDrawable(waveCounter);
+
+        lifeCounter->setCharacterSize(24);
+        lifeCounter->setFillColor(sf::Color::Red);
+        lifeCounter->setStyle(sf::Text::Bold);
+        lifeCounter->setPosition(sf::Vector2f(150, 0));
+        graphicsManager.addDrawable(lifeCounter);
     }
 
     while (graphicsManager.isActive()) {
@@ -85,6 +92,7 @@ int main() {
         }
 
         gameManager.update();
+        lifeCounter->setString("Lives: " + std::to_string(gameManager.getPlayerHealth()));
         // TODO: technically the counter is wrong atm but once we get the waves starting from the start of the application, it should be okay.
         waveCounter->setString(std::to_string(gameManager.getCurrentWaveNumber()) + " / " + std::to_string(gameManager.getMaxWaveNumber()));
         graphicsManager.addDrawables(gameManager.getNewDrawables());

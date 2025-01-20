@@ -99,6 +99,17 @@ class EnemyManager {
             return dead;
         }
 
+        [[nodiscard]] std::vector<std::shared_ptr<Enemy>> getEnemiesAtEndOfPath() const {
+            std::vector<std::shared_ptr<Enemy>> dead;
+            for (auto& enemy : enemies) {
+                if (enemy->getTargetNode() >= enemyPath->getVertexCount()) {
+                    enemy->kill();
+                    dead.push_back(enemy);
+                }
+            }
+            return dead;
+        }
+
         void replaceDeadEnemiesWithChildren() {
             auto it = enemies.begin();
             for(int i = 0; i < enemies.size(); i++){

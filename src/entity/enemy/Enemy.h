@@ -98,6 +98,10 @@ class Enemy {
             health -= toSubtract;
         }
 
+        void kill() {
+            health = 0;
+        }
+
         [[nodiscard]] bool isAlive() const {
             return health > 0;
         }

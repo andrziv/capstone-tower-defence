@@ -14,6 +14,7 @@
 class Tower;
 
 class GameManager {
+    int playerHealth = 1000;
     EnemyManager enemyManager;
     TowerManager towerManager;
     WaveLoader waveLoader = WaveLoader("../../src/resources/waves/dev-waves.json");
@@ -73,6 +74,12 @@ class GameManager {
         }
     }
 
+    void penalizeForFinishedEnemies() {
+        for (const auto& enemy : enemyManager.getEnemiesAtEndOfPath()) {
+            playerHealth--;
+        }
+    }
+
 public:
     GameManager() = default;
 
@@ -83,6 +90,7 @@ public:
         enemyManager.replaceDeadEnemiesWithChildren();
         checkAndLoadNewEnemies();
         summonNewEnemies();
+        penalizeForFinishedEnemies();
     }
 
     [[nodiscard]] std::vector<std::shared_ptr<sf::Drawable>> getDrawables() const {
@@ -112,9 +120,13 @@ public:
 
     [[nodiscard]] std::vector<std::shared_ptr<sf::Drawable>> getRemovableDrawables() const {
         const std::vector<std::shared_ptr<Enemy>> enemies = enemyManager.getDeadEnemies();
+        const std::vector<std::shared_ptr<Enemy>> enemies2 = enemyManager.getEnemiesAtEndOfPath();
         const std::vector<Projectile*> projectiles = towerManager.getInactiveProjectiles();
         std::vector<std::shared_ptr<sf::Drawable>> drawables;
         for (const auto& enemy : enemies) {
+            drawables.push_back(enemy->getHitTexture()->getDisplayEntity());
+        }
+        for (const auto& enemy : enemies2) {
             drawables.push_back(enemy->getHitTexture()->getDisplayEntity());
         }
         for (const auto projectile : projectiles) {
@@ -139,6 +151,10 @@ public:
 
     [[nodiscard]] int getCurrentWaveNumber() const {
         return waveLoader.getCurrentWave();
+    }
+
+    [[nodiscard]] int getPlayerHealth() const {
+        return playerHealth;
     }
 };
 
