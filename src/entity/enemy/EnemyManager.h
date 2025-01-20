@@ -45,9 +45,6 @@ class EnemyManager {
             for (const auto & vertice : vertices) {
                 enemyPath->append(vertice);
             }
-
-            const auto testLargeEnemy = std::make_shared<LargeDevEnemy>(LargeDevEnemy(enemyPath));
-            enemies.push_back(testLargeEnemy);
         }
 
         void update() const {
@@ -124,6 +121,10 @@ class EnemyManager {
 
         [[nodiscard]] std::shared_ptr<sf::VertexArray> getEnemyPath() const {
             return enemyPath;
+        }
+
+        [[nodiscard]] unsigned long getNumberOfAliveEnemies() const {
+            return enemies.size();
         }
 
         // TODO: temp; just for testing atm

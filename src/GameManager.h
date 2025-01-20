@@ -1,6 +1,8 @@
 #ifndef GAMEMANAGER_H
 #define GAMEMANAGER_H
 
+#include <queue>
+
 #include "entity/defence/projectile/Projectile.h"
 #include "entity/defence/projectile/ProjectileManager.h"
 #include "entity/defence/tower/TowerManager.h"
@@ -15,21 +17,59 @@ class GameManager {
     EnemyManager enemyManager;
     TowerManager towerManager;
     WaveLoader waveLoader = WaveLoader("../../src/resources/waves/dev-waves.json");
-    std::chrono::steady_clock::time_point time_start = std::chrono::steady_clock::now();
+    std::chrono::steady_clock::time_point waveTimeStart = std::chrono::steady_clock::now();
+    std::chrono::steady_clock::time_point interWaveTimeStart = std::chrono::steady_clock::now();
+    std::queue<std::pair<double, std::pair<double, std::vector<std::shared_ptr<Enemy>>>>> enemySpawnTimeQueue;
+    std::pair<double, std::pair<double, std::vector<std::shared_ptr<Enemy>>>> nextEnemySummonSet;
+    bool waveLoadingPaused = true;
 
-    std::vector<std::shared_ptr<Enemy>> nextEnemyWave() {
-        std::vector<std::shared_ptr<Enemy>> enemies;
-        for (const auto& [timeToSpawn, enemy] : waveLoader.getNextWave()) {
-            enemies.push_back(enemy);
+    void checkAndLoadNewEnemies() {
+        const std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+        const auto timeDiff = std::chrono::duration_cast<std::chrono::seconds>(end - waveTimeStart).count();
+        if (enemyManager.getNumberOfAliveEnemies() == 0 && waveLoadingPaused) {
+            waveTimeStart = std::chrono::steady_clock::now();
+            waveLoadingPaused = false;
         }
-        return enemies;
+        if (timeDiff >= 5 && !waveLoadingPaused) {
+            loadNextEnemyWave();
+            waveLoadingPaused = true;
+        }
+    }
+
+    void loadNextEnemyWave() {
+        std::map<double, std::pair<double, std::vector<std::shared_ptr<Enemy>>>> tempSpawnMap;
+        double previousSpawnTime = 0;
+        for (const auto& [total_time, enemy_info] : waveLoader.getNextWave()) {
+            const auto spawnPercent = enemy_info.first;
+            auto spawnTime = total_time * (spawnPercent / 100.0);
+            auto spawnInterval = spawnTime - previousSpawnTime;
+            previousSpawnTime = spawnTime;
+            auto enemy = enemy_info.second;
+            auto spawnPair = tempSpawnMap.find(spawnTime);
+            if (spawnPair != tempSpawnMap.end()) {
+                spawnPair->second.second.push_back(enemy);
+            } else {
+                std::vector<std::shared_ptr<Enemy>> enemies;
+                enemies.push_back(enemy);
+                tempSpawnMap[spawnTime] = std::pair(spawnInterval, enemies);
+            }
+        }
+        for (const auto& [spawnTime, enemyList] : tempSpawnMap) {
+            enemySpawnTimeQueue.emplace(spawnTime, enemyList);
+        }
     }
 
     void summonNewEnemies() {
-        std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-        if (std::chrono::duration_cast<std::chrono::seconds>(end - time_start).count() >= 10) {
-            enemyManager.addEnemies(nextEnemyWave());
-            time_start = std::chrono::steady_clock::now();
+        const std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+        if (enemySpawnTimeQueue.empty()) {
+            return;
+        }
+        auto [spawnTime, enemySpawnInfo] = enemySpawnTimeQueue.front();
+        auto timeDifference = static_cast<double>(std::chrono::duration_cast<std::chrono::milliseconds>(end - interWaveTimeStart).count()) / 1000;
+        if (timeDifference >= enemySpawnInfo.first && !enemySpawnInfo.second.empty()) {
+            enemyManager.addEnemies(enemySpawnInfo.second);
+            enemySpawnTimeQueue.pop();
+            interWaveTimeStart = std::chrono::steady_clock::now();
         }
     }
 
@@ -41,6 +81,7 @@ public:
         towerManager.update();
         towerManager.enemyInteractions(enemyManager.getAliveEnemies());
         enemyManager.replaceDeadEnemiesWithChildren();
+        checkAndLoadNewEnemies();
         summonNewEnemies();
     }
 

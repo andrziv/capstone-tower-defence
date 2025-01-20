@@ -10,7 +10,17 @@
 class Enemy;
 
 class WaveLoader {
-    std::map<int, std::pair<int, nlohmann::basic_json<>>> waves;
+    /*
+     *  'waves' variable (map):
+     *  > Wave Number (integer)
+     *  > Pair
+     *      > JSON Object Containing an Array of Enemies
+     *      > Pair
+     *          > Total Time Wave is meant to Last (float)
+     *          > Total Coins Player Earns When Beating the Wave (integer)
+     */
+    std::map<int, nlohmann::basic_json<>> enemyWaves;
+    std::map<int, std::pair<float, int>> wavesInfo;
     int currentWave = 0;
     int maxWaves = 0;
 
@@ -45,26 +55,32 @@ class WaveLoader {
                 auto item = iteration_proxy_value.value();
                 auto wave_number = item.value("wave_number", 0);
                 auto coin_reward = item.value("reward", 0);
+                auto total_wave_time = item.value("total_spawn_time_seconds", .0f);
                 auto enemies_json = item.at("enemies");
-                waves.insert(std::pair(wave_number, std::pair(coin_reward, enemies_json)));
+                enemyWaves.insert(std::pair(wave_number, enemies_json));
+                wavesInfo.insert(std::pair(wave_number, std::pair(total_wave_time, coin_reward)));
                 counter++;
             }
-            currentWave = 1;
+            currentWave = 0;
             maxWaves = counter;
         }
 
-        std::vector<std::pair<float, std::shared_ptr<Enemy>>> getNextWave() {
-            std::vector<std::pair<float, std::shared_ptr<Enemy>>> enemies;
+        std::vector<std::pair<float, std::pair<float, std::shared_ptr<Enemy>>>> getNextWave() {
+            std::vector<std::pair<float, std::pair<float, std::shared_ptr<Enemy>>>> enemies;
             if (currentWave >= maxWaves) {
                 return enemies;
             }
-            for (const auto& iteration_proxy_value : waves.find(currentWave)->second.second.items()) {
+            currentWave++;
+            const auto enemyJsonIterator = enemyWaves.find(currentWave)->second.items();
+            auto totalWaveTime = wavesInfo.find(currentWave)->second.first;
+            // auto coinReward = wavesInfo.find(currentWave)->second.second;
+            for (const auto& iteration_proxy_value : enemyJsonIterator) {
                 const auto& item = iteration_proxy_value.value();
                 auto spawn_time = item.value("spawn_time_percent", 0);
                 auto enemy_type = item.value("type", "none");
-                enemies.emplace_back(std::pair(spawn_time, constructEnemy(enemy_type)));
+                enemies.emplace_back(std::pair(totalWaveTime, std::pair(spawn_time, constructEnemy(enemy_type))));
             }
-            currentWave++;
+
             return enemies;
         }
 

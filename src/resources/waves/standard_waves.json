@@ -6,50 +6,55 @@
       "enemies": [
         {
           "type": "BLUE",
-          "spawn_time_percent": 10
+          "spawn_time_percent": 0
         },
         {
           "type": "BLUE",
-          "spawn_time_percent": 20
+          "spawn_time_percent": 11
         },
         {
           "type": "BLUE",
-          "spawn_time_percent": 30
+          "spawn_time_percent": 22
         },
         {
           "type": "BLUE",
-          "spawn_time_percent": 40
+          "spawn_time_percent": 33
         },
         {
           "type": "BLUE",
-          "spawn_time_percent": 50
+          "spawn_time_percent": 44
         },
         {
           "type": "RED",
-          "spawn_time_percent": 60
+          "spawn_time_percent": 55
         },
         {
           "type": "RED",
-          "spawn_time_percent": 70
+          "spawn_time_percent": 66
         },
         {
           "type": "RED",
-          "spawn_time_percent": 80
+          "spawn_time_percent": 77
         },
         {
           "type": "RED",
-          "spawn_time_percent": 90
+          "spawn_time_percent": 88
         },
         {
           "type": "RED",
-          "spawn_time_percent": 100
+          "spawn_time_percent": 99
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 20.0
     },
     {
       "wave_number": 2,
       "reward": 78,
       "enemies": [
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 0
+        },
         {
           "type": "BLUE",
           "spawn_time_percent": 5
@@ -67,7 +72,7 @@
           "spawn_time_percent": 20
         },
         {
-          "type": "BLUE",
+          "type": "RED",
           "spawn_time_percent": 25
         },
         {
@@ -125,17 +130,18 @@
         {
           "type": "RED",
           "spawn_time_percent": 95
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 100
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 40.0
     },
     {
       "wave_number": 3,
       "reward": 81,
       "enemies": [
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 0
+        },
         {
           "type": "BLUE",
           "spawn_time_percent": 3
@@ -153,7 +159,7 @@
           "spawn_time_percent": 12
         },
         {
-          "type": "BLUE",
+          "type": "RED",
           "spawn_time_percent": 15
         },
         {
@@ -251,17 +257,18 @@
         {
           "type": "RED",
           "spawn_time_percent": 87
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 90
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 60.0
     },
     {
       "wave_number": 4,
       "reward": 85,
       "enemies": [
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 0
+        },
         {
           "type": "BLUE",
           "spawn_time_percent": 2
@@ -279,7 +286,7 @@
           "spawn_time_percent": 8
         },
         {
-          "type": "BLUE",
+          "type": "RED",
           "spawn_time_percent": 10
         },
         {
@@ -417,17 +424,18 @@
         {
           "type": "RED",
           "spawn_time_percent": 78
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 80
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 80.0
     },
     {
       "wave_number": 5,
       "reward": 90,
       "enemies": [
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 0
+        },
         {
           "type": "BLUE",
           "spawn_time_percent": 2
@@ -445,7 +453,7 @@
           "spawn_time_percent": 8
         },
         {
-          "type": "BLUE",
+          "type": "RED",
           "spawn_time_percent": 10
         },
         {
@@ -623,17 +631,18 @@
         {
           "type": "RED",
           "spawn_time_percent": 98
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 100
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 100.0
     },
     {
       "wave_number": 6,
       "reward": 96,
       "enemies": [
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 0
+        },
         {
           "type": "BLUE",
           "spawn_time_percent": 1
@@ -651,7 +660,7 @@
           "spawn_time_percent": 4
         },
         {
-          "type": "BLUE",
+          "type": "RED",
           "spawn_time_percent": 5
         },
         {
@@ -869,17 +878,18 @@
         {
           "type": "RED",
           "spawn_time_percent": 59
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 60
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 120.0
     },
     {
       "wave_number": 7,
       "reward": 102,
       "enemies": [
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 0
+        },
         {
           "type": "BLUE",
           "spawn_time_percent": 1
@@ -897,7 +907,7 @@
           "spawn_time_percent": 4
         },
         {
-          "type": "BLUE",
+          "type": "RED",
           "spawn_time_percent": 5
         },
         {
@@ -1155,17 +1165,18 @@
         {
           "type": "RED",
           "spawn_time_percent": 69
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 70
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 140.0
     },
     {
       "wave_number": 8,
       "reward": 109,
       "enemies": [
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 0
+        },
         {
           "type": "BLUE",
           "spawn_time_percent": 1
@@ -1183,7 +1194,7 @@
           "spawn_time_percent": 4
         },
         {
-          "type": "BLUE",
+          "type": "RED",
           "spawn_time_percent": 5
         },
         {
@@ -1481,17 +1492,18 @@
         {
           "type": "RED",
           "spawn_time_percent": 79
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 80
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 160.0
     },
     {
       "wave_number": 9,
       "reward": 116,
       "enemies": [
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 0
+        },
         {
           "type": "BLUE",
           "spawn_time_percent": 1
@@ -1509,7 +1521,7 @@
           "spawn_time_percent": 4
         },
         {
-          "type": "BLUE",
+          "type": "RED",
           "spawn_time_percent": 5
         },
         {
@@ -1847,17 +1859,18 @@
         {
           "type": "RED",
           "spawn_time_percent": 89
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 90
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 180.0
     },
     {
       "wave_number": 10,
       "reward": 125,
       "enemies": [
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 0
+        },
         {
           "type": "BLUE",
           "spawn_time_percent": 1
@@ -1875,7 +1888,7 @@
           "spawn_time_percent": 4
         },
         {
-          "type": "BLUE",
+          "type": "RED",
           "spawn_time_percent": 5
         },
         {
@@ -2253,12 +2266,9 @@
         {
           "type": "RED",
           "spawn_time_percent": 99
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 100
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 200.0
     },
     {
       "wave_number": 11,
@@ -2704,7 +2714,8 @@
           "type": "RED",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 220.0
     },
     {
       "wave_number": 12,
@@ -3190,7 +3201,8 @@
           "type": "RED",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 240.0
     },
     {
       "wave_number": 13,
@@ -3716,7 +3728,8 @@
           "type": "RED",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 260.0
     },
     {
       "wave_number": 14,
@@ -4282,7 +4295,8 @@
           "type": "RED",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 280.0
     },
     {
       "wave_number": 15,
@@ -4888,7 +4902,8 @@
           "type": "RED",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 300.0
     },
     {
       "wave_number": 16,
@@ -5534,7 +5549,8 @@
           "type": "RED",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 320.0
     },
     {
       "wave_number": 17,
@@ -6220,7 +6236,8 @@
           "type": "RED",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 340.0
     },
     {
       "wave_number": 18,
@@ -6946,7 +6963,8 @@
           "type": "RED",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 360.0
     },
     {
       "wave_number": 19,
@@ -7712,12 +7730,17 @@
           "type": "RED",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 380.0
     },
     {
       "wave_number": 20,
       "reward": 237,
       "enemies": [
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 0
+        },
         {
           "type": "BLUE",
           "spawn_time_percent": 1
@@ -8113,12 +8136,9 @@
         {
           "type": "BLUE",
           "spawn_time_percent": 99
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 100
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 200.0
     },
     {
       "wave_number": 21,
@@ -8544,7 +8564,8 @@
           "type": "BLUE",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 210.0
     },
     {
       "wave_number": 22,
@@ -8990,7 +9011,8 @@
           "type": "BLUE",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 220.0
     },
     {
       "wave_number": 23,
@@ -9456,7 +9478,8 @@
           "type": "BLUE",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 230.0
     },
     {
       "wave_number": 24,
@@ -9942,7 +9965,8 @@
           "type": "BLUE",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 240.0
     },
     {
       "wave_number": 25,
@@ -10448,7 +10472,8 @@
           "type": "BLUE",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 250.0
     },
     {
       "wave_number": 26,
@@ -10974,7 +10999,8 @@
           "type": "BLUE",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 260.0
     },
     {
       "wave_number": 27,
@@ -11520,7 +11546,8 @@
           "type": "BLUE",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 270.0
     },
     {
       "wave_number": 28,
@@ -12086,7 +12113,8 @@
           "type": "BLUE",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 280.0
     },
     {
       "wave_number": 29,
@@ -12672,7 +12700,8 @@
           "type": "BLUE",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 290.0
     },
     {
       "wave_number": 30,
@@ -13278,7 +13307,8 @@
           "type": "BLUE",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 300.0
     },
     {
       "wave_number": 31,
@@ -13904,7 +13934,8 @@
           "type": "BLUE",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 310.0
     },
     {
       "wave_number": 32,
@@ -14550,7 +14581,8 @@
           "type": "BLUE",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 320.0
     },
     {
       "wave_number": 33,
@@ -15216,7 +15248,8 @@
           "type": "BLUE",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 330.0
     },
     {
       "wave_number": 34,
@@ -15902,7 +15935,8 @@
           "type": "BLUE",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 340.0
     },
     {
       "wave_number": 35,
@@ -16608,7 +16642,8 @@
           "type": "BLUE",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 350.0
     },
     {
       "wave_number": 36,
@@ -17334,7 +17369,8 @@
           "type": "BLUE",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 360.0
     },
     {
       "wave_number": 37,
@@ -18080,7 +18116,8 @@
           "type": "BLUE",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 370.0
     },
     {
       "wave_number": 38,
@@ -18846,7 +18883,8 @@
           "type": "BLUE",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 380.0
     },
     {
       "wave_number": 39,
@@ -19632,7 +19670,8 @@
           "type": "BLUE",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 390.0
     },
     {
       "wave_number": 40,
@@ -20174,7 +20213,8 @@
           "type": "BLUE",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 268.0
     },
     {
       "wave_number": 41,
@@ -20728,7 +20768,8 @@
           "type": "BLUE",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 274.0
     },
     {
       "wave_number": 42,
@@ -21294,7 +21335,8 @@
           "type": "GREEN",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 280.0
     },
     {
       "wave_number": 43,
@@ -21876,7 +21918,8 @@
           "type": "BLUE",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 288.0
     },
     {
       "wave_number": 44,
@@ -22470,7 +22513,8 @@
           "type": "BLUE",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 294.0
     },
     {
       "wave_number": 45,
@@ -23076,7 +23120,8 @@
           "type": "GREEN",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 300.0
     },
     {
       "wave_number": 46,
@@ -23698,7 +23743,8 @@
           "type": "BLUE",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 308.0
     },
     {
       "wave_number": 47,
@@ -24332,7 +24378,8 @@
           "type": "BLUE",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 314.0
     },
     {
       "wave_number": 48,
@@ -24978,7 +25025,8 @@
           "type": "GREEN",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 320.0
     },
     {
       "wave_number": 49,
@@ -25640,7 +25688,8 @@
           "type": "BLUE",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 328.0
     },
     {
       "wave_number": 50,
@@ -26314,7 +26363,8 @@
           "type": "BLUE",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 334.0
     },
     {
       "wave_number": 51,
@@ -27000,7 +27050,8 @@
           "type": "GREEN",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 340.0
     },
     {
       "wave_number": 52,
@@ -27702,7 +27753,8 @@
           "type": "BLUE",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 348.0
     },
     {
       "wave_number": 53,
@@ -28416,7 +28468,8 @@
           "type": "BLUE",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 354.0
     },
     {
       "wave_number": 54,
@@ -29142,7 +29195,8 @@
           "type": "GREEN",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 360.0
     },
     {
       "wave_number": 55,
@@ -29884,7 +29938,8 @@
           "type": "BLUE",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 368.0
     },
     {
       "wave_number": 56,
@@ -30638,7 +30693,8 @@
           "type": "BLUE",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 374.0
     },
     {
       "wave_number": 57,
@@ -31404,7 +31460,8 @@
           "type": "GREEN",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 380.0
     },
     {
       "wave_number": 58,
@@ -32186,7 +32243,8 @@
           "type": "BLUE",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 388.0
     },
     {
       "wave_number": 59,
@@ -32980,7 +33038,8 @@
           "type": "BLUE",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 394.0
     },
     {
       "wave_number": 60,
@@ -33586,7 +33645,8 @@
           "type": "YELLOW",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 300.0
     },
     {
       "wave_number": 61,
@@ -34204,7 +34264,8 @@
           "type": "GREEN",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 306.0
     },
     {
       "wave_number": 62,
@@ -34830,7 +34891,8 @@
           "type": "YELLOW",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 310.0
     },
     {
       "wave_number": 63,
@@ -35468,7 +35530,8 @@
           "type": "GREEN",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 316.0
     },
     {
       "wave_number": 64,
@@ -36114,7 +36177,8 @@
           "type": "YELLOW",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 320.0
     },
     {
       "wave_number": 65,
@@ -36772,7 +36836,8 @@
           "type": "GREEN",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 326.0
     },
     {
       "wave_number": 66,
@@ -37438,7 +37503,8 @@
           "type": "YELLOW",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 330.0
     },
     {
       "wave_number": 67,
@@ -38116,7 +38182,8 @@
           "type": "GREEN",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 336.0
     },
     {
       "wave_number": 68,
@@ -38802,7 +38869,8 @@
           "type": "YELLOW",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 340.0
     },
     {
       "wave_number": 69,
@@ -39500,7 +39568,8 @@
           "type": "GREEN",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 346.0
     },
     {
       "wave_number": 70,
@@ -40206,7 +40275,8 @@
           "type": "YELLOW",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 350.0
     },
     {
       "wave_number": 71,
@@ -40924,7 +40994,8 @@
           "type": "GREEN",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 356.0
     },
     {
       "wave_number": 72,
@@ -41650,7 +41721,8 @@
           "type": "YELLOW",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 360.0
     },
     {
       "wave_number": 73,
@@ -42388,7 +42460,8 @@
           "type": "GREEN",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 366.0
     },
     {
       "wave_number": 74,
@@ -43134,7 +43207,8 @@
           "type": "YELLOW",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 370.0
     },
     {
       "wave_number": 75,
@@ -43892,7 +43966,8 @@
           "type": "GREEN",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 376.0
     },
     {
       "wave_number": 76,
@@ -44658,7 +44733,8 @@
           "type": "YELLOW",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 380.0
     },
     {
       "wave_number": 77,
@@ -45436,7 +45512,8 @@
           "type": "GREEN",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 386.0
     },
     {
       "wave_number": 78,
@@ -46222,7 +46299,8 @@
           "type": "YELLOW",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 390.0
     },
     {
       "wave_number": 79,
@@ -47020,7 +47098,8 @@
           "type": "GREEN",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 396.0
     },
     {
       "wave_number": 80,
@@ -47666,7 +47745,8 @@
           "type": "PINK",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 320.0
     },
     {
       "wave_number": 81,
@@ -48320,7 +48400,8 @@
           "type": "PINK",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 324.0
     },
     {
       "wave_number": 82,
@@ -48982,7 +49063,8 @@
           "type": "PINK",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 328.0
     },
     {
       "wave_number": 83,
@@ -49652,7 +49734,8 @@
           "type": "PINK",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 332.0
     },
     {
       "wave_number": 84,
@@ -50330,7 +50413,8 @@
           "type": "PINK",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 336.0
     },
     {
       "wave_number": 85,
@@ -51016,7 +51100,8 @@
           "type": "PINK",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 340.0
     },
     {
       "wave_number": 86,
@@ -51710,7 +51795,8 @@
           "type": "PINK",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 344.0
     },
     {
       "wave_number": 87,
@@ -52412,7 +52498,8 @@
           "type": "PINK",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 348.0
     },
     {
       "wave_number": 88,
@@ -53122,7 +53209,8 @@
           "type": "PINK",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 352.0
     },
     {
       "wave_number": 89,
@@ -53840,7 +53928,8 @@
           "type": "PINK",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 356.0
     },
     {
       "wave_number": 90,
@@ -54566,7 +54655,8 @@
           "type": "PINK",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 360.0
     },
     {
       "wave_number": 91,
@@ -55300,7 +55390,8 @@
           "type": "PINK",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 364.0
     },
     {
       "wave_number": 92,
@@ -56042,7 +56133,8 @@
           "type": "PINK",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 368.0
     },
     {
       "wave_number": 93,
@@ -56792,7 +56884,8 @@
           "type": "PINK",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 372.0
     },
     {
       "wave_number": 94,
@@ -57550,7 +57643,8 @@
           "type": "PINK",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 376.0
     },
     {
       "wave_number": 95,
@@ -58316,7 +58410,8 @@
           "type": "PINK",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 380.0
     },
     {
       "wave_number": 96,
@@ -59090,7 +59185,8 @@
           "type": "PINK",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 384.0
     },
     {
       "wave_number": 97,
@@ -59872,7 +59968,8 @@
           "type": "PINK",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 388.0
     },
     {
       "wave_number": 98,
@@ -60662,7 +60759,8 @@
           "type": "PINK",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 392.0
     },
     {
       "wave_number": 99,
@@ -61460,7 +61558,8 @@
           "type": "PINK",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 396.0
     },
     {
       "wave_number": 100,
@@ -61966,7 +62065,8 @@
           "type": "METAL",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 250.0
     },
     {
       "wave_number": 101,
@@ -62480,7 +62580,8 @@
           "type": "PINK",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 254.0
     },
     {
       "wave_number": 102,
@@ -62998,7 +63099,8 @@
           "type": "PINK",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 256.0
     },
     {
       "wave_number": 103,
@@ -63524,7 +63626,8 @@
           "type": "YELLOW",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 260.0
     },
     {
       "wave_number": 104,
@@ -64050,7 +64153,8 @@
           "type": "METAL",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 260.0
     },
     {
       "wave_number": 105,
@@ -64584,7 +64688,8 @@
           "type": "PINK",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 264.0
     },
     {
       "wave_number": 106,
@@ -65122,7 +65227,8 @@
           "type": "PINK",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 266.0
     },
     {
       "wave_number": 107,
@@ -65668,7 +65774,8 @@
           "type": "YELLOW",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 270.0
     },
     {
       "wave_number": 108,
@@ -66214,7 +66321,8 @@
           "type": "METAL",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 270.0
     },
     {
       "wave_number": 109,
@@ -66768,7 +66876,8 @@
           "type": "PINK",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 274.0
     },
     {
       "wave_number": 110,
@@ -67326,7 +67435,8 @@
           "type": "PINK",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 276.0
     },
     {
       "wave_number": 111,
@@ -67892,7 +68002,8 @@
           "type": "YELLOW",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 280.0
     },
     {
       "wave_number": 112,
@@ -68458,7 +68569,8 @@
           "type": "METAL",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 280.0
     },
     {
       "wave_number": 113,
@@ -69032,7 +69144,8 @@
           "type": "PINK",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 284.0
     },
     {
       "wave_number": 114,
@@ -69610,7 +69723,8 @@
           "type": "PINK",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 286.0
     },
     {
       "wave_number": 115,
@@ -70196,7 +70310,8 @@
           "type": "YELLOW",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 290.0
     },
     {
       "wave_number": 116,
@@ -70782,7 +70897,8 @@
           "type": "METAL",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 290.0
     },
     {
       "wave_number": 117,
@@ -71376,7 +71492,8 @@
           "type": "PINK",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 294.0
     },
     {
       "wave_number": 118,
@@ -71974,7 +72091,8 @@
           "type": "PINK",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 296.0
     },
     {
       "wave_number": 119,
@@ -72580,7 +72698,8 @@
           "type": "YELLOW",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 300.0
     },
     {
       "wave_number": 120,
@@ -73066,7 +73185,8 @@
           "type": "ARMOURED",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 240.0
     },
     {
       "wave_number": 121,
@@ -73556,7 +73676,8 @@
           "type": "ARMOURED",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 242.0
     },
     {
       "wave_number": 122,
@@ -74050,7 +74171,8 @@
           "type": "ARMOURED",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 244.0
     },
     {
       "wave_number": 123,
@@ -74548,7 +74670,8 @@
           "type": "ARMOURED",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 246.0
     },
     {
       "wave_number": 124,
@@ -75050,7 +75173,8 @@
           "type": "ARMOURED",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 248.0
     },
     {
       "wave_number": 125,
@@ -75556,7 +75680,8 @@
           "type": "ARMOURED",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 250.0
     },
     {
       "wave_number": 126,
@@ -76066,7 +76191,8 @@
           "type": "ARMOURED",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 252.0
     },
     {
       "wave_number": 127,
@@ -76580,7 +76706,8 @@
           "type": "ARMOURED",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 254.0
     },
     {
       "wave_number": 128,
@@ -77098,7 +77225,8 @@
           "type": "ARMOURED",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 256.0
     },
     {
       "wave_number": 129,
@@ -77620,7 +77748,8 @@
           "type": "ARMOURED",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 258.0
     },
     {
       "wave_number": 130,
@@ -78146,7 +78275,8 @@
           "type": "ARMOURED",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 260.0
     },
     {
       "wave_number": 131,
@@ -78676,7 +78806,8 @@
           "type": "ARMOURED",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 262.0
     },
     {
       "wave_number": 132,
@@ -79210,7 +79341,8 @@
           "type": "ARMOURED",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 264.0
     },
     {
       "wave_number": 133,
@@ -79748,7 +79880,8 @@
           "type": "ARMOURED",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 266.0
     },
     {
       "wave_number": 134,
@@ -80290,7 +80423,8 @@
           "type": "ARMOURED",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 268.0
     },
     {
       "wave_number": 135,
@@ -80836,7 +80970,8 @@
           "type": "ARMOURED",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 270.0
     },
     {
       "wave_number": 136,
@@ -81386,7 +81521,8 @@
           "type": "ARMOURED",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 272.0
     },
     {
       "wave_number": 137,
@@ -81940,7 +82076,8 @@
           "type": "ARMOURED",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 274.0
     },
     {
       "wave_number": 138,
@@ -82498,7 +82635,8 @@
           "type": "ARMOURED",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 276.0
     },
     {
       "wave_number": 139,
@@ -83060,7 +83198,8 @@
           "type": "ARMOURED",
           "spawn_time_percent": 0
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 278.0
     },
     {
       "wave_number": 140,
@@ -83068,6 +83207,10 @@
       "enemies": [
         {
           "type": "SMALL_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "SMALL_BOSS",
           "spawn_time_percent": 3
         },
         {
@@ -83173,12 +83316,9 @@
         {
           "type": "SMALL_BOSS",
           "spawn_time_percent": 81
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 84
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 56.0
     },
     {
       "wave_number": 141,
@@ -83186,6 +83326,10 @@
       "enemies": [
         {
           "type": "SMALL_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "SMALL_BOSS",
           "spawn_time_percent": 3
         },
         {
@@ -83293,14 +83437,11 @@
           "spawn_time_percent": 81
         },
         {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 84
-        },
-        {
           "type": "ARMOURED",
-          "spawn_time_percent": 0
+          "spawn_time_percent": 84
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 58.0
     },
     {
       "wave_number": 142,
@@ -83308,6 +83449,10 @@
       "enemies": [
         {
           "type": "SMALL_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "SMALL_BOSS",
           "spawn_time_percent": 3
         },
         {
@@ -83415,18 +83560,15 @@
           "spawn_time_percent": 81
         },
         {
-          "type": "SMALL_BOSS",
+          "type": "ARMOURED",
           "spawn_time_percent": 84
         },
         {
           "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
+          "spawn_time_percent": 87
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 60.0
     },
     {
       "wave_number": 143,
@@ -83434,6 +83576,10 @@
       "enemies": [
         {
           "type": "SMALL_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "SMALL_BOSS",
           "spawn_time_percent": 3
         },
         {
@@ -83541,22 +83687,19 @@
           "spawn_time_percent": 81
         },
         {
-          "type": "SMALL_BOSS",
+          "type": "ARMOURED",
           "spawn_time_percent": 84
         },
         {
           "type": "ARMOURED",
-          "spawn_time_percent": 0
+          "spawn_time_percent": 87
         },
         {
           "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
+          "spawn_time_percent": 90
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 62.0
     },
     {
       "wave_number": 144,
@@ -83564,6 +83707,10 @@
       "enemies": [
         {
           "type": "SMALL_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "SMALL_BOSS",
           "spawn_time_percent": 3
         },
         {
@@ -83671,26 +83818,23 @@
           "spawn_time_percent": 81
         },
         {
-          "type": "SMALL_BOSS",
+          "type": "ARMOURED",
           "spawn_time_percent": 84
         },
         {
           "type": "ARMOURED",
-          "spawn_time_percent": 0
+          "spawn_time_percent": 87
         },
         {
           "type": "ARMOURED",
-          "spawn_time_percent": 0
+          "spawn_time_percent": 90
         },
         {
           "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
+          "spawn_time_percent": 93
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 64.0
     },
     {
       "wave_number": 145,
@@ -83698,6 +83842,10 @@
       "enemies": [
         {
           "type": "SMALL_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "SMALL_BOSS",
           "spawn_time_percent": 3
         },
         {
@@ -83807,12 +83955,9 @@
         {
           "type": "SMALL_BOSS",
           "spawn_time_percent": 84
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 87
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 58.0
     },
     {
       "wave_number": 146,
@@ -83820,6 +83965,10 @@
       "enemies": [
         {
           "type": "SMALL_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "SMALL_BOSS",
           "spawn_time_percent": 3
         },
         {
@@ -83931,14 +84080,11 @@
           "spawn_time_percent": 84
         },
         {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 87
-        },
-        {
           "type": "ARMOURED",
-          "spawn_time_percent": 0
+          "spawn_time_percent": 87
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 60.0
     },
     {
       "wave_number": 147,
@@ -83946,6 +84092,10 @@
       "enemies": [
         {
           "type": "SMALL_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "SMALL_BOSS",
           "spawn_time_percent": 3
         },
         {
@@ -84057,18 +84207,15 @@
           "spawn_time_percent": 84
         },
         {
-          "type": "SMALL_BOSS",
+          "type": "ARMOURED",
           "spawn_time_percent": 87
         },
         {
           "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
+          "spawn_time_percent": 90
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 62.0
     },
     {
       "wave_number": 148,
@@ -84076,6 +84223,10 @@
       "enemies": [
         {
           "type": "SMALL_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "SMALL_BOSS",
           "spawn_time_percent": 3
         },
         {
@@ -84187,22 +84338,19 @@
           "spawn_time_percent": 84
         },
         {
-          "type": "SMALL_BOSS",
+          "type": "ARMOURED",
           "spawn_time_percent": 87
         },
         {
           "type": "ARMOURED",
-          "spawn_time_percent": 0
+          "spawn_time_percent": 90
         },
         {
           "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
+          "spawn_time_percent": 93
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 64.0
     },
     {
       "wave_number": 149,
@@ -84210,6 +84358,10 @@
       "enemies": [
         {
           "type": "SMALL_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "SMALL_BOSS",
           "spawn_time_percent": 3
         },
         {
@@ -84321,26 +84473,23 @@
           "spawn_time_percent": 84
         },
         {
-          "type": "SMALL_BOSS",
+          "type": "ARMOURED",
           "spawn_time_percent": 87
         },
         {
           "type": "ARMOURED",
-          "spawn_time_percent": 0
+          "spawn_time_percent": 90
         },
         {
           "type": "ARMOURED",
-          "spawn_time_percent": 0
+          "spawn_time_percent": 93
         },
         {
           "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
+          "spawn_time_percent": 96
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 66.0
     },
     {
       "wave_number": 150,
@@ -84348,6 +84497,10 @@
       "enemies": [
         {
           "type": "SMALL_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "SMALL_BOSS",
           "spawn_time_percent": 3
         },
         {
@@ -84461,12 +84614,9 @@
         {
           "type": "SMALL_BOSS",
           "spawn_time_percent": 87
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 90
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 60.0
     },
     {
       "wave_number": 151,
@@ -84474,6 +84624,10 @@
       "enemies": [
         {
           "type": "SMALL_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "SMALL_BOSS",
           "spawn_time_percent": 3
         },
         {
@@ -84589,14 +84743,11 @@
           "spawn_time_percent": 87
         },
         {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 90
-        },
-        {
           "type": "ARMOURED",
-          "spawn_time_percent": 0
+          "spawn_time_percent": 90
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 62.0
     },
     {
       "wave_number": 152,
@@ -84604,6 +84755,10 @@
       "enemies": [
         {
           "type": "SMALL_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "SMALL_BOSS",
           "spawn_time_percent": 3
         },
         {
@@ -84719,18 +84874,15 @@
           "spawn_time_percent": 87
         },
         {
-          "type": "SMALL_BOSS",
+          "type": "ARMOURED",
           "spawn_time_percent": 90
         },
         {
           "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
+          "spawn_time_percent": 93
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 64.0
     },
     {
       "wave_number": 153,
@@ -84738,6 +84890,10 @@
       "enemies": [
         {
           "type": "SMALL_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "SMALL_BOSS",
           "spawn_time_percent": 3
         },
         {
@@ -84853,22 +85009,19 @@
           "spawn_time_percent": 87
         },
         {
-          "type": "SMALL_BOSS",
+          "type": "ARMOURED",
           "spawn_time_percent": 90
         },
         {
           "type": "ARMOURED",
-          "spawn_time_percent": 0
+          "spawn_time_percent": 93
         },
         {
           "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
+          "spawn_time_percent": 96
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 66.0
     },
     {
       "wave_number": 154,
@@ -84876,6 +85029,10 @@
       "enemies": [
         {
           "type": "SMALL_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "SMALL_BOSS",
           "spawn_time_percent": 3
         },
         {
@@ -84991,26 +85148,23 @@
           "spawn_time_percent": 87
         },
         {
-          "type": "SMALL_BOSS",
+          "type": "ARMOURED",
           "spawn_time_percent": 90
         },
         {
           "type": "ARMOURED",
-          "spawn_time_percent": 0
+          "spawn_time_percent": 93
         },
         {
           "type": "ARMOURED",
-          "spawn_time_percent": 0
+          "spawn_time_percent": 96
         },
         {
           "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
+          "spawn_time_percent": 99
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 68.0
     },
     {
       "wave_number": 155,
@@ -85018,6 +85172,10 @@
       "enemies": [
         {
           "type": "SMALL_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "SMALL_BOSS",
           "spawn_time_percent": 3
         },
         {
@@ -85135,12 +85293,9 @@
         {
           "type": "SMALL_BOSS",
           "spawn_time_percent": 90
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 93
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 62.0
     },
     {
       "wave_number": 156,
@@ -85148,6 +85303,10 @@
       "enemies": [
         {
           "type": "SMALL_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "SMALL_BOSS",
           "spawn_time_percent": 3
         },
         {
@@ -85267,14 +85426,11 @@
           "spawn_time_percent": 90
         },
         {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 93
-        },
-        {
           "type": "ARMOURED",
-          "spawn_time_percent": 0
+          "spawn_time_percent": 93
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 64.0
     },
     {
       "wave_number": 157,
@@ -85282,6 +85438,10 @@
       "enemies": [
         {
           "type": "SMALL_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "SMALL_BOSS",
           "spawn_time_percent": 3
         },
         {
@@ -85401,18 +85561,15 @@
           "spawn_time_percent": 90
         },
         {
-          "type": "SMALL_BOSS",
+          "type": "ARMOURED",
           "spawn_time_percent": 93
         },
         {
           "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
+          "spawn_time_percent": 96
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 66.0
     },
     {
       "wave_number": 158,
@@ -85420,6 +85577,10 @@
       "enemies": [
         {
           "type": "SMALL_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "SMALL_BOSS",
           "spawn_time_percent": 3
         },
         {
@@ -85539,22 +85700,19 @@
           "spawn_time_percent": 90
         },
         {
-          "type": "SMALL_BOSS",
+          "type": "ARMOURED",
           "spawn_time_percent": 93
         },
         {
           "type": "ARMOURED",
-          "spawn_time_percent": 0
+          "spawn_time_percent": 96
         },
         {
           "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
+          "spawn_time_percent": 99
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 68.0
     },
     {
       "wave_number": 159,
@@ -85562,7 +85720,15 @@
       "enemies": [
         {
           "type": "SMALL_BOSS",
-          "spawn_time_percent": 3
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 2
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 4
         },
         {
           "type": "SMALL_BOSS",
@@ -85570,7 +85736,11 @@
         },
         {
           "type": "SMALL_BOSS",
-          "spawn_time_percent": 9
+          "spawn_time_percent": 8
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 10
         },
         {
           "type": "SMALL_BOSS",
@@ -85578,7 +85748,11 @@
         },
         {
           "type": "SMALL_BOSS",
-          "spawn_time_percent": 15
+          "spawn_time_percent": 14
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 16
         },
         {
           "type": "SMALL_BOSS",
@@ -85586,7 +85760,11 @@
         },
         {
           "type": "SMALL_BOSS",
-          "spawn_time_percent": 21
+          "spawn_time_percent": 20
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 22
         },
         {
           "type": "SMALL_BOSS",
@@ -85594,7 +85772,11 @@
         },
         {
           "type": "SMALL_BOSS",
-          "spawn_time_percent": 27
+          "spawn_time_percent": 26
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 28
         },
         {
           "type": "SMALL_BOSS",
@@ -85602,7 +85784,11 @@
         },
         {
           "type": "SMALL_BOSS",
-          "spawn_time_percent": 33
+          "spawn_time_percent": 32
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 34
         },
         {
           "type": "SMALL_BOSS",
@@ -85610,7 +85796,11 @@
         },
         {
           "type": "SMALL_BOSS",
-          "spawn_time_percent": 39
+          "spawn_time_percent": 38
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 40
         },
         {
           "type": "SMALL_BOSS",
@@ -85618,7 +85808,11 @@
         },
         {
           "type": "SMALL_BOSS",
-          "spawn_time_percent": 45
+          "spawn_time_percent": 44
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 46
         },
         {
           "type": "SMALL_BOSS",
@@ -85626,7 +85820,11 @@
         },
         {
           "type": "SMALL_BOSS",
-          "spawn_time_percent": 51
+          "spawn_time_percent": 50
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 52
         },
         {
           "type": "SMALL_BOSS",
@@ -85634,73 +85832,34 @@
         },
         {
           "type": "SMALL_BOSS",
-          "spawn_time_percent": 57
+          "spawn_time_percent": 56
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 58
         },
         {
           "type": "SMALL_BOSS",
           "spawn_time_percent": 60
         },
         {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 63
+          "type": "ARMOURED",
+          "spawn_time_percent": 62
         },
         {
-          "type": "SMALL_BOSS",
+          "type": "ARMOURED",
+          "spawn_time_percent": 64
+        },
+        {
+          "type": "ARMOURED",
           "spawn_time_percent": 66
         },
         {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 69
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 72
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 75
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 78
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 81
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 84
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 87
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 90
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 93
-        },
-        {
           "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
+          "spawn_time_percent": 68
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 70.0
     },
     {
       "wave_number": 160,
@@ -85708,27 +85867,27 @@
       "enemies": [
         {
           "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 12
+          "spawn_time_percent": 0
         },
         {
           "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 24
+          "spawn_time_percent": 14
         },
         {
           "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 36
+          "spawn_time_percent": 28
         },
         {
           "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 48
+          "spawn_time_percent": 42
         },
         {
           "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 60
+          "spawn_time_percent": 56
         },
         {
           "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 72
+          "spawn_time_percent": 70
         },
         {
           "type": "MEDIUM_BOSS",
@@ -85736,9 +85895,10 @@
         },
         {
           "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 96
+          "spawn_time_percent": 98
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 16.0
     },
     {
       "wave_number": 161,
@@ -85746,6 +85906,10 @@
       "enemies": [
         {
           "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "MEDIUM_BOSS",
           "spawn_time_percent": 12
         },
         {
@@ -85773,14 +85937,11 @@
           "spawn_time_percent": 84
         },
         {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 96
-        },
-        {
           "type": "SMALL_BOSS",
-          "spawn_time_percent": 27
+          "spawn_time_percent": 96
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 18.0
     },
     {
       "wave_number": 162,
@@ -85788,6 +85949,10 @@
       "enemies": [
         {
           "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "MEDIUM_BOSS",
           "spawn_time_percent": 12
         },
         {
@@ -85815,14 +85980,11 @@
           "spawn_time_percent": 84
         },
         {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 96
-        },
-        {
           "type": "SMALL_BOSS",
-          "spawn_time_percent": 27
+          "spawn_time_percent": 96
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 18.0
     },
     {
       "wave_number": 163,
@@ -85830,6 +85992,10 @@
       "enemies": [
         {
           "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "MEDIUM_BOSS",
           "spawn_time_percent": 12
         },
         {
@@ -85857,14 +86023,11 @@
           "spawn_time_percent": 84
         },
         {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 96
-        },
-        {
           "type": "SMALL_BOSS",
-          "spawn_time_percent": 27
+          "spawn_time_percent": 96
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 18.0
     },
     {
       "wave_number": 164,
@@ -85872,6 +86035,10 @@
       "enemies": [
         {
           "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "MEDIUM_BOSS",
           "spawn_time_percent": 12
         },
         {
@@ -85899,14 +86066,11 @@
           "spawn_time_percent": 84
         },
         {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 96
-        },
-        {
           "type": "SMALL_BOSS",
-          "spawn_time_percent": 27
+          "spawn_time_percent": 96
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 18.0
     },
     {
       "wave_number": 165,
@@ -85914,6 +86078,10 @@
       "enemies": [
         {
           "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "MEDIUM_BOSS",
           "spawn_time_percent": 12
         },
         {
@@ -85941,14 +86109,11 @@
           "spawn_time_percent": 84
         },
         {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 96
-        },
-        {
           "type": "SMALL_BOSS",
-          "spawn_time_percent": 27
+          "spawn_time_percent": 96
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 18.0
     },
     {
       "wave_number": 166,
@@ -85956,45 +86121,46 @@
       "enemies": [
         {
           "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 12
+          "spawn_time_percent": 0
         },
         {
           "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 24
+          "spawn_time_percent": 11
         },
         {
           "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 36
+          "spawn_time_percent": 22
         },
         {
           "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 48
+          "spawn_time_percent": 33
         },
         {
           "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 60
+          "spawn_time_percent": 44
         },
         {
           "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 72
+          "spawn_time_percent": 55
         },
         {
           "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 84
+          "spawn_time_percent": 66
         },
         {
           "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 96
+          "spawn_time_percent": 77
         },
         {
           "type": "SMALL_BOSS",
-          "spawn_time_percent": 27
+          "spawn_time_percent": 88
         },
         {
           "type": "ARMOURED",
-          "spawn_time_percent": 0
+          "spawn_time_percent": 99
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 20.0
     },
     {
       "wave_number": 167,
@@ -86002,1349 +86168,15 @@
       "enemies": [
         {
           "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 12
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 24
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 36
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 48
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 60
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 72
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 84
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 96
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 27
-        },
-        {
-          "type": "ARMOURED",
           "spawn_time_percent": 0
         },
         {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        }
-      ]
-    },
-    {
-      "wave_number": 168,
-      "reward": 6142,
-      "enemies": [
-        {
           "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 12
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 24
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 36
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 48
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 60
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 72
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 84
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 96
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 27
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        }
-      ]
-    },
-    {
-      "wave_number": 169,
-      "reward": 6204,
-      "enemies": [
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 12
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 24
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 36
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 48
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 60
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 72
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 84
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 96
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 27
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        }
-      ]
-    },
-    {
-      "wave_number": 170,
-      "reward": 6266,
-      "enemies": [
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 12
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 24
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 36
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 48
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 60
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 72
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 84
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 96
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 18
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 20
-        }
-      ]
-    },
-    {
-      "wave_number": 171,
-      "reward": 6328,
-      "enemies": [
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 12
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 24
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 36
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 48
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 60
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 72
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 84
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 96
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 18
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 20
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        }
-      ]
-    },
-    {
-      "wave_number": 172,
-      "reward": 6390,
-      "enemies": [
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 12
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 24
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 36
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 48
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 60
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 72
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 84
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 96
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 18
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 20
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        }
-      ]
-    },
-    {
-      "wave_number": 173,
-      "reward": 6452,
-      "enemies": [
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 12
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 24
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 36
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 48
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 60
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 72
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 84
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 96
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 18
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 20
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        }
-      ]
-    },
-    {
-      "wave_number": 174,
-      "reward": 6515,
-      "enemies": [
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 12
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 24
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 36
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 48
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 60
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 72
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 84
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 96
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 18
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 20
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        }
-      ]
-    },
-    {
-      "wave_number": 175,
-      "reward": 6578,
-      "enemies": [
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 12
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 24
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 36
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 48
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 60
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 72
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 84
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 96
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 18
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 20
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 22
-        }
-      ]
-    },
-    {
-      "wave_number": 176,
-      "reward": 6642,
-      "enemies": [
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 12
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 24
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 36
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 48
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 60
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 72
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 84
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 96
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 18
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 20
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 22
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        }
-      ]
-    },
-    {
-      "wave_number": 177,
-      "reward": 6705,
-      "enemies": [
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 12
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 24
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 36
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 48
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 60
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 72
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 84
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 96
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 18
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 20
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 22
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        }
-      ]
-    },
-    {
-      "wave_number": 178,
-      "reward": 6769,
-      "enemies": [
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 12
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 24
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 36
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 48
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 60
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 72
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 84
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 96
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 18
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 20
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 22
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        }
-      ]
-    },
-    {
-      "wave_number": 179,
-      "reward": 6833,
-      "enemies": [
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 12
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 24
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 36
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 48
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 60
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 72
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 84
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 96
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 18
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 20
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 22
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        }
-      ]
-    },
-    {
-      "wave_number": 180,
-      "reward": 6897,
-      "enemies": [
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 50
-        },
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 100
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 33
-        }
-      ]
-    },
-    {
-      "wave_number": 181,
-      "reward": 6962,
-      "enemies": [
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 50
-        },
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 100
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 33
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 8
-        }
-      ]
-    },
-    {
-      "wave_number": 182,
-      "reward": 7027,
-      "enemies": [
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 50
-        },
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 100
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 33
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 8
-        }
-      ]
-    },
-    {
-      "wave_number": 183,
-      "reward": 7092,
-      "enemies": [
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 50
-        },
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 100
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 33
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 8
-        }
-      ]
-    },
-    {
-      "wave_number": 184,
-      "reward": 7157,
-      "enemies": [
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 50
-        },
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 100
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 33
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 8
-        }
-      ]
-    },
-    {
-      "wave_number": 185,
-      "reward": 7223,
-      "enemies": [
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 50
-        },
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 100
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 33
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 8
-        }
-      ]
-    },
-    {
-      "wave_number": 186,
-      "reward": 7288,
-      "enemies": [
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 50
-        },
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 100
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 33
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 8
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        }
-      ]
-    },
-    {
-      "wave_number": 187,
-      "reward": 7354,
-      "enemies": [
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 50
-        },
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 100
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 33
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 8
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        }
-      ]
-    },
-    {
-      "wave_number": 188,
-      "reward": 7421,
-      "enemies": [
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 50
-        },
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 100
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 33
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 8
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        }
-      ]
-    },
-    {
-      "wave_number": 189,
-      "reward": 7487,
-      "enemies": [
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 50
-        },
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 100
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 33
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 8
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        }
-      ]
-    },
-    {
-      "wave_number": 190,
-      "reward": 7554,
-      "enemies": [
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 50
-        },
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 100
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 33
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 8
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 10
-        }
-      ]
-    },
-    {
-      "wave_number": 191,
-      "reward": 7621,
-      "enemies": [
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 50
-        },
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 100
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 33
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 8
-        },
-        {
-          "type": "SMALL_BOSS",
           "spawn_time_percent": 10
         },
         {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        }
-      ]
-    },
-    {
-      "wave_number": 192,
-      "reward": 7688,
-      "enemies": [
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 50
-        },
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 100
-        },
-        {
           "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 33
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 8
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 10
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        }
-      ]
-    },
-    {
-      "wave_number": 193,
-      "reward": 7756,
-      "enemies": [
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 50
-        },
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 100
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 33
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 8
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 10
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        }
-      ]
-    },
-    {
-      "wave_number": 194,
-      "reward": 7824,
-      "enemies": [
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 50
-        },
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 100
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 33
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 8
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 10
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        }
-      ]
-    },
-    {
-      "wave_number": 195,
-      "reward": 7892,
-      "enemies": [
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 50
-        },
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 100
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 33
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 8
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 10
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 12
-        }
-      ]
-    },
-    {
-      "wave_number": 196,
-      "reward": 7960,
-      "enemies": [
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 50
-        },
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 100
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 33
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 8
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 10
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 12
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        }
-      ]
-    },
-    {
-      "wave_number": 197,
-      "reward": 8029,
-      "enemies": [
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 50
-        },
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 100
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 33
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 8
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 10
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 12
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        }
-      ]
-    },
-    {
-      "wave_number": 198,
-      "reward": 8097,
-      "enemies": [
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 50
-        },
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 100
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 33
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 8
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 10
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 12
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        }
-      ]
-    },
-    {
-      "wave_number": 199,
-      "reward": 8166,
-      "enemies": [
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 50
-        },
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 100
-        },
-        {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 33
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 8
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 10
-        },
-        {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 12
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        },
-        {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
-        }
-      ]
-    },
-    {
-      "wave_number": 200,
-      "reward": 8236,
-      "enemies": [
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 50
-        },
-        {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 100
+          "spawn_time_percent": 20
         },
         {
           "type": "MEDIUM_BOSS",
@@ -87353,8 +86185,1376 @@
         {
           "type": "MEDIUM_BOSS",
           "spawn_time_percent": 40
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 50
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 60
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 70
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 80
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 90
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 100
         }
-      ]
+      ],
+      "total_spawn_time_seconds": 22.0
+    },
+    {
+      "wave_number": 168,
+      "reward": 6142,
+      "enemies": [
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 9
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 18
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 27
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 36
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 45
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 54
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 63
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 72
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 81
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 90
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 99
+        }
+      ],
+      "total_spawn_time_seconds": 24.0
+    },
+    {
+      "wave_number": 169,
+      "reward": 6204,
+      "enemies": [
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 8
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 16
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 24
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 32
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 40
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 48
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 56
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 64
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 72
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 80
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 88
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 96
+        }
+      ],
+      "total_spawn_time_seconds": 26.0
+    },
+    {
+      "wave_number": 170,
+      "reward": 6266,
+      "enemies": [
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 11
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 22
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 33
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 44
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 55
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 66
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 77
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 88
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 99
+        }
+      ],
+      "total_spawn_time_seconds": 20.0
+    },
+    {
+      "wave_number": 171,
+      "reward": 6328,
+      "enemies": [
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 10
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 20
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 30
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 40
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 50
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 60
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 70
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 80
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 90
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 100
+        }
+      ],
+      "total_spawn_time_seconds": 22.0
+    },
+    {
+      "wave_number": 172,
+      "reward": 6390,
+      "enemies": [
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 9
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 18
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 27
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 36
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 45
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 54
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 63
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 72
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 81
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 90
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 99
+        }
+      ],
+      "total_spawn_time_seconds": 24.0
+    },
+    {
+      "wave_number": 173,
+      "reward": 6452,
+      "enemies": [
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 8
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 16
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 24
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 32
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 40
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 48
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 56
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 64
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 72
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 80
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 88
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 96
+        }
+      ],
+      "total_spawn_time_seconds": 26.0
+    },
+    {
+      "wave_number": 174,
+      "reward": 6515,
+      "enemies": [
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 7
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 14
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 21
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 28
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 35
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 42
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 49
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 56
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 63
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 70
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 77
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 84
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 91
+        }
+      ],
+      "total_spawn_time_seconds": 28.0
+    },
+    {
+      "wave_number": 175,
+      "reward": 6578,
+      "enemies": [
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 10
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 20
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 30
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 40
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 50
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 60
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 70
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 80
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 90
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 100
+        }
+      ],
+      "total_spawn_time_seconds": 22.0
+    },
+    {
+      "wave_number": 176,
+      "reward": 6642,
+      "enemies": [
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 9
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 18
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 27
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 36
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 45
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 54
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 63
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 72
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 81
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 90
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 99
+        }
+      ],
+      "total_spawn_time_seconds": 24.0
+    },
+    {
+      "wave_number": 177,
+      "reward": 6705,
+      "enemies": [
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 8
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 16
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 24
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 32
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 40
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 48
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 56
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 64
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 72
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 80
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 88
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 96
+        }
+      ],
+      "total_spawn_time_seconds": 26.0
+    },
+    {
+      "wave_number": 178,
+      "reward": 6769,
+      "enemies": [
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 7
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 14
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 21
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 28
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 35
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 42
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 49
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 56
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 63
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 70
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 77
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 84
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 91
+        }
+      ],
+      "total_spawn_time_seconds": 28.0
+    },
+    {
+      "wave_number": 179,
+      "reward": 6833,
+      "enemies": [
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 7
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 14
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 21
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 28
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 35
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 42
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 49
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 56
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 63
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 70
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 77
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 84
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 91
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 98
+        }
+      ],
+      "total_spawn_time_seconds": 30.0
+    },
+    {
+      "wave_number": 180,
+      "reward": 6897,
+      "enemies": [
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 50
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 100
+        }
+      ],
+      "total_spawn_time_seconds": 6.0
+    },
+    {
+      "wave_number": 181,
+      "reward": 6962,
+      "enemies": [
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 33
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 66
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 99
+        }
+      ],
+      "total_spawn_time_seconds": 8.0
+    },
+    {
+      "wave_number": 182,
+      "reward": 7027,
+      "enemies": [
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 33
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 66
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 99
+        }
+      ],
+      "total_spawn_time_seconds": 8.0
+    },
+    {
+      "wave_number": 183,
+      "reward": 7092,
+      "enemies": [
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 33
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 66
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 99
+        }
+      ],
+      "total_spawn_time_seconds": 8.0
+    },
+    {
+      "wave_number": 184,
+      "reward": 7157,
+      "enemies": [
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 33
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 66
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 99
+        }
+      ],
+      "total_spawn_time_seconds": 8.0
+    },
+    {
+      "wave_number": 185,
+      "reward": 7223,
+      "enemies": [
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 33
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 66
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 99
+        }
+      ],
+      "total_spawn_time_seconds": 8.0
+    },
+    {
+      "wave_number": 186,
+      "reward": 7288,
+      "enemies": [
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 25
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 50
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 75
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 100
+        }
+      ],
+      "total_spawn_time_seconds": 10.0
+    },
+    {
+      "wave_number": 187,
+      "reward": 7354,
+      "enemies": [
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 20
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 40
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 60
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 80
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 100
+        }
+      ],
+      "total_spawn_time_seconds": 12.0
+    },
+    {
+      "wave_number": 188,
+      "reward": 7421,
+      "enemies": [
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 16
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 32
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 48
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 64
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 80
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 96
+        }
+      ],
+      "total_spawn_time_seconds": 14.0
+    },
+    {
+      "wave_number": 189,
+      "reward": 7487,
+      "enemies": [
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 14
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 28
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 42
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 56
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 70
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 84
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 98
+        }
+      ],
+      "total_spawn_time_seconds": 16.0
+    },
+    {
+      "wave_number": 190,
+      "reward": 7554,
+      "enemies": [
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 25
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 50
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 75
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 100
+        }
+      ],
+      "total_spawn_time_seconds": 10.0
+    },
+    {
+      "wave_number": 191,
+      "reward": 7621,
+      "enemies": [
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 20
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 40
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 60
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 80
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 100
+        }
+      ],
+      "total_spawn_time_seconds": 12.0
+    },
+    {
+      "wave_number": 192,
+      "reward": 7688,
+      "enemies": [
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 16
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 32
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 48
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 64
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 80
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 96
+        }
+      ],
+      "total_spawn_time_seconds": 14.0
+    },
+    {
+      "wave_number": 193,
+      "reward": 7756,
+      "enemies": [
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 14
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 28
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 42
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 56
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 70
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 84
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 98
+        }
+      ],
+      "total_spawn_time_seconds": 16.0
+    },
+    {
+      "wave_number": 194,
+      "reward": 7824,
+      "enemies": [
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 12
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 24
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 36
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 48
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 60
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 72
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 84
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 96
+        }
+      ],
+      "total_spawn_time_seconds": 18.0
+    },
+    {
+      "wave_number": 195,
+      "reward": 7892,
+      "enemies": [
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 20
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 40
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 60
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 80
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 100
+        }
+      ],
+      "total_spawn_time_seconds": 12.0
+    },
+    {
+      "wave_number": 196,
+      "reward": 7960,
+      "enemies": [
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 16
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 32
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 48
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 64
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 80
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 96
+        }
+      ],
+      "total_spawn_time_seconds": 14.0
+    },
+    {
+      "wave_number": 197,
+      "reward": 8029,
+      "enemies": [
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 14
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 28
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 42
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 56
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 70
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 84
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 98
+        }
+      ],
+      "total_spawn_time_seconds": 16.0
+    },
+    {
+      "wave_number": 198,
+      "reward": 8097,
+      "enemies": [
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 12
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 24
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 36
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 48
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 60
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 72
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 84
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 96
+        }
+      ],
+      "total_spawn_time_seconds": 18.0
+    },
+    {
+      "wave_number": 199,
+      "reward": 8166,
+      "enemies": [
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 11
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 22
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 33
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 44
+        },
+        {
+          "type": "SMALL_BOSS",
+          "spawn_time_percent": 55
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 66
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 77
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 88
+        },
+        {
+          "type": "ARMOURED",
+          "spawn_time_percent": 99
+        }
+      ],
+      "total_spawn_time_seconds": 20.0
+    },
+    {
+      "wave_number": 200,
+      "reward": 8236,
+      "enemies": [
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 0
+        },
+        {
+          "type": "BIG_BOSS",
+          "spawn_time_percent": 33
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 66
+        },
+        {
+          "type": "MEDIUM_BOSS",
+          "spawn_time_percent": 99
+        }
+      ],
+      "total_spawn_time_seconds": 8.0
     }
   ]
 }

@@ -26,6 +26,7 @@ class Enemy {
         if (this->path != nullptr && this->path->getVertexCount() > 0) {
             this->position.position.x = path->operator[](0).position.x;
             this->position.position.y = path->operator[](0).position.y;
+            this->hitTexture.setPosition(this->position.position);
         }
     }
 

@@ -33,8 +33,8 @@ int main() {
     graphicsManager.addPriorityDrawable(drawnPath);
 
     sf::Font font;
-    auto fpsCounter = std::make_shared<sf::Text>(sf::Text(font));
-    auto waveCounter = std::make_shared<sf::Text>(sf::Text(font));
+    const auto fpsCounter = std::make_shared<sf::Text>(sf::Text(font));
+    const auto waveCounter = std::make_shared<sf::Text>(sf::Text(font));
     // TODO: fix the file address to target whatever is inside bin
     if (font.openFromFile("../../src/resources/fonts/LEMONMILK-Regular.otf")) {
         fpsCounter->setCharacterSize(24);
