@@ -2,6 +2,8 @@
 #define GAMEMANAGER_H
 
 #include <queue>
+#include <memory>
+#include <SFML/Graphics.hpp>
 
 #include "entity/defence/projectile/Projectile.h"
 #include "entity/defence/projectile/ProjectileManager.h"
@@ -10,11 +12,11 @@
 #include "entity/enemy/EnemyManager.h"
 #include "entity/enemy/waves/WaveLoader.h"
 
-
 class Tower;
 
 class GameManager {
     int playerHealth = 1000;
+    int playerBalance = 2000;
     EnemyManager enemyManager;
     TowerManager towerManager;
     WaveLoader waveLoader = WaveLoader("../../src/resources/waves/dev-waves.json");
@@ -93,27 +95,67 @@ public:
         penalizeForFinishedEnemies();
     }
 
+    void addTower(const std::shared_ptr<Tower>& tower) {
+        if (playerBalance >= tower->getAttackPower()) {
+            towerManager.addTower(tower);
+            playerBalance -= tower->getAttackPower();
+        }
+    }
+
+    void removeTower(const std::shared_ptr<Tower>& tower) {
+        towerManager.removeTower(tower);
+    }
+
+    void handleTowerSelection(const sf::Vector2i& mousePosition,
+                                        const std::vector<sf::RectangleShape>& towerButtons,
+                                        std::shared_ptr<sf::RectangleShape>& draggedTowerDrawable,
+                                        Tower& selectedTower,
+                                        bool& isTowerSelected,
+                                        sf::Vector2f& dragOffset) {
+        for (size_t i = 0; i < towerButtons.size(); ++i) {
+            if (towerButtons[i].getGlobalBounds().contains(sf::Vector2f(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y)))) {
+                if (!isTowerSelected) {
+                    isTowerSelected = true;
+                    draggedTowerDrawable->setFillColor(sf::Color::Green); // Adjust this based on your design
+                    draggedTowerDrawable->setPosition(sf::Vector2f(mousePosition.x - draggedTowerDrawable->getSize().x / 2, mousePosition.y - draggedTowerDrawable->getSize().y / 2));
+                    dragOffset = sf::Vector2f(mousePosition.x - draggedTowerDrawable->getPosition().x, mousePosition.y - draggedTowerDrawable->getPosition().y);
+                }
+                break;
+            }
+        }
+    }
+
+
     [[nodiscard]] std::vector<std::shared_ptr<sf::Drawable>> getDrawables() const {
         std::vector<std::shared_ptr<sf::Drawable>> drawables;
         drawables.push_back(enemyManager.getEnemyPath());
 
         const std::vector<std::shared_ptr<Enemy>> enemies = enemyManager.getAliveEnemies();
         const std::vector<Projectile*> projectiles = towerManager.getActiveProjectiles();
+        const std::vector<std::shared_ptr<Tower>> towers = towerManager.getTowers();
+
         for (const auto& enemy : enemies) {
             drawables.push_back(enemy->getHitTexture()->getDisplayEntity());
         }
         for (const auto projectile : projectiles) {
             drawables.push_back(projectile->getHitTexture()->getDisplayEntity());
         }
+        for (const auto& tower : towers) {
+            drawables.push_back(tower->getDisplayEntity());
+        }
+        
         return drawables;
     }
 
-    // TODO: reminder to replace this with a more robust system that preferably doesn't require a completely separate set of lists
     [[nodiscard]] std::vector<std::shared_ptr<sf::Drawable>> getNewDrawables() {
         const std::vector<std::shared_ptr<Enemy>> enemies = enemyManager.getUndrawnEnemies();
+        const std::vector<std::shared_ptr<Projectile>> projectiles = towerManager.getUndrawnProjectiles();
         std::vector<std::shared_ptr<sf::Drawable>> drawables;
         for (const auto& enemy : enemies) {
             drawables.push_back(enemy->getHitTexture()->getDisplayEntity());
+        }
+        for (const auto& projectile : projectiles) {
+            drawables.push_back(projectile->getHitTexture()->getDisplayEntity());
         }
         return drawables;
     }
@@ -140,7 +182,6 @@ public:
         towerManager.removeInactiveProjectiles();
     }
 
-    // TODO: temp; just for testing atm
     void shrinkEnemyPath() const {
         enemyManager.shrinkEnemyPath();
     }
@@ -156,8 +197,11 @@ public:
     [[nodiscard]] int getPlayerHealth() const {
         return playerHealth;
     }
+
+    [[nodiscard]] int getPlayerBalance() const {
+        return playerBalance;
+    }
 };
 
-
-
 #endif //GAMEMANAGER_H
+

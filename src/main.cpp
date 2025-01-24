@@ -4,6 +4,7 @@
 
 #include "GameManager.h"
 #include "GraphicsManager.h"
+#include "entity/defence/tower/special_tower/Jo_tower/JoTower.h"
 
 #define MAXSAMPLES 100
 
@@ -12,13 +13,12 @@ double tickSum = 0;
 double ticklist[MAXSAMPLES];
 
 int calcAverageTick(const double newTick) {
-    tickSum -= ticklist[tickIndex];  /* subtract value falling off */
-    tickSum += newTick;              /* add new value */
-    ticklist[tickIndex] = newTick;   /* save new value so it can be subtracted later */
-    if(++tickIndex == MAXSAMPLES)    /* inc buffer index */
+    tickSum -= ticklist[tickIndex];  
+    tickSum += newTick;              
+    ticklist[tickIndex] = newTick;   
+    if (++tickIndex == MAXSAMPLES)    
         tickIndex = 0;
 
-    /* return average */
     return static_cast<int>(tickSum / MAXSAMPLES);
 }
 
@@ -36,7 +36,7 @@ int main() {
     const auto fpsCounter = std::make_shared<sf::Text>(sf::Text(font));
     const auto waveCounter = std::make_shared<sf::Text>(sf::Text(font));
     const auto lifeCounter = std::make_shared<sf::Text>(sf::Text(font));
-    // TODO: fix the file address to target whatever is inside bin
+    const auto balanceCounter = std::make_shared<sf::Text>(sf::Text(font));  
     if (font.openFromFile("../../src/resources/fonts/LEMONMILK-Regular.otf")) {
         fpsCounter->setCharacterSize(24);
         fpsCounter->setFillColor(sf::Color::Red);
@@ -55,11 +55,38 @@ int main() {
         lifeCounter->setStyle(sf::Text::Bold);
         lifeCounter->setPosition(sf::Vector2f(150, 0));
         graphicsManager.addDrawable(lifeCounter);
+
+        balanceCounter->setCharacterSize(24);  
+        balanceCounter->setFillColor(sf::Color::Yellow);  
+        balanceCounter->setStyle(sf::Text::Bold);
+        balanceCounter->setPosition(sf::Vector2f(1550, 50));  
+        graphicsManager.addDrawable(balanceCounter);  
     }
+
+    std::vector<sf::RectangleShape> towerButtons;
+    const float buttonWidth = 100.f, buttonHeight = 50.f;
+    for (int i = 0; i < 3; ++i) {
+        sf::RectangleShape button(sf::Vector2f(buttonWidth, buttonHeight));
+        button.setPosition(sf::Vector2f(1550.f, 100.f + i * (buttonHeight + 10.f)));
+        button.setFillColor(sf::Color::Green);  
+        towerButtons.push_back(button);
+    }
+
+    for (const auto& button : towerButtons) {
+        graphicsManager.addDrawable(std::make_shared<sf::RectangleShape>(button));
+    }
+
+
+    bool isTowerSelected = false;
+    Tower selectedTower(sf::Vector2f(0, 0), 100.f, 10, 1.f); 
+
+    std::shared_ptr<sf::RectangleShape> draggedTowerDrawable = std::make_shared<sf::RectangleShape>(sf::Vector2f(buttonWidth, buttonHeight));
+    sf::Vector2f dragOffset;
+
+    graphicsManager.addPriorityDrawable(draggedTowerDrawable);
 
     while (graphicsManager.isActive()) {
         std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
-        // TODO: move these keeb events to another section of the code
         while (const std::optional event = graphicsManager.pollEvent()) {
             if (event->is<sf::Event::Closed>()) {
                 graphicsManager.deactivate();
@@ -72,16 +99,18 @@ int main() {
                     }
                 }
             }
+
             if (event->is<sf::Event::MouseButtonPressed>()) {
                 if (const auto buttonPressed = event->getIf<sf::Event::MouseButtonPressed>(); buttonPressed->button == sf::Mouse::Button::Left) {
                     const auto mousePosition = buttonPressed->position;
-                    sf::Vertex mouseVertex{{static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y)}, sf::Color::Yellow, { 0.0f,  0.0f}};
-                    drawnPath->append(mouseVertex);
+                    if (!isTowerSelected) {
+                        gameManager.handleTowerSelection(mousePosition, towerButtons, draggedTowerDrawable, selectedTower, isTowerSelected, dragOffset);
+                    }
                 } else if (buttonPressed->button == sf::Mouse::Button::Right) {
                     gameManager.shrinkEnemyPath();
                 }
             }
-            // TODO: Temp, just for development and allowing us to increase the game speed to get to things faster
+
             if (event->is<sf::Event::KeyPressed>()) {
                 if (const auto buttonPressed = event->getIf<sf::Event::KeyPressed>(); buttonPressed->code == sf::Keyboard::Key::Space) {
                     graphicsManager.setFramerateLimit(240);
@@ -89,12 +118,39 @@ int main() {
                     graphicsManager.setFramerateLimit(60);
                 }
             }
+
+            if (event->is<sf::Event::MouseButtonReleased>()) {
+                if (const auto buttonReleased = event->getIf<sf::Event::MouseButtonReleased>(); buttonReleased->button == sf::Mouse::Button::Left) {
+                    if (isTowerSelected && draggedTowerDrawable != nullptr) {
+                        selectedTower.setPosition(draggedTowerDrawable->getPosition());
+                        auto newTower = std::make_shared<JoTower>(JoTower(draggedTowerDrawable->getPosition()));  // Copy the selected tower
+                        gameManager.addTower(newTower);  // Add the tower to the GameManager
+                        isTowerSelected = false;  // Reset the tower selection state
+                        draggedTowerDrawable = std::make_shared<sf::RectangleShape>(sf::Vector2f(buttonWidth, buttonHeight));
+                        draggedTowerDrawable->setFillColor(sf::Color::Transparent);  // Set to invisible
+                    }
+                }
+            }
+
+        }
+
+        if (isTowerSelected && draggedTowerDrawable != nullptr) {
+            const auto mousePosition = graphicsManager.getMousePosition();
+            draggedTowerDrawable->setPosition(sf::Vector2f(mousePosition.x - dragOffset.x, mousePosition.y - dragOffset.y));
+            draggedTowerDrawable->setFillColor(sf::Color::Green);  // Set it to visible color during dragging
+            graphicsManager.addPriorityDrawable(draggedTowerDrawable);  // Add it when dragging 
+        } else if (!isTowerSelected) {
+            // Avoid adding the dragged tower if no tower is selected
+            draggedTowerDrawable->setFillColor(sf::Color::Transparent);  // Ensure it remains invisible
         }
 
         gameManager.update();
+
         lifeCounter->setString("Lives: " + std::to_string(gameManager.getPlayerHealth()));
-        // TODO: technically the counter is wrong atm but once we get the waves starting from the start of the application, it should be okay.
         waveCounter->setString(std::to_string(gameManager.getCurrentWaveNumber()) + " / " + std::to_string(gameManager.getMaxWaveNumber()));
+
+        balanceCounter->setString("Balance: " + std::to_string(gameManager.getPlayerBalance()));  
+        
         graphicsManager.addDrawables(gameManager.getNewDrawables());
         graphicsManager.removeDrawables(gameManager.getRemovableDrawables());
         graphicsManager.draw();

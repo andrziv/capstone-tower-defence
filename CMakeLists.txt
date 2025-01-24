@@ -21,6 +21,8 @@ add_executable(main src/main.cpp
         src/entity/enemy/Enemy.h
         src/entity/defence/tower/Tower.cpp
         src/entity/defence/tower/Tower.h
+        src/entity/defence/tower/special_tower/Jo_tower/JoTower.h
+        src/entity/defence/tower/special_tower/Jo_tower/JoTower.cpp
         src/entity/defence/projectile/Projectile.cpp
         src/entity/defence/projectile/Projectile.h
         src/entity/defence/projectile/tower_projectile/dev/DevProjectile.cpp
