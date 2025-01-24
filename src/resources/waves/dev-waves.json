@@ -144,7 +144,11 @@
       "enemies": [
         {
           "type": "BLUE",
-          "spawn_time_percent": 0
+          "spawn_time_percent": 1
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 2
         },
         {
           "type": "BLUE",
@@ -152,11 +156,35 @@
         },
         {
           "type": "BLUE",
-          "spawn_time_percent": 6
+          "spawn_time_percent": 4
         },
         {
           "type": "BLUE",
+          "spawn_time_percent": 5
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 6
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 7
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 8
+        },
+        {
+          "type": "RED",
           "spawn_time_percent": 9
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 10
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 11
         },
         {
           "type": "BLUE",
@@ -164,7 +192,23 @@
         },
         {
           "type": "BLUE",
+          "spawn_time_percent": 13
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 14
+        },
+        {
+          "type": "BLUE",
           "spawn_time_percent": 15
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 16
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 17
         },
         {
           "type": "RED",
@@ -172,11 +216,35 @@
         },
         {
           "type": "RED",
-          "spawn_time_percent": 21
+          "spawn_time_percent": 19
         },
         {
           "type": "RED",
+          "spawn_time_percent": 20
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 21
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 22
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 23
+        },
+        {
+          "type": "BLUE",
           "spawn_time_percent": 24
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 25
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 26
         },
         {
           "type": "RED",
@@ -184,11 +252,39 @@
         },
         {
           "type": "RED",
-          "spawn_time_percent": 30
+          "spawn_time_percent": 28
         },
         {
           "type": "RED",
+          "spawn_time_percent": 29
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 30
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 31
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 31
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 32
+        },
+        {
+          "type": "BLUE",
           "spawn_time_percent": 33
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 34
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 35
         },
         {
           "type": "RED",
@@ -196,11 +292,35 @@
         },
         {
           "type": "RED",
-          "spawn_time_percent": 39
+          "spawn_time_percent": 37
         },
         {
           "type": "RED",
+          "spawn_time_percent": 38
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 39
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 40
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 41
+        },
+        {
+          "type": "BLUE",
           "spawn_time_percent": 42
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 43
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 44
         },
         {
           "type": "RED",
@@ -208,15 +328,47 @@
         },
         {
           "type": "RED",
+          "spawn_time_percent": 46
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 47
+        },
+        {
+          "type": "RED",
           "spawn_time_percent": 48
         },
         {
           "type": "RED",
+          "spawn_time_percent": 49
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 50
+        },
+        {
+          "type": "BLUE",
           "spawn_time_percent": 51
         },
         {
-          "type": "RED",
+          "type": "BLUE",
+          "spawn_time_percent": 52
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 53
+        },
+        {
+          "type": "BLUE",
           "spawn_time_percent": 54
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 55
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 56
         },
         {
           "type": "RED",
@@ -224,11 +376,35 @@
         },
         {
           "type": "RED",
-          "spawn_time_percent": 60
+          "spawn_time_percent": 58
         },
         {
           "type": "RED",
+          "spawn_time_percent": 59
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 60
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 61
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 62
+        },
+        {
+          "type": "BLUE",
           "spawn_time_percent": 63
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 64
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 65
         },
         {
           "type": "RED",
@@ -236,11 +412,35 @@
         },
         {
           "type": "RED",
-          "spawn_time_percent": 69
+          "spawn_time_percent": 67
         },
         {
           "type": "RED",
+          "spawn_time_percent": 68
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 69
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 70
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 71
+        },
+        {
+          "type": "BLUE",
           "spawn_time_percent": 72
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 73
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 74
         },
         {
           "type": "RED",
@@ -248,15 +448,47 @@
         },
         {
           "type": "RED",
+          "spawn_time_percent": 76
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 77
+        },
+        {
+          "type": "RED",
           "spawn_time_percent": 78
         },
         {
           "type": "RED",
+          "spawn_time_percent": 79
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 80
+        },
+        {
+          "type": "BLUE",
           "spawn_time_percent": 81
         },
         {
-          "type": "RED",
+          "type": "BLUE",
+          "spawn_time_percent": 82
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 83
+        },
+        {
+          "type": "BLUE",
           "spawn_time_percent": 84
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 85
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 85
         },
         {
           "type": "RED",
@@ -264,7 +496,55 @@
         },
         {
           "type": "RED",
+          "spawn_time_percent": 88
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 89
+        },
+        {
+          "type": "BLUE",
           "spawn_time_percent": 90
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 91
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 92
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 93
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 94
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 95
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 96
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 97
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 98
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 99
+        },
+        {
+          "type": "GREEN",
+          "spawn_time_percent": 100
         }
       ],
       "total_spawn_time_seconds": 20.0
