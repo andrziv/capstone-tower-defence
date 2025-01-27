@@ -1,0 +1,63 @@
+#ifndef CIRCLEHITTEXTURE_H
+#define CIRCLEHITTEXTURE_H
+#include <memory>
+
+#include "../HitTexture.h"
+#include "SFML/Graphics/CircleShape.hpp"
+
+
+class CircleHitTexture final : public HitTexture {
+    std::shared_ptr<sf::CircleShape> displayEntity;
+    std::shared_ptr<sf::CircleShape> hitbox;
+
+    public:
+        CircleHitTexture() {
+            this->displayEntity = std::make_shared<sf::CircleShape>(sf::CircleShape());
+            this->hitbox = std::make_shared<sf::CircleShape>(sf::CircleShape());
+        }
+
+        [[nodiscard]] std::shared_ptr<sf::Shape> getHitbox() const override {
+            return hitbox;
+        }
+
+        [[nodiscard]] std::shared_ptr<sf::CircleShape> getCircleHitbox() const {
+            return hitbox;
+        }
+
+        void setHitboxColor(const sf::Color color) const {
+            hitbox->setFillColor(color);
+        }
+
+        void setHitboxRadius(const float radius) const {
+            hitbox->setRadius(radius);
+        }
+
+        [[nodiscard]] std::shared_ptr<sf::Shape> getDisplayEntity() const override {
+            return displayEntity;
+        }
+
+        [[nodiscard]] std::shared_ptr<sf::CircleShape> getCircleDisplayEntity() const {
+            return displayEntity;
+        }
+
+        void setDisplayEntityColor(const sf::Color color) const {
+            displayEntity->setFillColor(color);
+        }
+
+        void setDisplayEntityRadius(const float radius) const {
+            displayEntity->setRadius(radius);
+        }
+
+        void setPosition(const float x, const float y) const override {
+            displayEntity->setPosition(sf::Vector2f(x - displayEntity->getRadius(), y - displayEntity->getRadius()));
+            hitbox->setPosition(sf::Vector2f(x + (displayEntity->getRadius() - hitbox->getRadius()), y + (displayEntity->getRadius() - hitbox->getRadius())));
+        }
+
+        void setPosition(const sf::Vector2f position) const override {
+            setPosition(position.x, position.y);
+        }
+};
+
+
+
+#endif //CIRCLEHITTEXTURE_H
