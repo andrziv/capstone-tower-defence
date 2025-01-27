@@ -27,7 +27,7 @@ class DevProjectile final : public Projectile {
         }
 
         DevProjectile(const int pierce, const int damage, const int speed, const float posX, const float posY, const sf::Color color, const float size, const float direction) : DevProjectile(pierce, damage, speed, posX, posY, color, size) {
-            getHitTexture()->getDisplayEntity()->setRadius(size);
+            getHitTexture()->setDisplayEntityRadius(size);
             getHitTexture()->setHitboxRadius(size);
             setAngle(direction);
         }
