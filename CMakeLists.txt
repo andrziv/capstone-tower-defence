@@ -15,7 +15,7 @@ FetchContent_Declare(json
 FetchContent_MakeAvailable(SFML json)
 
 add_executable(main src/main.cpp
-        src/entity/HitTexture.cpp
+        src/entity/hit_texture/HitTexture.cpp
         src/pathing/Path.h
         src/entity/enemy/Enemy.cpp
         src/entity/enemy/Enemy.h
@@ -41,7 +41,7 @@ add_executable(main src/main.cpp
         src/helper/UUID.h
         src/entity/enemy/special_enemy/dev/DevEnemy.cpp
         src/entity/enemy/special_enemy/dev/DevEnemy.h
-        src/entity/HitTexture.h
+        src/entity/hit_texture/HitTexture.h
         src/pathing/Path.cpp
         src/entity/enemy/waves/WaveLoader.cpp
         src/entity/enemy/waves/WaveLoader.h
@@ -67,5 +67,9 @@ add_executable(main src/main.cpp
         src/entity/enemy/special_enemy/special/armoured/ArmouredEnemy.h
         src/entity/enemy/special_enemy/special/metal/MetalEnemy.cpp
         src/entity/enemy/special_enemy/special/metal/MetalEnemy.h
+        src/entity/hit_texture/circle/CircleHitTexture.cpp
+        src/entity/hit_texture/circle/CircleHitTexture.h
+        src/entity/hit_texture/rectangle/RectangleHitTexture.cpp
+        src/entity/hit_texture/rectangle/RectangleHitTexture.h
 )
 target_link_libraries(main PRIVATE SFML::Graphics nlohmann_json::nlohmann_json)

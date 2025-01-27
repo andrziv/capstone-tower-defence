@@ -4,8 +4,8 @@
 #include <cmath>
 #include <string>
 
-#include "../HitTexture.h"
 #include "../../helper/UUID.h"
+#include "../hit_texture/circle/CircleHitTexture.h"
 #include "SFML/Graphics/Vertex.hpp"
 
 
@@ -18,7 +18,7 @@ class Enemy {
     sf::Vertex position;
     std::shared_ptr<sf::VertexArray> path;
     int currentNodeTarget = 0;
-    HitTexture hitTexture;
+    CircleHitTexture hitTexture;
     int health;
     double speed;
 
@@ -90,7 +90,7 @@ class Enemy {
             currentNodeTarget = newTarget;
         }
 
-        HitTexture *getHitTexture() {
+        CircleHitTexture *getHitTexture() {
             return &hitTexture;
         }
 

@@ -8,7 +8,7 @@
 #include "SFML/System/Vector2.hpp"
 
 #include "../../enemy/Enemy.h"
-#include "../../HitTexture.h"
+#include "../../hit_texture/HitTexture.h"
 #include "../../../helper/UUID.h"
 #include "../../../helper/CollisionDetect.h"
 
@@ -19,7 +19,7 @@ class Projectile {
     int speed;
     float angle;
     sf::Vector2f pos;
-    HitTexture hitTexture;
+    CircleHitTexture hitTexture;
     std::vector<std::string> collisions;
 
     Projectile(const int pierce, const int damage, const int speed): angle(0) {
@@ -54,10 +54,10 @@ public:
     }
 
     [[nodiscard]] bool isColliding(const std::shared_ptr<Enemy>& toCheck) const {
-        return doCirclesOverlap(hitTexture.getHitbox(), toCheck->getHitTexture()->getHitbox());
+        return doCirclesOverlap(*hitTexture.getCircleHitbox(), *toCheck->getHitTexture()->getCircleHitbox());
     }
 
-    HitTexture *getHitTexture() {
+    CircleHitTexture *getHitTexture() {
         return &hitTexture;
     }
 
