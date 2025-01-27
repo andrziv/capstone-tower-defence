@@ -2,7 +2,7 @@
 #define HITTEXTURE_H
 
 #include <memory>
-#include "../../../cmake-build-debug/_deps/sfml-src/include/SFML/Graphics/CircleShape.hpp"
+#include "SFML/Graphics/Shape.hpp"
 
 class HitTexture {
     public:
