@@ -29,7 +29,7 @@ class JoTower final : public Tower {
             const std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
             const auto timeDiff = std::chrono::duration_cast<std::chrono::seconds>(end - shootStart).count();
             std::vector<std::shared_ptr<Projectile>> projectiles;
-            if (timeDiff >= getAttackSpeed()) {
+            if (static_cast<float>(timeDiff) >= getAttackSpeed()) {
                 double aimAngle = 0;
                 double closestDistance = 10000;
                 bool enemyFound = false;
@@ -39,12 +39,12 @@ class JoTower final : public Tower {
                         + std::pow(getPosition().y - enemy->getPosition().position.y, 2));
                     if (distance < closestDistance) {
                         closestDistance = distance;
-                        aimAngle = atan2((enemy->getPosition().position.y - getPosition().y), (enemy->getPosition().position.x - getPosition().x));
+                        aimAngle = atan2(enemy->getPosition().position.y - getPosition().y, enemy->getPosition().position.x - getPosition().x);
                         enemyFound = true;
                     }
                 }
                 if (enemyFound){
-                    projectiles.push_back(std::make_shared<DevProjectile>(DevProjectile(2, 1, 20, getPosition().x, getPosition().y, sf::Color(255, 98, 0), 4.f, aimAngle)));
+                    projectiles.push_back(std::make_shared<DevProjectile>(DevProjectile(2, 1, 20, getPosition().x, getPosition().y, sf::Color(255, 98, 0), 4.f, static_cast<float>(aimAngle))));
                 }
                 shootStart = std::chrono::steady_clock::now();
             }

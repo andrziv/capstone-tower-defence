@@ -12,8 +12,7 @@ class TowerManager {
     std::list<std::shared_ptr<Tower>> towers;
 
 public:
-    void update() {
-
+    void update() const {
         projectileManager.update();
     }
 
@@ -32,7 +31,7 @@ public:
     }
 
     [[nodiscard]] std::vector<std::shared_ptr<Tower>> getTowers() const {
-        return std::vector<std::shared_ptr<Tower>>(towers.begin(), towers.end());
+        return { towers.begin(), towers.end() };
     }
 
     void enemyInteractions(std::vector<std::shared_ptr<Enemy>> enemies) {

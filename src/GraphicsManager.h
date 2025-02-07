@@ -68,7 +68,7 @@ public:
         window->setFramerateLimit(frames);
     }
 
-    sf::Vector2i getMousePosition() const {
+    [[nodiscard]] sf::Vector2i getMousePosition() const {
         return sf::Mouse::getPosition(*window);
     }
 
