@@ -29,7 +29,7 @@ class GameManager {
     void checkAndLoadNewEnemies() {
         const std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
         const auto timeDiff = std::chrono::duration_cast<std::chrono::seconds>(end - waveTimeStart).count();
-        if (enemyManager.getNumberOfAliveEnemies() == 0 && waveLoadingPaused) {
+        if (enemySpawnTimeQueue.empty() && enemyManager.getNumberOfAliveEnemies() == 0 && waveLoadingPaused) {
             waveTimeStart = std::chrono::steady_clock::now();
             waveLoadingPaused = false;
         }
