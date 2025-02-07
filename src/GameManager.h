@@ -111,11 +111,13 @@ public:
         return towerSelector.isStillSelected();
     }
 
-    void addTower(const std::shared_ptr<Tower>& tower) {
-        if (playerBalance >= tower->getAttackPower()) {
+    bool addTower(const std::shared_ptr<Tower>& tower) {
+        if (playerBalance >= tower->getCost()) {
             towerManager.addTower(tower);
-            playerBalance -= tower->getAttackPower();
+            playerBalance -= tower->getCost();
+            return true;
         }
+        return false;
     }
 
     void removeTower(const std::shared_ptr<Tower>& tower) {

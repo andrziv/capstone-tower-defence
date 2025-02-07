@@ -104,8 +104,11 @@ int main() {
             if (event->is<sf::Event::MouseButtonReleased>()) {
                 if (const auto buttonReleased = event->getIf<sf::Event::MouseButtonReleased>(); buttonReleased->button == sf::Mouse::Button::Left) {
                     if (gameManager.isTowerAlreadySelected()) {
-                        gameManager.addTower(gameManager.getHoveredTower());
+                        const auto success = gameManager.addTower(gameManager.getHoveredTower());
                         gameManager.deselectTower();
+                        if (!success) {
+                            graphicsManager.removeDrawable(gameManager.getHoveredTowerDrawable());
+                        }
                     }
                 }
             }

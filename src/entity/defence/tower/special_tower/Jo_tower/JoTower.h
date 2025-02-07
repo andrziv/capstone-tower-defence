@@ -3,7 +3,6 @@
 
 
 #include <cmath>
-#include <string>
 #include <memory>
 
 #include "../../Tower.h"
@@ -17,7 +16,7 @@ class Projectile;
 class JoTower final : public Tower {
     std::chrono::steady_clock::time_point shootStart = std::chrono::steady_clock::now();
     public:
-        explicit JoTower(const sf::Vector2f& position) : Tower (position, 100, 0, 3.f)  {
+        explicit JoTower(const sf::Vector2f& position) : Tower (position, 100, 270, 3.f)  {
             getHitTexture()->setDisplayEntityColor(sf::Color::Green);
             getHitTexture()->setDisplayEntityHeight(50);
             getHitTexture()->setDisplayEntityWidth(50);

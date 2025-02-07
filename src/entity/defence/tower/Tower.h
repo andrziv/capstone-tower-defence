@@ -13,7 +13,7 @@ class Tower {
     std::string id = get_uuid();
     sf::Vector2f position;
     float range;
-    int attackPower;
+    int cost;
     float attackSpeed;
     sf::CircleShape rangeIndicator;
     std::shared_ptr<RectangleHitTexture> hitTexture;
@@ -21,8 +21,8 @@ class Tower {
     public:
     virtual ~Tower() = default;
 
-        Tower(const sf::Vector2f& position, const float range, const int attackPower, const float attackSpeed)
-            : position(position), range(range), attackPower(attackPower), attackSpeed(attackSpeed) {
+        Tower(const sf::Vector2f& position, const float range, const int towerCost, const float attackSpeed)
+            : position(position), range(range), cost(towerCost), attackSpeed(attackSpeed) {
             hitTexture = std::make_shared<RectangleHitTexture>(RectangleHitTexture());
             rangeIndicator.setRadius(range);
             rangeIndicator.setOrigin(sf::Vector2f(range, range));
@@ -48,8 +48,8 @@ class Tower {
             return range;
         }
 
-        [[nodiscard]] int getAttackPower() const {
-            return attackPower;
+        [[nodiscard]] int getCost() const {
+            return cost;
         }
 
         [[nodiscard]] float getAttackSpeed() const {
