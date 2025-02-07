@@ -2,6 +2,7 @@
 #define JOTOWER_H
 
 
+#include <cmath>
 #include <string>
 #include <memory>
 
@@ -33,18 +34,20 @@ class JoTower final : public Tower {
                 double aimAngle = 0;
                 double closestDistance = 10000;
                 bool enemyFound = false;
+                const float towerCenterX = getPosition().x + getHitTexture()->getHitbox()->getGeometricCenter().x;
+                const float towerCenterY = getPosition().y + getHitTexture()->getHitbox()->getGeometricCenter().y;
 
                 for (const auto& enemy : enemies) {
-                    const double distance = std::sqrt(std::pow(getPosition().x - enemy->getPosition().position.x, 2)
-                        + std::pow(getPosition().y - enemy->getPosition().position.y, 2));
+                    const double distance = std::sqrt(std::pow(towerCenterX - enemy->getPosition().position.x, 2)
+                        + std::pow(towerCenterY - enemy->getPosition().position.y, 2));
                     if (distance < closestDistance) {
                         closestDistance = distance;
-                        aimAngle = atan2(enemy->getPosition().position.y - getPosition().y, enemy->getPosition().position.x - getPosition().x);
+                        aimAngle = std::atan2(enemy->getPosition().position.y - towerCenterY, enemy->getPosition().position.x - towerCenterX);
                         enemyFound = true;
                     }
                 }
                 if (enemyFound){
-                    projectiles.push_back(std::make_shared<DevProjectile>(DevProjectile(2, 1, 20, getPosition().x, getPosition().y, sf::Color(255, 98, 0), 4.f, static_cast<float>(aimAngle))));
+                    projectiles.push_back(std::make_shared<DevProjectile>(DevProjectile(2, 1, 20, towerCenterX, towerCenterY, sf::Color(255, 98, 0), 4.f, static_cast<float>(aimAngle))));
                 }
                 shootStart = std::chrono::steady_clock::now();
             }
