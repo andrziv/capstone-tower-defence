@@ -21,6 +21,8 @@ add_executable(main src/main.cpp
         src/entity/enemy/Enemy.h
         src/entity/defence/tower/Tower.cpp
         src/entity/defence/tower/Tower.h
+        src/entity/defence/tower/special_tower/Jo_tower/JoTower.h
+        src/entity/defence/tower/special_tower/Jo_tower/JoTower.cpp
         src/entity/defence/projectile/Projectile.cpp
         src/entity/defence/projectile/Projectile.h
         src/entity/defence/projectile/tower_projectile/dev/DevProjectile.cpp
@@ -69,5 +71,7 @@ add_executable(main src/main.cpp
         src/entity/hit_texture/circle/CircleHitTexture.h
         src/entity/hit_texture/rectangle/RectangleHitTexture.cpp
         src/entity/hit_texture/rectangle/RectangleHitTexture.h
+        src/TowerSelector.cpp
+        src/TowerSelector.h
 )
 target_link_libraries(main PRIVATE SFML::Graphics nlohmann_json::nlohmann_json)

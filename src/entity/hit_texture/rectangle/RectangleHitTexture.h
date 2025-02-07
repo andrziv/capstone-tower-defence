@@ -26,6 +26,18 @@ class RectangleHitTexture final : HitTexture{
             hitbox->setFillColor(color);
         }
 
+        void setHitboxHeight(const float height) const {
+            auto size = hitbox->getSize();
+            size.y = height;
+            hitbox->setSize(size);
+        }
+
+        void setHitboxWidth(const float width) const {
+            auto size = hitbox->getSize();
+            size.x = width;
+            hitbox->setSize(size);
+        }
+
         [[nodiscard]] std::shared_ptr<sf::Shape> getDisplayEntity() const override {
             return displayEntity;
         }
@@ -38,17 +50,35 @@ class RectangleHitTexture final : HitTexture{
             displayEntity->setFillColor(color);
         }
 
+        void setDisplayEntityHeight(const float height) const {
+            auto size = displayEntity->getSize();
+            size.y = height;
+            displayEntity->setSize(size);
+        }
+
+        void setDisplayEntityWidth(const float width) const {
+            auto size = displayEntity->getSize();
+            size.x = width;
+            displayEntity->setSize(size);
+        }
+
         void setPosition(const float x, const float y) const override {
-            displayEntity->setPosition(sf::Vector2f(
-                x - (displayEntity->getGeometricCenter().x - displayEntity->getPosition().x),
-                y - (displayEntity->getGeometricCenter().y - displayEntity->getPosition().y)));
+            displayEntity->setPosition(sf::Vector2f(x, y));
             hitbox->setPosition(sf::Vector2f(
-                x + ((displayEntity->getGeometricCenter().x - displayEntity->getPosition().x) - (hitbox->getGeometricCenter().x - hitbox->getPosition().x)),
-                y + ((displayEntity->getGeometricCenter().y - displayEntity->getPosition().y) - (hitbox->getGeometricCenter().y - hitbox->getPosition().y))));
+                x + (displayEntity->getGeometricCenter().x - hitbox->getGeometricCenter().x),
+                y + (displayEntity->getGeometricCenter().y - hitbox->getGeometricCenter().y)));
         }
 
         void setPosition(const sf::Vector2f position) const override {
             setPosition(position.x, position.y);
+        }
+
+        void setHitbox(const std::shared_ptr<sf::RectangleShape>& hitbox) {
+            this->hitbox = hitbox;
+        }
+
+        void setDisplayEntity(const std::shared_ptr<sf::RectangleShape>& displayEntity) {
+            this->displayEntity = displayEntity;
         }
 };
 

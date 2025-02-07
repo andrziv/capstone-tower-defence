@@ -2,21 +2,23 @@
 #define GAMEMANAGER_H
 
 #include <queue>
+#include <memory>
 
+#include "TowerSelector.h"
 #include "entity/defence/projectile/Projectile.h"
-#include "entity/defence/projectile/ProjectileManager.h"
 #include "entity/defence/tower/TowerManager.h"
 #include "entity/enemy/Enemy.h"
 #include "entity/enemy/EnemyManager.h"
 #include "entity/enemy/waves/WaveLoader.h"
 
-
 class Tower;
 
 class GameManager {
     int playerHealth = 1000;
+    int playerBalance = 2000;
     EnemyManager enemyManager;
     TowerManager towerManager;
+    TowerSelector towerSelector;
     WaveLoader waveLoader = WaveLoader("../../src/resources/waves/dev-waves.json");
     std::chrono::steady_clock::time_point waveTimeStart = std::chrono::steady_clock::now();
     std::chrono::steady_clock::time_point interWaveTimeStart = std::chrono::steady_clock::now();
@@ -75,7 +77,7 @@ class GameManager {
     }
 
     void penalizeForFinishedEnemies() {
-        for (const auto& enemy : enemyManager.getEnemiesAtEndOfPath()) {
+        for ([[maybe_unused]] const auto& enemy : enemyManager.getEnemiesAtEndOfPath()) {
             playerHealth--;
         }
     }
@@ -93,27 +95,81 @@ public:
         penalizeForFinishedEnemies();
     }
 
+    bool attemptSelectingTower(const sf::Vector2i& mousePosition) {
+        return towerSelector.attemptSelectingTower(mousePosition);
+    }
+
+    void dragSelectedTower(const sf::Vector2i& mousePosition) const {
+        towerSelector.dragSelectedTower(mousePosition);
+    }
+
+    void deselectTower() {
+        towerSelector.deselectTower();
+    }
+
+    [[nodiscard]] bool isTowerAlreadySelected() const {
+        return towerSelector.isStillSelected();
+    }
+
+    void addTower(const std::shared_ptr<Tower>& tower) {
+        if (playerBalance >= tower->getAttackPower()) {
+            towerManager.addTower(tower);
+            playerBalance -= tower->getAttackPower();
+        }
+    }
+
+    void removeTower(const std::shared_ptr<Tower>& tower) {
+        towerManager.removeTower(tower);
+    }
+
+    std::shared_ptr<Tower> getHoveredTower() {
+        return towerSelector.getSelectedTower();
+    }
+
+    std::shared_ptr<sf::Drawable> getHoveredTowerDrawable() {
+        return towerSelector.getSelectedTower()->getHitTexture()->getDisplayEntity();
+    }
+
+    [[nodiscard]] std::vector<std::shared_ptr<sf::Drawable>> getAvailTowerDrawables() const {
+        std::vector<std::shared_ptr<sf::Drawable>> drawables;
+        const std::vector<std::shared_ptr<Tower>> towers = towerSelector.getAvailableTowers();
+        for (const auto& tower : towers) {
+            drawables.push_back(tower->getHitTexture()->getDisplayEntity());
+        }
+
+        return drawables;
+    }
+
     [[nodiscard]] std::vector<std::shared_ptr<sf::Drawable>> getDrawables() const {
         std::vector<std::shared_ptr<sf::Drawable>> drawables;
         drawables.push_back(enemyManager.getEnemyPath());
 
         const std::vector<std::shared_ptr<Enemy>> enemies = enemyManager.getAliveEnemies();
         const std::vector<Projectile*> projectiles = towerManager.getActiveProjectiles();
+        const std::vector<std::shared_ptr<Tower>> towers = towerManager.getTowers();
+
         for (const auto& enemy : enemies) {
             drawables.push_back(enemy->getHitTexture()->getDisplayEntity());
         }
         for (const auto projectile : projectiles) {
             drawables.push_back(projectile->getHitTexture()->getDisplayEntity());
         }
+        for (const auto& tower : towers) {
+            drawables.push_back(tower->getHitTexture()->getDisplayEntity());
+        }
+        
         return drawables;
     }
 
-    // TODO: reminder to replace this with a more robust system that preferably doesn't require a completely separate set of lists
     [[nodiscard]] std::vector<std::shared_ptr<sf::Drawable>> getNewDrawables() {
         const std::vector<std::shared_ptr<Enemy>> enemies = enemyManager.getUndrawnEnemies();
+        const std::vector<std::shared_ptr<Projectile>> projectiles = towerManager.getUndrawnProjectiles();
         std::vector<std::shared_ptr<sf::Drawable>> drawables;
         for (const auto& enemy : enemies) {
             drawables.push_back(enemy->getHitTexture()->getDisplayEntity());
+        }
+        for (const auto& projectile : projectiles) {
+            drawables.push_back(projectile->getHitTexture()->getDisplayEntity());
         }
         return drawables;
     }
@@ -140,7 +196,6 @@ public:
         towerManager.removeInactiveProjectiles();
     }
 
-    // TODO: temp; just for testing atm
     void shrinkEnemyPath() const {
         enemyManager.shrinkEnemyPath();
     }
@@ -156,8 +211,11 @@ public:
     [[nodiscard]] int getPlayerHealth() const {
         return playerHealth;
     }
+
+    [[nodiscard]] int getPlayerBalance() const {
+        return playerBalance;
+    }
 };
 
-
-
 #endif //GAMEMANAGER_H
+

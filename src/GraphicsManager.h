@@ -14,17 +14,17 @@ public:
     }
 
     void addDrawable(const std::shared_ptr<sf::Drawable>& drawable) {
-        drawables.push_back(drawable);
+        drawables.push_front(drawable);
     }
 
     void addDrawables(const std::vector<std::shared_ptr<sf::Drawable>>& newDrawables) {
         for (const auto& drawable : newDrawables) {
-            drawables.push_back(drawable);
+            drawables.push_front(drawable);
         }
     }
 
     void addPriorityDrawable(const std::shared_ptr<sf::Drawable>& drawable) {
-        drawables.push_front(drawable);
+        drawables.push_back(drawable);
     }
 
     void addPriorityDrawables(const std::vector<std::shared_ptr<sf::Drawable>>& newDrawables) {
@@ -67,6 +67,11 @@ public:
     void setFramerateLimit(const int frames) const {
         window->setFramerateLimit(frames);
     }
+
+    sf::Vector2i getMousePosition() const {
+        return sf::Mouse::getPosition(*window);
+    }
+
 };
 
 

@@ -1,37 +1,64 @@
 #ifndef TOWERMANAGER_H
 #define TOWERMANAGER_H
 #include <list>
-
+#include <vector>
+#include <memory>
 #include "Tower.h"
 #include "../projectile/ProjectileManager.h"
-
+#include <SFML/Graphics.hpp>
 
 class TowerManager {
     ProjectileManager projectileManager;
-    std::list<Tower> towers;
+    std::list<std::shared_ptr<Tower>> towers;
 
-    public:
-        void update() const {
-            projectileManager.update();
-        }
+public:
+    void update() {
 
-        void enemyInteractions(const std::vector<std::shared_ptr<Enemy>> &enemies) const {
-            projectileManager.enemyInteractions(enemies);
-        }
+        projectileManager.update();
+    }
 
-        [[nodiscard]] std::vector<Projectile*> getActiveProjectiles() const {
-            return projectileManager.getActiveProjectiles();
-        }
+    void addTower(const std::shared_ptr<Tower>& newTower) {
+        towers.push_back(newTower);
+    }
 
-        [[nodiscard]] std::vector<Projectile*> getInactiveProjectiles() const {
-            return projectileManager.getInactiveProjectiles();
+    void addTowers(const std::vector<std::shared_ptr<Tower>>& newTowers) {
+        for (const auto& tower : newTowers) {
+            towers.push_back(tower);
         }
+    }
 
-        void removeInactiveProjectiles() {
-            return projectileManager.removeInactiveProjectiles();
+    void removeTower(const std::shared_ptr<Tower>& tower) {
+        towers.remove(tower);  
+    }
+
+    [[nodiscard]] std::vector<std::shared_ptr<Tower>> getTowers() const {
+        return std::vector<std::shared_ptr<Tower>>(towers.begin(), towers.end());
+    }
+
+    void enemyInteractions(std::vector<std::shared_ptr<Enemy>> enemies) {
+        for (const auto& tower : towers) {
+            for (auto& projectile : tower->shootProjectile(enemies)) {
+                projectileManager.addProjectile(projectile);
+            }
         }
+        projectileManager.enemyInteractions(enemies);
+    }
+
+    [[nodiscard]] std::vector<Projectile*> getActiveProjectiles() const {
+        return projectileManager.getActiveProjectiles();
+    }
+
+    [[nodiscard]] std::vector<Projectile*> getInactiveProjectiles() const {
+        return projectileManager.getInactiveProjectiles();
+    }
+
+    [[nodiscard]] std::vector<std::shared_ptr<Projectile>> getUndrawnProjectiles() {
+        return projectileManager.getUndrawnProjectiles();
+    }
+
+    void removeInactiveProjectiles() {
+        return projectileManager.removeInactiveProjectiles();
+    }
 };
 
-
-
-#endif //TOWERMANAGER_H
+#endif // TOWERMANAGER_H

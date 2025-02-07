@@ -12,13 +12,12 @@ double tickSum = 0;
 double ticklist[MAXSAMPLES];
 
 int calcAverageTick(const double newTick) {
-    tickSum -= ticklist[tickIndex];  /* subtract value falling off */
-    tickSum += newTick;              /* add new value */
-    ticklist[tickIndex] = newTick;   /* save new value so it can be subtracted later */
-    if(++tickIndex == MAXSAMPLES)    /* inc buffer index */
+    tickSum -= ticklist[tickIndex];  
+    tickSum += newTick;              
+    ticklist[tickIndex] = newTick;   
+    if (++tickIndex == MAXSAMPLES)    
         tickIndex = 0;
 
-    /* return average */
     return static_cast<int>(tickSum / MAXSAMPLES);
 }
 
@@ -29,6 +28,7 @@ int main() {
     const auto drawnPath = std::make_shared<sf::VertexArray>(sf::VertexArray());
     drawnPath->setPrimitiveType(sf::PrimitiveType::LineStrip);
 
+    graphicsManager.addDrawables(gameManager.getAvailTowerDrawables());
     graphicsManager.addDrawables(gameManager.getDrawables());
     graphicsManager.addPriorityDrawable(drawnPath);
 
@@ -36,7 +36,7 @@ int main() {
     const auto fpsCounter = std::make_shared<sf::Text>(sf::Text(font));
     const auto waveCounter = std::make_shared<sf::Text>(sf::Text(font));
     const auto lifeCounter = std::make_shared<sf::Text>(sf::Text(font));
-    // TODO: fix the file address to target whatever is inside bin
+    const auto balanceCounter = std::make_shared<sf::Text>(sf::Text(font));  
     if (font.openFromFile("../../src/resources/fonts/LEMONMILK-Regular.otf")) {
         fpsCounter->setCharacterSize(24);
         fpsCounter->setFillColor(sf::Color::Red);
@@ -55,11 +55,16 @@ int main() {
         lifeCounter->setStyle(sf::Text::Bold);
         lifeCounter->setPosition(sf::Vector2f(150, 0));
         graphicsManager.addDrawable(lifeCounter);
+
+        balanceCounter->setCharacterSize(24);  
+        balanceCounter->setFillColor(sf::Color::Yellow);  
+        balanceCounter->setStyle(sf::Text::Bold);
+        balanceCounter->setPosition(sf::Vector2f(1550, 50));  
+        graphicsManager.addDrawable(balanceCounter);  
     }
 
     while (graphicsManager.isActive()) {
         std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
-        // TODO: move these keeb events to another section of the code
         while (const std::optional event = graphicsManager.pollEvent()) {
             if (event->is<sf::Event::Closed>()) {
                 graphicsManager.deactivate();
@@ -72,16 +77,22 @@ int main() {
                     }
                 }
             }
+
             if (event->is<sf::Event::MouseButtonPressed>()) {
                 if (const auto buttonPressed = event->getIf<sf::Event::MouseButtonPressed>(); buttonPressed->button == sf::Mouse::Button::Left) {
                     const auto mousePosition = buttonPressed->position;
-                    sf::Vertex mouseVertex{{static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y)}, sf::Color::Yellow, { 0.0f,  0.0f}};
-                    drawnPath->append(mouseVertex);
+                    if (!gameManager.isTowerAlreadySelected()) {
+                        if (gameManager.attemptSelectingTower(mousePosition)) {
+                            graphicsManager.addPriorityDrawable(gameManager.getHoveredTowerDrawable());
+                        }
+                    } else {
+                        graphicsManager.removeDrawable(gameManager.getHoveredTowerDrawable());
+                    }
                 } else if (buttonPressed->button == sf::Mouse::Button::Right) {
                     gameManager.shrinkEnemyPath();
                 }
             }
-            // TODO: Temp, just for development and allowing us to increase the game speed to get to things faster
+
             if (event->is<sf::Event::KeyPressed>()) {
                 if (const auto buttonPressed = event->getIf<sf::Event::KeyPressed>(); buttonPressed->code == sf::Keyboard::Key::Space) {
                     graphicsManager.setFramerateLimit(240);
@@ -89,12 +100,29 @@ int main() {
                     graphicsManager.setFramerateLimit(60);
                 }
             }
+
+            if (event->is<sf::Event::MouseButtonReleased>()) {
+                if (const auto buttonReleased = event->getIf<sf::Event::MouseButtonReleased>(); buttonReleased->button == sf::Mouse::Button::Left) {
+                    if (gameManager.isTowerAlreadySelected()) {
+                        gameManager.addTower(gameManager.getHoveredTower());
+                        gameManager.deselectTower();
+                    }
+                }
+            }
+        }
+
+        if (gameManager.isTowerAlreadySelected()) {
+            const auto mousePosition = graphicsManager.getMousePosition();
+            gameManager.dragSelectedTower(mousePosition);
         }
 
         gameManager.update();
+
         lifeCounter->setString("Lives: " + std::to_string(gameManager.getPlayerHealth()));
-        // TODO: technically the counter is wrong atm but once we get the waves starting from the start of the application, it should be okay.
         waveCounter->setString(std::to_string(gameManager.getCurrentWaveNumber()) + " / " + std::to_string(gameManager.getMaxWaveNumber()));
+
+        balanceCounter->setString("Balance: " + std::to_string(gameManager.getPlayerBalance()));  
+        
         graphicsManager.addDrawables(gameManager.getNewDrawables());
         graphicsManager.removeDrawables(gameManager.getRemovableDrawables());
         graphicsManager.draw();

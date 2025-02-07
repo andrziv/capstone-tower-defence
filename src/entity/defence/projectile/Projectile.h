@@ -62,7 +62,7 @@ public:
     }
 
     [[nodiscard]] bool isValid() const {
-        return pierce > 0;
+        return pierce > 0 && (pos.x <= 1920 && pos.x >= 0 && pos.y <= 1080 && pos.y >= 0);
     }
 
     bool operator == (const Projectile &other) const {
@@ -97,6 +97,14 @@ protected:
 
     [[nodiscard]] int getPierce() const {
         return pierce;
+    }
+
+    void setAngle(const float angle) {
+        this->angle = angle;
+    }
+
+    [[nodiscard]] float getAngle() const {
+        return angle;
     }
 };
 
