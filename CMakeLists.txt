@@ -71,5 +71,7 @@ add_executable(main src/main.cpp
         src/entity/hit_texture/circle/CircleHitTexture.h
         src/entity/hit_texture/rectangle/RectangleHitTexture.cpp
         src/entity/hit_texture/rectangle/RectangleHitTexture.h
+        src/TowerSelector.cpp
+        src/TowerSelector.h
 )
 target_link_libraries(main PRIVATE SFML::Graphics nlohmann_json::nlohmann_json)

@@ -4,7 +4,6 @@
 
 #include "GameManager.h"
 #include "GraphicsManager.h"
-#include "entity/defence/tower/special_tower/Jo_tower/JoTower.h"
 
 #define MAXSAMPLES 100
 
@@ -29,6 +28,7 @@ int main() {
     const auto drawnPath = std::make_shared<sf::VertexArray>(sf::VertexArray());
     drawnPath->setPrimitiveType(sf::PrimitiveType::LineStrip);
 
+    graphicsManager.addDrawables(gameManager.getAvailTowerDrawables());
     graphicsManager.addDrawables(gameManager.getDrawables());
     graphicsManager.addPriorityDrawable(drawnPath);
 
@@ -63,28 +63,6 @@ int main() {
         graphicsManager.addDrawable(balanceCounter);  
     }
 
-    std::vector<sf::RectangleShape> towerButtons;
-    const float buttonWidth = 100.f, buttonHeight = 50.f;
-    for (int i = 0; i < 3; ++i) {
-        sf::RectangleShape button(sf::Vector2f(buttonWidth, buttonHeight));
-        button.setPosition(sf::Vector2f(1550.f, 100.f + i * (buttonHeight + 10.f)));
-        button.setFillColor(sf::Color::Green);  
-        towerButtons.push_back(button);
-    }
-
-    for (const auto& button : towerButtons) {
-        graphicsManager.addDrawable(std::make_shared<sf::RectangleShape>(button));
-    }
-
-
-    bool isTowerSelected = false;
-    Tower selectedTower(sf::Vector2f(0, 0), 100.f, 10, 1.f); 
-
-    std::shared_ptr<sf::RectangleShape> draggedTowerDrawable = std::make_shared<sf::RectangleShape>(sf::Vector2f(buttonWidth, buttonHeight));
-    sf::Vector2f dragOffset;
-
-    graphicsManager.addPriorityDrawable(draggedTowerDrawable);
-
     while (graphicsManager.isActive()) {
         std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
         while (const std::optional event = graphicsManager.pollEvent()) {
@@ -103,8 +81,12 @@ int main() {
             if (event->is<sf::Event::MouseButtonPressed>()) {
                 if (const auto buttonPressed = event->getIf<sf::Event::MouseButtonPressed>(); buttonPressed->button == sf::Mouse::Button::Left) {
                     const auto mousePosition = buttonPressed->position;
-                    if (!isTowerSelected) {
-                        gameManager.handleTowerSelection(mousePosition, towerButtons, draggedTowerDrawable, selectedTower, isTowerSelected, dragOffset);
+                    if (!gameManager.isTowerAlreadySelected()) {
+                        if (gameManager.attemptSelectingTower(mousePosition)) {
+                            graphicsManager.addPriorityDrawable(gameManager.getHoveredTowerDrawable());
+                        }
+                    } else {
+                        graphicsManager.removeDrawable(gameManager.getHoveredTowerDrawable());
                     }
                 } else if (buttonPressed->button == sf::Mouse::Button::Right) {
                     gameManager.shrinkEnemyPath();
@@ -121,27 +103,17 @@ int main() {
 
             if (event->is<sf::Event::MouseButtonReleased>()) {
                 if (const auto buttonReleased = event->getIf<sf::Event::MouseButtonReleased>(); buttonReleased->button == sf::Mouse::Button::Left) {
-                    if (isTowerSelected && draggedTowerDrawable != nullptr) {
-                        selectedTower.setPosition(draggedTowerDrawable->getPosition());
-                        auto newTower = std::make_shared<JoTower>(JoTower(draggedTowerDrawable->getPosition()));  // Copy the selected tower
-                        gameManager.addTower(newTower);  // Add the tower to the GameManager
-                        isTowerSelected = false;  // Reset the tower selection state
-                        draggedTowerDrawable = std::make_shared<sf::RectangleShape>(sf::Vector2f(buttonWidth, buttonHeight));
-                        draggedTowerDrawable->setFillColor(sf::Color::Transparent);  // Set to invisible
+                    if (gameManager.isTowerAlreadySelected()) {
+                        gameManager.addTower(gameManager.getHoveredTower());
+                        gameManager.deselectTower();
                     }
                 }
             }
-
         }
 
-        if (isTowerSelected && draggedTowerDrawable != nullptr) {
+        if (gameManager.isTowerAlreadySelected()) {
             const auto mousePosition = graphicsManager.getMousePosition();
-            draggedTowerDrawable->setPosition(sf::Vector2f(mousePosition.x - dragOffset.x, mousePosition.y - dragOffset.y));
-            draggedTowerDrawable->setFillColor(sf::Color::Green);  // Set it to visible color during dragging
-            graphicsManager.addPriorityDrawable(draggedTowerDrawable);  // Add it when dragging 
-        } else if (!isTowerSelected) {
-            // Avoid adding the dragged tower if no tower is selected
-            draggedTowerDrawable->setFillColor(sf::Color::Transparent);  // Ensure it remains invisible
+            gameManager.dragSelectedTower(mousePosition);
         }
 
         gameManager.update();

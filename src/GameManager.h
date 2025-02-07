@@ -3,10 +3,9 @@
 
 #include <queue>
 #include <memory>
-#include <SFML/Graphics.hpp>
 
+#include "TowerSelector.h"
 #include "entity/defence/projectile/Projectile.h"
-#include "entity/defence/projectile/ProjectileManager.h"
 #include "entity/defence/tower/TowerManager.h"
 #include "entity/enemy/Enemy.h"
 #include "entity/enemy/EnemyManager.h"
@@ -19,6 +18,7 @@ class GameManager {
     int playerBalance = 2000;
     EnemyManager enemyManager;
     TowerManager towerManager;
+    TowerSelector towerSelector;
     WaveLoader waveLoader = WaveLoader("../../src/resources/waves/dev-waves.json");
     std::chrono::steady_clock::time_point waveTimeStart = std::chrono::steady_clock::now();
     std::chrono::steady_clock::time_point interWaveTimeStart = std::chrono::steady_clock::now();
@@ -77,7 +77,7 @@ class GameManager {
     }
 
     void penalizeForFinishedEnemies() {
-        for (const auto& enemy : enemyManager.getEnemiesAtEndOfPath()) {
+        for ([[maybe_unused]] const auto& enemy : enemyManager.getEnemiesAtEndOfPath()) {
             playerHealth--;
         }
     }
@@ -95,6 +95,22 @@ public:
         penalizeForFinishedEnemies();
     }
 
+    bool attemptSelectingTower(const sf::Vector2i& mousePosition) {
+        return towerSelector.attemptSelectingTower(mousePosition);
+    }
+
+    void dragSelectedTower(const sf::Vector2i& mousePosition) const {
+        towerSelector.dragSelectedTower(mousePosition);
+    }
+
+    void deselectTower() {
+        towerSelector.deselectTower();
+    }
+
+    [[nodiscard]] bool isTowerAlreadySelected() const {
+        return towerSelector.isStillSelected();
+    }
+
     void addTower(const std::shared_ptr<Tower>& tower) {
         if (playerBalance >= tower->getAttackPower()) {
             towerManager.addTower(tower);
@@ -106,25 +122,23 @@ public:
         towerManager.removeTower(tower);
     }
 
-    void handleTowerSelection(const sf::Vector2i& mousePosition,
-                                        const std::vector<sf::RectangleShape>& towerButtons,
-                                        std::shared_ptr<sf::RectangleShape>& draggedTowerDrawable,
-                                        Tower& selectedTower,
-                                        bool& isTowerSelected,
-                                        sf::Vector2f& dragOffset) {
-        for (size_t i = 0; i < towerButtons.size(); ++i) {
-            if (towerButtons[i].getGlobalBounds().contains(sf::Vector2f(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y)))) {
-                if (!isTowerSelected) {
-                    isTowerSelected = true;
-                    draggedTowerDrawable->setFillColor(sf::Color::Green); // Adjust this based on your design
-                    draggedTowerDrawable->setPosition(sf::Vector2f(mousePosition.x - draggedTowerDrawable->getSize().x / 2, mousePosition.y - draggedTowerDrawable->getSize().y / 2));
-                    dragOffset = sf::Vector2f(mousePosition.x - draggedTowerDrawable->getPosition().x, mousePosition.y - draggedTowerDrawable->getPosition().y);
-                }
-                break;
-            }
-        }
+    std::shared_ptr<Tower> getHoveredTower() {
+        return towerSelector.getSelectedTower();
     }
 
+    std::shared_ptr<sf::Drawable> getHoveredTowerDrawable() {
+        return towerSelector.getSelectedTower()->getHitTexture()->getDisplayEntity();
+    }
+
+    [[nodiscard]] std::vector<std::shared_ptr<sf::Drawable>> getAvailTowerDrawables() const {
+        std::vector<std::shared_ptr<sf::Drawable>> drawables;
+        const std::vector<std::shared_ptr<Tower>> towers = towerSelector.getAvailableTowers();
+        for (const auto& tower : towers) {
+            drawables.push_back(tower->getHitTexture()->getDisplayEntity());
+        }
+
+        return drawables;
+    }
 
     [[nodiscard]] std::vector<std::shared_ptr<sf::Drawable>> getDrawables() const {
         std::vector<std::shared_ptr<sf::Drawable>> drawables;
@@ -141,7 +155,7 @@ public:
             drawables.push_back(projectile->getHitTexture()->getDisplayEntity());
         }
         for (const auto& tower : towers) {
-            drawables.push_back(tower->getDisplayEntity());
+            drawables.push_back(tower->getHitTexture()->getDisplayEntity());
         }
         
         return drawables;
