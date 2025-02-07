@@ -49,6 +49,7 @@ class TowerSelector {
                     if (tower->getHitTexture()->getDisplayEntity()->getGlobalBounds().contains(sf::Vector2f(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y)))) {
                         isTowerSelected = true;
                         selectedTower = tower->deep_copy(); // make a copy of the available tower
+                        selectedTower->getHitTexture()->setDisplayEntityTransparency(0.5);
                         return true;
                     }
                 }
@@ -66,6 +67,7 @@ class TowerSelector {
 
         void deselectTower() {
             isTowerSelected = false;
+            selectedTower->getHitTexture()->setDisplayEntityTransparency(1);
         }
 
         [[nodiscard]] std::vector<std::shared_ptr<Tower>> getAvailableTowers() const {

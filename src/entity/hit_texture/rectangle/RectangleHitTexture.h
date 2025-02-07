@@ -50,6 +50,15 @@ class RectangleHitTexture final : HitTexture{
             displayEntity->setFillColor(color);
         }
 
+        void setDisplayEntityTransparency(const float transparency) const {
+            if (transparency > 255 || transparency < 0) {
+                return;
+            }
+            auto currentColor = displayEntity->getFillColor();
+            currentColor.a = static_cast<int>(transparency * 255);
+            displayEntity->setFillColor(currentColor);
+        }
+
         void setDisplayEntityHeight(const float height) const {
             auto size = displayEntity->getSize();
             size.y = height;
