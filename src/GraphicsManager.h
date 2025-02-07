@@ -55,7 +55,6 @@ public:
     void removeDrawable(const std::shared_ptr<sf::Drawable>& toRemove) {
         for (auto &[priority, listOfDrawables] : drawables) {
             listOfDrawables.remove(toRemove);
-            return;
         }
     }
 

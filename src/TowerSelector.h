@@ -8,8 +8,8 @@
 
 class TowerSelector {
 
-    const sf::Vector2f availIconStart = sf::Vector2f(1550.f, 100.f);
-    const float availIconGap = 10.f;
+    const sf::Vector2f availIconStart = sf::Vector2f(1750.f, 100.f);
+    const float availIconGap = 20.f;
     std::vector<std::shared_ptr<Tower>> availableTowers;
     std::shared_ptr<Tower> selectedTower;
     bool isTowerSelected;
@@ -17,6 +17,8 @@ class TowerSelector {
     public:
         TowerSelector() {
             std::shared_ptr<Tower> towersToMakeAvail[] {
+                std::make_shared<JoTower>(JoTower(sf::Vector2f(0, 0))),
+                std::make_shared<JoTower>(JoTower(sf::Vector2f(0, 0))),
                 std::make_shared<JoTower>(JoTower(sf::Vector2f(0, 0)))
             };
 
@@ -29,7 +31,7 @@ class TowerSelector {
                     availIconStart.y + counter_y * (available->getHitTexture()->getRectDisplayEntity()->getSize().y + availIconGap)));
                 availableTowers.push_back(available);
                 // check if even or odd
-                if (counter & 1 == 0) { // even
+                if (counter % 2 == 0) { // even
                     switch_column = 1;
                 } else { // odd
                     switch_column = 0;
