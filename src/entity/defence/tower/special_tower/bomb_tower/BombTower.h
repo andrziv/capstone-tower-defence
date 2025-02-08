@@ -1,7 +1,3 @@
-//
-// Created by aki on 2/7/25.
-//
-
 #ifndef BOMBTOWER_H
 #define BOMBTOWER_H
 #include "../BaseTower.h"

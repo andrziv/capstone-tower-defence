@@ -1,7 +1,3 @@
-//
-// Created by aki on 2/7/25.
-//
-
 #ifndef BASETOWER_H
 #define BASETOWER_H
 #include "../Tower.h"
