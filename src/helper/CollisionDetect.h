@@ -6,11 +6,11 @@
 
 inline bool doCirclesOverlap(const sf::CircleShape& circle1, const sf::CircleShape& circle2) {
     const double r1 = circle1.getRadius();
-    const double x1 = circle1.getPosition().x;
-    const double y1 = circle1.getPosition().y;
+    const double x1 = circle1.getPosition().x + r1;
+    const double y1 = circle1.getPosition().y + r1;
     const double r2 = circle2.getRadius();
-    const double x2 = circle2.getPosition().x;
-    const double y2 = circle2.getPosition().y;
+    const double x2 = circle2.getPosition().x + r2;
+    const double y2 = circle2.getPosition().y + r2;
 
     // get distance between the circle's centers
     // use the Pythagorean Theorem to compute the distance

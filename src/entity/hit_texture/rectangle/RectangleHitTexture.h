@@ -72,10 +72,12 @@ class RectangleHitTexture final : HitTexture{
         }
 
         void setPosition(const float x, const float y) const override {
-            displayEntity->setPosition(sf::Vector2f(x, y));
+            displayEntity->setPosition(sf::Vector2f(
+                x - displayEntity->getSize().x / 2,
+                y - displayEntity->getSize().y / 2));
             hitbox->setPosition(sf::Vector2f(
-                x + (displayEntity->getGeometricCenter().x - hitbox->getGeometricCenter().x),
-                y + (displayEntity->getGeometricCenter().y - hitbox->getGeometricCenter().y)));
+                x + (displayEntity->getSize().x / 2 - hitbox->getSize().x / 2),
+                y + (displayEntity->getSize().y / 2 - hitbox->getSize().y / 2)));
         }
 
         void setPosition(const sf::Vector2f position) const override {

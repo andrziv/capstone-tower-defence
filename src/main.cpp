@@ -84,6 +84,7 @@ int main() {
                     if (!gameManager.isTowerAlreadySelected()) {
                         if (gameManager.attemptSelectingTower(mousePosition)) {
                             graphicsManager.addPriorityDrawable(gameManager.getHoveredTowerDrawable());
+                            graphicsManager.addPriorityDrawable(gameManager.getHoveredTower()->getRangeIndicator());
                         }
                     } else {
                         graphicsManager.removeDrawable(gameManager.getHoveredTowerDrawable());

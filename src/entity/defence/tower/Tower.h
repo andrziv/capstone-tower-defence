@@ -15,8 +15,16 @@ class Tower {
     float range;
     int cost;
     float attackSpeed;
-    sf::CircleShape rangeIndicator;
+    std::shared_ptr<sf::CircleShape> rangeIndicator;
     std::shared_ptr<RectangleHitTexture> hitTexture;
+
+    void setHitTexture(const std::shared_ptr<RectangleHitTexture>& hitTexture) {
+        this->hitTexture = hitTexture;
+    }
+
+    void setRangeIndicator(const std::shared_ptr<sf::CircleShape>& rangeIndicator) {
+        this->rangeIndicator = rangeIndicator;
+    }
 
     public:
     virtual ~Tower() = default;
@@ -24,10 +32,10 @@ class Tower {
         Tower(const sf::Vector2f& position, const float range, const int towerCost, const float attackSpeed)
             : position(position), range(range), cost(towerCost), attackSpeed(attackSpeed) {
             hitTexture = std::make_shared<RectangleHitTexture>(RectangleHitTexture());
-            rangeIndicator.setRadius(range);
-            rangeIndicator.setOrigin(sf::Vector2f(range, range));
-            rangeIndicator.setPosition(position);
-            rangeIndicator.setFillColor(sf::Color(255, 255, 255, 50)); // Semi-transparent
+            rangeIndicator = std::make_shared<sf::CircleShape>(sf::CircleShape());
+            rangeIndicator->setRadius(range);
+            rangeIndicator->setPosition(position);
+            rangeIndicator->setFillColor(sf::Color(137, 137, 137, 50)); // Semi-transparent
         }
 
         virtual std::vector<std::shared_ptr<Projectile>> shootProjectile(std::vector<std::shared_ptr<Enemy>>& enemies) {
@@ -41,7 +49,7 @@ class Tower {
         void setPosition(const sf::Vector2f& newPosition) {
             position = newPosition;
             hitTexture->setPosition(newPosition);
-            rangeIndicator.setPosition(newPosition);
+            rangeIndicator->setPosition(sf::Vector2f(newPosition.x - rangeIndicator->getRadius(), newPosition.y - rangeIndicator->getRadius()));
         }
 
         [[nodiscard]] float getRange() const {
@@ -56,7 +64,7 @@ class Tower {
             return attackSpeed;
         }
 
-        std::string getId() const {
+        [[nodiscard]] std::string getId() const {
             return id;
         }
 
@@ -68,22 +76,20 @@ class Tower {
             return hitTexture;
         }
 
-        void setHitTexture(const std::shared_ptr<RectangleHitTexture>& hitTexture) {
-            this->hitTexture = hitTexture;
-        }
-
         [[nodiscard]] std::shared_ptr<sf::CircleShape> getRangeIndicator() const {
-            return std::make_shared<sf::CircleShape>(rangeIndicator); // Return the range indicator as a drawable
+            return rangeIndicator; // Return the range indicator as a drawable
         }
 
         std::shared_ptr<Tower> deep_copy() {
             const auto copiedHitTexture = std::make_shared<RectangleHitTexture>(*getHitTexture());
+            const auto copiedRangeIndicator = std::make_shared<sf::CircleShape>(*getRangeIndicator());
             const auto copiedDisplayEntity = std::make_shared<sf::RectangleShape>(*getHitTexture()->getRectDisplayEntity());
             const auto copiedHitbox = std::make_shared<sf::RectangleShape>(*getHitTexture()->getRectHitbox());
             auto copiedTower = copy(); // make a copy of the available tower
             copiedHitTexture->setDisplayEntity(copiedDisplayEntity);
             copiedHitTexture->setHitbox(copiedHitbox);
             copiedTower->setHitTexture(copiedHitTexture);
+            copiedTower->setRangeIndicator(copiedRangeIndicator);
             return copiedTower;
         }
 

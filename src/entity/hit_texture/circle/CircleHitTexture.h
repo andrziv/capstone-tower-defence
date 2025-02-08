@@ -50,7 +50,7 @@ class CircleHitTexture final : public HitTexture {
 
         void setPosition(const float x, const float y) const override {
             displayEntity->setPosition(sf::Vector2f(x - displayEntity->getRadius(), y - displayEntity->getRadius()));
-            hitbox->setPosition(sf::Vector2f(x + (displayEntity->getRadius() - hitbox->getRadius()), y + (displayEntity->getRadius() - hitbox->getRadius())));
+            hitbox->setPosition(sf::Vector2f(x - displayEntity->getRadius(), y - displayEntity->getRadius()));
         }
 
         void setPosition(const sf::Vector2f position) const override {

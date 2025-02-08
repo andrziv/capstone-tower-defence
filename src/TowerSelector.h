@@ -59,9 +59,8 @@ class TowerSelector {
 
         void dragSelectedTower(const sf::Vector2i& mousePosition) const {
             if (isTowerSelected) {
-                selectedTower->setPosition(sf::Vector2f(
-                    static_cast<float>(mousePosition.x) - selectedTower->getHitTexture()->getRectDisplayEntity()->getSize().x / 2,
-                    static_cast<float>(mousePosition.y) - selectedTower->getHitTexture()->getRectDisplayEntity()->getSize().y / 2));
+                selectedTower->setPosition(
+                    sf::Vector2f(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y)));
             }
         }
 
