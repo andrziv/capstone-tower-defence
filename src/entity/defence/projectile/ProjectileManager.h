@@ -22,17 +22,10 @@ class ProjectileManager {
 
         void enemyInteractions(const std::vector<std::shared_ptr<Enemy>>& enemies) const {
             for (const auto &projectile : projectiles) {
-                for (const auto &enemy : enemies) {
-                    if (!projectile->isValid()) {
-                        break;
-                    }
-                    if (!enemy->isAlive()) {
-                        continue;
-                    }
-                    if (projectile->isColliding(enemy)) {
-                        projectile->onCollision(enemy);
-                    }
+                if (!projectile->isValid()) {
+                    break;
                 }
+                projectile->handleEnemies(enemies);
             }
         }
 

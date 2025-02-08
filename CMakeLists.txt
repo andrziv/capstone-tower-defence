@@ -81,5 +81,7 @@ add_executable(main src/main.cpp
         src/entity/defence/tower/special_tower/radial_spreader/RadialShooterTower.h
         src/entity/defence/tower/special_tower/BaseTower.cpp
         src/entity/defence/tower/special_tower/BaseTower.h
+        src/entity/defence/projectile/tower_projectile/BaseExplosiveProjectile.cpp
+        src/entity/defence/projectile/tower_projectile/BaseExplosiveProjectile.h
 )
 target_link_libraries(main PRIVATE SFML::Graphics nlohmann_json::nlohmann_json)

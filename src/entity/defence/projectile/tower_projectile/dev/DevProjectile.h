@@ -31,11 +31,6 @@ class DevProjectile final : public Projectile {
             getHitTexture()->setHitboxRadius(size);
             setAngle(direction);
         }
-
-    protected:
-        void collidedWith(const std::shared_ptr<Enemy> &collided) override {
-            collided->subtractHealth(getDamage());
-        }
 };
 
 

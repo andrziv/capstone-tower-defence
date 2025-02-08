@@ -39,7 +39,8 @@ class RadialShooterTower final : public BaseTower {
             const float towerCenterY = getPosition().y;
 
             for (int i = 0; i < shots; i++) {
-                const double bulletAngleRads = angle + i * (bulletSpreadAngleDeg * M_PI / 180);
+                constexpr double PI = 3.1415926535897932384626433;
+                const double bulletAngleRads = angle + i * (bulletSpreadAngleDeg * PI / 180);
                 projectiles.push_back(std::make_shared<BasicProjectile>(BasicProjectile(towerCenterX, towerCenterY, static_cast<float>(bulletAngleRads))));
             }
 

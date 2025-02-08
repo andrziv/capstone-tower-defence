@@ -19,8 +19,23 @@ public:
     }
 
 protected:
-    void collidedWith(const std::shared_ptr<Enemy> &collided) override {
-        collided->subtractHealth(getDamage());
+    void handleEnemies(const std::vector<std::shared_ptr<Enemy>> &enemies) override {
+        for (const auto &enemy : enemies) {
+            if (!isValid()) {
+                break;
+            }
+            if (!enemy->isAlive()) {
+                continue;
+            }
+            if (!alreadyCollided(enemy)) {
+                const auto enemyCollidingProjectile = doCirclesOverlap(*getHitTexture()->getCircleHitbox(), *enemy->getHitTexture()->getCircleHitbox());
+                if (enemyCollidingProjectile) {
+                    enemy->subtractHealth(getDamage());
+                    setPierce(getPierce() - 1);
+                    collisions.push_back(enemy->getId());
+                }
+            }
+        }
     }
 };
 

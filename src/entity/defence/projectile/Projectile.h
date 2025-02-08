@@ -20,7 +20,6 @@ class Projectile {
     float angle;
     sf::Vector2f pos;
     CircleHitTexture hitTexture;
-    std::vector<std::string> collisions;
 
     Projectile(const int pierce, const int damage, const int speed): angle(0) {
         this->pierce = pierce;
@@ -44,14 +43,7 @@ public:
         hitTexture.setPosition(pos);
     }
 
-    void onCollision(const std::shared_ptr<Enemy>& collided) {
-        if (!alreadyCollided(collided)) {
-            collisions.push_back(collided->getId());
-            collidedWith(collided);
-            pierce--;
-            printf("%s Collided.\n", id.c_str());
-        }
-    }
+    virtual void handleEnemies(const std::vector<std::shared_ptr<Enemy>> &collided) = 0;
 
     [[nodiscard]] bool isColliding(const std::shared_ptr<Enemy>& toCheck) const {
         return doCirclesOverlap(*hitTexture.getCircleHitbox(), *toCheck->getHitTexture()->getCircleHitbox());
@@ -73,11 +65,11 @@ public:
     }
 
 protected:
+    std::vector<std::string> collisions;
+
     bool alreadyCollided(const std::shared_ptr<Enemy>& collided) {
         return std::find(collisions.begin(), collisions.end(), collided->getId()) != collisions.end();
     }
-
-    virtual void collidedWith(const std::shared_ptr<Enemy>& collided) {}
 
     void setPos(const sf::Vector2f& pos) {
         this->pos = pos;

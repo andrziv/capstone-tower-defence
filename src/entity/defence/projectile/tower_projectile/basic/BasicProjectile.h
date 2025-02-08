@@ -14,11 +14,6 @@ public:
     BasicProjectile(const float posX, const float posY, const float direction)
         : BasicProjectile(posX, posY, direction, 1) {
     }
-
-protected:
-    void collidedWith(const std::shared_ptr<Enemy> &collided) override {
-        collided->subtractHealth(getDamage());
-    }
 };
 
 
