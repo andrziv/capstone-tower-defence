@@ -73,5 +73,13 @@ add_executable(main src/main.cpp
         src/entity/hit_texture/rectangle/RectangleHitTexture.h
         src/TowerSelector.cpp
         src/TowerSelector.h
+        src/entity/defence/projectile/tower_projectile/basic/BasicProjectile.cpp
+        src/entity/defence/projectile/tower_projectile/basic/BasicProjectile.h
+        src/entity/defence/projectile/tower_projectile/BaseNormalProjectile.cpp
+        src/entity/defence/projectile/tower_projectile/BaseNormalProjectile.h
+        src/entity/defence/tower/special_tower/radial_spreader/RadialShooterTower.cpp
+        src/entity/defence/tower/special_tower/radial_spreader/RadialShooterTower.h
+        src/entity/defence/tower/special_tower/BaseTower.cpp
+        src/entity/defence/tower/special_tower/BaseTower.h
 )
 target_link_libraries(main PRIVATE SFML::Graphics nlohmann_json::nlohmann_json)

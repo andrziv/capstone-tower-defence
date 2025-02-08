@@ -4,6 +4,7 @@
 
 #include "entity/defence/tower/Tower.h"
 #include "entity/defence/tower/special_tower/Jo_tower/JoTower.h"
+#include "entity/defence/tower/special_tower/radial_spreader/RadialShooterTower.h"
 
 
 class TowerSelector {
@@ -18,7 +19,7 @@ class TowerSelector {
         TowerSelector() {
             std::shared_ptr<Tower> towersToMakeAvail[] {
                 std::make_shared<JoTower>(JoTower(sf::Vector2f(0, 0))),
-                std::make_shared<JoTower>(JoTower(sf::Vector2f(0, 0))),
+                std::make_shared<RadialShooterTower>(RadialShooterTower(sf::Vector2f(0, 0))),
                 std::make_shared<JoTower>(JoTower(sf::Vector2f(0, 0)))
             };
 
