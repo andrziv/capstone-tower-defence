@@ -65,17 +65,34 @@ class ProjectileManager {
             return valid;
         }
 
+        [[nodiscard]] std::vector<std::shared_ptr<sf::Drawable>> getDisplayEffects() const {
+            std::vector<std::shared_ptr<sf::Drawable>> drawables;
+            for (const auto& projectile : projectiles) {
+                for (const auto& drawable : projectile->getDisplayEffects()) {
+                    drawables.push_back(drawable);
+                }
+            }
+            return drawables;
+        }
+
+        [[nodiscard]] std::vector<std::shared_ptr<sf::Drawable>> getCompletedDisplayEffects() const {
+            std::vector<std::shared_ptr<sf::Drawable>> drawables;
+            for (const auto& projectile : projectiles) {
+                for (const auto& drawable : projectile->getCompletedDisplayEffects()) {
+                    drawables.push_back(drawable);
+                }
+            }
+            return drawables;
+        }
 
         void removeInactiveProjectiles() {
             projectiles.remove_if([](const std::shared_ptr<Projectile> &projectile) {
-                return !projectile->isValid();
+                return !projectile->hasDisplayEffects() && !projectile->isValid();
             });
             undrawnProjectiles.remove_if([](const std::shared_ptr<Projectile> &projectile) {
-                return !projectile->isValid();
+                return !projectile->hasDisplayEffects() && !projectile->isValid();
             });
         }
-
-
 };
 
 

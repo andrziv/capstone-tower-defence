@@ -49,6 +49,10 @@ public:
         return doCirclesOverlap(*hitTexture.getCircleHitbox(), *toCheck->getHitTexture()->getCircleHitbox());
     }
 
+    virtual bool hasDisplayEffects() = 0;
+    virtual std::vector<std::shared_ptr<sf::Drawable>> getDisplayEffects() = 0;
+    virtual std::vector<std::shared_ptr<sf::Drawable>> getCompletedDisplayEffects() = 0;
+
     CircleHitTexture *getHitTexture() {
         return &hitTexture;
     }

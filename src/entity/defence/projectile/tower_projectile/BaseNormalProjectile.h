@@ -18,6 +18,17 @@ public:
         setAngle(direction);
     }
 
+    bool hasDisplayEffects() override {
+        return false;
+    }
+
+    std::vector<std::shared_ptr<sf::Drawable>> getDisplayEffects() override {
+        return {};
+    }
+    std::vector<std::shared_ptr<sf::Drawable>> getCompletedDisplayEffects() override {
+        return {};
+    }
+
 protected:
     void handleEnemies(const std::vector<std::shared_ptr<Enemy>> &enemies) override {
         for (const auto &enemy : enemies) {

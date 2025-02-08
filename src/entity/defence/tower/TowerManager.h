@@ -55,6 +55,14 @@ public:
         return projectileManager.getUndrawnProjectiles();
     }
 
+    [[nodiscard]] std::vector<std::shared_ptr<sf::Drawable>> getDisplayEffects() const {
+        return projectileManager.getDisplayEffects();
+    }
+
+    [[nodiscard]] std::vector<std::shared_ptr<sf::Drawable>> getCompletedDisplayEffects() const {
+        return projectileManager.getCompletedDisplayEffects();
+    }
+
     void removeInactiveProjectiles() {
         return projectileManager.removeInactiveProjectiles();
     }

@@ -15,7 +15,7 @@ class Tower;
 
 class GameManager {
     int playerHealth = 1000;
-    int playerBalance = 2000;
+    int playerBalance = 4000;
     EnemyManager enemyManager;
     TowerManager towerManager;
     TowerSelector towerSelector;
@@ -68,7 +68,7 @@ class GameManager {
             return;
         }
         auto [spawnTime, enemySpawnInfo] = enemySpawnTimeQueue.front();
-        auto timeDifference = static_cast<double>(std::chrono::duration_cast<std::chrono::milliseconds>(end - interWaveTimeStart).count()) / 1000;
+        const auto timeDifference = static_cast<double>(std::chrono::duration_cast<std::chrono::milliseconds>(end - interWaveTimeStart).count()) / 1000;
         if (timeDifference >= enemySpawnInfo.first && !enemySpawnInfo.second.empty()) {
             enemyManager.addEnemies(enemySpawnInfo.second);
             enemySpawnTimeQueue.pop();
@@ -173,6 +173,9 @@ public:
         for (const auto& projectile : projectiles) {
             drawables.push_back(projectile->getHitTexture()->getDisplayEntity());
         }
+        for (const auto& projectileDisplayEffect : towerManager.getDisplayEffects()) {
+            drawables.push_back(projectileDisplayEffect);
+        }
         return drawables;
     }
 
@@ -189,6 +192,9 @@ public:
         }
         for (const auto projectile : projectiles) {
             drawables.push_back(projectile->getHitTexture()->getDisplayEntity());
+        }
+        for (const auto& projectileDisplayEffect : towerManager.getCompletedDisplayEffects()) {
+            drawables.push_back(projectileDisplayEffect);
         }
         return drawables;
     }
