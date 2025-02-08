@@ -88,6 +88,7 @@ int main() {
                         }
                     } else {
                         graphicsManager.removeDrawable(gameManager.getHoveredTowerDrawable());
+                        graphicsManager.removeDrawable(gameManager.getHoveredTower()->getRangeIndicator());
                     }
                 } else if (buttonPressed->button == sf::Mouse::Button::Right) {
                     gameManager.shrinkEnemyPath();
@@ -106,6 +107,7 @@ int main() {
                 if (const auto buttonReleased = event->getIf<sf::Event::MouseButtonReleased>(); buttonReleased->button == sf::Mouse::Button::Left) {
                     if (gameManager.isTowerAlreadySelected()) {
                         const auto success = gameManager.addTower(gameManager.getHoveredTower());
+                        graphicsManager.removeDrawable(gameManager.getHoveredTower()->getRangeIndicator());
                         gameManager.deselectTower();
                         if (!success) {
                             graphicsManager.removeDrawable(gameManager.getHoveredTowerDrawable());
