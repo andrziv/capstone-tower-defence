@@ -1,6 +1,7 @@
 #ifndef BASETOWER_H
 #define BASETOWER_H
 #include "../Tower.h"
+#include "../../../../TowerPressureDecrpt.h"
 
 
 class BaseTower : public Tower {
@@ -27,6 +28,7 @@ class BaseTower : public Tower {
                         projectiles.push_back(projectile);
                     }
 
+                    addToDecrypt(getId(), getPressurePattern());
                     shootStart = std::chrono::steady_clock::now();
                 }
             }
@@ -56,6 +58,8 @@ class BaseTower : public Tower {
         }
 
         virtual std::vector<std::shared_ptr<Projectile>> generateProjectiles(double angle) = 0;
+
+        virtual std::string getPressurePattern() = 0;
 };
 
 

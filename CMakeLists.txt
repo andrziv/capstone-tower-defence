@@ -12,7 +12,14 @@ FetchContent_Declare(SFML
     SYSTEM)
 FetchContent_Declare(json
         URL https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz)
-FetchContent_MakeAvailable(SFML json)
+FetchContent_Declare(
+        ssl_content
+        URL      https://github.com/janbar/openssl-cmake/archive/refs/tags/1.1.1k-20210430.tar.gz
+        URL_HASH MD5=f4294e5de7ebb20f9a695155660f1afd
+)
+FetchContent_MakeAvailable(SFML json ssl_content)
+add_library(OpenSSL::SSL ALIAS ssl)
+add_library(OpenSSL::Crypto ALIAS crypto)
 
 add_executable(main src/main.cpp
         src/entity/hit_texture/HitTexture.cpp
@@ -85,5 +92,9 @@ add_executable(main src/main.cpp
         src/entity/defence/projectile/tower_projectile/bomb/BombProjectile.h
         src/entity/defence/tower/special_tower/bomb_tower/BombTower.cpp
         src/entity/defence/tower/special_tower/bomb_tower/BombTower.h
+        src/TowerPressureDecrpt.h
+        src/FPS.cpp
+        src/FPS.h
 )
-target_link_libraries(main PRIVATE SFML::Graphics nlohmann_json::nlohmann_json)
+
+target_link_libraries(main PRIVATE SFML::Graphics crypto nlohmann_json::nlohmann_json)

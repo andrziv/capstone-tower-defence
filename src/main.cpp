@@ -1,29 +1,31 @@
+#include <iostream>
 #include <SFML/Graphics.hpp>
 #include <optional>
 #include <thread>
 
+#include "FPS.h"
 #include "GameManager.h"
 #include "GraphicsManager.h"
+#include "TowerPressureDecrpt.h"
 
-#define MAXSAMPLES 100
-
-int tickIndex = 0;
-double tickSum = 0;
-double ticklist[MAXSAMPLES];
-
-int calcAverageTick(const double newTick) {
-    tickSum -= ticklist[tickIndex];  
-    tickSum += newTick;              
-    ticklist[tickIndex] = newTick;   
-    if (++tickIndex == MAXSAMPLES)    
-        tickIndex = 0;
-
-    return static_cast<int>(tickSum / MAXSAMPLES);
+[[noreturn]] void decryptSpawner() {
+    while (true) {
+        if (activeCores > currentOperations && !toDecrypt.empty()) {
+            std::thread thread(decryptNext);
+            thread.detach();
+        }
+        printf("Pressure Jobs in Queue: %lu, Active Threads: %d\n", toDecrypt.size(), currentOperations);
+        std::cout << std::flush;
+    }
 }
 
 int main() {
+    std::thread spawner(decryptSpawner);
+    spawner.detach();
+
     GraphicsManager graphicsManager;
     GameManager gameManager;
+    FPS fps;
 
     const auto drawnPath = std::make_shared<sf::VertexArray>(sf::VertexArray());
     drawnPath->setPrimitiveType(sf::PrimitiveType::LineStrip);
@@ -36,7 +38,7 @@ int main() {
     const auto fpsCounter = std::make_shared<sf::Text>(sf::Text(font));
     const auto waveCounter = std::make_shared<sf::Text>(sf::Text(font));
     const auto lifeCounter = std::make_shared<sf::Text>(sf::Text(font));
-    const auto balanceCounter = std::make_shared<sf::Text>(sf::Text(font));  
+    const auto balanceCounter = std::make_shared<sf::Text>(sf::Text(font));
     if (font.openFromFile("../../src/resources/fonts/LEMONMILK-Regular.otf")) {
         fpsCounter->setCharacterSize(24);
         fpsCounter->setFillColor(sf::Color::Red);
@@ -56,15 +58,14 @@ int main() {
         lifeCounter->setPosition(sf::Vector2f(150, 0));
         graphicsManager.addDrawable(lifeCounter);
 
-        balanceCounter->setCharacterSize(24);  
-        balanceCounter->setFillColor(sf::Color::Yellow);  
+        balanceCounter->setCharacterSize(24);
+        balanceCounter->setFillColor(sf::Color::Yellow);
         balanceCounter->setStyle(sf::Text::Bold);
-        balanceCounter->setPosition(sf::Vector2f(1550, 50));  
-        graphicsManager.addDrawable(balanceCounter);  
+        balanceCounter->setPosition(sf::Vector2f(1550, 50));
+        graphicsManager.addDrawable(balanceCounter);
     }
-
+    setActiveCoresTo(3);
     while (graphicsManager.isActive()) {
-        std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
         while (const std::optional event = graphicsManager.pollEvent()) {
             if (event->is<sf::Event::Closed>()) {
                 graphicsManager.deactivate();
@@ -127,15 +128,14 @@ int main() {
         lifeCounter->setString("Lives: " + std::to_string(gameManager.getPlayerHealth()));
         waveCounter->setString(std::to_string(gameManager.getCurrentWaveNumber()) + " / " + std::to_string(gameManager.getMaxWaveNumber()));
 
-        balanceCounter->setString("Balance: " + std::to_string(gameManager.getPlayerBalance()));  
-        
+        balanceCounter->setString("Balance: " + std::to_string(gameManager.getPlayerBalance()));
+
         graphicsManager.addDrawables(gameManager.getNewDrawables());
         graphicsManager.removeDrawables(gameManager.getRemovableDrawables());
         graphicsManager.draw();
         gameManager.cleanup();
 
-        std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-        const double fps = 1e9 / static_cast<double>(std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count());
-        fpsCounter->setString(std::to_string(calcAverageTick(fps)).substr(0, 3));
+        fps.update();
+        fpsCounter->setString(std::to_string(fps.getFPS()));
     }
 }

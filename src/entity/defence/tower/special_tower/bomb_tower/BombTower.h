@@ -23,6 +23,10 @@ protected:
 
         return projectiles;
     }
+
+    std::string getPressurePattern() override {
+        return R"~(^(00))~";
+    }
 };
 
 

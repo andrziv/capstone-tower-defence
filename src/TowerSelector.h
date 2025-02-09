@@ -51,6 +51,7 @@ class TowerSelector {
                     if (tower->getHitTexture()->getDisplayEntity()->getGlobalBounds().contains(sf::Vector2f(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y)))) {
                         isTowerSelected = true;
                         selectedTower = tower->deep_copy(); // make a copy of the available tower
+                        selectedTower->setId(get_uuid());
                         selectedTower->getHitTexture()->setDisplayEntityTransparency(0.5);
                         return true;
                     }

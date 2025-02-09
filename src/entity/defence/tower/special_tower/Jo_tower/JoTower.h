@@ -29,6 +29,10 @@ class JoTower final : public BaseTower {
 
             return projectiles;
         }
+
+        std::string getPressurePattern() override {
+            return R"~(^(000))~";
+        }
 };
 
 #endif //JOTOWER_H
