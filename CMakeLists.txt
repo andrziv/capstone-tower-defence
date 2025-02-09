@@ -95,6 +95,8 @@ add_executable(main src/main.cpp
         src/TowerPressureDecrpt.h
         src/FPS.cpp
         src/FPS.h
+        src/helper/ThickLine.cpp
+        src/helper/ThickLine.h
 )
 
 target_link_libraries(main PRIVATE SFML::Graphics crypto nlohmann_json::nlohmann_json)

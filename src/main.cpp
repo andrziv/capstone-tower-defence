@@ -7,6 +7,7 @@
 #include "GameManager.h"
 #include "GraphicsManager.h"
 #include "TowerPressureDecrpt.h"
+#include "helper/ThickLine.h"
 
 [[noreturn]] void decryptSpawner() {
     while (true) {
