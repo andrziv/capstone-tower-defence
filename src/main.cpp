@@ -17,6 +17,7 @@ Accumulator completionRate;
 [[noreturn]] void decryptSpawner() {
     int completions = 0;
     while (true) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
         if (activeCores > currentOperations && !toDecrypt.empty()) {
             std::thread thread(decryptNext);
             thread.detach();
@@ -93,7 +94,9 @@ void game_core() {
         graphicsManager.addDrawable(balanceCounter);
     }
     setActiveCoresTo(3);
+    int dummy;
     while (graphicsManager.isActive()) {
+        dummy++;
         while (const std::optional event = graphicsManager.pollEvent()) {
             if (event->is<sf::Event::Closed>()) {
                 graphicsManager.deactivate();
