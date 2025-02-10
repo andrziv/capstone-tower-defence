@@ -3,6 +3,7 @@
 
 #include <cmath>
 #include "SFML/Graphics/CircleShape.hpp"
+#include "SFML/Graphics/RectangleShape.hpp"
 
 inline bool doCirclesOverlap(const sf::CircleShape& circle1, const sf::CircleShape& circle2) {
     const double r1 = circle1.getRadius();
@@ -23,6 +24,12 @@ inline bool doCirclesOverlap(const sf::CircleShape& circle1, const sf::CircleSha
         return true;
     }
     return false;
+}
+
+inline bool doRectanglesOverlap(const sf::RectangleShape& rect1, const sf::RectangleShape& rect2) {
+    const sf::FloatRect bounds1 = rect1.getGlobalBounds();
+    const sf::FloatRect bounds2 = rect2.getGlobalBounds();
+    return bounds1.findIntersection(bounds2).has_value();
 }
 
 #endif //COLLISIONDETECT_H

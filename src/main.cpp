@@ -7,7 +7,6 @@
 #include "GameManager.h"
 #include "GraphicsManager.h"
 #include "TowerPressureDecrpt.h"
-#include "helper/ThickLine.h"
 
 [[noreturn]] void decryptSpawner() {
     while (true) {
@@ -15,8 +14,8 @@
             std::thread thread(decryptNext);
             thread.detach();
         }
-        printf("Pressure Jobs in Queue: %lu, Active Threads: %d\n", toDecrypt.size(), currentOperations);
-        std::cout << std::flush;
+        //printf("Pressure Jobs in Queue: %lu, Active Threads: %d\n", toDecrypt.size(), currentOperations);
+        //std::cout << std::flush;
     }
 }
 

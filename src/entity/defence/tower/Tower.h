@@ -80,6 +80,22 @@ class Tower {
             return rangeIndicator; // Return the range indicator as a drawable
         }
 
+        void validateRangeIndicator() const {
+            auto currentColor = rangeIndicator->getFillColor();
+            currentColor.r = 137;
+            currentColor.g = 137;
+            currentColor.b = 137;
+            rangeIndicator->setFillColor(currentColor);
+        }
+
+        void invalidateRangeIndicator() const {
+            auto currentColor = rangeIndicator->getFillColor();
+            currentColor.r = 255;
+            currentColor.g = 137;
+            currentColor.b = 137;
+            rangeIndicator->setFillColor(currentColor);
+        }
+
         std::shared_ptr<Tower> deep_copy() {
             const auto copiedHitTexture = std::make_shared<RectangleHitTexture>(*getHitTexture());
             const auto copiedRangeIndicator = std::make_shared<sf::CircleShape>(*getRangeIndicator());

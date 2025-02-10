@@ -99,8 +99,14 @@ public:
         return towerSelector.attemptSelectingTower(mousePosition);
     }
 
-    void dragSelectedTower(const sf::Vector2i& mousePosition) const {
+    void dragSelectedTower(const sf::Vector2i& mousePosition) {
         towerSelector.dragSelectedTower(mousePosition);
+        const auto towerOverlap = towerSelector.doesSelectedTowerOverlap(towerManager.getTowers());
+        if (towerOverlap) {
+            towerSelector.getSelectedTower()->invalidateRangeIndicator();
+        } else {
+            towerSelector.getSelectedTower()->validateRangeIndicator();
+        }
     }
 
     void deselectTower() {
@@ -113,9 +119,12 @@ public:
 
     bool addTower(const std::shared_ptr<Tower>& tower) {
         if (playerBalance >= tower->getCost()) {
-            towerManager.addTower(tower);
-            playerBalance -= tower->getCost();
-            return true;
+            const auto overlap = towerSelector.doesSelectedTowerOverlap(towerManager.getTowers());
+            if (!overlap) {
+                towerManager.addTower(tower);
+                playerBalance -= tower->getCost();
+                return true;
+            }
         }
         return false;
     }

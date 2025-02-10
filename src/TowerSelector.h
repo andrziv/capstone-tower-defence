@@ -72,6 +72,15 @@ class TowerSelector {
             selectedTower->getHitTexture()->setDisplayEntityTransparency(1);
         }
 
+        [[nodiscard]] bool doesSelectedTowerOverlap(const std::vector<std::shared_ptr<Tower>>& towers) const {
+            for (const auto& tower : towers) {
+                if (doRectanglesOverlap(*tower->getHitTexture()->getRectHitbox(), *selectedTower->getHitTexture()->getRectHitbox())) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         [[nodiscard]] std::vector<std::shared_ptr<Tower>> getAvailableTowers() const {
             return availableTowers;
         }
