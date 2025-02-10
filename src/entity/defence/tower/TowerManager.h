@@ -7,9 +7,13 @@
 #include "../projectile/ProjectileManager.h"
 #include <SFML/Graphics.hpp>
 
+#include "../../../TowerPressureDecrpt.h"
+
 class TowerManager {
     ProjectileManager projectileManager;
     std::list<std::shared_ptr<Tower>> towers;
+    int accumulatedPressure = 0;
+    std::chrono::steady_clock::time_point accumulationStart = std::chrono::steady_clock::now();
 
 public:
     void update() const {
@@ -36,9 +40,20 @@ public:
 
     void enemyInteractions(std::vector<std::shared_ptr<Enemy>> enemies) {
         for (const auto& tower : towers) {
-            for (auto& projectile : tower->shootProjectile(enemies)) {
-                projectileManager.addProjectile(projectile);
+            const auto& newProjectiles = tower->shootProjectile(enemies);
+            if (!newProjectiles.empty()) {
+                accumulatedPressure += static_cast<int>(newProjectiles.size());
+                for (auto& projectile : newProjectiles) {
+                    projectileManager.addProjectile(projectile);
+                }
             }
+        }
+        const std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+        const auto timeDiff = std::chrono::duration_cast<std::chrono::seconds>(end - accumulationStart).count();
+        if (timeDiff >= 1) {
+            addToAccumRate(accumulatedPressure);
+            accumulatedPressure = 0;
+            accumulationStart = std::chrono::steady_clock::now();
         }
         projectileManager.enemyInteractions(enemies);
     }

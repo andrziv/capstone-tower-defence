@@ -11,7 +11,6 @@
 #include "helper/Digits.h"
 
 std::chrono::steady_clock::time_point completionStart = std::chrono::steady_clock::now();
-Accumulator additionRate;
 Accumulator completionRate;
 
 [[noreturn]] void decryptSpawner() {
@@ -35,9 +34,6 @@ Accumulator completionRate;
             completions = 0;
             completionStart = std::chrono::steady_clock::now();
         }
-
-        //printf("Pressure Jobs in Queue: %lu, Active Threads: %d\n", toDecrypt.size(), currentOperations);
-        //std::cout << std::flush;
     }
 }
 
@@ -60,6 +56,7 @@ void game_core() {
     const auto fpsCounter = std::make_shared<sf::Text>(sf::Text(font));
     const auto lifeCounter = std::make_shared<sf::Text>(sf::Text(font));
     const auto waveCounter = std::make_shared<sf::Text>(sf::Text(font));
+    const auto pressureRemaining = std::make_shared<sf::Text>(sf::Text(font));
     const auto pressureAdditionRate = std::make_shared<sf::Text>(sf::Text(font));
     const auto pressureCompletionRate = std::make_shared<sf::Text>(sf::Text(font));
     const auto balanceCounter = std::make_shared<sf::Text>(sf::Text(font));
@@ -76,16 +73,22 @@ void game_core() {
         lifeCounter->setPosition(sf::Vector2f(150, 0));
         graphicsManager.addDrawable(lifeCounter);
 
+        pressureRemaining->setCharacterSize(24);
+        pressureRemaining->setFillColor(sf::Color(150,80,80));
+        pressureRemaining->setStyle(sf::Text::Bold);
+        pressureRemaining->setPosition(sf::Vector2f(500, 0));
+        graphicsManager.addDrawable(pressureRemaining);
+
         pressureCompletionRate->setCharacterSize(24);
         pressureCompletionRate->setFillColor(sf::Color(17,124,19));
         pressureCompletionRate->setStyle(sf::Text::Bold);
-        pressureCompletionRate->setPosition(sf::Vector2f(500, 0));
+        pressureCompletionRate->setPosition(sf::Vector2f(500, 25));
         graphicsManager.addDrawable(pressureCompletionRate);
 
         pressureAdditionRate->setCharacterSize(24);
         pressureAdditionRate->setFillColor(sf::Color(255,99,71));
         pressureAdditionRate->setStyle(sf::Text::Bold);
-        pressureAdditionRate->setPosition(sf::Vector2f(575, 0));
+        pressureAdditionRate->setPosition(sf::Vector2f(575, 25));
         graphicsManager.addDrawable(pressureAdditionRate);
 
         waveCounter->setCharacterSize(24);
@@ -100,10 +103,10 @@ void game_core() {
         balanceCounter->setPosition(sf::Vector2f(1550, 50));
         graphicsManager.addDrawable(balanceCounter);
     }
-    setActiveCoresTo(3);
-    int dummy;
+
+    setActiveCoresTo(2);
+
     while (graphicsManager.isActive()) {
-        dummy++;
         while (const std::optional event = graphicsManager.pollEvent()) {
             if (event->is<sf::Event::Closed>()) {
                 graphicsManager.deactivate();
@@ -176,6 +179,7 @@ void game_core() {
         fps.update();
         fpsCounter->setString(std::to_string(fps.getFPS()));
         int digits = countDigit(static_cast<int>(completionRate.getAverageRate()));
+        pressureRemaining->setString("Remaining Pressure Jobs: " + std::to_string(toDecrypt.size()));
         pressureCompletionRate->setString(std::to_string(completionRate.getAverageRate()).substr(0, digits + 3));
         pressureAdditionRate->setString(std::to_string(additionRate.getAverageRate()).substr(0, digits + 3));
     }

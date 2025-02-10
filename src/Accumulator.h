@@ -8,6 +8,7 @@ class Accumulator {
     double valSum = 0;
     int valList[MAXSAMPLES] = {};
     int totalSamples = 0;
+
 public:
     void accumulate(const int newVal) {
         valSum -= valList[valIndex];

@@ -1,16 +1,14 @@
 #ifndef TOWERPRESSUREDECRPT_H
 #define TOWERPRESSUREDECRPT_H
-#include <iostream>
-#include <iomanip>
-#include <ios>
-#include <mutex>
-#include <queue>
-#include <regex>
-#include <string>
-#include <openssl/sha.h>
-#include <random>
-#include <unistd.h>
 
+#include <iostream>
+#include <mutex>
+#include <regex>
+#include <openssl/sha.h>
+#include <queue>
+#include "Accumulator.h"
+
+inline Accumulator additionRate;
 inline std::queue<std::pair<std::string, std::string>> toDecrypt;
 inline std::queue<std::string> decryptedPins;
 inline int activeCores = 1;
@@ -39,6 +37,10 @@ inline std::string randomString() {
     }
 
     return tmp_s;
+}
+
+inline void addToAccumRate(const int pressureAdded) {
+    additionRate.accumulate(pressureAdded);
 }
 
 inline void addToDecrypt(const std::string& toHash, const std::string& pattern) {
