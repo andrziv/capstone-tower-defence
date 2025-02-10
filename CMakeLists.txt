@@ -97,6 +97,12 @@ add_executable(main src/main.cpp
         src/FPS.h
         src/helper/ThickLine.cpp
         src/helper/ThickLine.h
+        src/Accumulator.cpp
+        src/Accumulator.h
+        src/helper/Digits.h
 )
 
-target_link_libraries(main PRIVATE SFML::Graphics crypto nlohmann_json::nlohmann_json)
+find_package(OpenMP)
+if(OpenMP_CXX_FOUND)
+    target_link_libraries(main PRIVATE SFML::Graphics crypto OpenMP::OpenMP_CXX nlohmann_json::nlohmann_json)
+endif()

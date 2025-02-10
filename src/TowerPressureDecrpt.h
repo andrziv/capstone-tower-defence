@@ -12,6 +12,7 @@
 #include <unistd.h>
 
 inline std::queue<std::pair<std::string, std::string>> toDecrypt;
+inline std::queue<std::string> decryptedPins;
 inline int activeCores = 1;
 inline int currentOperations = 0;
 inline std::mutex job_mutex;
@@ -46,6 +47,24 @@ inline void addToDecrypt(const std::string& toHash, const std::string& pattern) 
     queue_mutex.unlock();
 }
 
+inline std::string consumeDecrypted() {
+    job_mutex.lock();
+    if (decryptedPins.empty()) {
+        return "";
+    }
+    std::string entry = decryptedPins.front();
+    decryptedPins.pop();
+    job_mutex.unlock();
+    return entry;
+}
+
+inline bool anyCompletedJobs() {
+    job_mutex.lock();
+    const bool anyCompleted = !decryptedPins.empty();
+    job_mutex.unlock();
+    return anyCompleted;
+}
+
 inline std::string decrypt(const std::string& decrStr, const std::string& pattern) {
     job_mutex.lock();
     currentOperations++;
@@ -75,6 +94,7 @@ inline std::string decrypt(const std::string& decrStr, const std::string& patter
     printf("Hashed: %s\n", ss.str().c_str());
     std::cout << std::flush;
     currentOperations--;
+    decryptedPins.push(ss.str());
     job_mutex.unlock();
     return rStr;
 }
