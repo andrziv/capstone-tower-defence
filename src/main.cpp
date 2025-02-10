@@ -58,10 +58,11 @@ void game_core() {
 
     sf::Font font;
     const auto fpsCounter = std::make_shared<sf::Text>(sf::Text(font));
-    const auto waveCounter = std::make_shared<sf::Text>(sf::Text(font));
     const auto lifeCounter = std::make_shared<sf::Text>(sf::Text(font));
-    const auto balanceCounter = std::make_shared<sf::Text>(sf::Text(font));
+    const auto waveCounter = std::make_shared<sf::Text>(sf::Text(font));
+    const auto pressureAdditionRate = std::make_shared<sf::Text>(sf::Text(font));
     const auto pressureCompletionRate = std::make_shared<sf::Text>(sf::Text(font));
+    const auto balanceCounter = std::make_shared<sf::Text>(sf::Text(font));
     if (font.openFromFile("../../src/resources/fonts/LEMONMILK-Regular.otf")) {
         fpsCounter->setCharacterSize(24);
         fpsCounter->setFillColor(sf::Color::Red);
@@ -76,10 +77,16 @@ void game_core() {
         graphicsManager.addDrawable(lifeCounter);
 
         pressureCompletionRate->setCharacterSize(24);
-        pressureCompletionRate->setFillColor(sf::Color::Yellow);
+        pressureCompletionRate->setFillColor(sf::Color(17,124,19));
         pressureCompletionRate->setStyle(sf::Text::Bold);
-        pressureCompletionRate->setPosition(sf::Vector2f(750, 50));
+        pressureCompletionRate->setPosition(sf::Vector2f(500, 0));
         graphicsManager.addDrawable(pressureCompletionRate);
+
+        pressureAdditionRate->setCharacterSize(24);
+        pressureAdditionRate->setFillColor(sf::Color(255,99,71));
+        pressureAdditionRate->setStyle(sf::Text::Bold);
+        pressureAdditionRate->setPosition(sf::Vector2f(575, 0));
+        graphicsManager.addDrawable(pressureAdditionRate);
 
         waveCounter->setCharacterSize(24);
         waveCounter->setFillColor(sf::Color::Red);
@@ -170,6 +177,7 @@ void game_core() {
         fpsCounter->setString(std::to_string(fps.getFPS()));
         int digits = countDigit(static_cast<int>(completionRate.getAverageRate()));
         pressureCompletionRate->setString(std::to_string(completionRate.getAverageRate()).substr(0, digits + 3));
+        pressureAdditionRate->setString(std::to_string(additionRate.getAverageRate()).substr(0, digits + 3));
     }
 }
 
