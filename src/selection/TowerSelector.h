@@ -3,7 +3,7 @@
 #include <memory>
 #include <vector>
 
-#include "../DisplayConsts.h"
+#include "../display/DisplayConsts.h"
 #include "../entity/defence/tower/special_tower/bomb_tower/BombTower.h"
 #include "../entity/defence/tower/special_tower/Jo_tower/JoTower.h"
 #include "../entity/defence/tower/special_tower/radial_spreader/RadialShooterTower.h"

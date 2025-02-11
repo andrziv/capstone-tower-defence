@@ -4,7 +4,7 @@
 #include <optional>
 #include <thread>
 
-#include "DisplayTextManager.h"
+#include "display/DisplayTextManager.h"
 #include "helper/Accumulator.h"
 #include "GameManager.h"
 #include "GraphicsManager.h"
@@ -51,7 +51,7 @@ void game_core() {
     thread.detach();
 
     GraphicsManager graphicsManager;
-    DisplayTextManager displayTextManager;
+    const DisplayTextManager displayTextManager;
     GameManager gameManager;
     FPS fps;
 

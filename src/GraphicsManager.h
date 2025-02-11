@@ -4,7 +4,7 @@
 #include <list>
 #include <map>
 
-#include "DisplayConsts.h"
+#include "display/DisplayConsts.h"
 
 class GraphicsManager {
     std::unique_ptr<sf::RenderWindow> window;

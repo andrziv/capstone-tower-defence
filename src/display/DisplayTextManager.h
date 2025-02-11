@@ -3,7 +3,7 @@
 #include <memory>
 
 #include "DisplayConsts.h"
-#include "helper/Digits.h"
+#include "../helper/Digits.h"
 #include "SFML/Graphics/Font.hpp"
 #include "SFML/Graphics/Text.hpp"
 #include "SFML/System/Vector2.hpp"
