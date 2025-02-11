@@ -100,6 +100,9 @@ add_executable(main src/main.cpp
         src/helper/Digits.h
         src/pressure/DecryptJob.h
         src/helper/RandString.h
+        src/DisplayConsts.h
+        src/DisplayTextManager.cpp
+        src/DisplayTextManager.h
 )
 
 find_package(OpenMP)

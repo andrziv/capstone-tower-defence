@@ -3,6 +3,7 @@
 #include <memory>
 #include <vector>
 
+#include "../DisplayConsts.h"
 #include "../entity/defence/tower/special_tower/bomb_tower/BombTower.h"
 #include "../entity/defence/tower/special_tower/Jo_tower/JoTower.h"
 #include "../entity/defence/tower/special_tower/radial_spreader/RadialShooterTower.h"
@@ -13,8 +14,7 @@ class Tower;
 
 class TowerSelector {
 
-    const sf::Vector2f availIconStart = sf::Vector2f(1750.f, 100.f);
-    const float availIconGap = 20.f;
+    const sf::Vector2f availIconStart = sf::Vector2f(ICON_START_X, ICON_START_Y);
     std::vector<std::shared_ptr<Tower>> availableTowers;
     std::shared_ptr<Tower> selectedTower;
     bool isTowerSelected;
@@ -32,8 +32,8 @@ class TowerSelector {
             float counter_y = 0;
             for (const auto &available : towersToMakeAvail) {
                 available->setPosition(sf::Vector2f(
-                    availIconStart.x + switch_column * (available->getHitTexture()->getRectDisplayEntity()->getSize().x + availIconGap),
-                    availIconStart.y + counter_y * (available->getHitTexture()->getRectDisplayEntity()->getSize().y + availIconGap)));
+                    availIconStart.x + switch_column * (available->getHitTexture()->getRectDisplayEntity()->getSize().x + ICON_GAP),
+                    availIconStart.y + counter_y * (available->getHitTexture()->getRectDisplayEntity()->getSize().y + ICON_GAP)));
                 availableTowers.push_back(available);
                 // check if even or odd
                 if (counter % 2 == 0) { // even

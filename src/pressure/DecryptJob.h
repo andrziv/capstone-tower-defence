@@ -1,7 +1,3 @@
-//
-// Created by aki on 2/10/25.
-//
-
 #ifndef DECRYPTJOB_H
 #define DECRYPTJOB_H
 #include <iomanip>

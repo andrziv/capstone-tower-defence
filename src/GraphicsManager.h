@@ -4,14 +4,16 @@
 #include <list>
 #include <map>
 
+#include "DisplayConsts.h"
+
 class GraphicsManager {
     std::unique_ptr<sf::RenderWindow> window;
     std::map<int, std::list<std::shared_ptr<sf::Drawable>>> drawables;
 
 public:
     GraphicsManager() {
-        this->window = std::make_unique<sf::RenderWindow>(sf::RenderWindow(sf::VideoMode({1920, 1080}), "SFML works!"));
-        this->window->setFramerateLimit(60);
+        this->window = std::make_unique<sf::RenderWindow>(sf::RenderWindow(sf::VideoMode({DISPLAY_MAX_X, DISPLAY_MAX_Y}), "Capstone Tower Defence"));
+        this->window->setFramerateLimit(MAX_FRAMERATE);
         drawables.insert(std::pair(0, std::list<std::shared_ptr<sf::Drawable>>()));
         drawables.insert(std::pair(1, std::list<std::shared_ptr<sf::Drawable>>()));
         drawables.insert(std::pair(2, std::list<std::shared_ptr<sf::Drawable>>()));

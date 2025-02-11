@@ -4,10 +4,10 @@
 #include <optional>
 #include <thread>
 
+#include "DisplayTextManager.h"
 #include "helper/Accumulator.h"
 #include "GameManager.h"
 #include "GraphicsManager.h"
-#include "helper/Digits.h"
 #include "helper/visual/FPS.h"
 #include "pressure/DecryptJob.h"
 #include "pressure/TowerPressureDecrypt.h"
@@ -51,6 +51,7 @@ void game_core() {
     thread.detach();
 
     GraphicsManager graphicsManager;
+    DisplayTextManager displayTextManager;
     GameManager gameManager;
     FPS fps;
 
@@ -60,65 +61,7 @@ void game_core() {
     graphicsManager.addDrawables(gameManager.getAvailTowerDrawables());
     graphicsManager.addDrawables(gameManager.getDrawables());
     graphicsManager.addPriorityDrawable(drawnPath);
-
-    sf::Font font;
-    const auto fpsCounter = std::make_shared<sf::Text>(sf::Text(font));
-    const auto lifeCounter = std::make_shared<sf::Text>(sf::Text(font));
-    const auto waveCounter = std::make_shared<sf::Text>(sf::Text(font));
-    const auto pressureRemaining = std::make_shared<sf::Text>(sf::Text(font));
-    const auto jobCounter = std::make_shared<sf::Text>(sf::Text(font));
-    const auto pressureAdditionRate = std::make_shared<sf::Text>(sf::Text(font));
-    const auto pressureCompletionRate = std::make_shared<sf::Text>(sf::Text(font));
-    const auto balanceCounter = std::make_shared<sf::Text>(sf::Text(font));
-    if (font.openFromFile("../../src/resources/fonts/LEMONMILK-Regular.otf")) {
-        fpsCounter->setCharacterSize(24);
-        fpsCounter->setFillColor(sf::Color::Red);
-        fpsCounter->setStyle(sf::Text::Bold);
-        fpsCounter->setPosition(sf::Vector2f(0, 0));
-        graphicsManager.addDrawable(fpsCounter);
-
-        lifeCounter->setCharacterSize(24);
-        lifeCounter->setFillColor(sf::Color::Red);
-        lifeCounter->setStyle(sf::Text::Bold);
-        lifeCounter->setPosition(sf::Vector2f(150, 0));
-        graphicsManager.addDrawable(lifeCounter);
-
-        pressureRemaining->setCharacterSize(24);
-        pressureRemaining->setFillColor(sf::Color(150,80,80));
-        pressureRemaining->setStyle(sf::Text::Bold);
-        pressureRemaining->setPosition(sf::Vector2f(500, 0));
-        graphicsManager.addDrawable(pressureRemaining);
-
-        jobCounter->setCharacterSize(24);
-        jobCounter->setFillColor(sf::Color(80,150,150));
-        jobCounter->setStyle(sf::Text::Bold);
-        jobCounter->setPosition(sf::Vector2f(500, 25));
-        graphicsManager.addDrawable(jobCounter);
-
-        pressureCompletionRate->setCharacterSize(24);
-        pressureCompletionRate->setFillColor(sf::Color(17,124,19));
-        pressureCompletionRate->setStyle(sf::Text::Bold);
-        pressureCompletionRate->setPosition(sf::Vector2f(500, 50));
-        graphicsManager.addDrawable(pressureCompletionRate);
-
-        pressureAdditionRate->setCharacterSize(24);
-        pressureAdditionRate->setFillColor(sf::Color(255,99,71));
-        pressureAdditionRate->setStyle(sf::Text::Bold);
-        pressureAdditionRate->setPosition(sf::Vector2f(500, 75));
-        graphicsManager.addDrawable(pressureAdditionRate);
-
-        waveCounter->setCharacterSize(24);
-        waveCounter->setFillColor(sf::Color::Red);
-        waveCounter->setStyle(sf::Text::Bold);
-        waveCounter->setPosition(sf::Vector2f(1450, 0));
-        graphicsManager.addDrawable(waveCounter);
-
-        balanceCounter->setCharacterSize(24);
-        balanceCounter->setFillColor(sf::Color::Yellow);
-        balanceCounter->setStyle(sf::Text::Bold);
-        balanceCounter->setPosition(sf::Vector2f(1550, 50));
-        graphicsManager.addDrawable(balanceCounter);
-    }
+    graphicsManager.addPriorityDrawables(displayTextManager.getTextDrawables());
 
     setActiveCoresTo(3);
 
@@ -182,10 +125,10 @@ void game_core() {
 
         gameManager.update();
 
-        lifeCounter->setString("Lives: " + std::to_string(gameManager.getPlayerHealth()));
-        waveCounter->setString(std::to_string(gameManager.getCurrentWaveNumber()) + " / " + std::to_string(gameManager.getMaxWaveNumber()));
+        displayTextManager.setLifeCounterValue(gameManager.getPlayerHealth());
+        displayTextManager.setWaveCounterValue(gameManager.getCurrentWaveNumber(), gameManager.getMaxWaveNumber());
 
-        balanceCounter->setString("Balance: " + std::to_string(gameManager.getPlayerBalance()));
+        displayTextManager.setPlayerBalanceValue(gameManager.getPlayerBalance());
 
         graphicsManager.addDrawables(gameManager.getNewDrawables());
         graphicsManager.removeDrawables(gameManager.getRemovableDrawables());
@@ -193,12 +136,12 @@ void game_core() {
         gameManager.cleanup();
 
         fps.update();
-        fpsCounter->setString(std::to_string(fps.getFPS()));
-        int digits = countDigit(static_cast<int>(completionRate.getAverageRate()));
-        pressureRemaining->setString("Remaining Pressure Jobs: " + std::to_string(toDecrypt.size() + currentOperations));
-        jobCounter->setString("Active Pressure Jobs: " + std::to_string(currentOperations));
-        pressureCompletionRate->setString("Completion Rate: " + std::to_string(completionRate.getAverageRate()).substr(0, digits + 3));
-        pressureAdditionRate->setString("Production Rate: " + std::to_string(additionRate.getAverageRate()).substr(0, digits + 3));
+        displayTextManager.setFPSCounterValue(fps.getFPS());
+
+        displayTextManager.setRemainingPressureValue(static_cast<int>(toDecrypt.size()) + currentOperations);
+        displayTextManager.setActivePressureJobsValue(currentOperations);
+        displayTextManager.setPressureCompletionRateValue(completionRate.getAverageRate());
+        displayTextManager.setPressureProductionRateValue(additionRate.getAverageRate());
     }
 }
 
