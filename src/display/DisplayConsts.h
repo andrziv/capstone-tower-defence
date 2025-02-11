@@ -16,6 +16,7 @@ inline constexpr int ICON_GAP = 20;
 // Placement Constants
 inline constexpr float ICON_START_X = DISPLAY_MAX_X - ICON_LEFT_PADDING;
 inline constexpr float ICON_START_Y = 0 + ICON_TOP_PADDING;
+inline constexpr float SEL_MENU_START_X = ICON_START_X - 50.f * 1.8 - ICON_GAP;
 
 // Text
 // Defined Constants
@@ -24,7 +25,7 @@ inline constexpr float FPS_PERCENT_RIGHT        = 0;
 inline constexpr float LIFE_PERCENT_RIGHT       = 1.f / 15.f;
 inline constexpr float PRESSURE_PERCENT_RIGHT   = 4.f / 10;
 inline constexpr float BALANCE_PERCENT_RIGHT    = 2.f / 10.f;
-inline constexpr float WAVE_PERCENT_RIGHT       = 8.f / 10.f;
+inline constexpr float WAVE_PERCENT_RIGHT       = 7.8 / 10.f;
 
 // Placement Constants
 inline constexpr float FPS_START_RIGHT      = DISPLAY_MAX_X * FPS_PERCENT_RIGHT;

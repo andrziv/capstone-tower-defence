@@ -8,6 +8,7 @@
 #include "helper/Accumulator.h"
 #include "GameManager.h"
 #include "GraphicsManager.h"
+#include "display/StaticGraphicsManager.h"
 #include "helper/visual/FPS.h"
 #include "pressure/DecryptJob.h"
 #include "pressure/TowerPressureDecrypt.h"
@@ -52,6 +53,7 @@ void game_core() {
 
     GraphicsManager graphicsManager;
     const DisplayTextManager displayTextManager;
+    const StaticGraphicsManager menuBackgroundManager;
     GameManager gameManager;
     FPS fps;
 
@@ -61,6 +63,7 @@ void game_core() {
     graphicsManager.addDrawables(gameManager.getAvailTowerDrawables());
     graphicsManager.addDrawables(gameManager.getDrawables());
     graphicsManager.addPriorityDrawable(drawnPath);
+    graphicsManager.addLowPriorityDrawables(menuBackgroundManager.getStaticDrawables());
     graphicsManager.addPriorityDrawables(displayTextManager.getTextDrawables());
 
     setActiveCoresTo(3);

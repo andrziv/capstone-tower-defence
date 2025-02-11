@@ -103,6 +103,8 @@ add_executable(main src/main.cpp
         src/display/DisplayConsts.h
         src/display/DisplayTextManager.cpp
         src/display/DisplayTextManager.h
+        src/display/StaticGraphicsManager.cpp
+        src/display/StaticGraphicsManager.h
 )
 
 find_package(OpenMP)

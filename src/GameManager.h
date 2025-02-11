@@ -102,7 +102,10 @@ public:
     void dragSelectedTower(const sf::Vector2i& mousePosition) {
         towerSelector.dragSelectedTower(mousePosition);
         const auto towerOverlap = towerSelector.doesSelectedTowerOverlap(towerManager.getTowers());
-        if (towerOverlap) {
+        const auto towerPosX = towerSelector.getSelectedTower()->getPosition().x;
+        const auto menuStartX = SEL_MENU_START_X - towerSelector.getSelectedTower()->getHitTexture()->getRectHitbox()->getSize().x / 2;
+        const auto outOfBounds = towerPosX > menuStartX;
+        if (towerOverlap || outOfBounds) {
             towerSelector.getSelectedTower()->invalidateRangeIndicator();
         } else {
             towerSelector.getSelectedTower()->validateRangeIndicator();
@@ -120,7 +123,10 @@ public:
     bool addTower(const std::shared_ptr<Tower>& tower) {
         if (playerBalance >= tower->getCost()) {
             const auto overlap = towerSelector.doesSelectedTowerOverlap(towerManager.getTowers());
-            if (!overlap) {
+            const auto towerPosX = towerSelector.getSelectedTower()->getPosition().x;
+            const auto menuStartX = SEL_MENU_START_X - towerSelector.getSelectedTower()->getHitTexture()->getRectHitbox()->getSize().x / 2;
+            const auto outOfBounds = towerPosX > menuStartX;
+            if (!(overlap || outOfBounds)) {
                 towerManager.addTower(tower);
                 playerBalance -= tower->getCost();
                 return true;

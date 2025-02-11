@@ -96,7 +96,6 @@ public:
     [[nodiscard]] sf::Vector2i getMousePosition() const {
         return sf::Mouse::getPosition(*window);
     }
-
 };
 
 
