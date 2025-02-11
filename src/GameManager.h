@@ -4,12 +4,12 @@
 #include <queue>
 #include <memory>
 
-#include "TowerSelector.h"
 #include "entity/defence/projectile/Projectile.h"
 #include "entity/defence/tower/TowerManager.h"
 #include "entity/enemy/Enemy.h"
 #include "entity/enemy/EnemyManager.h"
 #include "entity/enemy/waves/WaveLoader.h"
+#include "selection/TowerSelector.h"
 
 class Tower;
 

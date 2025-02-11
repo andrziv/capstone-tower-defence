@@ -1,0 +1,45 @@
+//
+// Created by aki on 2/10/25.
+//
+
+#ifndef DECRYPTJOB_H
+#define DECRYPTJOB_H
+#include <iomanip>
+#include <regex>
+#include <queue>
+#include <openssl/sha.h>
+#include <mutex>
+
+#include "../helper/RandString.h"
+
+inline std::string decrypt(const std::string decrStr, const std::string pattern, std::queue<std::string>& output) {
+    unsigned char hash[SHA256_DIGEST_LENGTH];
+    SHA256_CTX sha256;
+    SHA256_Init(&sha256);
+
+    std::stringstream ss;
+    std::string rStr;
+
+    while (!std::regex_search(ss.str().c_str(), std::regex(pattern))) {
+        ss.str(std::string());
+        rStr = randomString();
+        std::string toHash = rStr + decrStr;
+
+        SHA256_Update(&sha256, toHash.c_str(), toHash.size());
+        SHA256_Final(hash, &sha256);
+
+        for(const unsigned char i : hash) {
+            ss << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(i);
+        }
+    }
+
+    printf("Completed Hash: %s\n", ss.str().c_str());
+    std::cout << std::flush;
+
+    job_mutex.lock();
+    output.push(rStr);
+    job_mutex.unlock();
+    return rStr;
+}
+
+#endif //DECRYPTJOB_H

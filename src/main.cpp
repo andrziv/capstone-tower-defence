@@ -1,33 +1,42 @@
+#include <future>
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <optional>
 #include <thread>
 
-#include "Accumulator.h"
-#include "FPS.h"
+#include "helper/Accumulator.h"
 #include "GameManager.h"
 #include "GraphicsManager.h"
-#include "TowerPressureDecrpt.h"
 #include "helper/Digits.h"
+#include "helper/visual/FPS.h"
+#include "pressure/DecryptJob.h"
+#include "pressure/TowerPressureDecrypt.h"
 
 std::chrono::steady_clock::time_point completionStart = std::chrono::steady_clock::now();
 Accumulator completionRate;
 
 [[noreturn]] void decryptSpawner() {
+    std::list<std::future<std::string>> results;
     int completions = 0;
     while (true) {
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
         if (activeCores > currentOperations && !toDecrypt.empty()) {
-            std::thread thread(decryptNext);
-            thread.detach();
+            const auto [toHash, pattern] = decryptNext();
+            if (!toHash.empty() && !pattern.empty()) {
+                std::packaged_task decryptTask(decrypt);
+                std::thread task_td(std::move(decryptTask), toHash, pattern, std::ref(decryptedPins));
+                task_td.detach();
+                currentOperations++;
+            }
+        }
+        while (anyCompletedJobs()) {
+            consumeDecrypted();
+            completions++;
+            currentOperations--;
         }
         const std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
         const auto timeDiff = std::chrono::duration_cast<std::chrono::seconds>(end - completionStart).count();
         if (timeDiff >= 1) {
-            while (anyCompletedJobs()) {
-                consumeDecrypted();
-                completions++;
-            }
             printf("Completions: %d, Rate: %f\n", completions, completionRate.getAverageRate());
             std::cout << std::flush;
             completionRate.accumulate(completions);
@@ -57,6 +66,7 @@ void game_core() {
     const auto lifeCounter = std::make_shared<sf::Text>(sf::Text(font));
     const auto waveCounter = std::make_shared<sf::Text>(sf::Text(font));
     const auto pressureRemaining = std::make_shared<sf::Text>(sf::Text(font));
+    const auto jobCounter = std::make_shared<sf::Text>(sf::Text(font));
     const auto pressureAdditionRate = std::make_shared<sf::Text>(sf::Text(font));
     const auto pressureCompletionRate = std::make_shared<sf::Text>(sf::Text(font));
     const auto balanceCounter = std::make_shared<sf::Text>(sf::Text(font));
@@ -79,16 +89,22 @@ void game_core() {
         pressureRemaining->setPosition(sf::Vector2f(500, 0));
         graphicsManager.addDrawable(pressureRemaining);
 
+        jobCounter->setCharacterSize(24);
+        jobCounter->setFillColor(sf::Color(80,150,150));
+        jobCounter->setStyle(sf::Text::Bold);
+        jobCounter->setPosition(sf::Vector2f(500, 25));
+        graphicsManager.addDrawable(jobCounter);
+
         pressureCompletionRate->setCharacterSize(24);
         pressureCompletionRate->setFillColor(sf::Color(17,124,19));
         pressureCompletionRate->setStyle(sf::Text::Bold);
-        pressureCompletionRate->setPosition(sf::Vector2f(500, 25));
+        pressureCompletionRate->setPosition(sf::Vector2f(500, 50));
         graphicsManager.addDrawable(pressureCompletionRate);
 
         pressureAdditionRate->setCharacterSize(24);
         pressureAdditionRate->setFillColor(sf::Color(255,99,71));
         pressureAdditionRate->setStyle(sf::Text::Bold);
-        pressureAdditionRate->setPosition(sf::Vector2f(575, 25));
+        pressureAdditionRate->setPosition(sf::Vector2f(500, 75));
         graphicsManager.addDrawable(pressureAdditionRate);
 
         waveCounter->setCharacterSize(24);
@@ -104,7 +120,7 @@ void game_core() {
         graphicsManager.addDrawable(balanceCounter);
     }
 
-    setActiveCoresTo(2);
+    setActiveCoresTo(3);
 
     while (graphicsManager.isActive()) {
         while (const std::optional event = graphicsManager.pollEvent()) {
@@ -179,9 +195,10 @@ void game_core() {
         fps.update();
         fpsCounter->setString(std::to_string(fps.getFPS()));
         int digits = countDigit(static_cast<int>(completionRate.getAverageRate()));
-        pressureRemaining->setString("Remaining Pressure Jobs: " + std::to_string(toDecrypt.size()));
-        pressureCompletionRate->setString(std::to_string(completionRate.getAverageRate()).substr(0, digits + 3));
-        pressureAdditionRate->setString(std::to_string(additionRate.getAverageRate()).substr(0, digits + 3));
+        pressureRemaining->setString("Remaining Pressure Jobs: " + std::to_string(toDecrypt.size() + currentOperations));
+        jobCounter->setString("Active Pressure Jobs: " + std::to_string(currentOperations));
+        pressureCompletionRate->setString("Completion Rate: " + std::to_string(completionRate.getAverageRate()).substr(0, digits + 3));
+        pressureAdditionRate->setString("Production Rate: " + std::to_string(additionRate.getAverageRate()).substr(0, digits + 3));
     }
 }
 

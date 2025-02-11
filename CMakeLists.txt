@@ -23,7 +23,6 @@ add_library(OpenSSL::Crypto ALIAS crypto)
 
 add_executable(main src/main.cpp
         src/entity/hit_texture/HitTexture.cpp
-        src/pathing/Path.h
         src/entity/enemy/Enemy.cpp
         src/entity/enemy/Enemy.h
         src/entity/defence/tower/Tower.cpp
@@ -47,7 +46,6 @@ add_executable(main src/main.cpp
         src/entity/enemy/special_enemy/dev/DevEnemy.cpp
         src/entity/enemy/special_enemy/dev/DevEnemy.h
         src/entity/hit_texture/HitTexture.h
-        src/pathing/Path.cpp
         src/entity/enemy/waves/WaveLoader.cpp
         src/entity/enemy/waves/WaveLoader.h
         src/entity/enemy/special_enemy/dev/SmallDevEnemy.cpp
@@ -76,8 +74,8 @@ add_executable(main src/main.cpp
         src/entity/hit_texture/circle/CircleHitTexture.h
         src/entity/hit_texture/rectangle/RectangleHitTexture.cpp
         src/entity/hit_texture/rectangle/RectangleHitTexture.h
-        src/TowerSelector.cpp
-        src/TowerSelector.h
+        src/selection/TowerSelector.cpp
+        src/selection/TowerSelector.h
         src/entity/defence/projectile/tower_projectile/basic/BasicProjectile.cpp
         src/entity/defence/projectile/tower_projectile/basic/BasicProjectile.h
         src/entity/defence/projectile/tower_projectile/BaseNormalProjectile.cpp
@@ -92,14 +90,16 @@ add_executable(main src/main.cpp
         src/entity/defence/projectile/tower_projectile/bomb/BombProjectile.h
         src/entity/defence/tower/special_tower/bomb_tower/BombTower.cpp
         src/entity/defence/tower/special_tower/bomb_tower/BombTower.h
-        src/TowerPressureDecrpt.h
-        src/FPS.cpp
-        src/FPS.h
-        src/helper/ThickLine.cpp
-        src/helper/ThickLine.h
-        src/Accumulator.cpp
-        src/Accumulator.h
+        src/pressure/TowerPressureDecrypt.h
+        src/helper/visual/FPS.cpp
+        src/helper/visual/FPS.h
+        src/helper/visual/ThickLine.cpp
+        src/helper/visual/ThickLine.h
+        src/helper/Accumulator.cpp
+        src/helper/Accumulator.h
         src/helper/Digits.h
+        src/pressure/DecryptJob.h
+        src/helper/RandString.h
 )
 
 find_package(OpenMP)

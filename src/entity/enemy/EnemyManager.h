@@ -3,7 +3,7 @@
 #include <list>
 
 #include "Enemy.h"
-#include "../../helper/ThickLine.h"
+#include "../../helper/visual/ThickLine.h"
 #include "special_enemy/dev/LargeDevEnemy.h"
 
 

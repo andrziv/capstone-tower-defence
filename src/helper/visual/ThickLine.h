@@ -3,8 +3,8 @@
 #include <cmath>
 #include <stdexcept>
 
-#include "SFML/Graphics/VertexArray.hpp"
-#include "SFML/System/Vector2.hpp"
+#include "../../../cmake-build-debug/_deps/sfml-src/include/SFML/Graphics/VertexArray.hpp"
+#include "../../../cmake-build-debug/_deps/sfml-src/include/SFML/System/Vector2.hpp"
 
 using point_set = std::vector<sf::Vector2f>;
 

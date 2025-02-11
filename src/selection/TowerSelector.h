@@ -1,12 +1,15 @@
 #ifndef TOWERSELECTOR_H
 #define TOWERSELECTOR_H
+#include <memory>
 #include <vector>
 
-#include "entity/defence/tower/Tower.h"
-#include "entity/defence/tower/special_tower/bomb_tower/BombTower.h"
-#include "entity/defence/tower/special_tower/Jo_tower/JoTower.h"
-#include "entity/defence/tower/special_tower/radial_spreader/RadialShooterTower.h"
+#include "../entity/defence/tower/special_tower/bomb_tower/BombTower.h"
+#include "../entity/defence/tower/special_tower/Jo_tower/JoTower.h"
+#include "../entity/defence/tower/special_tower/radial_spreader/RadialShooterTower.h"
+#include "SFML/System/Vector2.hpp"
 
+
+class Tower;
 
 class TowerSelector {
 
