@@ -76,12 +76,11 @@ class TowerSelector {
         }
 
         [[nodiscard]] bool doesSelectedTowerOverlap(const std::vector<std::shared_ptr<Tower>>& towers) const {
-            for (const auto& tower : towers) {
-                if (doRectanglesOverlap(*tower->getHitTexture()->getRectHitbox(), *selectedTower->getHitTexture()->getRectHitbox())) {
-                    return true;
-                }
-            }
-            return false;
+            const bool overlapping = std::any_of(towers.begin(), towers.end(), [&](const auto& tower) {
+                return doRectanglesOverlap(
+                    *tower->getHitTexture()->getRectHitbox(), *selectedTower->getHitTexture()->getRectHitbox());
+            });
+            return overlapping;
         }
 
         [[nodiscard]] std::vector<std::shared_ptr<Tower>> getAvailableTowers() const {

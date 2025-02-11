@@ -9,7 +9,7 @@
 #include "../helper/RandString.h"
 
 inline std::string decrypt(const int maxCores, const std::string& decrStr, const std::string& pattern, std::queue<std::string>& output) {
-    const int bound = (maxCores % 4 == 0) ? std::max(1, maxCores / 4) : static_cast<int>(std::floor(maxCores / 4)) + 1;
+    const int bound = maxCores % 4 == 0 ? std::max(1, maxCores / 4) : static_cast<int>(std::floor(maxCores / 4)) + 1;
     const int limit = std::max(1, static_cast<int>(pattern.size()) - 2) * bound;
     const std::chrono::steady_clock::time_point completionStart = std::chrono::steady_clock::now();
     unsigned char hash[SHA256_DIGEST_LENGTH];

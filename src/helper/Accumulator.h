@@ -22,7 +22,7 @@ public:
     }
 
     [[nodiscard]] double getAverageRate() const {
-        const int samples = (totalSamples == 0) ? 1 : totalSamples;
+        const int samples = totalSamples == 0 ? 1 : totalSamples;
         return valSum / samples;
     }
 };

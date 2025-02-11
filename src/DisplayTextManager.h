@@ -97,7 +97,7 @@ public:
         pressureAdditionRate->setString("Production Rate: " + std::to_string(newRate).substr(0, countDigit(static_cast<int>(newRate)) + 3));
     }
 
-    std::vector<std::shared_ptr<sf::Drawable>> getTextDrawables() {
+    std::vector<std::shared_ptr<sf::Drawable>> getTextDrawables() const {
         return {
             fpsCounter,
             lifeCounter,
