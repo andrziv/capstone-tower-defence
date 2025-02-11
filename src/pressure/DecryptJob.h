@@ -12,7 +12,9 @@
 
 #include "../helper/RandString.h"
 
-inline std::string decrypt(const std::string decrStr, const std::string pattern, std::queue<std::string>& output) {
+inline std::string decrypt(const int maxCores, const std::string& decrStr, const std::string& pattern, std::queue<std::string>& output) {
+    const int bound = (maxCores % 4 == 0) ? std::max(1, maxCores / 4) : static_cast<int>(std::floor(maxCores / 4)) + 1;
+    const int limit = std::max(1, static_cast<int>(pattern.size()) - 2) * bound;
     const std::chrono::steady_clock::time_point completionStart = std::chrono::steady_clock::now();
     unsigned char hash[SHA256_DIGEST_LENGTH];
     SHA256_CTX sha256;
@@ -22,9 +24,10 @@ inline std::string decrypt(const std::string decrStr, const std::string pattern,
     std::string rStr;
 
     while (!std::regex_search(ss.str().c_str(), std::regex(pattern))) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
         const std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
         const auto timeDiff = std::chrono::duration_cast<std::chrono::seconds>(end - completionStart).count();
-        if (timeDiff >= std::max(1, static_cast<int>(pattern.size()) - 2)) {
+        if (timeDiff >= limit) {
             job_mutex.lock();
             output.push(rStr);
             job_mutex.unlock();

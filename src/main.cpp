@@ -24,7 +24,7 @@ Accumulator completionRate;
             const auto [toHash, pattern] = decryptNext();
             if (!toHash.empty() && !pattern.empty()) {
                 std::packaged_task decryptTask(decrypt);
-                std::thread task_td(std::move(decryptTask), toHash, pattern, std::ref(decryptedPins));
+                std::thread task_td(std::move(decryptTask), activeCores, toHash, pattern, std::ref(decryptedPins));
                 task_td.detach();
                 currentOperations++;
             }
