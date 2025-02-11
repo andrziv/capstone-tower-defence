@@ -13,6 +13,7 @@
 #include "../helper/RandString.h"
 
 inline std::string decrypt(const std::string decrStr, const std::string pattern, std::queue<std::string>& output) {
+    const std::chrono::steady_clock::time_point completionStart = std::chrono::steady_clock::now();
     unsigned char hash[SHA256_DIGEST_LENGTH];
     SHA256_CTX sha256;
     SHA256_Init(&sha256);
@@ -21,6 +22,14 @@ inline std::string decrypt(const std::string decrStr, const std::string pattern,
     std::string rStr;
 
     while (!std::regex_search(ss.str().c_str(), std::regex(pattern))) {
+        const std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+        const auto timeDiff = std::chrono::duration_cast<std::chrono::seconds>(end - completionStart).count();
+        if (timeDiff >= std::max(1, static_cast<int>(pattern.size()) - 2)) {
+            job_mutex.lock();
+            output.push(rStr);
+            job_mutex.unlock();
+            return rStr;
+        }
         ss.str(std::string());
         rStr = randomString();
         std::string toHash = rStr + decrStr;
