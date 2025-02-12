@@ -6,7 +6,7 @@
 #include <openssl/sha.h>
 #include <mutex>
 
-#include "../helper/RandString.h"
+#include "../helper/StringUtil.h"
 
 inline std::string decrypt(const int maxCores, const std::string& decrStr, const std::string& pattern, std::queue<std::string>& output) {
     const int bound = maxCores % 4 == 0 ? std::max(1, maxCores / 4) : static_cast<int>(std::floor(maxCores / 4)) + 1;

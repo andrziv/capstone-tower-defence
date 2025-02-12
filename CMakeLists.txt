@@ -3,6 +3,12 @@ project(CMakeSFMLProject LANGUAGES CXX)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
+###
+find_package(MPI REQUIRED)
+include_directories(${MPI_INCLUDE_PATH} /usr/lib/aarch64-linux-gnu/openmpi/include)
+link_directories(/usr/lib/aarch64-linux-gnu/openmpi/lib)
+###
+
 include(FetchContent)
 FetchContent_Declare(SFML
     GIT_REPOSITORY https://github.com/SFML/SFML.git
@@ -99,15 +105,16 @@ add_executable(main src/main.cpp
         src/helper/Accumulator.h
         src/helper/Digits.h
         src/pressure/DecryptJob.h
-        src/helper/RandString.h
+        src/helper/StringUtil.h
         src/display/DisplayConsts.h
         src/display/DisplayTextManager.cpp
         src/display/DisplayTextManager.h
         src/display/StaticGraphicsManager.cpp
         src/display/StaticGraphicsManager.h
+        src/pressure/job_spawners/SecondaryJobSpawner.h
+        src/pressure/job_spawners/MainJobSpawner.h
+        src/pressure/job_spawners/PressureJobConstants.h
 )
 
-find_package(OpenMP)
-if(OpenMP_CXX_FOUND)
-    target_link_libraries(main PRIVATE SFML::Graphics crypto OpenMP::OpenMP_CXX nlohmann_json::nlohmann_json)
-endif()
+#target_link_libraries(main PRIVATE SFML::Graphics crypto nlohmann_json::nlohmann_json)
+target_link_libraries(main PRIVATE SFML::Graphics crypto nlohmann_json::nlohmann_json MPI::MPI_CXX)
