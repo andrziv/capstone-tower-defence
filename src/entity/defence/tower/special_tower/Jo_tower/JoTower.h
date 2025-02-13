@@ -31,7 +31,7 @@ class JoTower final : public BaseTower {
         }
 
         std::string getPressurePattern() override {
-            return R"~(^(000))~";
+            return R"~(^(0000))~";
         }
 };
 

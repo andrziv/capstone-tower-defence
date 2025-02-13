@@ -16,7 +16,7 @@
 [[noreturn]] inline void secDecryptSpawner() {
     while (true) {
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
-        if (activeCores > currentOperations && !toDecrypt.empty()) {
+        while (activeCores > currentOperations && !toDecrypt.empty()) {
             const auto [toHash, pattern] = decryptNext();
             if (!toHash.empty() && !pattern.empty()) {
                 std::packaged_task decryptTask(decrypt);
@@ -29,8 +29,11 @@
             const int nodeFullness = activeCores - currentOperations;
             const int nodeBacklog = static_cast<int>(toDecrypt.size()) + currentOperations;
 
+            const auto [pin, toHash] = consumeDecrypted();
             std::string msg;
-            msg.append(consumeDecrypted());
+            msg.append(pin);
+            msg.append(PRESSURE_JOB_MSG_DELIMITER);
+            msg.append(toHash);
             msg.append(PRESSURE_JOB_MSG_DELIMITER);
             msg.append(std::to_string(nodeFullness));
             msg.append(PRESSURE_JOB_MSG_DELIMITER);
@@ -38,8 +41,9 @@
 
             // Return the following to the main node:
             // 1: The decrypted PIN,
-            // 2: The amount of space that this node has for active decrypting
-            // 3: The amount of decrypting jobs stuck in the backlog
+            // 2: The string the pin was for,
+            // 3: The amount of space that this node has for active decrypting
+            // 4: The amount of decrypting jobs stuck in the backlog
             MPI_Send(msg.c_str(), static_cast<int>(msg.size()) + 1, MPI_UNSIGNED_CHAR, 0, 2, MPI_COMM_WORLD);
             currentOperations--;
         }
@@ -72,7 +76,7 @@
             const auto jobInfo = split(potentialJob, PRESSURE_JOB_MSG_DELIMITER);
 
             if (jobInfo.size() == 3) {
-                setActiveCoresTo(std::stoi(jobInfo[0]));
+                setActiveCoresTo(std::stoi(jobInfo[0]), 0);
                 addToDecrypt(jobInfo[1], jobInfo[2]);
             } else if (jobInfo.size() == 2) {
                 addToDecrypt(jobInfo[0], jobInfo[1]);

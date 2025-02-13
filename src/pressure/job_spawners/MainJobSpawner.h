@@ -75,24 +75,23 @@ inline int leastStressedNode() {
             std::string potentialJob = buffer.data();
             const auto completionInfo = split(potentialJob, PRESSURE_JOB_MSG_DELIMITER);
 
-            if (completionInfo.size() == 3) {
+            if (completionInfo.size() == 4) {
                 if (nodeStateMap.find(status.MPI_SOURCE) != nodeStateMap.end()) {
-                    nodeStateMap.find(status.MPI_SOURCE)->second.first = std::stoi(completionInfo[1]);
-                    nodeStateMap.find(status.MPI_SOURCE)->second.second = std::stoi(completionInfo[2]);
+                    nodeStateMap.find(status.MPI_SOURCE)->second.first = std::stoi(completionInfo[2]);
+                    nodeStateMap.find(status.MPI_SOURCE)->second.second = std::stoi(completionInfo[3]);
                 } else {
-                    nodeStateMap.insert({status.MPI_SOURCE, {std::stoi(completionInfo[1]), std::stoi(completionInfo[2])}});
+                    nodeStateMap.insert({status.MPI_SOURCE, {std::stoi(completionInfo[2]), std::stoi(completionInfo[3])}});
                 }
-                //job_mutex.lock();
-                //decryptedPins.push(completionInfo[0]);
-                //job_mutex.unlock();
+
+                job_mutex.lock();
                 completions++;
                 currentOperations--;
+                job_mutex.unlock();
             }
         }
         const std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
         const auto timeDiff = std::chrono::duration_cast<std::chrono::seconds>(end - completionStart).count();
         if (timeDiff >= 1) {
-            printf("Completions: %d, Rate: %f\n", completions, completionRate.getAverageRate());
             std::cout << std::flush;
             completionRate.accumulate(completions);
             completions = 0;
@@ -102,26 +101,30 @@ inline int leastStressedNode() {
 }
 
 [[noreturn]] inline void priPressureProducer() {
-    std::list<std::future<std::string>> results;
-
     while (true) {
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
         while (!toDecrypt.empty()) {
-            int bestNode = leastStressedNode();
-            const auto [freeSpace, backlogAmount] = nodeStateMap.find(bestNode)->second;
-            if (freeSpace >= 0) {
-                nodeStateMap.find(bestNode)->second.first++;
-            } else {
-                nodeStateMap.find(bestNode)->second.second++;
-            }
             const auto [toHash, pattern] = decryptNext();
             if (!toHash.empty() && !pattern.empty()) {
+                int bestNode = leastStressedNode();
+                const auto [freeSpace, backlogAmount] = nodeStateMap.find(bestNode)->second;
+                if (freeSpace >= 0) {
+                    nodeStateMap.find(bestNode)->second.first++;
+                } else {
+                    nodeStateMap.find(bestNode)->second.second++;
+                }
+
+                const int activeCores = coreNodePartitions.find(bestNode)->second;
                 std::string msg;
-                msg.append(std::to_string(3));
+                msg.append(std::to_string(activeCores));
                 msg.append(PRESSURE_JOB_MSG_DELIMITER);
                 msg.append(toHash);
                 msg.append(PRESSURE_JOB_MSG_DELIMITER);
                 msg.append(pattern);
+
+                job_mutex.lock();
+                currentOperations++;
+                job_mutex.unlock();
 
                 // Return the following to the main node:
                 // 1: The amount of cores that the decrypter should be using at max,
