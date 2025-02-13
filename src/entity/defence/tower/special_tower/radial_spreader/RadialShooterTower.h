@@ -12,7 +12,7 @@ class RadialShooterTower final : public BaseTower {
 
     public:
         explicit RadialShooterTower(const sf::Vector2f& position)
-            : BaseTower (position, 100, 370, 1.5f, sf::Color(252, 152, 3))  {
+            : BaseTower (position, 100, 370, 1.5f, 100, "Radial",sf::Color(252, 152, 3))  {
         }
 
     protected:
