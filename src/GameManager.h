@@ -32,7 +32,7 @@ class GameManager {
         if (enemySpawnTimeQueue.empty() && enemyManager.getNumberOfAliveEnemies() == 0 && waveLoadingPaused) {
             //
             if (waveLoader.getCurrentWave() < waveLoader.getMaxWaves()) {
-                int rewardMoney = 1000;
+                constexpr int rewardMoney = 1000;
                 playerBalance += rewardMoney;
                 //
                 waveTimeStart = std::chrono::steady_clock::now();
@@ -105,7 +105,7 @@ public:
         return towerSelector.attemptSelectingTower(mousePosition);
     }
 
-    std::shared_ptr<Tower> attemptSelectingPlacedTower(const sf::Vector2i &mousePosition){
+    [[nodiscard]] std::shared_ptr<Tower> attemptSelectingPlacedTower(const sf::Vector2i &mousePosition) const {
         return TowerSelector::attemptSelectingPlacedTower(mousePosition, towerManager.getTowers());
     }
 
@@ -150,7 +150,7 @@ public:
     }
 
     void sellTower(const std::shared_ptr<Tower>& tower) {
-        int sellPrice = tower->getCost() / 2; // Refund half of the tower's cost
+        const int sellPrice = tower->getCost() / 2; // Refund half of the tower's cost
         playerBalance += sellPrice;
         removeTower(tower);
     }
