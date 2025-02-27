@@ -8,7 +8,6 @@
 #include "SFML/System/Vector2.hpp"
 
 #include "../../enemy/Enemy.h"
-#include "../../hit_texture/HitTexture.h"
 #include "../../../helper/UUID.h"
 #include "../../../helper/CollisionDetect.h"
 

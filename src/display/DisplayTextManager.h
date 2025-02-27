@@ -1,6 +1,7 @@
 #ifndef DISPLAYTEXTMANAGER_H
 #define DISPLAYTEXTMANAGER_H
 #include <memory>
+#include <iomanip>
 
 #include "DisplayConsts.h"
 #include "../helper/Digits.h"
@@ -19,6 +20,10 @@ class DisplayTextManager {
     const std::shared_ptr<sf::Text> pressureAdditionRate = std::make_shared<sf::Text>(sf::Text(font));
     const std::shared_ptr<sf::Text> pressureCompletionRate = std::make_shared<sf::Text>(sf::Text(font));
     const std::shared_ptr<sf::Text> balanceCounter = std::make_shared<sf::Text>(sf::Text(font));
+    const std::shared_ptr<sf::Text> displayDamage = std::make_shared<sf::Text>(sf::Text(font));
+    const std::shared_ptr<sf::Text> displaySpeed = std::make_shared<sf::Text>(sf::Text(font));
+    const std::shared_ptr<sf::Text> displayType = std::make_shared<sf::Text>(sf::Text(font));
+    const std::shared_ptr<sf::Text> displaySellOption = std::make_shared<sf::Text>(sf::Text(font));
 
 public:
     DisplayTextManager() {
@@ -62,6 +67,26 @@ public:
             balanceCounter->setFillColor(sf::Color::Yellow);
             balanceCounter->setStyle(sf::Text::Bold);
             balanceCounter->setPosition(sf::Vector2f(BALANCE_START_RIGHT, TEXT_START_Y));
+
+            displayDamage->setCharacterSize(24);
+            displayDamage->setFillColor(sf::Color(255, 92, 51));
+            displayDamage->setStyle(sf::Text::Bold);
+            displayDamage->setPosition(sf::Vector2f(DAMAGE_START_RIGHT, STAT_GAP_Y * 12));
+
+            displaySpeed->setCharacterSize(24);
+            displaySpeed->setFillColor(sf::Color(102, 255, 102));
+            displaySpeed->setStyle(sf::Text::Bold);
+            displaySpeed->setPosition(sf::Vector2f(SPEED_START_RIGHT, STAT_GAP_Y * 13));
+
+            displayType->setCharacterSize(24);
+            displayType->setFillColor(sf::Color(51, 204, 255));
+            displayType->setStyle(sf::Text::Bold);
+            displayType->setPosition(sf::Vector2f(TYPE_START_RIGHT, STAT_GAP_Y * 11));
+
+            displaySellOption->setCharacterSize(24);
+            displaySellOption->setFillColor(sf::Color(255, 255, 0));
+            displaySellOption->setStyle(sf::Text::Bold);
+            displaySellOption->setPosition(sf::Vector2f(TYPE_START_RIGHT, STAT_GAP_Y * 14));
         }
     }
 
@@ -97,6 +122,40 @@ public:
         pressureAdditionRate->setString("Production Rate: " + std::to_string(newRate).substr(0, countDigit(static_cast<int>(newRate)) + 3));
     }
 
+    void setTowerDamageValue(const int newDamage) const {
+        displayDamage->setString("Damage: " + std::to_string(newDamage));
+    }
+
+    void setTowerSpeedValue(const float newSpeed) const {
+        std::ostringstream oss;
+        oss << std::fixed << std::setprecision(2) << newSpeed;  // Set precision to 2 decimal places
+        displaySpeed->setString("Speed: " + oss.str());
+    }
+
+    void setTowerType(const std::string &newType) const {
+        displayType->setString("Type: " + newType);
+    }
+
+    void setSellOption() const {
+        displaySellOption->setString("Sell");
+    }
+
+    bool isSellButtonClicked(const sf::Vector2i& mousePosition) const {
+        // Check if the mouse click is within the bounds of the sell button (displaySellOption)
+        const sf::FloatRect sellButtonBounds = displaySellOption->getGlobalBounds();
+        return sellButtonBounds.contains(static_cast<sf::Vector2f>(mousePosition));
+    }
+
+    void removeTowerStats() const {
+        // Remove or hide the text for damage and speed here.
+        // For example:
+        displayDamage->setString("          ");
+        displaySpeed->setString("           ");
+        displayType->setString("          ");
+        displaySellOption->setString("          ");
+    }
+
+
     std::vector<std::shared_ptr<sf::Drawable>> getTextDrawables() const {
         return {
             fpsCounter,
@@ -106,7 +165,11 @@ public:
             pressureCompletionRate,
             pressureAdditionRate,
             waveCounter,
-            balanceCounter
+            balanceCounter,
+            displayDamage,
+            displaySpeed,
+            displayType,
+            displaySellOption
         };
     }
 };
