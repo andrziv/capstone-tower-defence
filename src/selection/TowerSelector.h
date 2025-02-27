@@ -63,6 +63,15 @@ class TowerSelector {
             return false;
         }
 
+        static std::shared_ptr<Tower> attemptSelectingPlacedTower(const sf::Vector2i& mousePosition, const std::vector<std::shared_ptr<Tower>>& towers) {
+            for (const auto& tower : towers) {
+                if (tower->getHitTexture()->getDisplayEntity()->getGlobalBounds().contains(sf::Vector2f(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y)))) {
+                    return tower;
+                }
+            }
+            return nullptr;
+        }
+
         void dragSelectedTower(const sf::Vector2i& mousePosition) const {
             if (isTowerSelected) {
                 selectedTower->setPosition(

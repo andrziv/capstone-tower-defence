@@ -13,7 +13,7 @@ class Projectile;
 class JoTower final : public BaseTower {
     public:
         explicit JoTower(const sf::Vector2f& position)
-            : BaseTower (position, 250, 270, 3.f, sf::Color::Green)  {
+            : BaseTower (position, 250, 270, 3.f, 150, "Dart", sf::Color::Green)  {
         }
 
     protected:

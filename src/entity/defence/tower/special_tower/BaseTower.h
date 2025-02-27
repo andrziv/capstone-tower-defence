@@ -6,8 +6,8 @@
 
 class BaseTower : public Tower {
     public:
-        explicit BaseTower(const sf::Vector2f& position, const float range, const int towerCost, const float attackSpeed, const sf::Color color)
-            : Tower (position, range, towerCost, attackSpeed)  {
+        explicit BaseTower(const sf::Vector2f& position, const float range, const int towerCost, const float attackSpeed, const int damage, const std::string &type, const sf::Color color)
+            : Tower (position, range, towerCost, attackSpeed, damage, type)  {
             getHitTexture()->setDisplayEntityColor(color);
             getHitTexture()->setDisplayEntityHeight(50);
             getHitTexture()->setDisplayEntityWidth(50);

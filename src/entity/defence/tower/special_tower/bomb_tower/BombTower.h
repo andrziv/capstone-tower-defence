@@ -7,7 +7,7 @@
 class BombTower final : public BaseTower{
 public:
     explicit BombTower(const sf::Vector2f& position)
-        : BaseTower (position, 150, 540, 7.f, sf::Color(40, 50, 40))  {
+        : BaseTower (position, 150, 540, 7.f, 200, "Bomb",sf::Color(40, 50, 40))  {
     }
 
 protected:

@@ -33,13 +33,13 @@ void game_core() {
     graphicsManager.addLowPriorityDrawables(menuBackgroundManager.getStaticDrawables());
     graphicsManager.addPriorityDrawables(displayTextManager.getTextDrawables());
 
+    std::shared_ptr<Tower> activeTower = nullptr;
     while (graphicsManager.isActive()) {
         while (const std::optional event = graphicsManager.pollEvent()) {
             if (event->is<sf::Event::Closed>()) {
                 graphicsManager.deactivate();
                 for (int i = 0; i < drawnPath->getVertexCount(); i++) {
-                    printf("{{  %ff,   %ff}, sf::Color::Red, { 0.0f,  0.0f}}", drawnPath->operator[](i).position.x,
-                           drawnPath->operator[](i).position.y);
+                    printf("{{  %ff,   %ff}, sf::Color::Red, { 0.0f,  0.0f}}", drawnPath->operator[](i).position.x, drawnPath->operator[](i).position.y);
                     if (i != drawnPath->getVertexCount() - 1) {
                         printf(",\n");
                     } else {
@@ -49,17 +49,36 @@ void game_core() {
             }
 
             if (event->is<sf::Event::MouseButtonPressed>()) {
-                if (const auto buttonPressed = event->getIf<sf::Event::MouseButtonPressed>();
-                    buttonPressed->button == sf::Mouse::Button::Left) {
+                if (const auto buttonPressed = event->getIf<sf::Event::MouseButtonPressed>(); buttonPressed->button == sf::Mouse::Button::Left) {
                     const auto mousePosition = buttonPressed->position;
                     if (!gameManager.isTowerAlreadySelected()) {
                         if (gameManager.attemptSelectingTower(mousePosition)) {
                             graphicsManager.addPriorityDrawable(gameManager.getHoveredTowerDrawable());
                             graphicsManager.addPriorityDrawable(gameManager.getHoveredTower()->getRangeIndicator());
+                        } else if (const auto& selectedTower = gameManager.attemptSelectingPlacedTower(mousePosition); selectedTower != nullptr) {
+                                    if (activeTower != selectedTower) {
+                                        if (activeTower) {
+                                            graphicsManager.removeDrawable(activeTower->getRangeIndicator());
+                                        }
+                                        graphicsManager.addPriorityDrawable(selectedTower->getRangeIndicator());
+                                        activeTower = selectedTower;
+
+                                        displayTextManager.setTowerDamageValue(activeTower->getDamage());
+                                        displayTextManager.setTowerSpeedValue(activeTower->getAttackSpeed());
+                                        displayTextManager.setTowerType(activeTower->getType());
+                                        displayTextManager.setSellOption();
+                                    }
+                        } else {
+                            if (activeTower) {
+                                displayTextManager.removeTowerStats();
+                                graphicsManager.removeDrawable(activeTower->getRangeIndicator());
+                                activeTower = nullptr;
+                            }
                         }
                     } else {
                         graphicsManager.removeDrawable(gameManager.getHoveredTowerDrawable());
                         graphicsManager.removeDrawable(gameManager.getHoveredTower()->getRangeIndicator());
+                        gameManager.deselectTower();
                     }
                 } else if (buttonPressed->button == sf::Mouse::Button::Right) {
                     gameManager.shrinkEnemyPath();
@@ -67,8 +86,7 @@ void game_core() {
             }
 
             if (event->is<sf::Event::KeyPressed>()) {
-                if (const auto buttonPressed = event->getIf<sf::Event::KeyPressed>();
-                    buttonPressed->code == sf::Keyboard::Key::Space) {
+                if (const auto buttonPressed = event->getIf<sf::Event::KeyPressed>(); buttonPressed->code == sf::Keyboard::Key::Space) {
                     graphicsManager.setFramerateLimit(240);
                 } else {
                     graphicsManager.setFramerateLimit(60);
@@ -76,8 +94,7 @@ void game_core() {
             }
 
             if (event->is<sf::Event::MouseButtonReleased>()) {
-                if (const auto buttonReleased = event->getIf<sf::Event::MouseButtonReleased>();
-                    buttonReleased->button == sf::Mouse::Button::Left) {
+                if (const auto buttonReleased = event->getIf<sf::Event::MouseButtonReleased>(); buttonReleased->button == sf::Mouse::Button::Left) {
                     if (gameManager.isTowerAlreadySelected()) {
                         const auto success = gameManager.addTower(gameManager.getHoveredTower());
                         graphicsManager.removeDrawable(gameManager.getHoveredTower()->getRangeIndicator());
@@ -93,6 +110,12 @@ void game_core() {
         if (gameManager.isTowerAlreadySelected()) {
             const auto mousePosition = graphicsManager.getMousePosition();
             gameManager.dragSelectedTower(mousePosition);
+            if (const auto selectedTower = gameManager.getHoveredTower()) {
+                displayTextManager.setTowerDamageValue(selectedTower->getDamage());
+                displayTextManager.setTowerSpeedValue(selectedTower->getAttackSpeed());
+                displayTextManager.setTowerType(selectedTower->getType());
+                displayTextManager.setSellOption();
+            }
         }
 
         gameManager.update();
@@ -111,7 +134,7 @@ void game_core() {
         displayTextManager.setFPSCounterValue(fps.getFPS());
 
         displayTextManager.setRemainingPressureValue(static_cast<int>(toDecrypt.size()) + currentOperations);
-        displayTextManager.setActivePressureJobsValue(std::min(activeCores, currentOperations));
+        displayTextManager.setActivePressureJobsValue(currentOperations);
         displayTextManager.setPressureCompletionRateValue(completionRate.getAverageRate());
         displayTextManager.setPressureProductionRateValue(additionRate.getAverageRate());
     }

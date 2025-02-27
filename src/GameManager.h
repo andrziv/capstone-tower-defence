@@ -30,8 +30,14 @@ class GameManager {
         const std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
         const auto timeDiff = std::chrono::duration_cast<std::chrono::seconds>(end - waveTimeStart).count();
         if (enemySpawnTimeQueue.empty() && enemyManager.getNumberOfAliveEnemies() == 0 && waveLoadingPaused) {
-            waveTimeStart = std::chrono::steady_clock::now();
-            waveLoadingPaused = false;
+            //
+            if (waveLoader.getCurrentWave() < waveLoader.getMaxWaves()) {
+                constexpr int rewardMoney = 1000;
+                playerBalance += rewardMoney;
+                //
+                waveTimeStart = std::chrono::steady_clock::now();
+                waveLoadingPaused = false;
+            }
         }
         if (timeDiff >= 5 && !waveLoadingPaused) {
             loadNextEnemyWave();
@@ -95,8 +101,12 @@ public:
         penalizeForFinishedEnemies();
     }
 
-    bool attemptSelectingTower(const sf::Vector2i& mousePosition) {
+    bool attemptSelectingTower(const sf::Vector2i& mousePosition){
         return towerSelector.attemptSelectingTower(mousePosition);
+    }
+
+    [[nodiscard]] std::shared_ptr<Tower> attemptSelectingPlacedTower(const sf::Vector2i &mousePosition) const {
+        return TowerSelector::attemptSelectingPlacedTower(mousePosition, towerManager.getTowers());
     }
 
     void dragSelectedTower(const sf::Vector2i& mousePosition) {
@@ -137,6 +147,12 @@ public:
 
     void removeTower(const std::shared_ptr<Tower>& tower) {
         towerManager.removeTower(tower);
+    }
+
+    void sellTower(const std::shared_ptr<Tower>& tower) {
+        const int sellPrice = tower->getCost() / 2; // Refund half of the tower's cost
+        playerBalance += sellPrice;
+        removeTower(tower);
     }
 
     std::shared_ptr<Tower> getHoveredTower() {

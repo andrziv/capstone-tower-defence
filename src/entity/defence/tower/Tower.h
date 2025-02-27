@@ -2,6 +2,7 @@
 #define TOWER_H
 #include <string>
 #include <memory>
+#include <utility>
 
 #include "../../../helper/UUID.h"
 #include "../../hit_texture/rectangle/RectangleHitTexture.h"
@@ -15,6 +16,8 @@ class Tower {
     float range;
     int cost;
     float attackSpeed;
+    int damage;
+    std::string type;
     std::shared_ptr<sf::CircleShape> rangeIndicator;
     std::shared_ptr<RectangleHitTexture> hitTexture;
 
@@ -29,14 +32,14 @@ class Tower {
     public:
     virtual ~Tower() = default;
 
-        Tower(const sf::Vector2f& position, const float range, const int towerCost, const float attackSpeed)
-            : position(position), range(range), cost(towerCost), attackSpeed(attackSpeed) {
-            hitTexture = std::make_shared<RectangleHitTexture>(RectangleHitTexture());
-            rangeIndicator = std::make_shared<sf::CircleShape>(sf::CircleShape());
-            rangeIndicator->setRadius(range);
-            rangeIndicator->setPosition(position);
-            rangeIndicator->setFillColor(sf::Color(137, 137, 137, 50)); // Semi-transparent
-        }
+    Tower(const sf::Vector2f& position, const float range, const int towerCost, const float attackSpeed, const int damage, std::string  type)
+        : position(position), range(range), cost(towerCost), attackSpeed(attackSpeed), damage(damage), type(std::move(type)) {
+        hitTexture = std::make_shared<RectangleHitTexture>(RectangleHitTexture());
+        rangeIndicator = std::make_shared<sf::CircleShape>(sf::CircleShape());
+        rangeIndicator->setRadius(range);
+        rangeIndicator->setPosition(position);
+        rangeIndicator->setFillColor(sf::Color(137, 137, 137, 50)); // Semi-transparent
+    }
 
         virtual std::vector<std::shared_ptr<Projectile>> shootProjectile(std::vector<std::shared_ptr<Enemy>>& enemies) {
             return {};
@@ -62,6 +65,14 @@ class Tower {
 
         [[nodiscard]] float getAttackSpeed() const {
             return attackSpeed;
+        }
+
+        [[nodiscard]] int getDamage() const {
+            return damage;
+        }
+
+        [[nodiscard]] std::string getType() const {
+            return type;
         }
 
         [[nodiscard]] std::string getId() const {
