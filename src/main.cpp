@@ -148,7 +148,6 @@ void game_core() {
             const auto mousePosition = graphicsManager.getMousePosition();
             gameManager.dragSelectedTower(mousePosition);
             if (const auto selectedTower = gameManager.getHoveredTower()) {
-                graphicsManager.addDrawables(menuBackgroundManager.getStatDrawables());
                 displayTextManager.setTowerDamageValue(selectedTower->getDamage());
                 displayTextManager.setTowerSpeedValue(selectedTower->getAttackSpeed());
                 displayTextManager.setTowerType(selectedTower->getType());

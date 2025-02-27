@@ -26,12 +26,7 @@ public:
 
     [[nodiscard]] std::vector<std::shared_ptr<sf::Drawable>> getStaticDrawables() const {
         return {
-            selectionMenu
-        };
-    }
-
-    [[nodiscard]] std::vector<std::shared_ptr<sf::Drawable>> getStatDrawables() const {
-        return {
+            selectionMenu,
             menuStat
         };
     }
