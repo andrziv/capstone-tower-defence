@@ -65,15 +65,15 @@ class WaveLoader {
             maxWaves = counter;
         }
 
-        std::vector<std::pair<float, std::pair<float, std::shared_ptr<Enemy>>>> getNextWave() {
+        std::pair<float, std::vector<std::pair<float, std::pair<float, std::shared_ptr<Enemy>>>>> getNextWave() {
             std::vector<std::pair<float, std::pair<float, std::shared_ptr<Enemy>>>> enemies;
             if (currentWave >= maxWaves) {
-                return enemies;
+                return std::pair(0, enemies);
             }
             currentWave++;
             const auto enemyJsonIterator = enemyWaves.find(currentWave)->second.items();
             auto totalWaveTime = wavesInfo.find(currentWave)->second.first;
-            // auto coinReward = wavesInfo.find(currentWave)->second.second;
+            auto coinReward = wavesInfo.find(currentWave)->second.second;
             for (const auto& iteration_proxy_value : enemyJsonIterator) {
                 const auto& item = iteration_proxy_value.value();
                 auto spawn_time = item.value("spawn_time_percent", 0);
@@ -81,7 +81,7 @@ class WaveLoader {
                 enemies.emplace_back(std::pair(totalWaveTime, std::pair(spawn_time, constructEnemy(enemy_type))));
             }
 
-            return enemies;
+            return std::pair(coinReward, enemies);
         }
 
         [[nodiscard]] int getMaxWaves() const {

@@ -21,6 +21,7 @@ class Enemy {
     CircleHitTexture hitTexture;
     int health;
     double speed;
+    int reward = 0;
 
     void initialize() {
         if (this->path != nullptr && this->path->getVertexCount() > 0) {
@@ -33,13 +34,14 @@ class Enemy {
     public:
         virtual ~Enemy() = default;
 
-        Enemy(const std::shared_ptr<sf::VertexArray>& pathToFollow, const float speed, const int health) {
+        Enemy(const std::shared_ptr<sf::VertexArray>& pathToFollow, const float speed, const int health, const int reward) {
             this->path = pathToFollow;
             if (path != nullptr) {
                 initialize();
             }
             this->speed = speed;
             this->health = health;
+            this->reward = reward;
         }
 
         void initialize(const std::shared_ptr<sf::VertexArray>& pathToFollow) {
@@ -114,6 +116,10 @@ class Enemy {
 
         void setId(const std::string &newId) {
             id = newId;
+        }
+
+        [[nodiscard]] int getReward() const {
+            return reward;
         }
 
         bool operator == (const Enemy &other) const {

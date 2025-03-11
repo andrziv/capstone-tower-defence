@@ -24,17 +24,21 @@ class GameManager {
     std::chrono::steady_clock::time_point interWaveTimeStart = std::chrono::steady_clock::now();
     std::queue<std::pair<double, std::pair<double, std::vector<std::shared_ptr<Enemy>>>>> enemySpawnTimeQueue;
     std::pair<double, std::pair<double, std::vector<std::shared_ptr<Enemy>>>> nextEnemySummonSet;
+    float queuedWaveReward = 0.f;
     bool waveLoadingPaused = true;
+
+    static double pressureEconomyPenalize() {
+        const int pressureLevel = static_cast<int>(toDecrypt.size()) + currentOperations;
+        return static_cast<double>(pressureLevel) / 65 + 1;
+    }
 
     void checkAndLoadNewEnemies() {
         const std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
         const auto timeDiff = std::chrono::duration_cast<std::chrono::seconds>(end - waveTimeStart).count();
         if (enemySpawnTimeQueue.empty() && enemyManager.getNumberOfAliveEnemies() == 0 && waveLoadingPaused) {
-            //
             if (waveLoader.getCurrentWave() < waveLoader.getMaxWaves()) {
-                constexpr int rewardMoney = 1000;
+                const int rewardMoney = std::ceil(queuedWaveReward / pressureEconomyPenalize());
                 playerBalance += rewardMoney;
-                //
                 waveTimeStart = std::chrono::steady_clock::now();
                 waveLoadingPaused = false;
             }
@@ -48,7 +52,9 @@ class GameManager {
     void loadNextEnemyWave() {
         std::map<double, std::pair<double, std::vector<std::shared_ptr<Enemy>>>> tempSpawnMap;
         double previousSpawnTime = 0;
-        for (const auto& [total_time, enemy_info] : waveLoader.getNextWave()) {
+        const auto&[waveReward, enemyWaveInfo] = waveLoader.getNextWave();
+        queuedWaveReward = waveReward;
+        for (const auto& [total_time, enemy_info] : enemyWaveInfo) {
             const auto spawnPercent = enemy_info.first;
             auto spawnTime = total_time * (spawnPercent / 100.0);
             auto spawnInterval = spawnTime - previousSpawnTime;
@@ -88,6 +94,15 @@ class GameManager {
         }
     }
 
+    void updateMoneyForKilledEnemies() {
+        const std::vector<std::shared_ptr<Enemy>> enemies = enemyManager.getDeadEnemies();
+        for (const auto& enemy : enemies) {
+            if (!enemy->isAlive() && enemy->getTargetNode() < enemyManager.getEnemyPath()->getVertexCount()) {
+                playerBalance += std::ceil(enemy->getReward() / pressureEconomyPenalize());
+            }
+        }
+    }
+
 public:
     GameManager() = default;
 
@@ -95,6 +110,7 @@ public:
         enemyManager.update();
         towerManager.update();
         towerManager.enemyInteractions(enemyManager.getAliveEnemies());
+        updateMoneyForKilledEnemies();
         enemyManager.replaceDeadEnemiesWithChildren();
         checkAndLoadNewEnemies();
         summonNewEnemies();
