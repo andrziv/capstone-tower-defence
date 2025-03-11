@@ -107,7 +107,4 @@ add_executable(main src/main.cpp
         src/display/StaticGraphicsManager.h
 )
 
-find_package(OpenMP)
-if(OpenMP_CXX_FOUND)
-    target_link_libraries(main PRIVATE SFML::Graphics crypto OpenMP::OpenMP_CXX nlohmann_json::nlohmann_json)
-endif()
+target_link_libraries(main PRIVATE SFML::Graphics crypto nlohmann_json::nlohmann_json)
