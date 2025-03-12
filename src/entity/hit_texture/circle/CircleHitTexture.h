@@ -56,6 +56,14 @@ class CircleHitTexture final : public HitTexture {
         void setPosition(const sf::Vector2f position) const override {
             setPosition(position.x, position.y);
         }
+
+        void setHitbox(const std::shared_ptr<sf::CircleShape>& hitbox) {
+            this->hitbox = hitbox;
+        }
+
+        void setDisplayEntity(const std::shared_ptr<sf::CircleShape>& displayEntity) {
+            this->displayEntity = displayEntity;
+        }
 };
 
 

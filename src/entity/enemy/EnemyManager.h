@@ -4,8 +4,11 @@
 
 #include "Enemy.h"
 #include "../../helper/visual/ThickLine.h"
-#include "special_enemy/dev/LargeDevEnemy.h"
 
+struct EnemySpawn {
+    std::string spawnGap;
+    std::vector<std::shared_ptr<Enemy>> enemiesToSpawn;
+};
 
 class EnemyManager {
     std::list<std::shared_ptr<Enemy>> enemies;
@@ -20,6 +23,20 @@ class EnemyManager {
             child->setId(parentEnemy->getId());
             addEnemy(child);
         }
+    }
+
+    static float calculateSpawnGapSize(const std::string& spawnGapType, const std::shared_ptr<Enemy>& enemy) {
+        const auto enemyHitBoxRadius = enemy->getHitTexture()->getCircleHitbox()->getRadius();
+        if (spawnGapType == "FAR") {
+            return enemyHitBoxRadius * 2 + 20;
+        }
+        if (spawnGapType == "SIDEBY") {
+            return enemyHitBoxRadius * 2;
+        }
+        if (spawnGapType == "CLOSE") {
+            return enemyHitBoxRadius / 2;
+        }
+        return enemyHitBoxRadius;
     }
 
     public:
@@ -72,6 +89,21 @@ class EnemyManager {
                 enemy->initialize(enemyPath);
                 enemies.push_back(enemy);
                 undrawnEnemies.push_back(enemy);
+            }
+        }
+
+        void addEnemies(const std::vector<EnemySpawn>& newSpawnGroup) {
+            for (const auto&[spawnGap, enemiesToSpawn] : newSpawnGroup) {
+                int counter = 0;
+                for (const auto& enemy : enemiesToSpawn) {
+                    const auto spawnGapDistance = calculateSpawnGapSize(spawnGap, enemy);
+                    enemy->initialize(enemyPath);
+                    const sf::Vertex startPosition = enemy->getPosition();
+                    enemy->setPosition(sf::Vector2f(startPosition.position.x - spawnGapDistance * static_cast<float>(counter), startPosition.position.y));
+                    enemies.push_back(enemy);
+                    undrawnEnemies.push_back(enemy);
+                    counter++;
+                }
             }
         }
 

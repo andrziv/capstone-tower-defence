@@ -22,8 +22,8 @@ class GameManager {
     WaveLoader waveLoader = WaveLoader("../../src/resources/waves/dev-waves.json");
     std::chrono::steady_clock::time_point waveTimeStart = std::chrono::steady_clock::now();
     std::chrono::steady_clock::time_point interWaveTimeStart = std::chrono::steady_clock::now();
-    std::queue<std::pair<double, std::pair<double, std::vector<std::shared_ptr<Enemy>>>>> enemySpawnTimeQueue;
-    std::pair<double, std::pair<double, std::vector<std::shared_ptr<Enemy>>>> nextEnemySummonSet;
+    std::queue<std::pair<double, std::pair<double, std::vector<EnemySpawn>>>> enemySpawnTimeQueue;
+    std::pair<double, std::pair<double, std::vector<EnemySpawn>>> nextEnemySummonSet;
     float queuedWaveReward = 0.f;
     bool waveLoadingPaused = true;
 
@@ -50,28 +50,40 @@ class GameManager {
     }
 
     void loadNextEnemyWave() {
-        std::map<double, std::pair<double, std::vector<std::shared_ptr<Enemy>>>> tempSpawnMap;
+        std::map<double, std::pair<double, std::vector<EnemySpawn>>> tempSpawnMap;
         double previousSpawnTime = 0;
-        const auto&[waveReward, enemyWaveInfo] = waveLoader.getNextWave();
-        queuedWaveReward = waveReward;
-        for (const auto& [total_time, enemy_info] : enemyWaveInfo) {
-            const auto spawnPercent = enemy_info.first;
+        const auto&[waveCoinReward, totalWaveTime, enemyInfos] = waveLoader.getNextWave();
+        queuedWaveReward = static_cast<float>(waveCoinReward);
+        const auto& total_time = totalWaveTime;
+        for (const auto&[enemyMultiplier, spawnTimePercent, spawnGap, enemyToSpawn] : enemyInfos) {
+            const auto spawnPercent = spawnTimePercent;
             auto spawnTime = total_time * (spawnPercent / 100.0);
             auto spawnInterval = spawnTime - previousSpawnTime;
             previousSpawnTime = spawnTime;
-            auto enemy = enemy_info.second;
+            auto enemy = enemyToSpawn;
             auto spawnPair = tempSpawnMap.find(spawnTime);
             if (spawnPair != tempSpawnMap.end()) {
-                spawnPair->second.second.push_back(enemy);
+                spawnPair->second.second.emplace_back(generateSpawnGroup(enemyMultiplier, enemy, spawnGap));
             } else {
-                std::vector<std::shared_ptr<Enemy>> enemies;
-                enemies.push_back(enemy);
+                std::vector<EnemySpawn> enemies;
+                enemies.push_back(generateSpawnGroup(enemyMultiplier, enemy, spawnGap));
                 tempSpawnMap[spawnTime] = std::pair(spawnInterval, enemies);
             }
         }
         for (const auto& [spawnTime, enemyList] : tempSpawnMap) {
             enemySpawnTimeQueue.emplace(spawnTime, enemyList);
         }
+    }
+
+    static EnemySpawn generateSpawnGroup(const int multiplier, const std::shared_ptr<Enemy>& enemy, const std::string& spawnGap) {
+        EnemySpawn spawn;
+        spawn.spawnGap = spawnGap;
+        spawn.enemiesToSpawn = std::vector<std::shared_ptr<Enemy>>();
+        spawn.enemiesToSpawn.push_back(enemy);
+        for (int i = 0; i < multiplier - 1; i++) {
+            spawn.enemiesToSpawn.push_back(enemy->deep_copy());
+        }
+        return spawn;
     }
 
     void summonNewEnemies() {

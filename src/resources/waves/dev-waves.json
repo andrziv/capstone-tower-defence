@@ -8,73 +8,49 @@
         {
           "type": "RED",
           "spawn_time_percent": 0,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 9,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
+          "multiplier": 4,
+          "spawn_gap": "CLOSE"
         },
         {
           "type": "RED",
           "spawn_time_percent": 18,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
+          "multiplier": 3,
+          "spawn_gap": "SIDEBY"
         },
         {
-          "type": "RED",
-          "spawn_time_percent": 27,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
+          "type": "BLUE",
           "spawn_time_percent": 36,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
+          "multiplier": 3,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 45,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 54,
-          "multiplier": 2,
+          "multiplier": 3,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 63,
           "multiplier": 1,
-          "spawn_gap": "FAR"
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 72,
-          "multiplier": 1,
+          "multiplier": 2,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 81,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
+          "multiplier": 1,
+          "spawn_gap": "CLOSE"
         },
         {
           "type": "RED",
           "spawn_time_percent": 90,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 100,
-          "multiplier": 2,
+          "multiplier": 5,
           "spawn_gap": "FAR"
         }
       ]
@@ -88,145 +64,49 @@
           "type": "RED",
           "spawn_time_percent": 0,
           "multiplier": 2,
-          "spawn_gap": "FAR"
+          "spawn_gap": "CLOSE"
         },
         {
           "type": "RED",
           "spawn_time_percent": 4,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 8,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
+          "multiplier": 4,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 13,
-          "multiplier": 2,
+          "multiplier": 9,
           "spawn_gap": "FAR"
         },
         {
-          "type": "RED",
-          "spawn_time_percent": 17,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 21,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 26,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
+          "type": "BLUE",
           "spawn_time_percent": 30,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 34,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 39,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 43,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
+          "multiplier": 6,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 47,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 52,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 56,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 60,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 65,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 69,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 73,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 78,
-          "multiplier": 3,
+          "multiplier": 19,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 82,
           "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 86,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 91,
-          "multiplier": 3,
+          "multiplier": 2,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 95,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 100,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
+          "multiplier": 4,
+          "spawn_gap": "SIDEBY"
         }
       ]
     },
@@ -238,218 +118,110 @@
         {
           "type": "RED",
           "spawn_time_percent": 0,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
+          "multiplier": 3,
+          "spawn_gap": "SIDEBY"
         },
         {
-          "type": "RED",
+          "type": "BLUE",
           "spawn_time_percent": 2,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 5,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 8,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 11,
-          "multiplier": 2,
+          "multiplier": 10,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 14,
           "multiplier": 1,
-          "spawn_gap": "FAR"
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 17,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 20,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 22,
-          "multiplier": 3,
+          "multiplier": 5,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 25,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
+          "multiplier": 2,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 28,
-          "multiplier": 3,
+          "multiplier": 6,
           "spawn_gap": "FAR"
         },
         {
-          "type": "RED",
-          "spawn_time_percent": 31,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
+          "type": "BLUE",
           "spawn_time_percent": 34,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 37,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
+          "multiplier": 5,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 40,
-          "multiplier": 2,
+          "multiplier": 3,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 42,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
+          "multiplier": 2,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 45,
-          "multiplier": 1,
+          "multiplier": 3,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 48,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 51,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
+          "multiplier": 5,
+          "spawn_gap": "CLOSE"
         },
         {
           "type": "RED",
           "spawn_time_percent": 54,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 57,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
+          "multiplier": 6,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 60,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 62,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 65,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 68,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 71,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 74,
-          "multiplier": 2,
+          "multiplier": 11,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 77,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
+          "multiplier": 3,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 80,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 82,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 85,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 88,
-          "multiplier": 1,
+          "multiplier": 10,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 91,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
+          "multiplier": 4,
+          "spawn_gap": "SIDEBY"
         },
         {
-          "type": "RED",
-          "spawn_time_percent": 94,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
+          "type": "BLUE",
           "spawn_time_percent": 97,
-          "multiplier": 2,
+          "multiplier": 1,
           "spawn_gap": "FAR"
         },
         {
-          "type": "RED",
+          "type": "BLUE",
           "spawn_time_percent": 100,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
+          "multiplier": 2,
+          "spawn_gap": "SIDEBY"
         }
       ]
     },
@@ -462,173 +234,77 @@
           "type": "RED",
           "spawn_time_percent": 0,
           "multiplier": 2,
-          "spawn_gap": "FAR"
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 2,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 4,
-          "multiplier": 2,
+          "multiplier": 4,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 6,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
+          "multiplier": 2,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 8,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 10,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 12,
-          "multiplier": 1,
+          "multiplier": 5,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 14,
           "multiplier": 1,
-          "spawn_gap": "FAR"
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 17,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 19,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 21,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 23,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 25,
-          "multiplier": 1,
+          "multiplier": 11,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 27,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 29,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
+          "multiplier": 5,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 31,
           "multiplier": 1,
-          "spawn_gap": "FAR"
+          "spawn_gap": "CLOSE"
         },
         {
           "type": "RED",
           "spawn_time_percent": 34,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 36,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 38,
-          "multiplier": 2,
+          "multiplier": 6,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 40,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 42,
           "multiplier": 2,
-          "spawn_gap": "FAR"
+          "spawn_gap": "CLOSE"
         },
         {
-          "type": "RED",
-          "spawn_time_percent": 44,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 46,
-          "multiplier": 1,
+          "type": "BLUE",
+          "spawn_time_percent": 42,
+          "multiplier": 6,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 48,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 51,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 53,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 55,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
+          "multiplier": 9,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 57,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 59,
           "multiplier": 3,
           "spawn_gap": "FAR"
         },
@@ -636,61 +312,31 @@
           "type": "RED",
           "spawn_time_percent": 61,
           "multiplier": 1,
-          "spawn_gap": "FAR"
+          "spawn_gap": "CLOSE"
         },
         {
-          "type": "RED",
+          "type": "BLUE",
           "spawn_time_percent": 63,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 65,
-          "multiplier": 1,
+          "multiplier": 4,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 68,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 70,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
+          "multiplier": 3,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 72,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 74,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 76,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 78,
-          "multiplier": 1,
+          "multiplier": 6,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 80,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
+          "multiplier": 2,
+          "spawn_gap": "CLOSE"
         },
         {
           "type": "RED",
@@ -701,49 +347,31 @@
         {
           "type": "RED",
           "spawn_time_percent": 85,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
+          "multiplier": 3,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 87,
-          "multiplier": 2,
+          "multiplier": 1,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 89,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
+          "multiplier": 2,
+          "spawn_gap": "CLOSE"
         },
         {
           "type": "RED",
           "spawn_time_percent": 91,
           "multiplier": 3,
-          "spawn_gap": "FAR"
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 93,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 95,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 97,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 100,
-          "multiplier": 2,
+          "multiplier": 10,
           "spawn_gap": "FAR"
         }
       ]
@@ -756,218 +384,116 @@
         {
           "type": "RED",
           "spawn_time_percent": 0,
-          "multiplier": 1,
+          "multiplier": 2,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 1,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
+          "multiplier": 2,
+          "spawn_gap": "CLOSE"
         },
         {
           "type": "RED",
           "spawn_time_percent": 3,
-          "multiplier": 1,
+          "multiplier": 4,
           "spawn_gap": "FAR"
         },
         {
-          "type": "RED",
-          "spawn_time_percent": 5,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 6,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
+          "type": "BLUE",
           "spawn_time_percent": 8,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 10,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
+          "multiplier": 5,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 11,
-          "multiplier": 1,
+          "multiplier": 3,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 13,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 15,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 16,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
+          "multiplier": 8,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 18,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 20,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 22,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 23,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 25,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 27,
-          "multiplier": 3,
+          "multiplier": 9,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 28,
           "multiplier": 2,
-          "spawn_gap": "FAR"
+          "spawn_gap": "CLOSE"
         },
         {
-          "type": "RED",
+          "type": "BLUE",
           "spawn_time_percent": 30,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
+          "multiplier": 2,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 32,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
+          "multiplier": 3,
+          "spawn_gap": "CLOSE"
         },
         {
           "type": "RED",
           "spawn_time_percent": 33,
-          "multiplier": 1,
+          "multiplier": 5,
           "spawn_gap": "FAR"
         },
         {
-          "type": "RED",
-          "spawn_time_percent": 35,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
+          "type": "BLUE",
           "spawn_time_percent": 37,
           "multiplier": 2,
-          "spawn_gap": "FAR"
+          "spawn_gap": "CLOSE"
         },
         {
           "type": "RED",
           "spawn_time_percent": 38,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
+          "multiplier": 2,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 40,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 42,
-          "multiplier": 2,
+          "multiplier": 3,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 44,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
+          "multiplier": 1,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 45,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 47,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 49,
-          "multiplier": 2,
+          "multiplier": 6,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 50,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 52,
           "multiplier": 2,
-          "spawn_gap": "FAR"
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 54,
-          "multiplier": 3,
+          "multiplier": 7,
           "spawn_gap": "FAR"
         },
         {
-          "type": "RED",
-          "spawn_time_percent": 55,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 57,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
+          "type": "BLUE",
           "spawn_time_percent": 59,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
+          "multiplier": 1,
+          "spawn_gap": "CLOSE"
         },
         {
           "type": "RED",
@@ -977,99 +503,45 @@
         },
         {
           "type": "RED",
-          "spawn_time_percent": 62,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
           "spawn_time_percent": 64,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
+          "multiplier": 3,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 66,
-          "multiplier": 3,
+          "multiplier": 9,
           "spawn_gap": "FAR"
         },
         {
-          "type": "RED",
-          "spawn_time_percent": 67,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 69,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 71,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 72,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
+          "type": "BLUE",
           "spawn_time_percent": 74,
           "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 76,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 77,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 79,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 81,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 83,
           "multiplier": 3,
           "spawn_gap": "FAR"
         },
         {
+          "type": "BLUE",
+          "spawn_time_percent": 79,
+          "multiplier": 2,
+          "spawn_gap": "SIDEBY"
+        },
+        {
           "type": "RED",
-          "spawn_time_percent": 84,
-          "multiplier": 1,
+          "spawn_time_percent": 83,
+          "multiplier": 4,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 86,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 88,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
+          "multiplier": 4,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
@@ -1080,37 +552,13 @@
         {
           "type": "RED",
           "spawn_time_percent": 91,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 93,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 94,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 96,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 98,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
+          "multiplier": 7,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 100,
-          "multiplier": 1,
+          "multiplier": 2,
           "spawn_gap": "FAR"
         }
       ]
@@ -1124,232 +572,106 @@
           "type": "RED",
           "spawn_time_percent": 0,
           "multiplier": 1,
-          "spawn_gap": "FAR"
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 1,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 2,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 4,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 5,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 7,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 8,
-          "multiplier": 2,
+          "multiplier": 9,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 9,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 11,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
+          "multiplier": 5,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 12,
-          "multiplier": 3,
+          "multiplier": 11,
           "spawn_gap": "FAR"
         },
         {
-          "type": "RED",
-          "spawn_time_percent": 14,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 15,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 16,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
+          "type": "BLUE",
           "spawn_time_percent": 18,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
+          "multiplier": 3,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 19,
-          "multiplier": 3,
+          "multiplier": 1,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 21,
+          "multiplier": 3,
+          "spawn_gap": "CLOSE"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 22,
           "multiplier": 2,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
-          "spawn_time_percent": 22,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
           "spawn_time_percent": 23,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
+          "multiplier": 3,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 25,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 26,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 28,
-          "multiplier": 3,
+          "multiplier": 6,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 29,
           "multiplier": 2,
-          "spawn_gap": "FAR"
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 30,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 32,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 33,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 35,
-          "multiplier": 3,
+          "multiplier": 8,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 36,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
+          "multiplier": 1,
+          "spawn_gap": "CLOSE"
         },
         {
           "type": "RED",
           "spawn_time_percent": 38,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 39,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 40,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 42,
-          "multiplier": 1,
+          "multiplier": 8,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 43,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 45,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 46,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
+          "multiplier": 4,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 47,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 49,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 50,
-          "multiplier": 3,
+          "multiplier": 4,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 52,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
+          "multiplier": 3,
+          "spawn_gap": "SIDEBY"
         },
         {
-          "type": "RED",
+          "type": "BLUE",
           "spawn_time_percent": 53,
           "multiplier": 3,
           "spawn_gap": "FAR"
@@ -1357,128 +679,68 @@
         {
           "type": "RED",
           "spawn_time_percent": 54,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 56,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
+          "multiplier": 4,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 57,
           "multiplier": 1,
-          "spawn_gap": "FAR"
+          "spawn_gap": "CLOSE"
         },
         {
           "type": "RED",
           "spawn_time_percent": 59,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 60,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 61,
-          "multiplier": 1,
+          "multiplier": 6,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 63,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
+          "multiplier": 2,
+          "spawn_gap": "SIDEBY"
         },
         {
-          "type": "RED",
+          "type": "BLUE",
           "spawn_time_percent": 64,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 66,
           "multiplier": 3,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 67,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
+          "multiplier": 1,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 69,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 70,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 71,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 73,
           "multiplier": 2,
           "spawn_gap": "FAR"
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 71,
+          "multiplier": 5,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 74,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
+          "multiplier": 3,
+          "spawn_gap": "CLOSE"
         },
         {
           "type": "RED",
           "spawn_time_percent": 76,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 77,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 78,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 80,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 81,
-          "multiplier": 3,
+          "multiplier": 13,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 83,
           "multiplier": 3,
-          "spawn_gap": "FAR"
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
@@ -1489,20 +751,8 @@
         {
           "type": "RED",
           "spawn_time_percent": 85,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 87,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 88,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
+          "multiplier": 9,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
@@ -1512,44 +762,26 @@
         },
         {
           "type": "RED",
-          "spawn_time_percent": 91,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
           "spawn_time_percent": 92,
           "multiplier": 1,
-          "spawn_gap": "FAR"
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 94,
-          "multiplier": 3,
+          "multiplier": 1,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 95,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
+          "multiplier": 1,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 97,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 98,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 100,
-          "multiplier": 2,
+          "multiplier": 6,
           "spawn_gap": "FAR"
         }
       ]
@@ -1562,32 +794,20 @@
         {
           "type": "RED",
           "spawn_time_percent": 0,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 1,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 2,
-          "multiplier": 3,
+          "multiplier": 6,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 3,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
+          "multiplier": 1,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 4,
           "multiplier": 1,
-          "spawn_gap": "FAR"
+          "spawn_gap": "CLOSE"
         },
         {
           "type": "RED",
@@ -1597,69 +817,33 @@
         },
         {
           "type": "RED",
-          "spawn_time_percent": 7,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
           "spawn_time_percent": 8,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
+          "multiplier": 1,
+          "spawn_gap": "SIDEBY"
         },
         {
-          "type": "RED",
+          "type": "BLUE",
           "spawn_time_percent": 9,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 10,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 12,
-          "multiplier": 1,
+          "multiplier": 7,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 13,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 14,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 15,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 16,
           "multiplier": 1,
-          "spawn_gap": "FAR"
+          "spawn_gap": "SIDEBY"
         },
         {
-          "type": "RED",
-          "spawn_time_percent": 18,
-          "multiplier": 3,
+          "type": "BLUE",
+          "spawn_time_percent": 14,
+          "multiplier": 10,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 19,
           "multiplier": 3,
-          "spawn_gap": "FAR"
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
@@ -1670,42 +854,36 @@
         {
           "type": "RED",
           "spawn_time_percent": 21,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
+          "multiplier": 3,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 22,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
+          "multiplier": 3,
+          "spawn_gap": "CLOSE"
         },
         {
           "type": "RED",
           "spawn_time_percent": 24,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
+          "multiplier": 3,
+          "spawn_gap": "SIDEBY"
         },
         {
-          "type": "RED",
+          "type": "BLUE",
           "spawn_time_percent": 25,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 26,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 27,
           "multiplier": 3,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
-          "spawn_time_percent": 28,
+          "spawn_time_percent": 26,
+          "multiplier": 1,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 27,
           "multiplier": 2,
           "spawn_gap": "FAR"
         },
@@ -1713,73 +891,43 @@
           "type": "RED",
           "spawn_time_percent": 30,
           "multiplier": 2,
-          "spawn_gap": "FAR"
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 31,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 32,
-          "multiplier": 2,
+          "multiplier": 3,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 33,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
+          "multiplier": 2,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 34,
-          "multiplier": 1,
+          "multiplier": 2,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 36,
+          "multiplier": 4,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 39,
           "multiplier": 1,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
-          "spawn_time_percent": 37,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 38,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 39,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
           "spawn_time_percent": 40,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 42,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 43,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
+          "multiplier": 8,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
@@ -1788,38 +936,26 @@
           "spawn_gap": "FAR"
         },
         {
-          "type": "RED",
+          "type": "BLUE",
           "spawn_time_percent": 45,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 46,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
+          "multiplier": 5,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 48,
-          "multiplier": 2,
+          "multiplier": 1,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 49,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
+          "multiplier": 2,
+          "spawn_gap": "CLOSE"
         },
         {
           "type": "RED",
           "spawn_time_percent": 50,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 51,
           "multiplier": 2,
           "spawn_gap": "FAR"
         },
@@ -1827,55 +963,31 @@
           "type": "RED",
           "spawn_time_percent": 53,
           "multiplier": 3,
-          "spawn_gap": "FAR"
+          "spawn_gap": "CLOSE"
         },
         {
           "type": "RED",
           "spawn_time_percent": 54,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 55,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 56,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 57,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 59,
-          "multiplier": 2,
+          "multiplier": 7,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 60,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
+          "multiplier": 3,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 61,
-          "multiplier": 2,
+          "multiplier": 1,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 62,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
+          "multiplier": 2,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
@@ -1884,70 +996,40 @@
           "spawn_gap": "FAR"
         },
         {
-          "type": "RED",
+          "type": "BLUE",
           "spawn_time_percent": 65,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
+          "multiplier": 3,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 66,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
+          "multiplier": 1,
+          "spawn_gap": "CLOSE"
         },
         {
           "type": "RED",
           "spawn_time_percent": 67,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 68,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 69,
-          "multiplier": 1,
+          "multiplier": 7,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 71,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
+          "multiplier": 1,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 72,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 73,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 74,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 75,
-          "multiplier": 1,
+          "multiplier": 10,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 77,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
+          "multiplier": 1,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
@@ -1957,110 +1039,74 @@
         },
         {
           "type": "RED",
-          "spawn_time_percent": 79,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
           "spawn_time_percent": 80,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 81,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
+          "multiplier": 5,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 83,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 84,
-          "multiplier": 3,
+          "multiplier": 6,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 85,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
+          "multiplier": 1,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 86,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
+          "multiplier": 2,
+          "spawn_gap": "CLOSE"
         },
         {
           "type": "RED",
           "spawn_time_percent": 87,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
+          "multiplier": 1,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 89,
-          "multiplier": 2,
-          "spawn_gap": "FAR"
+          "multiplier": 3,
+          "spawn_gap": "CLOSE"
         },
         {
           "type": "RED",
           "spawn_time_percent": 90,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 91,
-          "multiplier": 1,
+          "multiplier": 4,
           "spawn_gap": "FAR"
         },
         {
           "type": "RED",
           "spawn_time_percent": 92,
           "multiplier": 2,
-          "spawn_gap": "FAR"
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 93,
-          "multiplier": 3,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 95,
           "multiplier": 2,
           "spawn_gap": "FAR"
         },
         {
-          "type": "RED",
-          "spawn_time_percent": 96,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 97,
-          "multiplier": 1,
-          "spawn_gap": "FAR"
+          "type": "BLUE",
+          "spawn_time_percent": 95,
+          "multiplier": 4,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
           "spawn_time_percent": 98,
           "multiplier": 2,
-          "spawn_gap": "FAR"
+          "spawn_gap": "CLOSE"
         },
         {
           "type": "RED",
           "spawn_time_percent": 100,
-          "multiplier": 1,
+          "multiplier": 2,
           "spawn_gap": "FAR"
         }
       ]

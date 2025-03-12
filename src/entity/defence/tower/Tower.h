@@ -112,11 +112,12 @@ class Tower {
             const auto copiedRangeIndicator = std::make_shared<sf::CircleShape>(*getRangeIndicator());
             const auto copiedDisplayEntity = std::make_shared<sf::RectangleShape>(*getHitTexture()->getRectDisplayEntity());
             const auto copiedHitbox = std::make_shared<sf::RectangleShape>(*getHitTexture()->getRectHitbox());
-            auto copiedTower = copy(); // make a copy of the available tower
+            auto copiedTower = copy();
             copiedHitTexture->setDisplayEntity(copiedDisplayEntity);
             copiedHitTexture->setHitbox(copiedHitbox);
             copiedTower->setHitTexture(copiedHitTexture);
             copiedTower->setRangeIndicator(copiedRangeIndicator);
+            copiedTower->setId(get_uuid());
             return copiedTower;
         }
 
