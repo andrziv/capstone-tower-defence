@@ -115,13 +115,10 @@ void game_core() {
                             }
                         }
                     } else {
-
                         graphicsManager.removeDrawable(gameManager.getHoveredTowerDrawable());
                         graphicsManager.removeDrawable(gameManager.getHoveredTower()->getRangeIndicator());
                         gameManager.deselectTower();
-
                     }
-
                 } else if (buttonPressed->button == sf::Mouse::Button::Right) {
                     gameManager.shrinkEnemyPath();
                 }
