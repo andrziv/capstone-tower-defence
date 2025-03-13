@@ -100,13 +100,19 @@ void game_core() {
                                         displayTextManager.setTowerDamageValue(activeTower->getDamage());
                                         displayTextManager.setTowerSpeedValue(activeTower->getAttackSpeed());
                                         displayTextManager.setTowerType(activeTower->getType());
-                                        displayTextManager.setSellOption();
+                                        displayTextManager.setCostOption(activeTower->getCost());
+                                        displayTextManager.setSellOption(GameManager::getSellPrice(selectedTower));
+
                                     }
                         } else {
-                            if (activeTower) {
-                                displayTextManager.removeTowerStats();
-                                graphicsManager.removeDrawable(activeTower->getRangeIndicator());
-                                activeTower = nullptr;
+                            if (activeTower && displayTextManager.isSellButtonClicked(mousePosition)) {
+                                displayTextManager.setSellColorChange(sf::Color(184, 134, 11));
+                            }else {
+                                if (activeTower) {
+                                    displayTextManager.removeTowerStats();
+                                    graphicsManager.removeDrawable(activeTower->getRangeIndicator());
+                                    activeTower = nullptr;
+                                }
                             }
                         }
                     } else {
@@ -132,6 +138,7 @@ void game_core() {
 
             if (event->is<sf::Event::MouseButtonReleased>()) {
                 if (const auto buttonReleased = event->getIf<sf::Event::MouseButtonReleased>(); buttonReleased->button == sf::Mouse::Button::Left) {
+                    const sf::Vector2i mousePosition = buttonReleased->position;
                     if (gameManager.isTowerAlreadySelected()) {
                         const auto success = gameManager.addTower(gameManager.getHoveredTower());
                         graphicsManager.removeDrawable(gameManager.getHoveredTower()->getRangeIndicator());
@@ -139,6 +146,15 @@ void game_core() {
                         if (!success) {
                             graphicsManager.removeDrawable(gameManager.getHoveredTowerDrawable());
                         }
+                    }
+                    if (displayTextManager.isSellButtonClicked(mousePosition) && activeTower != nullptr) {
+                        // Remove the tower from the map or list
+                        graphicsManager.removeDrawable(activeTower->getHitTexture()->getDisplayEntity());
+                        graphicsManager.removeDrawable(activeTower->getRangeIndicator());
+                        gameManager.sellTower(activeTower);
+                        activeTower = nullptr;  // Deselect the tower
+                        displayTextManager.removeTowerStats();
+                        displayTextManager.setSellColorChange(sf::Color(255,255,0)); //Reset color
                     }
                 }
             }
@@ -151,7 +167,9 @@ void game_core() {
                 displayTextManager.setTowerDamageValue(selectedTower->getDamage());
                 displayTextManager.setTowerSpeedValue(selectedTower->getAttackSpeed());
                 displayTextManager.setTowerType(selectedTower->getType());
-                displayTextManager.setSellOption();
+                displayTextManager.setCostOption(selectedTower->getCost());
+                displayTextManager.setSellOption(GameManager::getSellPrice(selectedTower));
+
             }
         }
 
