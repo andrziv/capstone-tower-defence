@@ -282,6 +282,12 @@ public:
     [[nodiscard]] int getPlayerBalance() const {
         return playerBalance;
     }
+
+    [[nodiscard]] static int getSellPrice(const std::shared_ptr<Tower>& tower) {
+        const int sellPrice = tower->getCost() / 2;
+        return sellPrice;
+    }
+
 };
 
 #endif //GAMEMANAGER_H
