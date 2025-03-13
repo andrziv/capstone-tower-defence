@@ -203,7 +203,7 @@ public:
 
     [[nodiscard]] std::vector<std::shared_ptr<sf::Drawable>> getDrawables() const {
         std::vector<std::shared_ptr<sf::Drawable>> drawables;
-        drawables.push_back(enemyManager.getVisualEnemyPath());
+        // drawables.push_back(enemyManager.getVisualEnemyPath());
 
         const std::vector<std::shared_ptr<Enemy>> enemies = enemyManager.getAliveEnemies();
         const std::vector<Projectile*> projectiles = towerManager.getActiveProjectiles();
