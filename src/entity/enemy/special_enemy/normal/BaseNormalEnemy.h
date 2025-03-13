@@ -12,7 +12,7 @@ class BaseNormalEnemy : public Enemy {
     public:
         ~BaseNormalEnemy() override = default;
 
-        BaseNormalEnemy(const std::shared_ptr<sf::VertexArray>& pathToFollow, const float speed, const sf::Color color, const float size) : Enemy(pathToFollow, speed, 1) {
+        BaseNormalEnemy(const std::shared_ptr<sf::VertexArray>& pathToFollow, const float speed, const sf::Color color, const float size) : Enemy(pathToFollow, speed, 1, 1) {
             getHitTexture()->setDisplayEntityColor(color);
             getHitTexture()->setDisplayEntityRadius(size);
             getHitTexture()->setHitboxColor(sf::Color::Transparent);

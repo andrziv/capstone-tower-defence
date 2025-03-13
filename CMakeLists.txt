@@ -49,17 +49,9 @@ add_executable(main src/main.cpp
         src/entity/defence/projectile/ProjectileManager.cpp
         src/entity/defence/projectile/ProjectileManager.h
         src/helper/UUID.h
-        src/entity/enemy/special_enemy/dev/DevEnemy.cpp
-        src/entity/enemy/special_enemy/dev/DevEnemy.h
         src/entity/hit_texture/HitTexture.h
         src/entity/enemy/waves/WaveLoader.cpp
         src/entity/enemy/waves/WaveLoader.h
-        src/entity/enemy/special_enemy/dev/SmallDevEnemy.cpp
-        src/entity/enemy/special_enemy/dev/SmallDevEnemy.h
-        src/entity/enemy/special_enemy/dev/MidDevEnemy.cpp
-        src/entity/enemy/special_enemy/dev/MidDevEnemy.h
-        src/entity/enemy/special_enemy/dev/LargeDevEnemy.cpp
-        src/entity/enemy/special_enemy/dev/LargeDevEnemy.h
         src/entity/enemy/special_enemy/normal/red/RedEnemy.cpp
         src/entity/enemy/special_enemy/normal/red/RedEnemy.h
         src/entity/enemy/special_enemy/normal/yellow/YellowEnemy.cpp

@@ -9,6 +9,19 @@
 
 class Enemy;
 
+struct EnemySpawnInfo {
+    int enemyMultiplier{};
+    int spawnTimePercent{};
+    std::string spawnGap;
+    std::shared_ptr<Enemy> enemyToSpawn;
+};
+
+struct EnemyWaveInfo {
+    int waveCoinReward{};
+    float totalWaveTime{};
+    std::vector<EnemySpawnInfo> enemyInfos;
+};
+
 class WaveLoader {
     /*
      *  'waves' variable (map):
@@ -65,23 +78,38 @@ class WaveLoader {
             maxWaves = counter;
         }
 
-        std::vector<std::pair<float, std::pair<float, std::shared_ptr<Enemy>>>> getNextWave() {
-            std::vector<std::pair<float, std::pair<float, std::shared_ptr<Enemy>>>> enemies;
+        EnemyWaveInfo getNextWave() {
+            std::vector<EnemySpawnInfo> enemies;
             if (currentWave >= maxWaves) {
-                return enemies;
+                EnemyWaveInfo garbage;
+                garbage.waveCoinReward = 0;
+                garbage.totalWaveTime = 0;
+                garbage.enemyInfos = enemies;
+                return garbage;
             }
             currentWave++;
             const auto enemyJsonIterator = enemyWaves.find(currentWave)->second.items();
-            auto totalWaveTime = wavesInfo.find(currentWave)->second.first;
-            // auto coinReward = wavesInfo.find(currentWave)->second.second;
+            const auto totalWaveTime = wavesInfo.find(currentWave)->second.first;
+            const auto coinReward = wavesInfo.find(currentWave)->second.second;
             for (const auto& iteration_proxy_value : enemyJsonIterator) {
                 const auto& item = iteration_proxy_value.value();
-                auto spawn_time = item.value("spawn_time_percent", 0);
+                const auto spawn_time = item.value("spawn_time_percent", 0);
                 auto enemy_type = item.value("type", "none");
-                enemies.emplace_back(std::pair(totalWaveTime, std::pair(spawn_time, constructEnemy(enemy_type))));
+                const auto enemy_multiplier = item.value("multiplier", 1);
+                const auto spawn_gap_type = item.value("spawn_gap", "FAR");
+                EnemySpawnInfo newEnemy;
+                newEnemy.spawnTimePercent = spawn_time;
+                newEnemy.enemyMultiplier = enemy_multiplier;
+                newEnemy.spawnGap = spawn_gap_type;
+                newEnemy.enemyToSpawn = constructEnemy(enemy_type);
+                enemies.emplace_back(newEnemy);
             }
 
-            return enemies;
+            EnemyWaveInfo waveInfo;
+            waveInfo.waveCoinReward = coinReward;
+            waveInfo.totalWaveTime = totalWaveTime;
+            waveInfo.enemyInfos = enemies;
+            return waveInfo;
         }
 
         [[nodiscard]] int getMaxWaves() const {

@@ -3,839 +3,1113 @@
     {
       "wave_number": 1,
       "reward": 76,
+      "total_spawn_time_seconds": 24.0,
       "enemies": [
         {
-          "type": "BLUE",
-          "spawn_time_percent": 10
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 15
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 20
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 25
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 30
+          "type": "RED",
+          "spawn_time_percent": 0,
+          "multiplier": 4,
+          "spawn_gap": "CLOSE"
         },
         {
           "type": "RED",
-          "spawn_time_percent": 35
+          "spawn_time_percent": 18,
+          "multiplier": 3,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 36,
+          "multiplier": 3,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
-          "spawn_time_percent": 37
+          "spawn_time_percent": 45,
+          "multiplier": 3,
+          "spawn_gap": "FAR"
         },
         {
           "type": "RED",
-          "spawn_time_percent": 39
+          "spawn_time_percent": 63,
+          "multiplier": 1,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
-          "spawn_time_percent": 41
+          "spawn_time_percent": 72,
+          "multiplier": 2,
+          "spawn_gap": "FAR"
         },
         {
           "type": "RED",
-          "spawn_time_percent": 43
+          "spawn_time_percent": 81,
+          "multiplier": 1,
+          "spawn_gap": "CLOSE"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 90,
+          "multiplier": 5,
+          "spawn_gap": "FAR"
         }
-      ],
-      "total_spawn_time_seconds": 20.0
+      ]
     },
     {
       "wave_number": 2,
       "reward": 78,
+      "total_spawn_time_seconds": 48.0,
       "enemies": [
         {
-          "type": "BLUE",
-          "spawn_time_percent": 0
+          "type": "RED",
+          "spawn_time_percent": 0,
+          "multiplier": 2,
+          "spawn_gap": "CLOSE"
         },
         {
-          "type": "BLUE",
-          "spawn_time_percent": 5
+          "type": "RED",
+          "spawn_time_percent": 4,
+          "multiplier": 4,
+          "spawn_gap": "SIDEBY"
         },
         {
-          "type": "BLUE",
-          "spawn_time_percent": 10
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 15
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 20
+          "type": "RED",
+          "spawn_time_percent": 13,
+          "multiplier": 9,
+          "spawn_gap": "FAR"
         },
         {
           "type": "BLUE",
-          "spawn_time_percent": 25
+          "spawn_time_percent": 30,
+          "multiplier": 6,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
-          "spawn_time_percent": 30
+          "spawn_time_percent": 47,
+          "multiplier": 19,
+          "spawn_gap": "FAR"
         },
         {
           "type": "RED",
-          "spawn_time_percent": 35
+          "spawn_time_percent": 82,
+          "multiplier": 2,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
-          "spawn_time_percent": 40
+          "spawn_time_percent": 91,
+          "multiplier": 2,
+          "spawn_gap": "FAR"
         },
         {
           "type": "RED",
-          "spawn_time_percent": 45
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 50
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 55
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 60
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 65
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 70
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 75
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 80
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 85
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 90
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 95
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 100
+          "spawn_time_percent": 95,
+          "multiplier": 4,
+          "spawn_gap": "SIDEBY"
         }
-      ],
-      "total_spawn_time_seconds": 20.0
+      ]
     },
     {
       "wave_number": 3,
-      "reward": 81,
+      "reward": 82,
+      "total_spawn_time_seconds": 72.0,
       "enemies": [
         {
-          "type": "BLUE",
-          "spawn_time_percent": 1
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 2
+          "type": "RED",
+          "spawn_time_percent": 0,
+          "multiplier": 3,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "BLUE",
-          "spawn_time_percent": 3
+          "spawn_time_percent": 2,
+          "multiplier": 10,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 14,
+          "multiplier": 1,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 17,
+          "multiplier": 5,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 25,
+          "multiplier": 2,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 28,
+          "multiplier": 6,
+          "spawn_gap": "FAR"
         },
         {
           "type": "BLUE",
-          "spawn_time_percent": 4
+          "spawn_time_percent": 34,
+          "multiplier": 5,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 40,
+          "multiplier": 3,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 42,
+          "multiplier": 2,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 45,
+          "multiplier": 3,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 48,
+          "multiplier": 5,
+          "spawn_gap": "CLOSE"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 54,
+          "multiplier": 6,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 60,
+          "multiplier": 11,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 77,
+          "multiplier": 3,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 80,
+          "multiplier": 10,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 91,
+          "multiplier": 4,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "BLUE",
-          "spawn_time_percent": 5
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 6
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 7
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 8
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 9
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 10
+          "spawn_time_percent": 97,
+          "multiplier": 1,
+          "spawn_gap": "FAR"
         },
         {
           "type": "BLUE",
-          "spawn_time_percent": 11
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 12
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 13
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 14
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 15
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 16
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 17
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 18
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 19
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 20
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 21
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 22
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 23
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 24
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 25
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 26
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 27
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 28
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 29
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 30
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 31
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 31
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 32
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 33
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 34
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 35
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 36
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 37
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 38
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 39
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 40
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 41
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 42
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 43
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 44
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 45
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 46
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 47
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 48
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 49
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 50
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 51
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 52
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 53
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 54
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 55
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 56
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 57
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 58
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 59
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 60
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 61
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 62
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 63
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 64
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 65
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 66
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 67
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 68
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 69
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 70
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 71
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 72
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 73
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 74
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 75
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 76
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 77
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 78
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 79
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 80
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 81
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 82
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 83
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 84
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 85
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 85
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 87
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 88
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 89
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 90
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 91
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 92
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 93
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 94
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 95
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 96
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 97
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 98
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 99
-        },
-        {
-          "type": "GREEN",
-          "spawn_time_percent": 100
+          "spawn_time_percent": 100,
+          "multiplier": 2,
+          "spawn_gap": "SIDEBY"
         }
-      ],
-      "total_spawn_time_seconds": 20.0
+      ]
     },
     {
       "wave_number": 4,
-      "reward": 85,
+      "reward": 87,
+      "total_spawn_time_seconds": 96.0,
       "enemies": [
         {
+          "type": "RED",
+          "spawn_time_percent": 0,
+          "multiplier": 2,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 2,
+          "multiplier": 4,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 6,
+          "multiplier": 2,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 8,
+          "multiplier": 5,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 14,
+          "multiplier": 1,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 17,
+          "multiplier": 11,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 27,
+          "multiplier": 5,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 31,
+          "multiplier": 1,
+          "spawn_gap": "CLOSE"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 34,
+          "multiplier": 6,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 40,
+          "multiplier": 2,
+          "spawn_gap": "CLOSE"
+        },
+        {
           "type": "BLUE",
-          "spawn_time_percent": 0
+          "spawn_time_percent": 42,
+          "multiplier": 6,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 48,
+          "multiplier": 9,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 57,
+          "multiplier": 3,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 61,
+          "multiplier": 1,
+          "spawn_gap": "CLOSE"
         },
         {
           "type": "BLUE",
-          "spawn_time_percent": 2
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 4
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 6
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 8
-        },
-        {
-          "type": "BLUE",
-          "spawn_time_percent": 10
+          "spawn_time_percent": 63,
+          "multiplier": 4,
+          "spawn_gap": "FAR"
         },
         {
           "type": "RED",
-          "spawn_time_percent": 12
+          "spawn_time_percent": 68,
+          "multiplier": 3,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
-          "spawn_time_percent": 14
+          "spawn_time_percent": 72,
+          "multiplier": 6,
+          "spawn_gap": "FAR"
         },
         {
           "type": "RED",
-          "spawn_time_percent": 16
+          "spawn_time_percent": 80,
+          "multiplier": 2,
+          "spawn_gap": "CLOSE"
         },
         {
           "type": "RED",
-          "spawn_time_percent": 18
+          "spawn_time_percent": 82,
+          "multiplier": 2,
+          "spawn_gap": "FAR"
         },
         {
           "type": "RED",
-          "spawn_time_percent": 20
+          "spawn_time_percent": 85,
+          "multiplier": 3,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
-          "spawn_time_percent": 22
+          "spawn_time_percent": 87,
+          "multiplier": 1,
+          "spawn_gap": "FAR"
         },
         {
           "type": "RED",
-          "spawn_time_percent": 24
+          "spawn_time_percent": 89,
+          "multiplier": 2,
+          "spawn_gap": "CLOSE"
         },
         {
           "type": "RED",
-          "spawn_time_percent": 26
+          "spawn_time_percent": 91,
+          "multiplier": 3,
+          "spawn_gap": "SIDEBY"
         },
         {
           "type": "RED",
-          "spawn_time_percent": 28
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 30
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 32
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 34
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 36
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 38
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 40
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 42
-        },
-        {
-          "type": "GREEN",
-          "spawn_time_percent": 44
-        },
-        {
-          "type": "GREEN",
-          "spawn_time_percent": 46
-        },
-        {
-          "type": "GREEN",
-          "spawn_time_percent": 48
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 50
-        },
-        {
-          "type": "YELLOW",
-          "spawn_time_percent": 52
-        },
-        {
-          "type": "YELLOW",
-          "spawn_time_percent": 54
-        },
-        {
-          "type": "YELLOW",
-          "spawn_time_percent": 56
-        },
-        {
-          "type": "PINK",
-          "spawn_time_percent": 58
-        },
-        {
-          "type": "PINK",
-          "spawn_time_percent": 60
-        },
-        {
-          "type": "PINK",
-          "spawn_time_percent": 62
-        },
-        {
-          "type": "PINK",
-          "spawn_time_percent": 64
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 66
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 68
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 70
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 72
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 74
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 76
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 78
-        },
-        {
-          "type": "RED",
-          "spawn_time_percent": 80
+          "spawn_time_percent": 93,
+          "multiplier": 10,
+          "spawn_gap": "FAR"
         }
-      ],
-      "total_spawn_time_seconds": 20.0
+      ]
     },
     {
       "wave_number": 5,
-      "reward": 8097,
+      "reward": 93,
+      "total_spawn_time_seconds": 120.0,
       "enemies": [
         {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 50
+          "type": "RED",
+          "spawn_time_percent": 0,
+          "multiplier": 2,
+          "spawn_gap": "FAR"
         },
         {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 100
+          "type": "RED",
+          "spawn_time_percent": 1,
+          "multiplier": 2,
+          "spawn_gap": "CLOSE"
         },
         {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 33
+          "type": "RED",
+          "spawn_time_percent": 3,
+          "multiplier": 4,
+          "spawn_gap": "FAR"
         },
         {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 8
+          "type": "BLUE",
+          "spawn_time_percent": 8,
+          "multiplier": 5,
+          "spawn_gap": "SIDEBY"
         },
         {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 10
+          "type": "RED",
+          "spawn_time_percent": 11,
+          "multiplier": 3,
+          "spawn_gap": "FAR"
         },
         {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 12
+          "type": "RED",
+          "spawn_time_percent": 13,
+          "multiplier": 8,
+          "spawn_gap": "SIDEBY"
         },
         {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
+          "type": "RED",
+          "spawn_time_percent": 18,
+          "multiplier": 9,
+          "spawn_gap": "FAR"
         },
         {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
+          "type": "RED",
+          "spawn_time_percent": 28,
+          "multiplier": 2,
+          "spawn_gap": "CLOSE"
         },
         {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
+          "type": "BLUE",
+          "spawn_time_percent": 30,
+          "multiplier": 2,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 32,
+          "multiplier": 3,
+          "spawn_gap": "CLOSE"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 33,
+          "multiplier": 5,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 37,
+          "multiplier": 2,
+          "spawn_gap": "CLOSE"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 38,
+          "multiplier": 2,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 40,
+          "multiplier": 3,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 44,
+          "multiplier": 1,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 45,
+          "multiplier": 6,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 50,
+          "multiplier": 2,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 54,
+          "multiplier": 7,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 59,
+          "multiplier": 1,
+          "spawn_gap": "CLOSE"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 61,
+          "multiplier": 2,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 64,
+          "multiplier": 3,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 66,
+          "multiplier": 9,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 74,
+          "multiplier": 3,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 77,
+          "multiplier": 3,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 79,
+          "multiplier": 2,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 83,
+          "multiplier": 4,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 86,
+          "multiplier": 4,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 89,
+          "multiplier": 1,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 91,
+          "multiplier": 7,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 100,
+          "multiplier": 2,
+          "spawn_gap": "FAR"
         }
-      ],
-      "total_spawn_time_seconds": 18.0
+      ]
     },
     {
       "wave_number": 6,
-      "reward": 8166,
+      "reward": 100,
+      "total_spawn_time_seconds": 144.0,
       "enemies": [
         {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 50
+          "type": "RED",
+          "spawn_time_percent": 0,
+          "multiplier": 1,
+          "spawn_gap": "SIDEBY"
         },
         {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 100
+          "type": "RED",
+          "spawn_time_percent": 1,
+          "multiplier": 9,
+          "spawn_gap": "FAR"
         },
         {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 22
+          "type": "RED",
+          "spawn_time_percent": 9,
+          "multiplier": 5,
+          "spawn_gap": "SIDEBY"
         },
         {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 33
+          "type": "RED",
+          "spawn_time_percent": 12,
+          "multiplier": 11,
+          "spawn_gap": "FAR"
         },
         {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 8
+          "type": "BLUE",
+          "spawn_time_percent": 18,
+          "multiplier": 3,
+          "spawn_gap": "SIDEBY"
         },
         {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 10
+          "type": "RED",
+          "spawn_time_percent": 19,
+          "multiplier": 1,
+          "spawn_gap": "FAR"
         },
         {
-          "type": "SMALL_BOSS",
-          "spawn_time_percent": 12
+          "type": "RED",
+          "spawn_time_percent": 21,
+          "multiplier": 3,
+          "spawn_gap": "CLOSE"
         },
         {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
+          "type": "RED",
+          "spawn_time_percent": 22,
+          "multiplier": 2,
+          "spawn_gap": "FAR"
         },
         {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
+          "type": "RED",
+          "spawn_time_percent": 23,
+          "multiplier": 3,
+          "spawn_gap": "SIDEBY"
         },
         {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
+          "type": "RED",
+          "spawn_time_percent": 25,
+          "multiplier": 6,
+          "spawn_gap": "FAR"
         },
         {
-          "type": "ARMOURED",
-          "spawn_time_percent": 0
+          "type": "RED",
+          "spawn_time_percent": 29,
+          "multiplier": 2,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 30,
+          "multiplier": 8,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 36,
+          "multiplier": 1,
+          "spawn_gap": "CLOSE"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 38,
+          "multiplier": 8,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 43,
+          "multiplier": 4,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 47,
+          "multiplier": 4,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 52,
+          "multiplier": 3,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 53,
+          "multiplier": 3,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 54,
+          "multiplier": 4,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 57,
+          "multiplier": 1,
+          "spawn_gap": "CLOSE"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 59,
+          "multiplier": 6,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 63,
+          "multiplier": 2,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 64,
+          "multiplier": 3,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 67,
+          "multiplier": 1,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 69,
+          "multiplier": 2,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 71,
+          "multiplier": 5,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 74,
+          "multiplier": 3,
+          "spawn_gap": "CLOSE"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 76,
+          "multiplier": 13,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 83,
+          "multiplier": 3,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 84,
+          "multiplier": 2,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 85,
+          "multiplier": 9,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 90,
+          "multiplier": 3,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 92,
+          "multiplier": 1,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 94,
+          "multiplier": 1,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 95,
+          "multiplier": 1,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 97,
+          "multiplier": 6,
+          "spawn_gap": "FAR"
         }
-      ],
-      "total_spawn_time_seconds": 20.0
+      ]
     },
     {
       "wave_number": 7,
-      "reward": 8236,
+      "reward": 108,
+      "total_spawn_time_seconds": 168.0,
       "enemies": [
         {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 50
+          "type": "RED",
+          "spawn_time_percent": 0,
+          "multiplier": 6,
+          "spawn_gap": "FAR"
         },
         {
-          "type": "BIG_BOSS",
-          "spawn_time_percent": 100
+          "type": "RED",
+          "spawn_time_percent": 3,
+          "multiplier": 1,
+          "spawn_gap": "SIDEBY"
         },
         {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 30
+          "type": "RED",
+          "spawn_time_percent": 4,
+          "multiplier": 1,
+          "spawn_gap": "CLOSE"
         },
         {
-          "type": "MEDIUM_BOSS",
-          "spawn_time_percent": 40
+          "type": "RED",
+          "spawn_time_percent": 6,
+          "multiplier": 3,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 8,
+          "multiplier": 1,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 9,
+          "multiplier": 7,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 13,
+          "multiplier": 1,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 14,
+          "multiplier": 10,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 19,
+          "multiplier": 3,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 20,
+          "multiplier": 3,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 21,
+          "multiplier": 3,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 22,
+          "multiplier": 3,
+          "spawn_gap": "CLOSE"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 24,
+          "multiplier": 3,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 25,
+          "multiplier": 3,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 26,
+          "multiplier": 1,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 27,
+          "multiplier": 2,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 30,
+          "multiplier": 2,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 31,
+          "multiplier": 3,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 33,
+          "multiplier": 2,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 34,
+          "multiplier": 2,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 36,
+          "multiplier": 4,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 39,
+          "multiplier": 1,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 40,
+          "multiplier": 8,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 44,
+          "multiplier": 2,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 45,
+          "multiplier": 5,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 48,
+          "multiplier": 1,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 49,
+          "multiplier": 2,
+          "spawn_gap": "CLOSE"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 50,
+          "multiplier": 2,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 53,
+          "multiplier": 3,
+          "spawn_gap": "CLOSE"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 54,
+          "multiplier": 7,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 60,
+          "multiplier": 3,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 61,
+          "multiplier": 1,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 62,
+          "multiplier": 2,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 63,
+          "multiplier": 1,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 65,
+          "multiplier": 3,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 66,
+          "multiplier": 1,
+          "spawn_gap": "CLOSE"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 67,
+          "multiplier": 7,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 71,
+          "multiplier": 1,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 72,
+          "multiplier": 10,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 77,
+          "multiplier": 1,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 78,
+          "multiplier": 2,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 80,
+          "multiplier": 5,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 83,
+          "multiplier": 6,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 85,
+          "multiplier": 1,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 86,
+          "multiplier": 2,
+          "spawn_gap": "CLOSE"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 87,
+          "multiplier": 1,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 89,
+          "multiplier": 3,
+          "spawn_gap": "CLOSE"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 90,
+          "multiplier": 4,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 92,
+          "multiplier": 2,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 93,
+          "multiplier": 2,
+          "spawn_gap": "FAR"
+        },
+        {
+          "type": "BLUE",
+          "spawn_time_percent": 95,
+          "multiplier": 4,
+          "spawn_gap": "SIDEBY"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 98,
+          "multiplier": 2,
+          "spawn_gap": "CLOSE"
+        },
+        {
+          "type": "RED",
+          "spawn_time_percent": 100,
+          "multiplier": 2,
+          "spawn_gap": "FAR"
         }
-      ],
-      "total_spawn_time_seconds": 8.0
+      ]
     }
   ]
 }

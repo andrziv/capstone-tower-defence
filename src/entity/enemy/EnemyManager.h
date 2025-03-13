@@ -4,8 +4,11 @@
 
 #include "Enemy.h"
 #include "../../helper/visual/ThickLine.h"
-#include "special_enemy/dev/LargeDevEnemy.h"
 
+struct EnemySpawn {
+    std::string spawnGap;
+    std::vector<std::shared_ptr<Enemy>> enemiesToSpawn;
+};
 
 class EnemyManager {
     std::list<std::shared_ptr<Enemy>> enemies;
@@ -22,6 +25,20 @@ class EnemyManager {
         }
     }
 
+    static float calculateSpawnGapSize(const std::string& spawnGapType, const std::shared_ptr<Enemy>& enemy) {
+        const auto enemyHitBoxRadius = enemy->getHitTexture()->getCircleHitbox()->getRadius();
+        if (spawnGapType == "FAR") {
+            return enemyHitBoxRadius * 2 + 20;
+        }
+        if (spawnGapType == "SIDEBY") {
+            return enemyHitBoxRadius * 2;
+        }
+        if (spawnGapType == "CLOSE") {
+            return enemyHitBoxRadius / 2;
+        }
+        return enemyHitBoxRadius;
+    }
+
     public:
         // TODO: temp; just for testing atm
         EnemyManager() {
@@ -29,19 +46,30 @@ class EnemyManager {
             enemyPath->setPrimitiveType(sf::PrimitiveType::LineStrip);
 
             sf::Vertex vertices[] {
-                {{  0.0f,   430.0f}, sf::Color::Red, { 0.0f,  0.0f}},
-                {{  800.0f, 430.0f}, sf::Color::Red, { 0.0f, 10.0f}},
-                {{800.0f, 200.0f}, sf::Color::Red, {10.0f, 10.0f}},
-                {{  540.0f,   200.0f}, sf::Color::Red, { 0.0f,  0.0f}},
-                {{540.0f, 800.0f}, sf::Color::Red, {10.0f, 10.0f}},
-                {{280.0f,   800.0f}, sf::Color::Red, {10.0f,  0.0f}},
-                {{280.0f,   600.0f}, sf::Color::Red, {10.0f,  0.0f}},
-                {{1000.0f,   600.0f}, sf::Color::Red, {10.0f,  0.0f}},
-                {{1000.0f,   350.0f}, sf::Color::Red, {10.0f,  0.0f}},
-                {{1200.0f,   350.0f}, sf::Color::Red, {10.0f,  0.0f}},
-                {{1200.0f,   730.0f}, sf::Color::Red, {10.0f,  0.0f}},
-                {{730.0f,   730.0f}, sf::Color::Red, {10.0f,  0.0f}},
-                {{730.0f,   1080.0f}, sf::Color::Red, {10.0f,  0.0f}}
+                {{  3.000000f,   453.000000f}, sf::Color::Red, { 0.0f,  0.0f}},
+                {{  905.000000f,   451.000000f}, sf::Color::Red, { 0.0f,  0.0f}},
+                {{  952.000000f,   399.000000f}, sf::Color::Red, { 0.0f,  0.0f}},
+                {{  951.000000f,   247.000000f}, sf::Color::Red, { 0.0f,  0.0f}},
+                {{  891.000000f,   203.000000f}, sf::Color::Red, { 0.0f,  0.0f}},
+                {{  681.000000f,   203.000000f}, sf::Color::Red, { 0.0f,  0.0f}},
+                {{  626.000000f,   240.000000f}, sf::Color::Red, { 0.0f,  0.0f}},
+                {{  625.000000f,   805.000000f}, sf::Color::Red, { 0.0f,  0.0f}},
+                {{  559.000000f,   875.000000f}, sf::Color::Red, { 0.0f,  0.0f}},
+                {{  379.000000f,   877.000000f}, sf::Color::Red, { 0.0f,  0.0f}},
+                {{  312.000000f,   816.000000f}, sf::Color::Red, { 0.0f,  0.0f}},
+                {{  311.000000f,   677.000000f}, sf::Color::Red, { 0.0f,  0.0f}},
+                {{  358.000000f,   632.000000f}, sf::Color::Red, { 0.0f,  0.0f}},
+                {{  1129.000000f,   617.000000f}, sf::Color::Red, { 0.0f,  0.0f}},
+                {{  1210.000000f,   570.000000f}, sf::Color::Red, { 0.0f,  0.0f}},
+                {{  1211.000000f,   413.000000f}, sf::Color::Red, { 0.0f,  0.0f}},
+                {{  1265.000000f,   351.000000f}, sf::Color::Red, { 0.0f,  0.0f}},
+                {{  1400.000000f,   353.000000f}, sf::Color::Red, { 0.0f,  0.0f}},
+                {{  1453.000000f,   415.000000f}, sf::Color::Red, { 0.0f,  0.0f}},
+                {{  1448.000000f,   714.000000f}, sf::Color::Red, { 0.0f,  0.0f}},
+                {{  1403.000000f,   774.000000f}, sf::Color::Red, { 0.0f,  0.0f}},
+                {{  926.000000f,   788.000000f}, sf::Color::Red, { 0.0f,  0.0f}},
+                {{  856.000000f,   831.000000f}, sf::Color::Red, { 0.0f,  0.0f}},
+                {{  849.000000f,   1078.000000f}, sf::Color::Red, { 0.0f,  0.0f}}
             };
 
             std::vector<sf::Vector2f> points;
@@ -72,6 +100,21 @@ class EnemyManager {
                 enemy->initialize(enemyPath);
                 enemies.push_back(enemy);
                 undrawnEnemies.push_back(enemy);
+            }
+        }
+
+        void addEnemies(const std::vector<EnemySpawn>& newSpawnGroup) {
+            for (const auto&[spawnGap, enemiesToSpawn] : newSpawnGroup) {
+                int counter = 0;
+                for (const auto& enemy : enemiesToSpawn) {
+                    const auto spawnGapDistance = calculateSpawnGapSize(spawnGap, enemy);
+                    enemy->initialize(enemyPath);
+                    const sf::Vertex startPosition = enemy->getPosition();
+                    enemy->setPosition(sf::Vector2f(startPosition.position.x - spawnGapDistance * static_cast<float>(counter), startPosition.position.y));
+                    enemies.push_back(enemy);
+                    undrawnEnemies.push_back(enemy);
+                    counter++;
+                }
             }
         }
 

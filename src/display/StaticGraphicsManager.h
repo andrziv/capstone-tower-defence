@@ -3,6 +3,7 @@
 #include <memory>
 
 #include "DisplayConsts.h"
+#include "../texture/TextureHolder.h"
 #include "SFML/Graphics/Drawable.hpp"
 #include "SFML/Graphics/RectangleShape.hpp"
 
@@ -10,6 +11,7 @@
 class StaticGraphicsManager {
     std::shared_ptr<sf::RectangleShape> selectionMenu;
     std::shared_ptr<sf::RectangleShape> menuStat;
+    std::shared_ptr<sf::RectangleShape> backgroundMapTexture;
 
 public:
     StaticGraphicsManager() {
@@ -20,12 +22,18 @@ public:
 
         menuStat = std::make_shared<sf::RectangleShape>(sf::RectangleShape());
         menuStat->setPosition(sf::Vector2f(SEL_MENU_START_X, STAT_GAP_Y*10));
-        menuStat->setSize(sf::Vector2f(300, 150));
+        menuStat->setSize(sf::Vector2f(300, 210));
         menuStat->setFillColor(sf::Color(51, 77, 77, 125));
+
+        this->backgroundMapTexture = std::make_shared<sf::RectangleShape>(sf::RectangleShape());
+        backgroundMapTexture->setSize(sf::Vector2f(DISPLAY_MAX_X, DISPLAY_MAX_Y));
+        this->backgroundMapTexture->setTexture(&MAP_TEXTURE);
+        this->backgroundMapTexture->setTextureRect(sf::IntRect({0, 0}, {826, 532}));
     }
 
     [[nodiscard]] std::vector<std::shared_ptr<sf::Drawable>> getStaticDrawables() const {
         return {
+            backgroundMapTexture,
             selectionMenu,
             menuStat
         };

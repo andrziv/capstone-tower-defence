@@ -9,6 +9,11 @@ class RedEnemy final : public BaseNormalEnemy {
         explicit RedEnemy(const std::shared_ptr<sf::VertexArray>& pathToFollow) :
             BaseNormalEnemy(pathToFollow, 1, sf::Color::Red, 30.f) {
         }
+
+    protected:
+        std::shared_ptr<Enemy> copy() override {
+            return std::make_shared<RedEnemy>(*this);
+        }
 };
 
 

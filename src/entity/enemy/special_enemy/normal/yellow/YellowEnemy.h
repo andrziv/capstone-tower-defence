@@ -20,6 +20,11 @@ class YellowEnemy final : public BaseNormalEnemy {
             children.push_back(enemy);
             return children;
         }
+
+    protected:
+        std::shared_ptr<Enemy> copy() override {
+            return std::make_shared<YellowEnemy>(*this);
+        }
 };
 
 

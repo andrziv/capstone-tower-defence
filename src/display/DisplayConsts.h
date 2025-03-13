@@ -43,6 +43,6 @@ inline constexpr float TYPE_START_RIGHT  = DISPLAY_MAX_X * TYPE_PERCENT_RIGHT;
 inline constexpr float SELL_START_RIGHT  = DISPLAY_MAX_X * SELL_PERCENT_RIGHT;
 inline constexpr float TEXT_START_Y = 0 + TEXT_TOP_PADDING;
 inline constexpr float PRESSURE_GAP_Y = 25;
-inline constexpr float STAT_GAP_Y = 25;
+inline constexpr float STAT_GAP_Y = 30;
 
 #endif //DISPLAYCONSTS_H
