@@ -8,6 +8,7 @@
 #include "SFML/Graphics/Font.hpp"
 #include "SFML/Graphics/Text.hpp"
 #include "SFML/System/Vector2.hpp"
+#include "SFML/Graphics/RectangleShape.hpp"
 
 
 class DisplayTextManager {
@@ -24,6 +25,8 @@ class DisplayTextManager {
     const std::shared_ptr<sf::Text> displaySpeed = std::make_shared<sf::Text>(sf::Text(font));
     const std::shared_ptr<sf::Text> displayType = std::make_shared<sf::Text>(sf::Text(font));
     const std::shared_ptr<sf::Text> displaySellOption = std::make_shared<sf::Text>(sf::Text(font));
+    const std::shared_ptr<sf::Text> displayCostOption = std::make_shared<sf::Text>(sf::Text(font));
+    sf::RectangleShape sellButtonRectangle;
 
 public:
     DisplayTextManager() {
@@ -68,6 +71,11 @@ public:
             balanceCounter->setStyle(sf::Text::Bold);
             balanceCounter->setPosition(sf::Vector2f(BALANCE_START_RIGHT, TEXT_START_Y));
 
+            displayType->setCharacterSize(24);
+            displayType->setFillColor(sf::Color(51, 204, 255));
+            displayType->setStyle(sf::Text::Bold);
+            displayType->setPosition(sf::Vector2f(TYPE_START_RIGHT, STAT_GAP_Y * 11));
+
             displayDamage->setCharacterSize(24);
             displayDamage->setFillColor(sf::Color(255, 92, 51));
             displayDamage->setStyle(sf::Text::Bold);
@@ -78,15 +86,19 @@ public:
             displaySpeed->setStyle(sf::Text::Bold);
             displaySpeed->setPosition(sf::Vector2f(SPEED_START_RIGHT, STAT_GAP_Y * 13));
 
-            displayType->setCharacterSize(24);
-            displayType->setFillColor(sf::Color(51, 204, 255));
-            displayType->setStyle(sf::Text::Bold);
-            displayType->setPosition(sf::Vector2f(TYPE_START_RIGHT, STAT_GAP_Y * 11));
+            displayCostOption->setCharacterSize(24);
+            displayCostOption->setFillColor(sf::Color(0, 255, 0));
+            displayCostOption->setStyle(sf::Text::Bold);
+            displayCostOption->setPosition(sf::Vector2f(TYPE_START_RIGHT, STAT_GAP_Y * 14));
 
             displaySellOption->setCharacterSize(24);
             displaySellOption->setFillColor(sf::Color(255, 255, 0));
             displaySellOption->setStyle(sf::Text::Bold);
-            displaySellOption->setPosition(sf::Vector2f(TYPE_START_RIGHT, STAT_GAP_Y * 14));
+            displaySellOption->setPosition(sf::Vector2f(TYPE_START_RIGHT, STAT_GAP_Y * 15));
+
+            sellButtonRectangle.setPosition(displaySellOption->getPosition());
+            sellButtonRectangle.setSize(sf::Vector2f(100.f, 40.f));
+            sellButtonRectangle.setFillColor(sf::Color(255, 255, 0, 150));
         }
     }
 
@@ -136,14 +148,27 @@ public:
         displayType->setString("Type: " + newType);
     }
 
-    void setSellOption() const {
-        displaySellOption->setString("Sell");
+    void setCostOption(const double newCost) const {
+        std::ostringstream oss;
+        oss << std::fixed << std::setprecision(0) << newCost;
+        displayCostOption->setString("Cost: " + oss.str());
+    }
+
+    void setSellOption(const double newSell) const {
+        std::ostringstream oss;
+        oss << std::fixed << std::setprecision(0) << newSell;
+        displaySellOption->setString("Sell: " + oss.str());
     }
 
     bool isSellButtonClicked(const sf::Vector2i& mousePosition) const {
         // Check if the mouse click is within the bounds of the sell button (displaySellOption)
-        const sf::FloatRect sellButtonBounds = displaySellOption->getGlobalBounds();
-        return sellButtonBounds.contains(static_cast<sf::Vector2f>(mousePosition));
+        //const sf::FloatRect sellButtonBounds = displaySellOption->getGlobalBounds();
+        //return sellButtonBounds.contains(static_cast<sf::Vector2f>(mousePosition));
+        return sellButtonRectangle.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePosition));
+    }
+
+    void setSellColorChange(const sf::Color &newColor) const {
+        displaySellOption->setFillColor(newColor);
     }
 
     void removeTowerStats() const {
@@ -152,6 +177,7 @@ public:
         displayDamage->setString("          ");
         displaySpeed->setString("           ");
         displayType->setString("          ");
+        displayCostOption->setString("          ");
         displaySellOption->setString("          ");
     }
 
@@ -169,6 +195,7 @@ public:
             displayDamage,
             displaySpeed,
             displayType,
+            displayCostOption,
             displaySellOption
         };
     }
