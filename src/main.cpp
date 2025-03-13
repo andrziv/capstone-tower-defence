@@ -90,24 +90,23 @@ void game_core() {
                             graphicsManager.addPriorityDrawable(gameManager.getHoveredTowerDrawable());
                             graphicsManager.addPriorityDrawable(gameManager.getHoveredTower()->getRangeIndicator());
                         } else if (const auto& selectedTower = gameManager.attemptSelectingPlacedTower(mousePosition); selectedTower != nullptr) {
-                                    if (activeTower != selectedTower) {
-                                        if (activeTower) {
-                                            graphicsManager.removeDrawable(activeTower->getRangeIndicator());
-                                        }
-                                        graphicsManager.addPriorityDrawable(selectedTower->getRangeIndicator());
-                                        activeTower = selectedTower;
+                            if (activeTower != selectedTower) {
+                                if (activeTower) {
+                                    graphicsManager.removeDrawable(activeTower->getRangeIndicator());
+                                }
+                                graphicsManager.addPriorityDrawable(selectedTower->getRangeIndicator());
+                                activeTower = selectedTower;
 
-                                        displayTextManager.setTowerDamageValue(activeTower->getDamage());
-                                        displayTextManager.setTowerSpeedValue(activeTower->getAttackSpeed());
-                                        displayTextManager.setTowerType(activeTower->getType());
-                                        displayTextManager.setCostOption(activeTower->getCost());
-                                        displayTextManager.setSellOption(GameManager::getSellPrice(selectedTower));
-
-                                    }
+                                displayTextManager.setTowerDamageValue(activeTower->getDamage());
+                                displayTextManager.setTowerSpeedValue(activeTower->getAttackSpeed());
+                                displayTextManager.setTowerType(activeTower->getType());
+                                displayTextManager.setCostOption(activeTower->getCost());
+                                displayTextManager.setSellOption(GameManager::getSellPrice(selectedTower));
+                            }
                         } else {
                             if (activeTower && displayTextManager.isSellButtonClicked(mousePosition)) {
                                 displayTextManager.setSellColorChange(sf::Color(184, 134, 11));
-                            }else {
+                            } else {
                                 if (activeTower) {
                                     displayTextManager.removeTowerStats();
                                     graphicsManager.removeDrawable(activeTower->getRangeIndicator());

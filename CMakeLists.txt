@@ -97,6 +97,7 @@ add_executable(main src/main.cpp
         src/display/DisplayTextManager.h
         src/display/StaticGraphicsManager.cpp
         src/display/StaticGraphicsManager.h
+        src/texture/TextureHolder.h
 )
 
 target_link_libraries(main PRIVATE SFML::Graphics crypto nlohmann_json::nlohmann_json)
