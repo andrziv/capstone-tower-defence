@@ -66,7 +66,7 @@ void game_core() {
     graphicsManager.addLowPriorityDrawables(menuBackgroundManager.getStaticDrawables());
     graphicsManager.addPriorityDrawables(displayTextManager.getTextDrawables());
 
-    setActiveCoresTo(6);
+    setActiveCoresTo(0);
     std::shared_ptr<Tower> activeTower = nullptr;
     while (graphicsManager.isActive()) {
         while (const std::optional event = graphicsManager.pollEvent()) {

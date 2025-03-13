@@ -7,6 +7,7 @@
 #include "../entity/defence/tower/special_tower/bomb_tower/BombTower.h"
 #include "../entity/defence/tower/special_tower/Jo_tower/JoTower.h"
 #include "../entity/defence/tower/special_tower/radial_spreader/RadialShooterTower.h"
+#include "../entity/defence/tower/special_tower/depressure_tower/DepressureTower.h"
 #include "SFML/System/Vector2.hpp"
 
 
@@ -24,7 +25,8 @@ class TowerSelector {
             std::shared_ptr<Tower> towersToMakeAvail[] {
                 std::make_shared<JoTower>(JoTower(sf::Vector2f(0, 0))),
                 std::make_shared<RadialShooterTower>(RadialShooterTower(sf::Vector2f(0, 0))),
-                std::make_shared<BombTower>(BombTower(sf::Vector2f(0, 0)))
+                std::make_shared<BombTower>(BombTower(sf::Vector2f(0, 0))),
+                std::make_shared<DepressureTower>(DepressureTower(sf::Vector2f(0, 0)))
             };
 
             int counter = 0;

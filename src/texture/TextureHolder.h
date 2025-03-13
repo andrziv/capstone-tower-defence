@@ -1,7 +1,3 @@
-//
-// Created by aki on 3/12/25.
-//
-
 #ifndef TEXTUREHOLDER_H
 #define TEXTUREHOLDER_H
 #include "SFML/Graphics/Texture.hpp"

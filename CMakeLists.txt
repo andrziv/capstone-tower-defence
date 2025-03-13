@@ -98,6 +98,8 @@ add_executable(main src/main.cpp
         src/display/StaticGraphicsManager.cpp
         src/display/StaticGraphicsManager.h
         src/texture/TextureHolder.h
+        src/entity/defence/tower/special_tower/depressure_tower/DepressureTower.cpp
+        src/entity/defence/tower/special_tower/depressure_tower/DepressureTower.h
 )
 
 target_link_libraries(main PRIVATE SFML::Graphics crypto nlohmann_json::nlohmann_json)
