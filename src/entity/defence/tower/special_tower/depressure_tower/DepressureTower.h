@@ -22,7 +22,7 @@ class DepressureTower final : public BaseTower {
 
         std::vector<std::shared_ptr<Projectile>> shootProjectile(std::vector<std::shared_ptr<Enemy>>& enemies) override {
             if (!alreadyIncreasedCore) {
-                setActiveCoresTo(activeCores + 1);
+                setActiveCoresTo(activeCores + 1, currentNodes);
                 alreadyIncreasedCore = true;
             }
             return {};

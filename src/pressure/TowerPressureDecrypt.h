@@ -14,6 +14,7 @@ inline int activeCores = 1;
 inline std::map<int, int> coreNodePartitions;
 inline bool masterIgnoreCore = false;
 inline int currentOperations = 0;
+inline int currentNodes = 0;
 inline std::mutex job_mutex;
 inline std::mutex queue_mutex;
 
@@ -25,6 +26,7 @@ bool is_ready(std::future<R> const &f) {
 inline void setActiveCoresTo(const int active, const int numSlaveNodes) {
     activeCores = active;
     if (numSlaveNodes > 0 && active > 0) {
+        currentNodes = numSlaveNodes;
         const int baseValue = active / numSlaveNodes;
         const int remainder = active % numSlaveNodes;
 
