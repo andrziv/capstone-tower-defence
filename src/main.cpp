@@ -48,9 +48,6 @@ Accumulator completionRate;
 }
 
 void game_core() {
-    std::thread thread(decryptSpawner);
-    thread.detach();
-
     GraphicsManager graphicsManager;
     const DisplayTextManager displayTextManager;
     const StaticGraphicsManager menuBackgroundManager;
@@ -66,7 +63,6 @@ void game_core() {
     graphicsManager.addLowPriorityDrawables(menuBackgroundManager.getStaticDrawables());
     graphicsManager.addPriorityDrawables(displayTextManager.getTextDrawables());
 
-    setActiveCoresTo(0);
     std::shared_ptr<Tower> activeTower = nullptr;
     while (graphicsManager.isActive()) {
         while (const std::optional event = graphicsManager.pollEvent()) {
@@ -192,5 +188,8 @@ void game_core() {
 }
 
 int main() {
+    // std::thread thread(decryptSpawner);
+    // thread.detach();
+    setActiveCoresTo(0);
     game_core();
 }
