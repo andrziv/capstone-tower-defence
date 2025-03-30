@@ -1,7 +1,3 @@
-//
-// Created by aki on 3/29/25.
-//
-
 #ifndef ANIMATEDSPRITE_H
 #define ANIMATEDSPRITE_H
 #include <memory>

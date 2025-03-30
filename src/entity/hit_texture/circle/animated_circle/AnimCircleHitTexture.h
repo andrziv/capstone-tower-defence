@@ -1,7 +1,3 @@
-//
-// Created by aki on 3/29/25.
-//
-
 #ifndef ANIMCIRCLEHITTEXTURE_H
 #define ANIMCIRCLEHITTEXTURE_H
 #include <memory>
@@ -16,7 +12,7 @@ class AnimCircleHitTexture final : public HitTexture {
     std::shared_ptr<sf::CircleShape> hitbox;
 
     public:
-        AnimCircleHitTexture(sf::Texture& texture, const int frameWidth, const int frameHeight, const int frameCount, const float frameTime) {
+        AnimCircleHitTexture(const sf::Texture& texture, const int frameWidth, const int frameHeight, const int frameCount, const float frameTime) {
             this->displayEntity = std::make_shared<AnimatedSprite>(AnimatedSprite(texture, frameWidth, frameHeight, frameCount, frameTime));
             this->hitbox = std::make_shared<sf::CircleShape>(sf::CircleShape());
         }
@@ -55,9 +51,9 @@ class AnimCircleHitTexture final : public HitTexture {
         }
 
         void setPosition(const float x, const float y) const override {
-            const auto xOffset = displayEntity->getFrameSize().x * displayEntity->getSprite()->getScale().x;
-            const auto yOffset = displayEntity->getFrameSize().y * displayEntity->getSprite()->getScale().y;
-            displayEntity->setPosition(x - xOffset / 1.5, y - yOffset / 1.5);
+            const auto xOffset = static_cast<float>(displayEntity->getFrameSize().x) * displayEntity->getSprite()->getScale().x;
+            const auto yOffset = static_cast<float>(displayEntity->getFrameSize().y) * displayEntity->getSprite()->getScale().y;
+            displayEntity->setPosition(x - xOffset / 1.5f, y - yOffset / 1.5f);
             hitbox->setPosition(sf::Vector2f(x - hitbox->getRadius(), y - hitbox->getRadius()));
         }
 

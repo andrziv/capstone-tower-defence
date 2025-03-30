@@ -1,7 +1,3 @@
-//
-// Created by aki on 3/29/25.
-//
-
 #ifndef ENEMYSPRITEINJECTOR_H
 #define ENEMYSPRITEINJECTOR_H
 #include "../entity/hit_texture/circle/animated_circle/AnimCircleHitTexture.h"
