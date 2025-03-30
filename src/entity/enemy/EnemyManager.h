@@ -17,6 +17,7 @@ class EnemyManager {
     std::list<std::shared_ptr<Enemy>> undrawnEnemies;
     std::shared_ptr<sf::VertexArray> enemyPath;
     std::shared_ptr<sf::VertexArray> visualEnemyPath;
+    std::list<std::shared_ptr<AnimatedSprite>> deathAnimations;
     sf::Clock animationClock;
 
     void addChildEnemy(const std::shared_ptr<Enemy>& parentEnemy, const std::vector<std::shared_ptr<Enemy>>& childEnemy) {
@@ -93,6 +94,11 @@ class EnemyManager {
                     enemy->getHitTexture()->getAnimDisplayEntity()->update(deltaTime);
                 }
             }
+            for (const auto& deathAnimation : deathAnimations) {
+                if (!deathAnimation->isFinishedAnimation()) {
+                    deathAnimation->update(deltaTime);
+                }
+            }
         }
 
         void addEnemy(const std::shared_ptr<Enemy>& newEnemy) {
@@ -142,6 +148,29 @@ class EnemyManager {
             }
             undrawnEnemies.clear();
             return alive;
+        }
+
+        [[nodiscard]] std::vector<std::shared_ptr<sf::Drawable>> getDisplayEffects() {
+            std::vector<std::shared_ptr<sf::Drawable>> drawables;
+            for (const auto& deadEnemy : getDeadEnemies()) {
+                const auto xOffset = static_cast<float>(deadEnemy->getDeathAnimation()->getFrameSize().x) * deadEnemy->getDeathAnimation()->getSprite()->getScale().x;
+                const auto yOffset = static_cast<float>(deadEnemy->getDeathAnimation()->getFrameSize().y) * deadEnemy->getDeathAnimation()->getSprite()->getScale().y;
+
+                deadEnemy->getDeathAnimation()->setPosition(deadEnemy->getPosition().position.x - xOffset / 2.f, deadEnemy->getPosition().position.y - yOffset / 1.5f);
+                deathAnimations.push_back(deadEnemy->getDeathAnimation());
+                drawables.push_back(deadEnemy->getDeathAnimation()->getSprite());
+            }
+            return drawables;
+        }
+
+        [[nodiscard]] std::vector<std::shared_ptr<sf::Drawable>> getCompletedDisplayEffects() const {
+            std::vector<std::shared_ptr<sf::Drawable>> drawables;
+            for (const auto& deathAnimation : deathAnimations) {
+                if (deathAnimation->isFinishedAnimation()) {
+                    drawables.push_back(deathAnimation->getSprite());
+                }
+            }
+            return drawables;
         }
 
         [[nodiscard]] std::vector<std::shared_ptr<Enemy>> getDeadEnemies() const {

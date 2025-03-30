@@ -18,6 +18,8 @@ class AnimatedSprite {
     float frameTime;
     float elapsedTime;
     int currentFrame;
+    bool isDone = false;
+    bool doRepeat = true;
 
 public:
     AnimatedSprite(const sf::Texture &texture, int frameWidth, int frameHeight, const int frameCount, const float frameTime)
@@ -35,15 +37,26 @@ public:
 
     void update(const float deltaTime) {
         elapsedTime += deltaTime;
-        if (elapsedTime >= frameTime) {
+        const bool isOnFinalFrame = currentFrame == frameCount - 1;
+        if (elapsedTime >= frameTime && !isDone) {
             elapsedTime = 0;
             currentFrame = (currentFrame + 1) % frameCount;
             sprite->setTextureRect(sf::IntRect({currentFrame * frameWidth, 0}, {frameWidth, frameHeight}));
+            if (!doRepeat && isOnFinalFrame && currentFrame == 0) {
+                isDone = true;
+            }
         }
     }
 
     void setPosition(const float x, const float y) const {
         sprite->setPosition(sf::Vector2f(x, y));
+    }
+
+    void setDoRepeat(const bool doRepeat) {
+        this->doRepeat = doRepeat;
+        if (doRepeat == true) {
+            this->isDone = false;
+        }
     }
 
     [[nodiscard]] std::shared_ptr<sf::Sprite> getSprite() const {
@@ -60,6 +73,10 @@ public:
 
     [[nodiscard]] float getFrameTime() const {
         return frameTime;
+    }
+
+    [[nodiscard]] bool isFinishedAnimation() const {
+        return isDone;
     }
 };
 

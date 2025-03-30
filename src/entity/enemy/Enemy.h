@@ -20,6 +20,7 @@ class Enemy {
     std::shared_ptr<sf::VertexArray> path;
     int currentNodeTarget = 0;
     std::shared_ptr<AnimCircleHitTexture> hitTexture;
+    std::shared_ptr<AnimatedSprite> deathTexture;
     int health;
     double speed;
     int reward = 0;
@@ -36,12 +37,17 @@ class Enemy {
         this->hitTexture = hitTexture;
     }
 
+    void setDeathSprite(const std::shared_ptr<AnimatedSprite>& deathSprite) {
+        this->deathTexture = deathSprite;
+    }
+
     public:
         virtual ~Enemy() = default;
 
-        Enemy(const std::shared_ptr<AnimCircleHitTexture>& hitTexture,
+        Enemy(const std::shared_ptr<AnimCircleHitTexture>& hitTexture, const std::shared_ptr<AnimatedSprite>& deathTexture,
             const std::shared_ptr<sf::VertexArray>& pathToFollow, const float speed, const int health, const int reward) {
             this->hitTexture = hitTexture;
+            this->deathTexture = deathTexture;
             this->path = pathToFollow;
             if (path != nullptr) {
                 initialize();
@@ -129,6 +135,10 @@ class Enemy {
             return reward;
         }
 
+        std::shared_ptr<AnimatedSprite> getDeathAnimation() {
+            return deathTexture;
+        }
+
         bool operator == (const Enemy &other) const {
             if(this->id == other.id) {
                 return true;
@@ -137,13 +147,21 @@ class Enemy {
         }
 
         std::shared_ptr<Enemy> deep_copy() {
+            const auto oldAnimDeathSprite = getDeathAnimation();
+            const auto copiedDeathSprite = std::make_shared<sf::Sprite>(*oldAnimDeathSprite->getSprite());
+            const auto copiedDeathAnimSprite = std::make_shared<AnimatedSprite>(
+                AnimatedSprite(copiedDeathSprite, oldAnimDeathSprite->getFrameCount(), oldAnimDeathSprite->getFrameTime()));
+            copiedDeathAnimSprite->setDoRepeat(false);
+
             const auto oldAnimSprite = getHitTexture()->getAnimDisplayEntity();
             const auto copiedSprite = std::make_shared<sf::Sprite>(*getHitTexture()->getAnimDisplayEntity()->getSprite());
             const auto copiedHitbox = std::make_shared<sf::CircleShape>(*getHitTexture()->getCircleHitbox());
             const auto copiedHitTexture = std::make_shared<AnimCircleHitTexture>(
                 AnimCircleHitTexture(copiedSprite, oldAnimSprite->getFrameCount(), oldAnimSprite->getFrameTime()));
+
             auto copiedEnemy = copy();
             copiedHitTexture->setHitbox(copiedHitbox);
+            copiedEnemy->setDeathSprite(copiedDeathAnimSprite);
             copiedEnemy->setHitTexture(copiedHitTexture);
             copiedEnemy->setId(get_uuid());
             return copiedEnemy;

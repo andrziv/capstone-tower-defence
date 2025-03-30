@@ -10,23 +10,26 @@
 class DevEnemy;
 
 class BaseNormalEnemy : public Enemy {
+public:
+    ~BaseNormalEnemy() override = default;
 
+    BaseNormalEnemy(const std::shared_ptr<AnimCircleHitTexture> &animHitTexture,
+                    const std::shared_ptr<AnimatedSprite> &animDeathTexture,
+                    const std::shared_ptr<sf::VertexArray> &pathToFollow, const float speed, const sf::Color color,
+                    const float size)
+        : Enemy(animHitTexture, animDeathTexture, pathToFollow, speed, 1, 1) {
+        const auto scaleIncrease = 2 * size / 30;
 
-    public:
-        ~BaseNormalEnemy() override = default;
+        getDeathAnimation()->getSprite()->setColor(color);
+        getDeathAnimation()->getSprite()->setScale(sf::Vector2f(scaleIncrease, scaleIncrease));
+        getDeathAnimation()->setDoRepeat(false);
 
-        BaseNormalEnemy(const std::shared_ptr<AnimCircleHitTexture>& animHitTexture,
-            const std::shared_ptr<sf::VertexArray>& pathToFollow, const float speed, const sf::Color color, const float size)
-            : Enemy(animHitTexture, pathToFollow, speed, 1, 1) {
-            const auto scaleIncrease = 2 * size / 30;
-
-            getHitTexture()->getAnimDisplayEntity()->getSprite()->setScale(sf::Vector2f(scaleIncrease, scaleIncrease));
-            getHitTexture()->setDisplayEntityColor(color);
-            getHitTexture()->setHitboxColor(sf::Color::Transparent);
-            getHitTexture()->setHitboxRadius(size);
-        }
+        getHitTexture()->getAnimDisplayEntity()->getSprite()->setScale(sf::Vector2f(scaleIncrease, scaleIncrease));
+        getHitTexture()->setDisplayEntityColor(color);
+        getHitTexture()->setHitboxColor(sf::Color::Transparent);
+        getHitTexture()->setHitboxRadius(size);
+    }
 };
-
 
 
 #endif //BASENORMALENEMY_H

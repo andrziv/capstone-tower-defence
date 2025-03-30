@@ -5,55 +5,28 @@
 
 
 class EnemySpriteInjector {
-    std::shared_ptr<sf::Texture> redEnemyTexture;
-    std::shared_ptr<sf::Texture> blueEnemyTexture;
-    std::shared_ptr<sf::Texture> greenEnemyTexture;
-    std::shared_ptr<sf::Texture> yellowEnemyTexture;
-    std::shared_ptr<sf::Texture> pinkEnemyTexture;
+    std::shared_ptr<sf::Texture> enemyWalkTexture;
+    std::shared_ptr<sf::Texture> enemyDeathTexture;
 
 public:
     EnemySpriteInjector() {
-        redEnemyTexture = std::make_shared<sf::Texture>(sf::Texture());
-        blueEnemyTexture = std::make_shared<sf::Texture>(sf::Texture());
-        greenEnemyTexture = std::make_shared<sf::Texture>(sf::Texture());
-        yellowEnemyTexture = std::make_shared<sf::Texture>(sf::Texture());
-        pinkEnemyTexture = std::make_shared<sf::Texture>(sf::Texture());
+        enemyWalkTexture = std::make_shared<sf::Texture>(sf::Texture());
+        enemyDeathTexture = std::make_shared<sf::Texture>(sf::Texture());
 
-        if (!redEnemyTexture->loadFromFile("../../src/resources/textures/slime/D_Walk_F.png")) {
+        if (!enemyWalkTexture->loadFromFile("../../src/resources/textures/slime/D_Walk_F.png")) {
             return;
         }
-        if (!blueEnemyTexture->loadFromFile("../../src/resources/textures/slime/D_Walk_F.png")) {
-            return;
-        }
-        if (!greenEnemyTexture->loadFromFile("../../src/resources/textures/slime/D_Walk_F.png")) {
-            return;
-        }
-        if (!yellowEnemyTexture->loadFromFile("../../src/resources/textures/slime/D_Walk_F.png")) {
-            return;
-        }
-        if (!pinkEnemyTexture->loadFromFile("../../src/resources/textures/slime/D_Walk_F.png")) {
+        if (!enemyDeathTexture->loadFromFile("../../src/resources/textures/slime/S_Death_F.png")) {
             return;
         }
     }
 
-    [[nodiscard]] std::shared_ptr<AnimCircleHitTexture> createRedAnimHitTexture() const {
-        return std::make_shared<AnimCircleHitTexture>(AnimCircleHitTexture(*redEnemyTexture, 48, 48, 6, 0.1f));
+    [[nodiscard]] std::shared_ptr<AnimCircleHitTexture> createAnimHitTexture() const {
+        return std::make_shared<AnimCircleHitTexture>(AnimCircleHitTexture(*enemyWalkTexture, 48, 48, 6, 0.1f));
     }
 
-    [[nodiscard]] std::shared_ptr<AnimCircleHitTexture> createBlueAnimHitTexture() const {
-        return std::make_shared<AnimCircleHitTexture>(AnimCircleHitTexture(*redEnemyTexture, 48, 48, 6, 0.1f));
-    }
-
-    [[nodiscard]] std::shared_ptr<AnimCircleHitTexture> createGreenAnimHitTexture() const {
-        return std::make_shared<AnimCircleHitTexture>(AnimCircleHitTexture(*redEnemyTexture, 48, 48, 6, 0.1f));
-    }
-
-    [[nodiscard]] std::shared_ptr<AnimCircleHitTexture> createYellowAnimHitTexture() const {
-        return std::make_shared<AnimCircleHitTexture>(AnimCircleHitTexture(*redEnemyTexture, 48, 48, 6, 0.1f));
-    }
-
-    [[nodiscard]] std::shared_ptr<AnimCircleHitTexture> createPinkAnimHitTexture() const {
-        return std::make_shared<AnimCircleHitTexture>(AnimCircleHitTexture(*redEnemyTexture, 48, 48, 6, 0.1f));
+    [[nodiscard]] std::shared_ptr<AnimatedSprite> createAnimDeathTexture() const {
+        return std::make_shared<AnimatedSprite>(AnimatedSprite(*enemyDeathTexture, 48, 48, 6, 0.1f));
     }
 };
 
