@@ -6,13 +6,13 @@
       "total_spawn_time_seconds": 24.0,
       "enemies": [
         {
-          "type": "RED",
+          "type": "PINK",
           "spawn_time_percent": 0,
           "multiplier": 4,
           "spawn_gap": "CLOSE"
         },
         {
-          "type": "RED",
+          "type": "PINK",
           "spawn_time_percent": 18,
           "multiplier": 3,
           "spawn_gap": "SIDEBY"
@@ -24,7 +24,7 @@
           "spawn_gap": "SIDEBY"
         },
         {
-          "type": "RED",
+          "type": "BLUE",
           "spawn_time_percent": 45,
           "multiplier": 3,
           "spawn_gap": "FAR"
@@ -42,13 +42,13 @@
           "spawn_gap": "FAR"
         },
         {
-          "type": "RED",
+          "type": "YELLOW",
           "spawn_time_percent": 81,
           "multiplier": 1,
           "spawn_gap": "CLOSE"
         },
         {
-          "type": "RED",
+          "type": "GREEN",
           "spawn_time_percent": 90,
           "multiplier": 5,
           "spawn_gap": "FAR"

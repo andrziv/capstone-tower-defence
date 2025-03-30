@@ -53,7 +53,7 @@ class AnimCircleHitTexture final : public HitTexture {
         void setPosition(const float x, const float y) const override {
             const auto xOffset = static_cast<float>(displayEntity->getFrameSize().x) * displayEntity->getSprite()->getScale().x;
             const auto yOffset = static_cast<float>(displayEntity->getFrameSize().y) * displayEntity->getSprite()->getScale().y;
-            displayEntity->setPosition(x - xOffset / 1.5f, y - yOffset / 1.5f);
+            displayEntity->setPosition(x - xOffset / 2.f, y - yOffset / 1.5f);
             hitbox->setPosition(sf::Vector2f(x - hitbox->getRadius(), y - hitbox->getRadius()));
         }
 
