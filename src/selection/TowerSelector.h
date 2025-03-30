@@ -53,7 +53,7 @@ class TowerSelector {
         bool attemptSelectingTower(const sf::Vector2i& mousePosition) {
             if (!isTowerSelected) {
                 for (const auto& tower : availableTowers) {
-                    if (tower->getHitTexture()->getDisplayEntity()->getGlobalBounds().contains(sf::Vector2f(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y)))) {
+                    if (tower->getHitTexture()->getRectHitbox()->getGlobalBounds().contains(sf::Vector2f(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y)))) {
                         isTowerSelected = true;
                         selectedTower = tower->deep_copy(); // make a copy of the available tower
                         selectedTower->setId(get_uuid());
@@ -67,7 +67,7 @@ class TowerSelector {
 
         static std::shared_ptr<Tower> attemptSelectingPlacedTower(const sf::Vector2i& mousePosition, const std::vector<std::shared_ptr<Tower>>& towers) {
             for (const auto& tower : towers) {
-                if (tower->getHitTexture()->getDisplayEntity()->getGlobalBounds().contains(sf::Vector2f(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y)))) {
+                if (tower->getHitTexture()->getRectHitbox()->getGlobalBounds().contains(sf::Vector2f(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y)))) {
                     return tower;
                 }
             }

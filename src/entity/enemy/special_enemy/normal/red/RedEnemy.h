@@ -6,8 +6,8 @@
 class RedEnemy final : public BaseNormalEnemy {
 
     public:
-        explicit RedEnemy(const std::shared_ptr<sf::VertexArray>& pathToFollow) :
-            BaseNormalEnemy(pathToFollow, 1, sf::Color::Red, 30.f) {
+        explicit RedEnemy(const std::shared_ptr<EnemySpriteInjector>& spriteInjector, const std::shared_ptr<sf::VertexArray>& pathToFollow) :
+            BaseNormalEnemy(spriteInjector->createRedAnimHitTexture(), pathToFollow, 1, sf::Color::Red, 30.f) {
         }
 
     protected:

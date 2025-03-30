@@ -23,6 +23,9 @@ struct EnemyWaveInfo {
 };
 
 class WaveLoader {
+    std::shared_ptr<EnemySpriteInjector> spriteInjector;
+
+
     /*
      *  'waves' variable (map):
      *  > Wave Number (integer)
@@ -37,23 +40,23 @@ class WaveLoader {
     int currentWave = 0;
     int maxWaves = 0;
 
-    static std::shared_ptr<Enemy> constructEnemy(const std::string &enemyName) {
+    static std::shared_ptr<Enemy> constructEnemy(const std::shared_ptr<EnemySpriteInjector>& spriteInjector, const std::string &enemyName) {
         if(enemyName == "RED") {
-            return std::make_shared<RedEnemy>(RedEnemy(nullptr));
+            return std::make_shared<RedEnemy>(RedEnemy(spriteInjector, nullptr));
         }
         if(enemyName == "BLUE") {
-            return std::make_shared<BlueEnemy>(BlueEnemy(nullptr));
+            return std::make_shared<BlueEnemy>(BlueEnemy(spriteInjector, nullptr));
         }
         if(enemyName == "GREEN") {
-            return std::make_shared<GreenEnemy>(GreenEnemy(nullptr));
+            return std::make_shared<GreenEnemy>(GreenEnemy(spriteInjector, nullptr));
         }
         if(enemyName == "YELLOW") {
-            return std::make_shared<YellowEnemy>(YellowEnemy(nullptr));
+            return std::make_shared<YellowEnemy>(YellowEnemy(spriteInjector, nullptr));
         }
         if(enemyName == "PINK") {
-            return std::make_shared<PinkEnemy>(PinkEnemy(nullptr));
+            return std::make_shared<PinkEnemy>(PinkEnemy(spriteInjector, nullptr));
         }
-        return std::make_shared<RedEnemy>(RedEnemy(nullptr));
+        return std::make_shared<RedEnemy>(RedEnemy(spriteInjector, nullptr));
     }
 
     public:
@@ -76,6 +79,7 @@ class WaveLoader {
             }
             currentWave = 0;
             maxWaves = counter;
+            spriteInjector = std::make_shared<EnemySpriteInjector>(EnemySpriteInjector());
         }
 
         EnemyWaveInfo getNextWave() {
@@ -101,7 +105,7 @@ class WaveLoader {
                 newEnemy.spawnTimePercent = spawn_time;
                 newEnemy.enemyMultiplier = enemy_multiplier;
                 newEnemy.spawnGap = spawn_gap_type;
-                newEnemy.enemyToSpawn = constructEnemy(enemy_type);
+                newEnemy.enemyToSpawn = constructEnemy(spriteInjector, enemy_type);
                 enemies.emplace_back(newEnemy);
             }
 

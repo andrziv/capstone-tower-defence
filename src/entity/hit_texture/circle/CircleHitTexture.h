@@ -21,7 +21,7 @@ class CircleHitTexture final : public HitTexture {
             this->hitbox = std::make_shared<sf::CircleShape>(sf::CircleShape());
         }
 
-        [[nodiscard]] std::shared_ptr<sf::Shape> getHitbox() const override {
+        [[nodiscard]] std::shared_ptr<sf::Drawable> getHitbox() const override {
             return hitbox;
         }
 
@@ -37,7 +37,7 @@ class CircleHitTexture final : public HitTexture {
             hitbox->setRadius(radius);
         }
 
-        [[nodiscard]] std::shared_ptr<sf::Shape> getDisplayEntity() const override {
+        [[nodiscard]] std::shared_ptr<sf::Drawable> getDisplayEntity() const override {
             return displayEntity;
         }
 

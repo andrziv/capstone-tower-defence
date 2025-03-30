@@ -9,6 +9,7 @@
 #include "GameManager.h"
 #include "GraphicsManager.h"
 #include "display/StaticGraphicsManager.h"
+#include "entity/hit_texture/animated_sprite/AnimatedSprite.h"
 #include "helper/visual/FPS.h"
 #include "pressure/DecryptJob.h"
 #include "pressure/TowerPressureDecrypt.h"
@@ -187,9 +188,182 @@ void game_core() {
     }
 }
 
+// TODO: REMOVE
+void test_core() {
+    GraphicsManager graphicsManager;
+    const DisplayTextManager displayTextManager;
+    const StaticGraphicsManager menuBackgroundManager;
+    GameManager gameManager;
+    FPS fps;
+
+    const auto drawnPath = std::make_shared<sf::VertexArray>(sf::VertexArray());
+    drawnPath->setPrimitiveType(sf::PrimitiveType::LineStrip);
+
+    graphicsManager.addDrawables(gameManager.getAvailTowerDrawables());
+    graphicsManager.addDrawables(gameManager.getDrawables());
+    graphicsManager.addPriorityDrawable(drawnPath);
+    graphicsManager.addLowPriorityDrawables(menuBackgroundManager.getStaticDrawables());
+    graphicsManager.addPriorityDrawables(displayTextManager.getTextDrawables());
+
+
+
+    sf::Texture texture;
+    if (!texture.loadFromFile("../../src/resources/textures/slime/D_Walk.png")) {
+        return;
+    }
+
+    AnimatedSprite animatedSprite(texture, 48, 48, 6, 0.1f);
+    animatedSprite.setPosition(48, 48);
+    animatedSprite.getSprite()->setScale(sf::Vector2f(2, 2));
+    sf::Clock clock;
+
+
+
+    graphicsManager.addPriorityDrawable(animatedSprite.getSprite());
+
+
+
+
+
+
+    std::shared_ptr<Tower> activeTower = nullptr;
+    while (graphicsManager.isActive()) {
+        while (const std::optional event = graphicsManager.pollEvent()) {
+            if (event->is<sf::Event::Closed>()) {
+                graphicsManager.deactivate();
+                for (int i = 0; i < drawnPath->getVertexCount(); i++) {
+                    printf("{{  %ff,   %ff}, sf::Color::Red, { 0.0f,  0.0f}}", drawnPath->operator[](i).position.x, drawnPath->operator[](i).position.y);
+                    if (i != drawnPath->getVertexCount() - 1) {
+                        printf(",\n");
+                    } else {
+                        printf("\n");
+                    }
+                }
+            }
+
+            if (event->is<sf::Event::MouseButtonPressed>()) {
+                if (const auto buttonPressed = event->getIf<sf::Event::MouseButtonPressed>(); buttonPressed->button == sf::Mouse::Button::Left) {
+                    const auto mousePosition = buttonPressed->position;
+                    if (!gameManager.isTowerAlreadySelected()) {
+                        if (gameManager.attemptSelectingTower(mousePosition)) {
+                            graphicsManager.addPriorityDrawable(gameManager.getHoveredTowerDrawable());
+                            graphicsManager.addPriorityDrawable(gameManager.getHoveredTower()->getRangeIndicator());
+                        } else if (const auto& selectedTower = gameManager.attemptSelectingPlacedTower(mousePosition); selectedTower != nullptr) {
+                            if (activeTower != selectedTower) {
+                                if (activeTower) {
+                                    graphicsManager.removeDrawable(activeTower->getRangeIndicator());
+                                }
+                                graphicsManager.addPriorityDrawable(selectedTower->getRangeIndicator());
+                                activeTower = selectedTower;
+
+                                displayTextManager.setTowerDamageValue(activeTower->getDamage());
+                                displayTextManager.setTowerSpeedValue(activeTower->getAttackSpeed());
+                                displayTextManager.setTowerType(activeTower->getType());
+                                displayTextManager.setCostOption(activeTower->getCost());
+                                displayTextManager.setSellOption(GameManager::getSellPrice(selectedTower));
+                            }
+                        } else {
+                            if (activeTower && displayTextManager.isSellButtonClicked(mousePosition)) {
+                                displayTextManager.setSellColorChange(sf::Color(184, 134, 11));
+                            } else {
+                                if (activeTower) {
+                                    displayTextManager.removeTowerStats();
+                                    graphicsManager.removeDrawable(activeTower->getRangeIndicator());
+                                    activeTower = nullptr;
+                                }
+                            }
+                        }
+                    } else {
+                        graphicsManager.removeDrawable(gameManager.getHoveredTowerDrawable());
+                        graphicsManager.removeDrawable(gameManager.getHoveredTower()->getRangeIndicator());
+                        gameManager.deselectTower();
+                    }
+                } else if (buttonPressed->button == sf::Mouse::Button::Right) {
+                    gameManager.shrinkEnemyPath();
+                }
+            }
+
+            if (event->is<sf::Event::KeyPressed>()) {
+                if (const auto buttonPressed = event->getIf<sf::Event::KeyPressed>(); buttonPressed->code == sf::Keyboard::Key::Space) {
+                    graphicsManager.setFramerateLimit(240);
+                } else {
+                    graphicsManager.setFramerateLimit(60);
+                }
+            }
+
+            if (event->is<sf::Event::MouseButtonReleased>()) {
+                if (const auto buttonReleased = event->getIf<sf::Event::MouseButtonReleased>(); buttonReleased->button == sf::Mouse::Button::Left) {
+                    const sf::Vector2i mousePosition = buttonReleased->position;
+                    if (gameManager.isTowerAlreadySelected()) {
+                        const auto success = gameManager.addTower(gameManager.getHoveredTower());
+                        graphicsManager.removeDrawable(gameManager.getHoveredTower()->getRangeIndicator());
+                        gameManager.deselectTower();
+                        if (!success) {
+                            graphicsManager.removeDrawable(gameManager.getHoveredTowerDrawable());
+                        }
+                    }
+                    if (displayTextManager.isSellButtonClicked(mousePosition) && activeTower != nullptr) {
+                        // Remove the tower from the map or list
+                        graphicsManager.removeDrawable(activeTower->getHitTexture()->getDisplayEntity());
+                        graphicsManager.removeDrawable(activeTower->getRangeIndicator());
+                        gameManager.sellTower(activeTower);
+                        activeTower = nullptr;  // Deselect the tower
+                        displayTextManager.removeTowerStats();
+                        displayTextManager.setSellColorChange(sf::Color(255,255,0)); //Reset color
+                    }
+                }
+            }
+        }
+
+        if (gameManager.isTowerAlreadySelected()) {
+            const auto mousePosition = graphicsManager.getMousePosition();
+            gameManager.dragSelectedTower(mousePosition);
+            if (const auto selectedTower = gameManager.getHoveredTower()) {
+                displayTextManager.setTowerDamageValue(selectedTower->getDamage());
+                displayTextManager.setTowerSpeedValue(selectedTower->getAttackSpeed());
+                displayTextManager.setTowerType(selectedTower->getType());
+                displayTextManager.setCostOption(selectedTower->getCost());
+                displayTextManager.setSellOption(GameManager::getSellPrice(selectedTower));
+
+            }
+        }
+
+
+
+        float deltaTime = clock.restart().asSeconds();
+        animatedSprite.update(deltaTime);
+
+
+
+
+
+
+        gameManager.update();
+
+        displayTextManager.setLifeCounterValue(gameManager.getPlayerHealth());
+        displayTextManager.setWaveCounterValue(gameManager.getCurrentWaveNumber(), gameManager.getMaxWaveNumber());
+
+        displayTextManager.setPlayerBalanceValue(gameManager.getPlayerBalance());
+
+        graphicsManager.addDrawables(gameManager.getNewDrawables());
+        graphicsManager.removeDrawables(gameManager.getRemovableDrawables());
+        graphicsManager.draw();
+        gameManager.cleanup();
+
+        fps.update();
+        displayTextManager.setFPSCounterValue(fps.getFPS());
+
+        displayTextManager.setRemainingPressureValue(static_cast<int>(toDecrypt.size()) + currentOperations);
+        displayTextManager.setActivePressureJobsValue(currentOperations);
+        displayTextManager.setPressureCompletionRateValue(completionRate.getAverageRate());
+        displayTextManager.setPressureProductionRateValue(additionRate.getAverageRate());
+    }
+}
+
 int main() {
     // std::thread thread(decryptSpawner);
     // thread.detach();
     setActiveCoresTo(0);
-    game_core();
+    //game_core();
+    test_core();
 }

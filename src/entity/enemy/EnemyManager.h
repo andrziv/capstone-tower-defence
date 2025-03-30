@@ -4,6 +4,8 @@
 
 #include "Enemy.h"
 #include "../../helper/visual/ThickLine.h"
+#include "SFML/System/Clock.hpp"
+#include "SFML/System/Time.hpp"
 
 struct EnemySpawn {
     std::string spawnGap;
@@ -15,6 +17,7 @@ class EnemyManager {
     std::list<std::shared_ptr<Enemy>> undrawnEnemies;
     std::shared_ptr<sf::VertexArray> enemyPath;
     std::shared_ptr<sf::VertexArray> visualEnemyPath;
+    sf::Clock animationClock;
 
     void addChildEnemy(const std::shared_ptr<Enemy>& parentEnemy, const std::vector<std::shared_ptr<Enemy>>& childEnemy) {
         for (const std::shared_ptr<Enemy> & child : childEnemy) {
@@ -82,10 +85,12 @@ class EnemyManager {
             visualEnemyPath = std::make_shared<sf::VertexArray>(thickLine.getShape());
         }
 
-        void update() const {
+        void update() {
+            const float deltaTime = animationClock.restart().asSeconds();
             for (const auto &enemy : enemies) {
                 if (enemy->isAlive()) {
                     enemy->updatePosition();
+                    enemy->getHitTexture()->getAnimDisplayEntity()->update(deltaTime);
                 }
             }
         }

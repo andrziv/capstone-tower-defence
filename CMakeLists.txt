@@ -100,6 +100,12 @@ add_executable(main src/main.cpp
         src/texture/TextureHolder.h
         src/entity/defence/tower/special_tower/depressure_tower/DepressureTower.cpp
         src/entity/defence/tower/special_tower/depressure_tower/DepressureTower.h
+        src/entity/hit_texture/animated_sprite/AnimatedSprite.cpp
+        src/entity/hit_texture/animated_sprite/AnimatedSprite.h
+        src/entity/hit_texture/circle/animated_circle/AnimCircleHitTexture.cpp
+        src/entity/hit_texture/circle/animated_circle/AnimCircleHitTexture.h
+        src/texture/EnemySpriteInjector.cpp
+        src/texture/EnemySpriteInjector.h
 )
 
 target_link_libraries(main PRIVATE SFML::Graphics crypto nlohmann_json::nlohmann_json)

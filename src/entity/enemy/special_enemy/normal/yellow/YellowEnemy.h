@@ -9,14 +9,17 @@
 
 
 class YellowEnemy final : public BaseNormalEnemy {
+    std::shared_ptr<EnemySpriteInjector> spriteInjector;
+
     public:
-        explicit YellowEnemy(const std::shared_ptr<sf::VertexArray>& pathToFollow) :
-            BaseNormalEnemy(pathToFollow, 4, sf::Color::Yellow, 45.f) {
+        explicit YellowEnemy(const std::shared_ptr<EnemySpriteInjector>& spriteInjector, const std::shared_ptr<sf::VertexArray>& pathToFollow) :
+            BaseNormalEnemy(spriteInjector->createYellowAnimHitTexture(), pathToFollow, 4, sf::Color::Yellow, 45.f) {
+            this->spriteInjector = spriteInjector;
         }
 
         std::vector<std::shared_ptr<Enemy>> getChildren() override {
             std::vector<std::shared_ptr<Enemy>> children;
-            const auto enemy = std::make_shared<GreenEnemy>(GreenEnemy(getPathToFollow()));
+            const auto enemy = std::make_shared<GreenEnemy>(GreenEnemy(spriteInjector, getPathToFollow()));
             children.push_back(enemy);
             return children;
         }

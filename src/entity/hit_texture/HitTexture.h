@@ -8,9 +8,9 @@ class HitTexture {
     public:
         virtual ~HitTexture() = default;
 
-        [[nodiscard]] virtual std::shared_ptr<sf::Shape> getHitbox() const = 0;
+        [[nodiscard]] virtual std::shared_ptr<sf::Drawable> getHitbox() const = 0;
 
-        [[nodiscard]] virtual std::shared_ptr<sf::Shape> getDisplayEntity() const = 0;
+        [[nodiscard]] virtual std::shared_ptr<sf::Drawable> getDisplayEntity() const = 0;
 
         virtual void setPosition(float x, float y) const = 0;
 

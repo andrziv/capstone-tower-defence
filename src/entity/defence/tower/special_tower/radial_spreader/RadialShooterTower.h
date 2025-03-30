@@ -24,7 +24,7 @@ class RadialShooterTower final : public BaseTower {
             bool enemyFound = false;
 
             for (const auto& enemy : enemies) {
-                if (doCirclesOverlap(*getRangeIndicator(), *enemy->getHitTexture()->getCircleDisplayEntity())) {
+                if (doCirclesOverlap(*getRangeIndicator(), *enemy->getHitTexture()->getCircleHitbox())) {
                     enemyFound = true;
                     break;
                 }

@@ -48,7 +48,7 @@ class BaseTower : public Tower {
             for (const auto& enemy : enemies) {
                 const double distance = std::sqrt(std::pow(towerCenterX - enemy->getPosition().position.x, 2)
                     + std::pow(towerCenterY - enemy->getPosition().position.y, 2));
-                if (distance < closestDistance && doCirclesOverlap(*getRangeIndicator(), *enemy->getHitTexture()->getCircleDisplayEntity())) {
+                if (distance < closestDistance && doCirclesOverlap(*getRangeIndicator(), *enemy->getHitTexture()->getCircleHitbox())) {
                     closestDistance = distance;
                     aimAngle = std::atan2(enemy->getPosition().position.y - towerCenterY, enemy->getPosition().position.x - towerCenterX);
                     enemyFound = true;
