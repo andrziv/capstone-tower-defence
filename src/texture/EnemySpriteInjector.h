@@ -19,19 +19,19 @@ public:
         yellowEnemyTexture = std::make_shared<sf::Texture>(sf::Texture());
         pinkEnemyTexture = std::make_shared<sf::Texture>(sf::Texture());
 
-        if (!redEnemyTexture->loadFromFile("../../src/resources/textures/slime/D_Walk.png")) {
+        if (!redEnemyTexture->loadFromFile("../../src/resources/textures/slime/D_Walk_F.png")) {
             return;
         }
-        if (!blueEnemyTexture->loadFromFile("../../src/resources/textures/slime/D_Walk.png")) {
+        if (!blueEnemyTexture->loadFromFile("../../src/resources/textures/slime/D_Walk_F.png")) {
             return;
         }
-        if (!greenEnemyTexture->loadFromFile("../../src/resources/textures/slime/D_Walk.png")) {
+        if (!greenEnemyTexture->loadFromFile("../../src/resources/textures/slime/D_Walk_F.png")) {
             return;
         }
-        if (!yellowEnemyTexture->loadFromFile("../../src/resources/textures/slime/D_Walk.png")) {
+        if (!yellowEnemyTexture->loadFromFile("../../src/resources/textures/slime/D_Walk_F.png")) {
             return;
         }
-        if (!pinkEnemyTexture->loadFromFile("../../src/resources/textures/slime/D_Walk.png")) {
+        if (!pinkEnemyTexture->loadFromFile("../../src/resources/textures/slime/D_Walk_F.png")) {
             return;
         }
     }

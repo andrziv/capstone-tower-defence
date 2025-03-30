@@ -13,7 +13,7 @@ class YellowEnemy final : public BaseNormalEnemy {
 
     public:
         explicit YellowEnemy(const std::shared_ptr<EnemySpriteInjector>& spriteInjector, const std::shared_ptr<sf::VertexArray>& pathToFollow) :
-            BaseNormalEnemy(spriteInjector->createYellowAnimHitTexture(), pathToFollow, 4, sf::Color::Yellow, 45.f) {
+            BaseNormalEnemy(spriteInjector->createYellowAnimHitTexture(), pathToFollow, 4, sf::Color(227, 203, 0), 45.f) {
             this->spriteInjector = spriteInjector;
         }
 
