@@ -208,44 +208,20 @@ void test_core() {
 
 
     sf::Texture texture;
-    if (!texture.loadFromFile("../../src/resources/textures/slime/S_Death_F.png")) {
+    if (!texture.loadFromFile("../../src/resources/textures/towers/normal/ARCHER_MAX.png")) {
         return;
     }
 
-    AnimatedSprite animatedSpriteR(texture, 48, 48, 6, 0.1f);
-    animatedSpriteR.setPosition(48, 48);
-    animatedSpriteR.getSprite()->setScale(sf::Vector2f(2, 2));
-    animatedSpriteR.getSprite()->setColor(sf::Color(209, 10, 10));
-
-    AnimatedSprite animatedSpriteB(texture, 48, 48, 6, 0.1f);
-    animatedSpriteB.setPosition(96, 48);
-    animatedSpriteB.getSprite()->setScale(sf::Vector2f(2, 2));
-    animatedSpriteB.getSprite()->setColor(sf::Color(0, 93, 209));
-
-    AnimatedSprite animatedSpriteG(texture, 48, 48, 6, 0.1f);
-    animatedSpriteG.setPosition(144, 48);
-    animatedSpriteG.getSprite()->setScale(sf::Vector2f(2, 2));
-    animatedSpriteG.getSprite()->setColor(sf::Color::Green);
-
-    AnimatedSprite animatedSpriteY(texture, 48, 48, 6, 0.1f);
-    animatedSpriteY.setPosition(192, 48);
-    animatedSpriteY.getSprite()->setScale(sf::Vector2f(2, 2));
-    animatedSpriteY.getSprite()->setColor(sf::Color(227, 203, 0));
-
-    AnimatedSprite animatedSpriteP(texture, 48, 48, 6, 0.1f);
-    animatedSpriteP.setPosition(240, 48);
-    animatedSpriteP.getSprite()->setScale(sf::Vector2f(2, 2));
-    animatedSpriteP.getSprite()->setColor(sf::Color(205, 43, 115));
+    AnimatedSprite animatedSprite(texture, 70, 130, 6, 0.1f);
+    animatedSprite.setPosition(100, 100);
+    animatedSprite.getSprite()->setScale(sf::Vector2f(1.2, 1.2));
+    //animatedSprite.getSprite()->setColor(sf::Color(209, 10, 10));
 
     sf::Clock clock;
 
 
 
-    graphicsManager.addPriorityDrawable(animatedSpriteR.getSprite());
-    graphicsManager.addPriorityDrawable(animatedSpriteB.getSprite());
-    graphicsManager.addPriorityDrawable(animatedSpriteG.getSprite());
-    graphicsManager.addPriorityDrawable(animatedSpriteY.getSprite());
-    graphicsManager.addPriorityDrawable(animatedSpriteP.getSprite());
+    graphicsManager.addPriorityDrawable(animatedSprite.getSprite());
 
 
 
@@ -310,7 +286,7 @@ void test_core() {
 
             if (event->is<sf::Event::KeyPressed>()) {
                 if (const auto buttonPressed = event->getIf<sf::Event::KeyPressed>(); buttonPressed->code == sf::Keyboard::Key::Space) {
-                    graphicsManager.setFramerateLimit(240);
+                    graphicsManager.setFramerateLimit(5);
                 } else {
                     graphicsManager.setFramerateLimit(60);
                 }
@@ -356,12 +332,7 @@ void test_core() {
 
 
         float deltaTime = clock.restart().asSeconds();
-        animatedSpriteR.update(deltaTime);
-        animatedSpriteB.update(deltaTime);
-        animatedSpriteG.update(deltaTime);
-        animatedSpriteY.update(deltaTime);
-        animatedSpriteP.update(deltaTime);
-
+        animatedSprite.update(deltaTime);
 
 
 

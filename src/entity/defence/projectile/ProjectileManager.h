@@ -6,16 +6,23 @@
 
 #include "Projectile.h"
 #include "../../enemy/Enemy.h"
+#include "SFML/System/Clock.hpp"
+#include "SFML/System/Time.hpp"
 
 class ProjectileManager {
     std::list<std::shared_ptr<Projectile>> projectiles;
     std::list<std::shared_ptr<Projectile>> undrawnProjectiles;
+    sf::Clock animationClock;
 
     public:
-        void update() const {
+        void update() {
+            const float deltaTime = animationClock.restart().asSeconds();
             for (const auto &projectile : projectiles) {
                 if (projectile->isValid()) {
                     projectile->updatePosition();
+                }
+                if (projectile->hasActiveDisplayEffects()) {
+                    projectile->updateDisplayEffects(deltaTime);
                 }
             }
         }
@@ -23,7 +30,7 @@ class ProjectileManager {
         void enemyInteractions(const std::vector<std::shared_ptr<Enemy>>& enemies) const {
             for (const auto &projectile : projectiles) {
                 if (!projectile->isValid()) {
-                    break;
+                    continue;
                 }
                 projectile->handleEnemies(enemies);
             }
@@ -87,10 +94,10 @@ class ProjectileManager {
 
         void removeInactiveProjectiles() {
             projectiles.remove_if([](const std::shared_ptr<Projectile> &projectile) {
-                return !projectile->hasDisplayEffects() && !projectile->isValid();
+                return !projectile->hasActiveDisplayEffects() && !projectile->isValid();
             });
             undrawnProjectiles.remove_if([](const std::shared_ptr<Projectile> &projectile) {
-                return !projectile->hasDisplayEffects() && !projectile->isValid();
+                return !projectile->hasActiveDisplayEffects() && !projectile->isValid();
             });
         }
 };

@@ -14,7 +14,7 @@
 class Tower;
 
 class TowerSelector {
-
+    std::shared_ptr<ProjectileSpriteInjector> spriteInjector;
     const sf::Vector2f availIconStart = sf::Vector2f(ICON_START_X, ICON_START_Y);
     std::vector<std::shared_ptr<Tower>> availableTowers;
     std::shared_ptr<Tower> selectedTower;
@@ -22,10 +22,11 @@ class TowerSelector {
 
     public:
         TowerSelector() {
+            spriteInjector = std::make_shared<ProjectileSpriteInjector>(ProjectileSpriteInjector());
             std::shared_ptr<Tower> towersToMakeAvail[] {
                 std::make_shared<JoTower>(JoTower(sf::Vector2f(0, 0))),
                 std::make_shared<RadialShooterTower>(RadialShooterTower(sf::Vector2f(0, 0))),
-                std::make_shared<BombTower>(BombTower(sf::Vector2f(0, 0))),
+                std::make_shared<BombTower>(BombTower(spriteInjector, sf::Vector2f(0, 0))),
                 std::make_shared<DepressureTower>(DepressureTower(sf::Vector2f(0, 0)))
             };
 

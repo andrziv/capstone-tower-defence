@@ -17,7 +17,7 @@ class TowerManager {
     std::chrono::steady_clock::time_point accumulationStart = std::chrono::steady_clock::now();
 
 public:
-    void update() const {
+    void update() {
         projectileManager.update();
     }
 
