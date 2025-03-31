@@ -265,7 +265,7 @@ public:
     }
 
     void cleanup() {
-        enemyManager.removeDeadEnemies();
+        enemyManager.cleanup();
         towerManager.removeInactiveProjectiles();
     }
 

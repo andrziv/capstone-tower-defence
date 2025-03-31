@@ -205,12 +205,15 @@ class EnemyManager {
             }
         }
 
-        void removeDeadEnemies() {
+        void cleanup() {
             enemies.remove_if([](const std::shared_ptr<Enemy>& enemy) {
                 return !enemy->isAlive();
             });
             undrawnEnemies.remove_if([](const std::shared_ptr<Enemy>& enemy) {
                 return !enemy->isAlive();
+            });
+            deathAnimations.remove_if([](const std::shared_ptr<AnimatedSprite>& sprite) {
+                return sprite->isFinishedAnimation();
             });
         }
 
