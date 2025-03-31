@@ -40,7 +40,7 @@ class TowerSelector {
                 const auto& towerDisplayScale = available->getHitTexture()->getAnimDisplayEntity()->getSprite()->getScale();
                 available->setPosition(sf::Vector2f(
                     availIconStart.x + switch_column * (static_cast<float>(towerDisplaySize.x) * towerDisplayScale.x + ICON_GAP),
-                    availIconStart.y + counter_y * (static_cast<float>(towerDisplaySize.y) * towerDisplayScale.y + ICON_GAP)));
+                    availIconStart.y + counter_y * (static_cast<float>(towerDisplaySize.y) * towerDisplayScale.y + ICON_GAP + 50)));
                 availableTowers.push_back(available);
                 // check if even or odd
                 if (counter % 2 == 0) { // even
