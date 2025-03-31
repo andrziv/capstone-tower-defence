@@ -10,6 +10,7 @@
 #include "../../enemy/Enemy.h"
 #include "../../../helper/UUID.h"
 #include "../../../helper/CollisionDetect.h"
+#include "../../hit_texture/circle/CircleHitTexture.h"
 
 class Projectile {
     std::string id = get_uuid();

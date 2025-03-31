@@ -5,7 +5,6 @@
 #include <string>
 
 #include "../../helper/UUID.h"
-#include "../hit_texture/circle/CircleHitTexture.h"
 #include "../hit_texture/circle/animated_circle/AnimCircleHitTexture.h"
 #include "SFML/Graphics/Vertex.hpp"
 

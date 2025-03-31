@@ -7,7 +7,6 @@
 #include "SFML/System/Vector2.hpp"
 #include "../BaseTower.h"
 #include "../../Tower.h"
-#include "../../../projectile/tower_projectile/basic/BasicProjectile.h"
 
 class Projectile;
 

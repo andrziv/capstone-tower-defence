@@ -1,7 +1,3 @@
-//
-// Created by aki on 3/30/25.
-//
-
 #ifndef PROJECTILESPRITEINJECTOR_H
 #define PROJECTILESPRITEINJECTOR_H
 #include <memory>
