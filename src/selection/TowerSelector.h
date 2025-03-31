@@ -14,7 +14,8 @@
 class Tower;
 
 class TowerSelector {
-    std::shared_ptr<ProjectileSpriteInjector> spriteInjector;
+    std::shared_ptr<TowerSpriteInjector> towerSpriteInjector;
+    std::shared_ptr<ProjectileSpriteInjector> projectileSpriteInjector;
     const sf::Vector2f availIconStart = sf::Vector2f(ICON_START_X, ICON_START_Y);
     std::vector<std::shared_ptr<Tower>> availableTowers;
     std::shared_ptr<Tower> selectedTower;
@@ -22,21 +23,24 @@ class TowerSelector {
 
     public:
         TowerSelector() {
-            spriteInjector = std::make_shared<ProjectileSpriteInjector>(ProjectileSpriteInjector());
+            towerSpriteInjector = std::make_shared<TowerSpriteInjector>(TowerSpriteInjector());
+            projectileSpriteInjector = std::make_shared<ProjectileSpriteInjector>(ProjectileSpriteInjector());
             std::shared_ptr<Tower> towersToMakeAvail[] {
-                std::make_shared<JoTower>(JoTower(sf::Vector2f(0, 0))),
-                std::make_shared<RadialShooterTower>(RadialShooterTower(sf::Vector2f(0, 0))),
-                std::make_shared<BombTower>(BombTower(spriteInjector, sf::Vector2f(0, 0))),
-                std::make_shared<DepressureTower>(DepressureTower(sf::Vector2f(0, 0)))
+                std::make_shared<JoTower>(JoTower(towerSpriteInjector, sf::Vector2f(0, 0))),
+                std::make_shared<RadialShooterTower>(RadialShooterTower(towerSpriteInjector, sf::Vector2f(0, 0))),
+                std::make_shared<BombTower>(BombTower(towerSpriteInjector, projectileSpriteInjector, sf::Vector2f(0, 0))),
+                std::make_shared<DepressureTower>(DepressureTower(towerSpriteInjector, sf::Vector2f(0, 0)))
             };
 
             int counter = 0;
             float switch_column = 0;
             float counter_y = 0;
             for (const auto &available : towersToMakeAvail) {
+                const auto& towerDisplaySize = available->getHitTexture()->getAnimDisplayEntity()->getFrameSize();
+                const auto& towerDisplayScale = available->getHitTexture()->getAnimDisplayEntity()->getSprite()->getScale();
                 available->setPosition(sf::Vector2f(
-                    availIconStart.x + switch_column * (available->getHitTexture()->getRectDisplayEntity()->getSize().x + ICON_GAP),
-                    availIconStart.y + counter_y * (available->getHitTexture()->getRectDisplayEntity()->getSize().y + ICON_GAP)));
+                    availIconStart.x + switch_column * (static_cast<float>(towerDisplaySize.x) * towerDisplayScale.x + ICON_GAP),
+                    availIconStart.y + counter_y * (static_cast<float>(towerDisplaySize.y) * towerDisplayScale.y + ICON_GAP)));
                 availableTowers.push_back(available);
                 // check if even or odd
                 if (counter % 2 == 0) { // even

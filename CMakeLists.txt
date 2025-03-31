@@ -107,6 +107,10 @@ add_executable(main src/main.cpp
         src/texture/EnemySpriteInjector.h
         src/texture/ProjectileSpriteInjector.cpp
         src/texture/ProjectileSpriteInjector.h
+        src/entity/hit_texture/rectangle/animated_rectangle/AnimRectangleHitTexture.cpp
+        src/entity/hit_texture/rectangle/animated_rectangle/AnimRectangleHitTexture.h
+        src/texture/TowerSpriteInjector.cpp
+        src/texture/TowerSpriteInjector.h
 )
 
 target_link_libraries(main PRIVATE SFML::Graphics crypto nlohmann_json::nlohmann_json)

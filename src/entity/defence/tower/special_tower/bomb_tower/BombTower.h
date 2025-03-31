@@ -2,18 +2,20 @@
 #define BOMBTOWER_H
 #include "../BaseTower.h"
 #include "../../../../../texture/ProjectileSpriteInjector.h"
+#include "../../../../../texture/TowerSpriteInjector.h"
 #include "../../../projectile/tower_projectile/bomb/BombProjectile.h"
 
 
-class ProjectileSpriteInjector;
-
 class BombTower final : public BaseTower {
-    std::shared_ptr<ProjectileSpriteInjector> spriteInjector;
+    std::shared_ptr<TowerSpriteInjector> towerSpriteInjector;
+    std::shared_ptr<ProjectileSpriteInjector> projectileSpriteInjector;
 
 public:
-    BombTower(const std::shared_ptr<ProjectileSpriteInjector> &spriteInjector, const sf::Vector2f &position)
-        : BaseTower(position, 150, 540, 7.f, 200, "Bomb", sf::Color(40, 50, 40)) {
-        this->spriteInjector = spriteInjector;
+    BombTower(const std::shared_ptr<TowerSpriteInjector> &towerSpriteInjector,
+              const std::shared_ptr<ProjectileSpriteInjector> &projectileSpriteInjector, const sf::Vector2f &position)
+        : BaseTower(towerSpriteInjector->createCannonMaxIdleHitTexture(), position, 1.8f, 150, 540, 7.f, 200, "Bomb", sf::Color::White) {
+        this->towerSpriteInjector = towerSpriteInjector;
+        this->projectileSpriteInjector = projectileSpriteInjector;
     }
 
 protected:
@@ -26,7 +28,8 @@ protected:
         const float towerCenterX = getPosition().x;
         const float towerCenterY = getPosition().y;
         projectiles.push_back(
-            std::make_shared<BombProjectile>(BombProjectile(spriteInjector->createExplosionHitTexture(), towerCenterX, towerCenterY, static_cast<float>(angle))));
+            std::make_shared<BombProjectile>(BombProjectile(projectileSpriteInjector->createExplosionHitTexture(), towerCenterX,
+                                                            towerCenterY, static_cast<float>(angle))));
 
         return projectiles;
     }
