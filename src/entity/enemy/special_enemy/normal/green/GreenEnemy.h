@@ -18,10 +18,15 @@ public:
         this->spriteInjector = spriteInjector;
     }
 
-    std::vector<std::shared_ptr<Enemy> > getChildren() override {
+    std::vector<std::shared_ptr<Enemy>> getChildren() override {
         std::vector<std::shared_ptr<Enemy> > children;
-        const auto enemy = std::make_shared<BlueEnemy>(BlueEnemy(spriteInjector, getPathToFollow()));
-        children.push_back(enemy);
+        if (getHealth() == 0) {
+            const auto enemy = std::make_shared<BlueEnemy>(BlueEnemy(spriteInjector, getPathToFollow()));
+            children.push_back(enemy);
+        } else if (getHealth() == -1) {
+            const auto enemy = std::make_shared<RedEnemy>(RedEnemy(spriteInjector, getPathToFollow()));
+            children.push_back(enemy);
+        }
         return children;
     }
 

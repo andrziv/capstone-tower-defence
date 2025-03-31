@@ -172,6 +172,10 @@ class Enemy {
         [[nodiscard]] std::shared_ptr<sf::VertexArray> getPathToFollow() const {
             return path;
         }
+
+        [[nodiscard]] int getHealth() const {
+            return health;
+        }
 };
 
 
