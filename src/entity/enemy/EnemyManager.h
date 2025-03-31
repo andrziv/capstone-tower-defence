@@ -32,13 +32,13 @@ class EnemyManager {
     static float calculateSpawnGapSize(const std::string& spawnGapType, const std::shared_ptr<Enemy>& enemy) {
         const auto enemyHitBoxRadius = enemy->getHitTexture()->getCircleHitbox()->getRadius();
         if (spawnGapType == "FAR") {
-            return enemyHitBoxRadius * 2 + 20;
+            return enemyHitBoxRadius * 4 + 20;
         }
         if (spawnGapType == "SIDEBY") {
-            return enemyHitBoxRadius * 2;
+            return enemyHitBoxRadius * 4;
         }
         if (spawnGapType == "CLOSE") {
-            return enemyHitBoxRadius / 2;
+            return enemyHitBoxRadius;
         }
         return enemyHitBoxRadius;
     }

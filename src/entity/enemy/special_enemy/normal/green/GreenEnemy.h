@@ -14,7 +14,7 @@ public:
     explicit GreenEnemy(const std::shared_ptr<EnemySpriteInjector> &spriteInjector,
                         const std::shared_ptr<sf::VertexArray> &pathToFollow) : BaseNormalEnemy(
         spriteInjector->createAnimHitTexture(), spriteInjector->createAnimDeathTexture(), pathToFollow, 3,
-        sf::Color::Green, 40.f) {
+        sf::Color::Green, 20.f) {
         this->spriteInjector = spriteInjector;
     }
 

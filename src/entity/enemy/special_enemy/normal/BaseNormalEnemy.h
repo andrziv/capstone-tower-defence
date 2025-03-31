@@ -18,7 +18,7 @@ public:
                     const std::shared_ptr<sf::VertexArray> &pathToFollow, const float speed, const sf::Color color,
                     const float size)
         : Enemy(animHitTexture, animDeathTexture, pathToFollow, speed, 1, 1) {
-        const auto scaleIncrease = 2 * size / 30;
+        const auto scaleIncrease = 2 * size / 15;
 
         getDeathAnimation()->getSprite()->setColor(color);
         getDeathAnimation()->getSprite()->setScale(sf::Vector2f(scaleIncrease, scaleIncrease));

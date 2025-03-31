@@ -14,7 +14,7 @@ public:
     explicit PinkEnemy(const std::shared_ptr<EnemySpriteInjector> &spriteInjector,
                        const std::shared_ptr<sf::VertexArray> &pathToFollow) : BaseNormalEnemy(
         spriteInjector->createAnimHitTexture(), spriteInjector->createAnimDeathTexture(), pathToFollow, 5,
-        sf::Color(205, 43, 115), 50.f) {
+        sf::Color(205, 43, 115), 25.f) {
         this->spriteInjector = spriteInjector;
     }
 
