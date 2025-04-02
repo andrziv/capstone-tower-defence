@@ -26,10 +26,9 @@ inline constexpr float LIFE_PERCENT_RIGHT       = 1.f / 15.f;
 inline constexpr float PRESSURE_PERCENT_RIGHT   = 4.f / 10;
 inline constexpr float BALANCE_PERCENT_RIGHT    = 2.f / 10.f;
 inline constexpr float WAVE_PERCENT_RIGHT       = 7.8 / 10.f;
-inline constexpr float DAMAGE_PERCENT_RIGHT     = 8.8 / 10.f;
-inline constexpr float SPEED_PERCENT_RIGHT      = 8.8 / 10.f;
-inline constexpr float TYPE_PERCENT_RIGHT       = 8.8 / 10.f;
-inline constexpr float SELL_PERCENT_RIGHT      = 8.8 / 10.f;
+inline constexpr float STAT_PERCENT_RIGHT       = 8.6 / 10.f;
+inline constexpr float PLAY_PERCENT_RIGHT       = 9 / 10.f;
+
 
 // Placement Constants
 inline constexpr float FPS_START_RIGHT      = DISPLAY_MAX_X * FPS_PERCENT_RIGHT;
@@ -37,12 +36,10 @@ inline constexpr float LIFE_START_RIGHT     = DISPLAY_MAX_X * LIFE_PERCENT_RIGHT
 inline constexpr float PRESSURE_START_RIGHT = DISPLAY_MAX_X * PRESSURE_PERCENT_RIGHT;
 inline constexpr float BALANCE_START_RIGHT  = DISPLAY_MAX_X * BALANCE_PERCENT_RIGHT;
 inline constexpr float WAVE_START_RIGHT     = DISPLAY_MAX_X * WAVE_PERCENT_RIGHT;
-inline constexpr float DAMAGE_START_RIGHT  = DISPLAY_MAX_X * DAMAGE_PERCENT_RIGHT;
-inline constexpr float SPEED_START_RIGHT  = DISPLAY_MAX_X * SPEED_PERCENT_RIGHT;
-inline constexpr float TYPE_START_RIGHT  = DISPLAY_MAX_X * TYPE_PERCENT_RIGHT;
-inline constexpr float SELL_START_RIGHT  = DISPLAY_MAX_X * SELL_PERCENT_RIGHT;
-inline constexpr float TEXT_START_Y = 0 + TEXT_TOP_PADDING;
-inline constexpr float PRESSURE_GAP_Y = 25;
-inline constexpr float STAT_GAP_Y = 30;
+inline constexpr float STAT_START_RIGHT     = DISPLAY_MAX_X * STAT_PERCENT_RIGHT;
+inline constexpr float PLAY_START_RIGHT     = DISPLAY_MAX_X * PLAY_PERCENT_RIGHT;
+inline constexpr float TEXT_START_Y         = 0 + TEXT_TOP_PADDING;
+inline constexpr float PRESSURE_GAP_Y       = 25;
+inline constexpr float STAT_GAP_Y           = 30;
 
 #endif //DISPLAYCONSTS_H
