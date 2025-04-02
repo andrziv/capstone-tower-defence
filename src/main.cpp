@@ -158,10 +158,6 @@ void game_core() {
     }
 }
 
-//int main() {
-//    game_core();
-//}
-
 int main(int argc, char **argv) {
     int provided;
     MPI_Init_thread(&argc, &argv, MPI_THREAD_MULTIPLE, &provided);
@@ -182,8 +178,11 @@ int main(int argc, char **argv) {
         for (int i = 1; i < size; i++) {
             nodeStateMap.insert({i, {0, 0}});
         }
-        setActiveCoresTo(3, size - 1);
+
+        setActiveCoresTo(0, size - 1);
+        currentNodes = size - 1;
         setMasterIgnoreCores(true);
+
         std::cout << "Main game running from: " << hostname << std::endl;
         std::thread consumerThread(priPressureConsumer);
         consumerThread.detach();
