@@ -8,7 +8,7 @@
         {
           "type": "RED",
           "spawn_time_percent": 0,
-          "multiplier": 4,
+          "multiplier": 320,
           "spawn_gap": "CLOSE"
         },
         {

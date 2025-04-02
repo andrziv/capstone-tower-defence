@@ -11,6 +11,10 @@ struct EnemySpawn {
 };
 
 class EnemyManager {
+    // TODO: temp texture location till we find a better way to circumvent the x11 error for slave nodes
+    sf::Texture BUBBLE_TEXTURE = sf::Texture("../../src/resources/textures/bubble.png");
+    sf::Texture WARN_TEXTURE = sf::Texture("../../src/resources/textures/warn.png");
+
     std::list<std::shared_ptr<Enemy>> enemies;
     std::list<std::shared_ptr<Enemy>> undrawnEnemies;
     std::shared_ptr<sf::VertexArray> enemyPath;
@@ -91,12 +95,18 @@ class EnemyManager {
         }
 
         void addEnemy(const std::shared_ptr<Enemy>& newEnemy) {
+            //TODO: temp
+            newEnemy->getHitTexture()->setTexture(WARN_TEXTURE);
+
             enemies.push_back(newEnemy);
             undrawnEnemies.push_back(newEnemy);
         }
 
         void addEnemies(const std::vector<std::shared_ptr<Enemy>>& newEnemies) {
             for (const auto& enemy : newEnemies) {
+                //TODO: temp
+                enemy->getHitTexture()->setTexture(WARN_TEXTURE);
+
                 enemy->initialize(enemyPath);
                 enemies.push_back(enemy);
                 undrawnEnemies.push_back(enemy);
@@ -107,6 +117,9 @@ class EnemyManager {
             for (const auto&[spawnGap, enemiesToSpawn] : newSpawnGroup) {
                 int counter = 0;
                 for (const auto& enemy : enemiesToSpawn) {
+                    //TODO: TEMP
+                    enemy->getHitTexture()->setTexture(WARN_TEXTURE);
+
                     const auto spawnGapDistance = calculateSpawnGapSize(spawnGap, enemy);
                     enemy->initialize(enemyPath);
                     const sf::Vertex startPosition = enemy->getPosition();

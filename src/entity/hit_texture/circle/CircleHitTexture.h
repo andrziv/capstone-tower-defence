@@ -3,8 +3,8 @@
 #include <memory>
 
 #include "../HitTexture.h"
-#include "../../../texture/TextureHolder.h"
 #include "SFML/Graphics/CircleShape.hpp"
+#include "SFML/Graphics/Texture.hpp"
 
 
 class CircleHitTexture final : public HitTexture {
@@ -14,10 +14,6 @@ class CircleHitTexture final : public HitTexture {
     public:
         CircleHitTexture() {
             this->displayEntity = std::make_shared<sf::CircleShape>(sf::CircleShape());
-            // this->displayEntity->setOutlineThickness(2.f);
-            // this->displayEntity->setOutlineColor(sf::Color::Magenta);
-            this->displayEntity->setTexture(&WARN_TEXTURE);
-            this->displayEntity->setTextureRect(sf::IntRect({0, 0}, {512, 512}));
             this->hitbox = std::make_shared<sf::CircleShape>(sf::CircleShape());
         }
 
@@ -68,6 +64,14 @@ class CircleHitTexture final : public HitTexture {
 
         void setDisplayEntity(const std::shared_ptr<sf::CircleShape>& displayEntity) {
             this->displayEntity = displayEntity;
+        }
+
+        void setTexture(const sf::Texture& texture) const {
+            this->displayEntity->setTexture(&texture);
+            this->displayEntity->setTextureRect(
+                sf::IntRect(
+                    {0, 0},
+                    {static_cast<int>(texture.getSize().x), static_cast<int>(texture.getSize().y)}));
         }
 };
 

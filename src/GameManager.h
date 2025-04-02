@@ -15,7 +15,7 @@ class Tower;
 
 class GameManager {
     int playerHealth = 1000;
-    int playerBalance = 4000;
+    int playerBalance = 8000;
     EnemyManager enemyManager;
     TowerManager towerManager;
     TowerSelector towerSelector;

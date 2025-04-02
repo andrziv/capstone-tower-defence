@@ -8,7 +8,7 @@ class BasicProjectile final : public BaseNormalProjectile {
 
 public:
     BasicProjectile(const float posX, const float posY, const float direction, const int pierce)
-        : BaseNormalProjectile(posX, posY, direction, pierce, 1, 20, 4.f, sf::Color(180, 180, 180)) {
+        : BaseNormalProjectile(posX, posY, direction, pierce, 1, 20, 4.f, sf::Color(1, 1, 1)) {
     }
 
     BasicProjectile(const float posX, const float posY, const float direction)

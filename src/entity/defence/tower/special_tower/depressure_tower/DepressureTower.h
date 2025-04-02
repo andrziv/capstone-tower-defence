@@ -1,5 +1,6 @@
 #ifndef DEPRESSURETOWER_H
 #define DEPRESSURETOWER_H
+#include <iostream>
 #include <memory>
 #include <vector>
 

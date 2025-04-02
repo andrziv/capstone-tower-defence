@@ -33,6 +33,12 @@ void game_core() {
     graphicsManager.addLowPriorityDrawables(menuBackgroundManager.getStaticDrawables());
     graphicsManager.addPriorityDrawables(displayTextManager.getTextDrawables());
 
+    std::chrono::steady_clock::time_point fclock = std::chrono::steady_clock::now();
+
+    int seconds = 0;
+    std::ofstream MyFile("pressure.txt");
+    MyFile << "active_cores,comp_rate,tot_jobs,seconds\n";
+
     std::shared_ptr<Tower> activeTower = nullptr;
     while (graphicsManager.isActive()) {
         while (const std::optional event = graphicsManager.pollEvent()) {
@@ -151,10 +157,23 @@ void game_core() {
         displayTextManager.setFPSCounterValue(fps.getFPS());
 
         displayTextManager.setRemainingPressureValue(static_cast<int>(toDecrypt.size()) + currentOperations);
-        displayTextManager.setActivePressureJobsValue(currentOperations);
+        displayTextManager.setActivePressureJobsValue((currentOperations > activeCores) ? activeCores : currentOperations);
         displayTextManager.setPressureCompletionRateValue(completionRate.getAverageRate());
         displayTextManager.setPressureProductionRateValue(additionRate.getAverageRate());
+
+        const std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+        const auto timeDiff = std::chrono::duration_cast<std::chrono::seconds>(end - fclock).count();
+        if(timeDiff >= 1.f) {
+            MyFile << std::to_string(activeCores) + "," +
+                std::to_string(completionRate.getAverageRate()) + "," +
+                    std::to_string(static_cast<int>(toDecrypt.size()) + currentOperations) + "," +
+                        std::to_string(seconds) + "\n" << std::flush;
+            seconds++;
+            fclock = std::chrono::steady_clock::now();
+        }
+
     }
+    MyFile.close();
 }
 
 //int main() {
@@ -175,14 +194,17 @@ int main(int argc, char **argv) {
     MPI_Get_processor_name(hostname, &name_len);
 
     // runs the SAME code on all processes with a unique rank
-    // only capstone rank 0 can run game_core
+    // only capstone rank 0 can run ,game_core
 
     if (rank == 0) {
         for (int i = 1; i < size; i++) {
             nodeStateMap.insert({i, {0, 0}});
         }
-        setActiveCoresTo(3, size - 1);
+
+        setActiveCoresTo(0, size - 1);
+        currentNodes = size - 1;
         setMasterIgnoreCores(true);
+
         std::cout << "Main game running from: " << hostname << std::endl;
         std::thread consumerThread(priPressureConsumer);
         consumerThread.detach();
