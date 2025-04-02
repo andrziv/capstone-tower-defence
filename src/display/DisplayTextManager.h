@@ -26,7 +26,9 @@ class DisplayTextManager {
     const std::shared_ptr<sf::Text> displayType = std::make_shared<sf::Text>(sf::Text(font));
     const std::shared_ptr<sf::Text> displaySellOption = std::make_shared<sf::Text>(sf::Text(font));
     const std::shared_ptr<sf::Text> displayCostOption = std::make_shared<sf::Text>(sf::Text(font));
+    const std::shared_ptr<sf::Text> displayPauseOption = std::make_shared<sf::Text>(sf::Text(font));
     sf::RectangleShape sellButtonRectangle;
+    sf::RectangleShape pauseButtonRectangle;
 
 public:
     DisplayTextManager() {
@@ -74,31 +76,41 @@ public:
             displayType->setCharacterSize(24);
             displayType->setFillColor(sf::Color(51, 204, 255));
             displayType->setStyle(sf::Text::Bold);
-            displayType->setPosition(sf::Vector2f(TYPE_START_RIGHT, STAT_GAP_Y * 11));
+            displayType->setPosition(sf::Vector2f(STAT_START_RIGHT, STAT_GAP_Y * 11));
 
             displayDamage->setCharacterSize(24);
             displayDamage->setFillColor(sf::Color(255, 92, 51));
             displayDamage->setStyle(sf::Text::Bold);
-            displayDamage->setPosition(sf::Vector2f(DAMAGE_START_RIGHT, STAT_GAP_Y * 12));
+            displayDamage->setPosition(sf::Vector2f(STAT_START_RIGHT, STAT_GAP_Y * 12));
 
             displaySpeed->setCharacterSize(24);
             displaySpeed->setFillColor(sf::Color(102, 255, 102));
             displaySpeed->setStyle(sf::Text::Bold);
-            displaySpeed->setPosition(sf::Vector2f(SPEED_START_RIGHT, STAT_GAP_Y * 13));
+            displaySpeed->setPosition(sf::Vector2f(STAT_START_RIGHT, STAT_GAP_Y * 13));
 
             displayCostOption->setCharacterSize(24);
             displayCostOption->setFillColor(sf::Color(0, 255, 0));
             displayCostOption->setStyle(sf::Text::Bold);
-            displayCostOption->setPosition(sf::Vector2f(TYPE_START_RIGHT, STAT_GAP_Y * 14));
+            displayCostOption->setPosition(sf::Vector2f(STAT_START_RIGHT, STAT_GAP_Y * 14));
 
             displaySellOption->setCharacterSize(24);
             displaySellOption->setFillColor(sf::Color(255, 255, 0));
             displaySellOption->setStyle(sf::Text::Bold);
-            displaySellOption->setPosition(sf::Vector2f(TYPE_START_RIGHT, STAT_GAP_Y * 15));
+            displaySellOption->setPosition(sf::Vector2f(STAT_START_RIGHT, STAT_GAP_Y * 15));
+
+            displayPauseOption->setCharacterSize(24);
+            displayPauseOption->setFillColor(sf::Color::Red);
+            displayPauseOption->setStyle(sf::Text::Bold);
+            displayPauseOption->setOutlineColor(sf::Color::Black);
+            displayPauseOption->setOutlineThickness(1);
+            displayPauseOption->setPosition(sf::Vector2f(PLAY_START_RIGHT, STAT_GAP_Y * 17));
 
             sellButtonRectangle.setPosition(displaySellOption->getPosition());
             sellButtonRectangle.setSize(sf::Vector2f(100.f, 40.f));
             sellButtonRectangle.setFillColor(sf::Color(255, 255, 0, 150));
+
+            pauseButtonRectangle.setPosition(displayPauseOption->getPosition());
+            pauseButtonRectangle.setSize(sf::Vector2f(100.f, 40.f));
         }
     }
 
@@ -171,6 +183,14 @@ public:
         displaySellOption->setFillColor(newColor);
     }
 
+    void setPauseOption(const std::string &isPaused) const {
+        displayPauseOption->setString(isPaused);
+    }
+
+    bool isPauseButtonClicked(const sf::Vector2i& mousePosition) const {
+        return pauseButtonRectangle.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePosition));
+    }
+
     void removeTowerStats() const {
         // Remove or hide the text for damage and speed here.
         // For example:
@@ -196,7 +216,8 @@ public:
             displaySpeed,
             displayType,
             displayCostOption,
-            displaySellOption
+            displaySellOption,
+            displayPauseOption
         };
     }
 };

@@ -3,7 +3,10 @@
 
 #include <queue>
 #include <memory>
+#include <string>
+#include <iostream>
 
+#include "display/DisplayTextManager.h"
 #include "entity/defence/projectile/Projectile.h"
 #include "entity/defence/tower/TowerManager.h"
 #include "entity/enemy/Enemy.h"
@@ -14,6 +17,9 @@
 class Tower;
 
 class GameManager {
+    bool paused = false;
+    std::string pauseState = "Pause";
+    const DisplayTextManager displayTextManager;
     int playerHealth = 1000;
     int playerBalance = 4000;
     EnemyManager enemyManager;
@@ -73,6 +79,10 @@ class GameManager {
         for (const auto& [spawnTime, enemyList] : tempSpawnMap) {
             enemySpawnTimeQueue.emplace(spawnTime, enemyList);
         }
+        // pause after wave
+        std::cout << "WAVE ENDED: " << std::endl;
+        setPaused(true);
+        // pause after wave
     }
 
     static EnemySpawn generateSpawnGroup(const int multiplier, const std::shared_ptr<Enemy>& enemy, const std::string& spawnGap) {
@@ -117,6 +127,21 @@ class GameManager {
 
 public:
     GameManager() = default;
+
+    //pause methods
+    void togglePause() {
+        paused = !paused;
+        pauseState = paused ? "Play" : "Pause";
+    }
+
+    void setPaused(bool value) {
+        paused = value;
+        pauseState = paused ? "Play" : "Pause";
+    }
+
+    bool isPaused() const { return paused; }
+    std::string getPauseState() const {return pauseState; }
+    // pause methods
 
     void update() {
         enemyManager.update();

@@ -82,6 +82,13 @@ void game_core() {
             if (event->is<sf::Event::MouseButtonPressed>()) {
                 if (const auto buttonPressed = event->getIf<sf::Event::MouseButtonPressed>(); buttonPressed->button == sf::Mouse::Button::Left) {
                     const auto mousePosition = buttonPressed->position;
+                    // toggle pause when clicked
+                    if (displayTextManager.isPauseButtonClicked(mousePosition)){
+                        gameManager.togglePause();
+                        std::cout << "isPaused: " << std::boolalpha << gameManager.isPaused() << std::endl;
+
+                    }
+                    // toggle pause when clicked
                     if (!gameManager.isTowerAlreadySelected()) {
                         if (gameManager.attemptSelectingTower(mousePosition)) {
                             graphicsManager.addPriorityDrawable(gameManager.getHoveredTowerDrawable());
@@ -166,7 +173,17 @@ void game_core() {
             }
         }
 
-        gameManager.update();
+        // constantly updates pause text on screen and pauses game manager updates if paused
+        static std::string lastPauseState;
+        if (gameManager.getPauseState() != lastPauseState) {
+            lastPauseState = gameManager.getPauseState();
+            displayTextManager.setPauseOption(lastPauseState);
+        }
+        if (!gameManager.isPaused()) {
+            gameManager.update();
+        }
+        // constantly updates pause text on screen and pauses game manager updates if paused
+
 
         displayTextManager.setLifeCounterValue(gameManager.getPlayerHealth());
         displayTextManager.setWaveCounterValue(gameManager.getCurrentWaveNumber(), gameManager.getMaxWaveNumber());
