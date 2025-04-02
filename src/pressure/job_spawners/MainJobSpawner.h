@@ -32,14 +32,14 @@ inline int leastStressedNode() {
             bestNodeBacklogAmount = backlogAmount;
             continue;
         }
-        if (freeSpace >= bestNodeFreeSpace) {
+        if (nodeNumber <= activeCores && (freeSpace > bestNodeFreeSpace || (freeSpace == bestNodeFreeSpace && backlogAmount < bestNodeBacklogAmount))) {
             if (backlogAmount == 0) {
                 bestNode = nodeNumber;
                 bestNodeFreeSpace = freeSpace;
                 bestNodeBacklogAmount = backlogAmount;
                 continue;
             }
-            if (backlogAmount < bestNodeBacklogAmount) {
+            if (backlogAmount <= bestNodeBacklogAmount) {
                 bestNode = nodeNumber;
                 bestNodeFreeSpace = freeSpace;
                 bestNodeBacklogAmount = backlogAmount;
@@ -108,13 +108,16 @@ inline int leastStressedNode() {
             if (!toHash.empty() && !pattern.empty()) {
                 int bestNode = leastStressedNode();
                 const auto [freeSpace, backlogAmount] = nodeStateMap.find(bestNode)->second;
-                if (freeSpace >= 0) {
-                    nodeStateMap.find(bestNode)->second.first++;
+                if (freeSpace > 0) {
+                    nodeStateMap.find(bestNode)->second.first--;
                 } else {
                     nodeStateMap.find(bestNode)->second.second++;
                 }
 
                 const int activeCores = coreNodePartitions.find(bestNode)->second;
+                printf("Active: %d, Best: %d\n", activeCores, bestNode);
+                std::cout << std::flush;
+
                 std::string msg;
                 msg.append(std::to_string(activeCores));
                 msg.append(PRESSURE_JOB_MSG_DELIMITER);

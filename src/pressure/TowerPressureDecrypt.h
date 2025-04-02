@@ -26,7 +26,7 @@ bool is_ready(std::future<R> const &f) {
 inline void setActiveCoresTo(const int active, const int numSlaveNodes) {
     activeCores = active;
     if (numSlaveNodes > 0 && active > 0) {
-        currentNodes = numSlaveNodes;
+        coreNodePartitions.clear();
         const int baseValue = active / numSlaveNodes;
         const int remainder = active % numSlaveNodes;
 
