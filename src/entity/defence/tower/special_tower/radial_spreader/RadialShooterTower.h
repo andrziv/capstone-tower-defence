@@ -4,15 +4,17 @@
 #include "../BaseTower.h"
 #include "../../Tower.h"
 #include "../../../projectile/tower_projectile/basic/BasicProjectile.h"
+#include "../../../../../texture/TowerSpriteInjector.h"
 
 
 class RadialShooterTower final : public BaseTower {
-
+    std::shared_ptr<TowerSpriteInjector> towerSpriteInjector;
     const double bulletSpreadAngleDeg = 60;
 
     public:
-        explicit RadialShooterTower(const sf::Vector2f& position)
-            : BaseTower (position, 100, 370, 1.5f, 100, "Radial",sf::Color(252, 152, 3))  {
+        explicit RadialShooterTower(const std::shared_ptr<TowerSpriteInjector> &towerSpriteInjector, const sf::Vector2f& position)
+            : BaseTower (towerSpriteInjector->createRadialMaxIdleHitTexture(), position, 100, 370, 1.5f, 100, "Radial",sf::Color(252, 152, 3))  {
+            this->towerSpriteInjector = towerSpriteInjector;
         }
 
     protected:
@@ -24,7 +26,7 @@ class RadialShooterTower final : public BaseTower {
             bool enemyFound = false;
 
             for (const auto& enemy : enemies) {
-                if (doCirclesOverlap(*getRangeIndicator(), *enemy->getHitTexture()->getCircleDisplayEntity())) {
+                if (doCirclesOverlap(*getRangeIndicator(), *enemy->getHitTexture()->getCircleHitbox())) {
                     enemyFound = true;
                     break;
                 }

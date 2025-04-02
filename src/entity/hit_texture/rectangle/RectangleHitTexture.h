@@ -14,7 +14,7 @@ class RectangleHitTexture final : HitTexture{
             this->hitbox = std::make_shared<sf::RectangleShape>(sf::RectangleShape());
         }
 
-        [[nodiscard]] std::shared_ptr<sf::Shape> getHitbox() const override {
+        [[nodiscard]] std::shared_ptr<sf::Drawable> getHitbox() const override {
             return hitbox;
         }
 
@@ -38,7 +38,7 @@ class RectangleHitTexture final : HitTexture{
             hitbox->setSize(size);
         }
 
-        [[nodiscard]] std::shared_ptr<sf::Shape> getDisplayEntity() const override {
+        [[nodiscard]] std::shared_ptr<sf::Drawable> getDisplayEntity() const override {
             return displayEntity;
         }
 
@@ -76,8 +76,8 @@ class RectangleHitTexture final : HitTexture{
                 x - displayEntity->getSize().x / 2,
                 y - displayEntity->getSize().y / 2));
             hitbox->setPosition(sf::Vector2f(
-                x + (displayEntity->getSize().x / 2 - hitbox->getSize().x / 2),
-                y + (displayEntity->getSize().y / 2 - hitbox->getSize().y / 2)));
+                x - hitbox->getSize().x / 2,
+                y - hitbox->getSize().y / 2));
         }
 
         void setPosition(const sf::Vector2f position) const override {

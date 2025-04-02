@@ -30,7 +30,7 @@ class DisplayTextManager {
 
 public:
     DisplayTextManager() {
-        if (font.openFromFile("../../src/resources/fonts/LEMONMILK-Regular.otf")) {
+        if (font.openFromFile("../../src/resources/fonts/RasterForgeRegular-JpBgm.ttf")) {
             fpsCounter->setCharacterSize(24);
             fpsCounter->setFillColor(sf::Color::Red);
             fpsCounter->setStyle(sf::Text::Bold);
@@ -62,7 +62,7 @@ public:
             pressureAdditionRate->setPosition(sf::Vector2f(PRESSURE_START_RIGHT, PRESSURE_GAP_Y * 3));
 
             waveCounter->setCharacterSize(24);
-            waveCounter->setFillColor(sf::Color::Red);
+            waveCounter->setFillColor(sf::Color(20, 20, 40));
             waveCounter->setStyle(sf::Text::Bold);
             waveCounter->setPosition(sf::Vector2f(WAVE_START_RIGHT, TEXT_START_Y));
 

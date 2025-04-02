@@ -6,14 +6,18 @@
 #include "../BaseTower.h"
 #include "../../Tower.h"
 #include "../../../projectile/tower_projectile/basic/BasicProjectile.h"
+#include "../../../../../texture/TowerSpriteInjector.h"
 
 class Projectile;
 
 
 class JoTower final : public BaseTower {
+    std::shared_ptr<TowerSpriteInjector> towerSpriteInjector;
+
     public:
-        explicit JoTower(const sf::Vector2f& position)
-            : BaseTower (position, 250, 270, 3.f, 150, "Dart", sf::Color::Green)  {
+        explicit JoTower(const std::shared_ptr<TowerSpriteInjector> &towerSpriteInjector, const sf::Vector2f& position)
+            : BaseTower (towerSpriteInjector->createArcherMaxIdleHitTexture(), position, 250, 270, 3.f, 150, "Dart", sf::Color::White)  {
+            this->towerSpriteInjector = towerSpriteInjector;
         }
 
     protected:

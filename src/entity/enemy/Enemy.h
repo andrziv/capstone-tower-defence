@@ -5,7 +5,7 @@
 #include <string>
 
 #include "../../helper/UUID.h"
-#include "../hit_texture/circle/CircleHitTexture.h"
+#include "../hit_texture/circle/animated_circle/AnimCircleHitTexture.h"
 #include "SFML/Graphics/Vertex.hpp"
 
 
@@ -18,7 +18,8 @@ class Enemy {
     sf::Vertex position;
     std::shared_ptr<sf::VertexArray> path;
     int currentNodeTarget = 0;
-    std::shared_ptr<CircleHitTexture> hitTexture;
+    std::shared_ptr<AnimCircleHitTexture> hitTexture;
+    std::shared_ptr<AnimatedSprite> deathTexture;
     int health;
     double speed;
     int reward = 0;
@@ -31,15 +32,21 @@ class Enemy {
         }
     }
 
-    void setHitTexture(const std::shared_ptr<CircleHitTexture>& hitTexture) {
+    void setHitTexture(const std::shared_ptr<AnimCircleHitTexture>& hitTexture) {
         this->hitTexture = hitTexture;
+    }
+
+    void setDeathSprite(const std::shared_ptr<AnimatedSprite>& deathSprite) {
+        this->deathTexture = deathSprite;
     }
 
     public:
         virtual ~Enemy() = default;
 
-        Enemy(const std::shared_ptr<sf::VertexArray>& pathToFollow, const float speed, const int health, const int reward) {
-            this->hitTexture = std::make_shared<CircleHitTexture>(CircleHitTexture());
+        Enemy(const std::shared_ptr<AnimCircleHitTexture>& hitTexture, const std::shared_ptr<AnimatedSprite>& deathTexture,
+            const std::shared_ptr<sf::VertexArray>& pathToFollow, const float speed, const int health, const int reward) {
+            this->hitTexture = hitTexture;
+            this->deathTexture = deathTexture;
             this->path = pathToFollow;
             if (path != nullptr) {
                 initialize();
@@ -97,7 +104,7 @@ class Enemy {
             currentNodeTarget = newTarget;
         }
 
-        std::shared_ptr<CircleHitTexture> getHitTexture() {
+        std::shared_ptr<AnimCircleHitTexture> getHitTexture() {
             return hitTexture;
         }
 
@@ -127,6 +134,10 @@ class Enemy {
             return reward;
         }
 
+        std::shared_ptr<AnimatedSprite> getDeathAnimation() {
+            return deathTexture;
+        }
+
         bool operator == (const Enemy &other) const {
             if(this->id == other.id) {
                 return true;
@@ -135,12 +146,21 @@ class Enemy {
         }
 
         std::shared_ptr<Enemy> deep_copy() {
-            const auto copiedHitTexture = std::make_shared<CircleHitTexture>(*getHitTexture());
-            const auto copiedDisplayEntity = std::make_shared<sf::CircleShape>(*getHitTexture()->getCircleDisplayEntity());
+            const auto oldAnimDeathSprite = getDeathAnimation();
+            const auto copiedDeathSprite = std::make_shared<sf::Sprite>(*oldAnimDeathSprite->getSprite());
+            const auto copiedDeathAnimSprite = std::make_shared<AnimatedSprite>(
+                AnimatedSprite(copiedDeathSprite, oldAnimDeathSprite->getFrameCount(), oldAnimDeathSprite->getFrameTime()));
+            copiedDeathAnimSprite->setDoRepeat(false);
+
+            const auto oldAnimSprite = getHitTexture()->getAnimDisplayEntity();
+            const auto copiedSprite = std::make_shared<sf::Sprite>(*getHitTexture()->getAnimDisplayEntity()->getSprite());
             const auto copiedHitbox = std::make_shared<sf::CircleShape>(*getHitTexture()->getCircleHitbox());
+            const auto copiedHitTexture = std::make_shared<AnimCircleHitTexture>(
+                AnimCircleHitTexture(copiedSprite, oldAnimSprite->getFrameCount(), oldAnimSprite->getFrameTime()));
+
             auto copiedEnemy = copy();
-            copiedHitTexture->setDisplayEntity(copiedDisplayEntity);
             copiedHitTexture->setHitbox(copiedHitbox);
+            copiedEnemy->setDeathSprite(copiedDeathAnimSprite);
             copiedEnemy->setHitTexture(copiedHitTexture);
             copiedEnemy->setId(get_uuid());
             return copiedEnemy;
@@ -151,6 +171,10 @@ class Enemy {
 
         [[nodiscard]] std::shared_ptr<sf::VertexArray> getPathToFollow() const {
             return path;
+        }
+
+        [[nodiscard]] int getHealth() const {
+            return health;
         }
 };
 

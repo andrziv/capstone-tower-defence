@@ -235,6 +235,9 @@ public:
         for (const auto& projectileDisplayEffect : towerManager.getDisplayEffects()) {
             drawables.push_back(projectileDisplayEffect);
         }
+        for (const auto& deathAnimationEffect : enemyManager.getDisplayEffects()) {
+            drawables.push_back(deathAnimationEffect);
+        }
         return drawables;
     }
 
@@ -255,11 +258,14 @@ public:
         for (const auto& projectileDisplayEffect : towerManager.getCompletedDisplayEffects()) {
             drawables.push_back(projectileDisplayEffect);
         }
+        for (const auto& deathAnimationEffect : enemyManager.getCompletedDisplayEffects()) {
+            drawables.push_back(deathAnimationEffect);
+        }
         return drawables;
     }
 
     void cleanup() {
-        enemyManager.removeDeadEnemies();
+        enemyManager.cleanup();
         towerManager.removeInactiveProjectiles();
     }
 

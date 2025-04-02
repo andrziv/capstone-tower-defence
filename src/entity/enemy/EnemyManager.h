@@ -4,6 +4,8 @@
 
 #include "Enemy.h"
 #include "../../helper/visual/ThickLine.h"
+#include "SFML/System/Clock.hpp"
+#include "SFML/System/Time.hpp"
 
 struct EnemySpawn {
     std::string spawnGap;
@@ -15,6 +17,8 @@ class EnemyManager {
     std::list<std::shared_ptr<Enemy>> undrawnEnemies;
     std::shared_ptr<sf::VertexArray> enemyPath;
     std::shared_ptr<sf::VertexArray> visualEnemyPath;
+    std::list<std::shared_ptr<AnimatedSprite>> deathAnimations;
+    sf::Clock animationClock;
 
     void addChildEnemy(const std::shared_ptr<Enemy>& parentEnemy, const std::vector<std::shared_ptr<Enemy>>& childEnemy) {
         for (const std::shared_ptr<Enemy> & child : childEnemy) {
@@ -28,13 +32,13 @@ class EnemyManager {
     static float calculateSpawnGapSize(const std::string& spawnGapType, const std::shared_ptr<Enemy>& enemy) {
         const auto enemyHitBoxRadius = enemy->getHitTexture()->getCircleHitbox()->getRadius();
         if (spawnGapType == "FAR") {
-            return enemyHitBoxRadius * 2 + 20;
+            return enemyHitBoxRadius * 4 + 20;
         }
         if (spawnGapType == "SIDEBY") {
-            return enemyHitBoxRadius * 2;
+            return enemyHitBoxRadius * 4;
         }
         if (spawnGapType == "CLOSE") {
-            return enemyHitBoxRadius / 2;
+            return enemyHitBoxRadius;
         }
         return enemyHitBoxRadius;
     }
@@ -82,10 +86,17 @@ class EnemyManager {
             visualEnemyPath = std::make_shared<sf::VertexArray>(thickLine.getShape());
         }
 
-        void update() const {
+        void update() {
+            const float deltaTime = animationClock.restart().asSeconds();
             for (const auto &enemy : enemies) {
                 if (enemy->isAlive()) {
                     enemy->updatePosition();
+                    enemy->getHitTexture()->getAnimDisplayEntity()->update(deltaTime);
+                }
+            }
+            for (const auto& deathAnimation : deathAnimations) {
+                if (!deathAnimation->isFinishedAnimation()) {
+                    deathAnimation->update(deltaTime);
                 }
             }
         }
@@ -139,6 +150,29 @@ class EnemyManager {
             return alive;
         }
 
+        [[nodiscard]] std::vector<std::shared_ptr<sf::Drawable>> getDisplayEffects() {
+            std::vector<std::shared_ptr<sf::Drawable>> drawables;
+            for (const auto& deadEnemy : getDeadEnemies()) {
+                const auto xOffset = static_cast<float>(deadEnemy->getDeathAnimation()->getFrameSize().x) * deadEnemy->getDeathAnimation()->getSprite()->getScale().x;
+                const auto yOffset = static_cast<float>(deadEnemy->getDeathAnimation()->getFrameSize().y) * deadEnemy->getDeathAnimation()->getSprite()->getScale().y;
+
+                deadEnemy->getDeathAnimation()->setPosition(deadEnemy->getPosition().position.x - xOffset / 2.f, deadEnemy->getPosition().position.y - yOffset / 1.5f);
+                deathAnimations.push_back(deadEnemy->getDeathAnimation());
+                drawables.push_back(deadEnemy->getDeathAnimation()->getSprite());
+            }
+            return drawables;
+        }
+
+        [[nodiscard]] std::vector<std::shared_ptr<sf::Drawable>> getCompletedDisplayEffects() const {
+            std::vector<std::shared_ptr<sf::Drawable>> drawables;
+            for (const auto& deathAnimation : deathAnimations) {
+                if (deathAnimation->isFinishedAnimation()) {
+                    drawables.push_back(deathAnimation->getSprite());
+                }
+            }
+            return drawables;
+        }
+
         [[nodiscard]] std::vector<std::shared_ptr<Enemy>> getDeadEnemies() const {
             std::vector<std::shared_ptr<Enemy>> dead;
             for (auto& enemy : enemies) {
@@ -171,12 +205,15 @@ class EnemyManager {
             }
         }
 
-        void removeDeadEnemies() {
+        void cleanup() {
             enemies.remove_if([](const std::shared_ptr<Enemy>& enemy) {
                 return !enemy->isAlive();
             });
             undrawnEnemies.remove_if([](const std::shared_ptr<Enemy>& enemy) {
                 return !enemy->isAlive();
+            });
+            deathAnimations.remove_if([](const std::shared_ptr<AnimatedSprite>& sprite) {
+                return sprite->isFinishedAnimation();
             });
         }
 

@@ -103,6 +103,20 @@ add_executable(main src/main.cpp
         src/display/DisplayTextManager.h
         src/display/StaticGraphicsManager.cpp
         src/display/StaticGraphicsManager.h
+        src/entity/defence/tower/special_tower/depressure_tower/DepressureTower.cpp
+        src/entity/defence/tower/special_tower/depressure_tower/DepressureTower.h
+        src/entity/hit_texture/animated_sprite/AnimatedSprite.cpp
+        src/entity/hit_texture/animated_sprite/AnimatedSprite.h
+        src/entity/hit_texture/circle/animated_circle/AnimCircleHitTexture.cpp
+        src/entity/hit_texture/circle/animated_circle/AnimCircleHitTexture.h
+        src/texture/EnemySpriteInjector.cpp
+        src/texture/EnemySpriteInjector.h
+        src/texture/ProjectileSpriteInjector.cpp
+        src/texture/ProjectileSpriteInjector.h
+        src/entity/hit_texture/rectangle/animated_rectangle/AnimRectangleHitTexture.cpp
+        src/entity/hit_texture/rectangle/animated_rectangle/AnimRectangleHitTexture.h
+        src/texture/TowerSpriteInjector.cpp
+        src/texture/TowerSpriteInjector.h
         src/pressure/job_spawners/SecondaryJobSpawner.h
         src/pressure/job_spawners/MainJobSpawner.h
         src/pressure/job_spawners/PressureJobConstants.h

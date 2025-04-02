@@ -18,9 +18,11 @@ public:
         setAngle(direction);
     }
 
-    bool hasDisplayEffects() override {
+    bool hasActiveDisplayEffects() override {
         return false;
     }
+
+    void updateDisplayEffects(float deltaTime) override {}
 
     std::vector<std::shared_ptr<sf::Drawable>> getDisplayEffects() override {
         return {};

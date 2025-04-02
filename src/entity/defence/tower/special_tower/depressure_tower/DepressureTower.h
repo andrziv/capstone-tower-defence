@@ -7,18 +7,19 @@
 #include "SFML/System/Vector2.hpp"
 #include "../BaseTower.h"
 #include "../../Tower.h"
-#include "../../../projectile/tower_projectile/basic/BasicProjectile.h"
+#include "../../../../../texture/TowerSpriteInjector.h"
 
 class Projectile;
 
 class DepressureTower final : public BaseTower {
-
     bool alreadyIncreasedCore = false;
 
-    public:
-        explicit DepressureTower(const sf::Vector2f& position)
-            : BaseTower (position, 0, 50, 0.f, 0, "Depressure", sf::Color::Magenta)  {
-        }
+public:
+    explicit DepressureTower(const std::shared_ptr<TowerSpriteInjector> &towerSpriteInjector,
+                             const sf::Vector2f &position)
+        : BaseTower(towerSpriteInjector->createDepressIdleHitTexture(), position, 0, 50, 0.f, 0,
+                    "Depressure", sf::Color::White) {
+    }
 
         std::vector<std::shared_ptr<Projectile>> shootProjectile(std::vector<std::shared_ptr<Enemy>>& enemies) override {
             if (!alreadyIncreasedCore) {
@@ -37,9 +38,9 @@ class DepressureTower final : public BaseTower {
             return {};
         }
 
-        std::string getPressurePattern() override {
-            return R"~(0)~";
-        }
+    std::string getPressurePattern() override {
+        return R"~(0)~";
+    }
 };
 
 
