@@ -52,7 +52,7 @@ protected:
         return projectiles;
     }
 
-    void upgradeTower(int upgradeValue) override {
+    void upgradeTower(const int upgradeValue) override {
         if (upgradeValue == 3) {
             //lvl 3 bullet spread tightest
             bulletSpreadAngleDeg = 20;

@@ -76,15 +76,15 @@ public:
         upgradeTower(upgradeValue);
     }
 
-    [[nodiscard]] int getUpgradeValue() {
+    [[nodiscard]] int getUpgradeValue() const {
         return upgradeValue;
     }
 
-    void setAttackSpeed(float value) {
+    void setAttackSpeed(const float value) {
         attackSpeed = value;
     }
 
-    void setDamage(int value) {
+    void setDamage(const int value) {
         damage = value;
     }
 

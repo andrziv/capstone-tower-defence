@@ -9,7 +9,6 @@
 #include "GameManager.h"
 #include "GraphicsManager.h"
 #include "display/StaticGraphicsManager.h"
-#include "entity/hit_texture/animated_sprite/AnimatedSprite.h"
 #include "helper/visual/FPS.h"
 #include "pressure/DecryptJob.h"
 #include "pressure/TowerPressureDecrypt.h"

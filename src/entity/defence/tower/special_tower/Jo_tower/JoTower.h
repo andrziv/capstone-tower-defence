@@ -55,7 +55,7 @@ protected:
         return R"~(^(000))~";
     }
 
-    void upgradeTower(int upgradeValue) override {
+    void upgradeTower(const int upgradeValue) override {
         if (upgradeValue == 3) {
             setAttackSpeed(1);
             setDamage(600);

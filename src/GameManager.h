@@ -4,7 +4,6 @@
 #include <queue>
 #include <memory>
 #include <string>
-#include <iostream>
 
 #include "display/DisplayTextManager.h"
 #include "entity/defence/projectile/Projectile.h"
@@ -139,7 +138,7 @@ public:
         pauseState = paused ? "Play" : "Pause";
     }
 
-    void setPaused(bool value) {
+    void setPaused(const bool value) {
         paused = value;
         pauseState = paused ? "Play" : "Pause";
     }
@@ -149,11 +148,11 @@ public:
     // pause methods
 
     //upgrade methods
-    int getTowerLevel() {
+    int getTowerLevel() const {
         return towerLevel;
     }
 
-    int getTowerUpgradeCost() {
+    int getTowerUpgradeCost() const {
         return towerUpgradeCost;
     }
 
@@ -341,7 +340,7 @@ public:
         return playerBalance;
     }
 
-    [[nodiscard]] int getSellPrice(const std::shared_ptr<Tower> &tower) {
+    [[nodiscard]] int getSellPrice(const std::shared_ptr<Tower> &tower) const {
         const int upgradeEditions = towerUpgradeCost * (tower->getUpgradeValue() - 1);
         const int sellPrice = tower->getCost() / 2 + upgradeEditions / 2;
         return sellPrice;
