@@ -21,7 +21,7 @@ public:
                     "Depressure", sf::Color::White) {
     }
 
-    std::vector<std::shared_ptr<Projectile> > shootProjectile(std::vector<std::shared_ptr<Enemy> > &enemies) override {
+    std::vector<std::shared_ptr<Projectile>> shootProjectile(std::vector<std::shared_ptr<Enemy>> &enemies) override {
         if (!alreadyIncreasedCore) {
             setActiveCoresTo(activeCores + 1);
             alreadyIncreasedCore = true;
@@ -34,7 +34,7 @@ protected:
         return std::make_shared<DepressureTower>(*this);
     }
 
-    std::vector<std::shared_ptr<Projectile> > generateProjectiles(const double angle) override {
+    std::vector<std::shared_ptr<Projectile>> generateProjectiles(const double angle) override {
         return {};
     }
 

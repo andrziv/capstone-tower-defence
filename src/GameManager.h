@@ -3,7 +3,10 @@
 
 #include <queue>
 #include <memory>
+#include <string>
+#include <iostream>
 
+#include "display/DisplayTextManager.h"
 #include "entity/defence/projectile/Projectile.h"
 #include "entity/defence/tower/TowerManager.h"
 #include "entity/enemy/Enemy.h"
@@ -13,9 +16,16 @@
 
 class Tower;
 
+
 class GameManager {
+    bool paused = false;
+    std::string pauseState = "Pause";
+    int towerLevel = 1;
+    int towerUpgradeCost = 550;
     int playerHealth = 1000;
     int playerBalance = 4000;
+
+    const DisplayTextManager displayTextManager;
     EnemyManager enemyManager;
     TowerManager towerManager;
     TowerSelector towerSelector;
@@ -52,10 +62,10 @@ class GameManager {
     void loadNextEnemyWave() {
         std::map<double, std::pair<double, std::vector<EnemySpawn>>> tempSpawnMap;
         double previousSpawnTime = 0;
-        const auto&[waveCoinReward, totalWaveTime, enemyInfos] = waveLoader.getNextWave();
+        const auto &[waveCoinReward, totalWaveTime, enemyInfos] = waveLoader.getNextWave();
         queuedWaveReward = static_cast<float>(waveCoinReward);
-        const auto& total_time = totalWaveTime;
-        for (const auto&[enemyMultiplier, spawnTimePercent, spawnGap, enemyToSpawn] : enemyInfos) {
+        const auto &total_time = totalWaveTime;
+        for (const auto &[enemyMultiplier, spawnTimePercent, spawnGap, enemyToSpawn]: enemyInfos) {
             const auto spawnPercent = spawnTimePercent;
             auto spawnTime = total_time * (spawnPercent / 100.0);
             auto spawnInterval = spawnTime - previousSpawnTime;
@@ -70,12 +80,16 @@ class GameManager {
                 tempSpawnMap[spawnTime] = std::pair(spawnInterval, enemies);
             }
         }
-        for (const auto& [spawnTime, enemyList] : tempSpawnMap) {
+        for (const auto &[spawnTime, enemyList]: tempSpawnMap) {
             enemySpawnTimeQueue.emplace(spawnTime, enemyList);
         }
+        // pause after wave
+        setPaused(true);
+        // pause after wave
     }
 
-    static EnemySpawn generateSpawnGroup(const int multiplier, const std::shared_ptr<Enemy>& enemy, const std::string& spawnGap) {
+    static EnemySpawn generateSpawnGroup(const int multiplier, const std::shared_ptr<Enemy> &enemy,
+                                         const std::string &spawnGap) {
         EnemySpawn spawn;
         spawn.spawnGap = spawnGap;
         spawn.enemiesToSpawn = std::vector<std::shared_ptr<Enemy>>();
@@ -92,7 +106,8 @@ class GameManager {
             return;
         }
         auto [spawnTime, enemySpawnInfo] = enemySpawnTimeQueue.front();
-        const auto timeDifference = static_cast<double>(std::chrono::duration_cast<std::chrono::milliseconds>(end - interWaveTimeStart).count()) / 1000;
+        const auto timeDifference = static_cast<double>(std::chrono::duration_cast<std::chrono::milliseconds>(
+                                        end - interWaveTimeStart).count()) / 1000;
         if (timeDifference >= enemySpawnInfo.first && !enemySpawnInfo.second.empty()) {
             enemyManager.addEnemies(enemySpawnInfo.second);
             enemySpawnTimeQueue.pop();
@@ -101,14 +116,14 @@ class GameManager {
     }
 
     void penalizeForFinishedEnemies() {
-        for ([[maybe_unused]] const auto& enemy : enemyManager.getEnemiesAtEndOfPath()) {
+        for ([[maybe_unused]] const auto &enemy: enemyManager.getEnemiesAtEndOfPath()) {
             playerHealth--;
         }
     }
 
     void updateMoneyForKilledEnemies() {
         const std::vector<std::shared_ptr<Enemy>> enemies = enemyManager.getDeadEnemies();
-        for (const auto& enemy : enemies) {
+        for (const auto &enemy: enemies) {
             if (!enemy->isAlive() && enemy->getTargetNode() < enemyManager.getEnemyPath()->getVertexCount()) {
                 playerBalance += std::ceil(enemy->getReward() / pressureEconomyPenalize());
             }
@@ -117,6 +132,43 @@ class GameManager {
 
 public:
     GameManager() = default;
+
+    //pause methods
+    void togglePause() {
+        paused = !paused;
+        pauseState = paused ? "Play" : "Pause";
+    }
+
+    void setPaused(bool value) {
+        paused = value;
+        pauseState = paused ? "Play" : "Pause";
+    }
+
+    bool isPaused() const { return paused; }
+    std::string getPauseState() const { return pauseState; }
+    // pause methods
+
+    //upgrade methods
+    int getTowerLevel() {
+        return towerLevel;
+    }
+
+    int getTowerUpgradeCost() {
+        return towerUpgradeCost;
+    }
+
+    void upgradeTowerLevel(const std::shared_ptr<Tower> &selectedTower) {
+        if (playerBalance >= towerUpgradeCost && selectedTower != nullptr) {
+            for (const auto &placedTowers: towerManager.getTowers()) {
+                if (selectedTower->getId() == placedTowers->getId()) {
+                    playerBalance -= towerUpgradeCost;
+                    selectedTower->upgradeTower();
+                    return;
+                }
+            }
+        }
+    }
+
 
     void update() {
         enemyManager.update();
@@ -129,7 +181,7 @@ public:
         penalizeForFinishedEnemies();
     }
 
-    bool attemptSelectingTower(const sf::Vector2i& mousePosition){
+    bool attemptSelectingTower(const sf::Vector2i &mousePosition) {
         return towerSelector.attemptSelectingTower(mousePosition);
     }
 
@@ -137,11 +189,12 @@ public:
         return TowerSelector::attemptSelectingPlacedTower(mousePosition, towerManager.getTowers());
     }
 
-    void dragSelectedTower(const sf::Vector2i& mousePosition) {
+    void dragSelectedTower(const sf::Vector2i &mousePosition) {
         towerSelector.dragSelectedTower(mousePosition);
         const auto towerOverlap = towerSelector.doesSelectedTowerOverlap(towerManager.getTowers());
         const auto towerPosX = towerSelector.getSelectedTower()->getPosition().x;
-        const auto menuStartX = SEL_MENU_START_X - towerSelector.getSelectedTower()->getHitTexture()->getRectHitbox()->getSize().x / 2;
+        const auto menuStartX = SEL_MENU_START_X - towerSelector.getSelectedTower()->getHitTexture()->getRectHitbox()->
+                                getSize().x / 2;
         const auto outOfBounds = towerPosX > menuStartX;
         if (towerOverlap || outOfBounds) {
             towerSelector.getSelectedTower()->invalidateRangeIndicator();
@@ -158,11 +211,12 @@ public:
         return towerSelector.isStillSelected();
     }
 
-    bool addTower(const std::shared_ptr<Tower>& tower) {
+    bool addTower(const std::shared_ptr<Tower> &tower) {
         if (playerBalance >= tower->getCost()) {
             const auto overlap = towerSelector.doesSelectedTowerOverlap(towerManager.getTowers());
             const auto towerPosX = towerSelector.getSelectedTower()->getPosition().x;
-            const auto menuStartX = SEL_MENU_START_X - towerSelector.getSelectedTower()->getHitTexture()->getRectHitbox()->getSize().x / 2;
+            const auto menuStartX = SEL_MENU_START_X - towerSelector.getSelectedTower()->getHitTexture()->
+                                    getRectHitbox()->getSize().x / 2;
             const auto outOfBounds = towerPosX > menuStartX;
             if (!(overlap || outOfBounds)) {
                 towerManager.addTower(tower);
@@ -173,12 +227,12 @@ public:
         return false;
     }
 
-    void removeTower(const std::shared_ptr<Tower>& tower) {
+    void removeTower(const std::shared_ptr<Tower> &tower) {
         towerManager.removeTower(tower);
     }
 
-    void sellTower(const std::shared_ptr<Tower>& tower) {
-        const int sellPrice = tower->getCost() / 2; // Refund half of the tower's cost
+    void sellTower(const std::shared_ptr<Tower> &tower) {
+        const int sellPrice = getSellPrice(tower); // Refund half of the tower's cost
         playerBalance += sellPrice;
         removeTower(tower);
     }
@@ -194,7 +248,7 @@ public:
     [[nodiscard]] std::vector<std::shared_ptr<sf::Drawable>> getAvailTowerDrawables() const {
         std::vector<std::shared_ptr<sf::Drawable>> drawables;
         const std::vector<std::shared_ptr<Tower>> towers = towerSelector.getAvailableTowers();
-        for (const auto& tower : towers) {
+        for (const auto &tower: towers) {
             drawables.push_back(tower->getHitTexture()->getDisplayEntity());
         }
 
@@ -203,22 +257,21 @@ public:
 
     [[nodiscard]] std::vector<std::shared_ptr<sf::Drawable>> getDrawables() const {
         std::vector<std::shared_ptr<sf::Drawable>> drawables;
-        // drawables.push_back(enemyManager.getVisualEnemyPath());
 
         const std::vector<std::shared_ptr<Enemy>> enemies = enemyManager.getAliveEnemies();
-        const std::vector<Projectile*> projectiles = towerManager.getActiveProjectiles();
+        const std::vector<Projectile *> projectiles = towerManager.getActiveProjectiles();
         const std::vector<std::shared_ptr<Tower>> towers = towerManager.getTowers();
 
-        for (const auto& enemy : enemies) {
+        for (const auto &enemy: enemies) {
             drawables.push_back(enemy->getHitTexture()->getDisplayEntity());
         }
-        for (const auto projectile : projectiles) {
+        for (const auto projectile: projectiles) {
             drawables.push_back(projectile->getHitTexture()->getDisplayEntity());
         }
-        for (const auto& tower : towers) {
+        for (const auto &tower: towers) {
             drawables.push_back(tower->getHitTexture()->getDisplayEntity());
         }
-        
+
         return drawables;
     }
 
@@ -226,16 +279,16 @@ public:
         const std::vector<std::shared_ptr<Enemy>> enemies = enemyManager.getUndrawnEnemies();
         const std::vector<std::shared_ptr<Projectile>> projectiles = towerManager.getUndrawnProjectiles();
         std::vector<std::shared_ptr<sf::Drawable>> drawables;
-        for (const auto& enemy : enemies) {
+        for (const auto &enemy: enemies) {
             drawables.push_back(enemy->getHitTexture()->getDisplayEntity());
         }
-        for (const auto& projectile : projectiles) {
+        for (const auto &projectile: projectiles) {
             drawables.push_back(projectile->getHitTexture()->getDisplayEntity());
         }
-        for (const auto& projectileDisplayEffect : towerManager.getDisplayEffects()) {
+        for (const auto &projectileDisplayEffect: towerManager.getDisplayEffects()) {
             drawables.push_back(projectileDisplayEffect);
         }
-        for (const auto& deathAnimationEffect : enemyManager.getDisplayEffects()) {
+        for (const auto &deathAnimationEffect: enemyManager.getDisplayEffects()) {
             drawables.push_back(deathAnimationEffect);
         }
         return drawables;
@@ -244,21 +297,21 @@ public:
     [[nodiscard]] std::vector<std::shared_ptr<sf::Drawable>> getRemovableDrawables() const {
         const std::vector<std::shared_ptr<Enemy>> enemies = enemyManager.getDeadEnemies();
         const std::vector<std::shared_ptr<Enemy>> enemies2 = enemyManager.getEnemiesAtEndOfPath();
-        const std::vector<Projectile*> projectiles = towerManager.getInactiveProjectiles();
+        const std::vector<Projectile *> projectiles = towerManager.getInactiveProjectiles();
         std::vector<std::shared_ptr<sf::Drawable>> drawables;
-        for (const auto& enemy : enemies) {
+        for (const auto &enemy: enemies) {
             drawables.push_back(enemy->getHitTexture()->getDisplayEntity());
         }
-        for (const auto& enemy : enemies2) {
+        for (const auto &enemy: enemies2) {
             drawables.push_back(enemy->getHitTexture()->getDisplayEntity());
         }
-        for (const auto projectile : projectiles) {
+        for (const auto projectile: projectiles) {
             drawables.push_back(projectile->getHitTexture()->getDisplayEntity());
         }
-        for (const auto& projectileDisplayEffect : towerManager.getCompletedDisplayEffects()) {
+        for (const auto &projectileDisplayEffect: towerManager.getCompletedDisplayEffects()) {
             drawables.push_back(projectileDisplayEffect);
         }
-        for (const auto& deathAnimationEffect : enemyManager.getCompletedDisplayEffects()) {
+        for (const auto &deathAnimationEffect: enemyManager.getCompletedDisplayEffects()) {
             drawables.push_back(deathAnimationEffect);
         }
         return drawables;
@@ -289,12 +342,11 @@ public:
         return playerBalance;
     }
 
-    [[nodiscard]] static int getSellPrice(const std::shared_ptr<Tower>& tower) {
-        const int sellPrice = tower->getCost() / 2;
+    [[nodiscard]] int getSellPrice(const std::shared_ptr<Tower> &tower) {
+        const int upgradeEditions = towerUpgradeCost * (tower->getUpgradeValue() - 1);
+        const int sellPrice = tower->getCost() / 2 + upgradeEditions / 2;
         return sellPrice;
     }
-
 };
 
 #endif //GAMEMANAGER_H
-

@@ -20,9 +20,9 @@ public:
         selectionMenu->setSize(sf::Vector2f(DISPLAY_MAX_X, DISPLAY_MAX_Y));
         selectionMenu->setFillColor(sf::Color(33, 33, 33, 125));
 
-        menuStat = std::make_shared<sf::RectangleShape>(sf::RectangleShape());
-        menuStat->setPosition(sf::Vector2f(SEL_MENU_START_X, STAT_GAP_Y*10));
-        menuStat->setSize(sf::Vector2f(300, 210));
+        this->menuStat = std::make_shared<sf::RectangleShape>(sf::RectangleShape());
+        menuStat->setPosition(sf::Vector2f(SEL_MENU_START_X, STAT_GAP_Y * 10));
+        menuStat->setSize(sf::Vector2f(300, 275));
         menuStat->setFillColor(sf::Color(51, 77, 77, 125));
 
         this->backgroundMapTexture = std::make_shared<sf::RectangleShape>(sf::RectangleShape());
@@ -39,7 +39,6 @@ public:
         };
     }
 };
-
 
 
 #endif //STATICGRAPHICSMANAGER_H

@@ -19,7 +19,7 @@ public:
     }
 
     std::vector<std::shared_ptr<Enemy>> getChildren() override {
-        std::vector<std::shared_ptr<Enemy> > children;
+        std::vector<std::shared_ptr<Enemy>> children;
         if (getHealth() == 0) {
             const auto enemy = std::make_shared<BlueEnemy>(BlueEnemy(spriteInjector, getPathToFollow()));
             children.push_back(enemy);
