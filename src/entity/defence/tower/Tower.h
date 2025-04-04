@@ -17,6 +17,7 @@ class Tower {
     int cost;
     float attackSpeed;
     int damage;
+    int upgradeValue = 1;
     std::string type;
     std::shared_ptr<sf::CircleShape> rangeIndicator;
     std::shared_ptr<AnimRectangleHitTexture> hitTexture;
@@ -43,7 +44,7 @@ public:
         rangeIndicator->setFillColor(sf::Color(137, 137, 137, 50)); // Semi-transparent
     }
 
-    virtual std::vector<std::shared_ptr<Projectile> > shootProjectile(std::vector<std::shared_ptr<Enemy> > &enemies) {
+    virtual std::vector<std::shared_ptr<Projectile>> shootProjectile(std::vector<std::shared_ptr<Enemy>> &enemies) {
         return {};
     }
 
@@ -68,6 +69,23 @@ public:
 
     [[nodiscard]] float getAttackSpeed() const {
         return attackSpeed;
+    }
+
+    void upgradeTower() {
+        upgradeValue++;
+        upgradeTower(upgradeValue);
+    }
+
+    [[nodiscard]] int getUpgradeValue() const {
+        return upgradeValue;
+    }
+
+    void setAttackSpeed(const float value) {
+        attackSpeed = value;
+    }
+
+    void setDamage(const int value) {
+        damage = value;
     }
 
     [[nodiscard]] int getDamage() const {
@@ -127,6 +145,8 @@ public:
     }
 
 protected:
+    virtual void upgradeTower(int level) =0;
+
     virtual std::shared_ptr<Tower> copy() = 0;
 };
 

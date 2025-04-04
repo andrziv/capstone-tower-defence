@@ -44,5 +44,4 @@ public:
 };
 
 
-
 #endif //DEPRESSURETOWER_H

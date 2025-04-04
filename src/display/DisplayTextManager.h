@@ -10,6 +10,8 @@
 #include "SFML/System/Vector2.hpp"
 #include "SFML/Graphics/RectangleShape.hpp"
 
+class GameManager; // Forward declaration
+
 
 class DisplayTextManager {
     sf::Font font;
@@ -27,8 +29,10 @@ class DisplayTextManager {
     const std::shared_ptr<sf::Text> displaySellOption = std::make_shared<sf::Text>(sf::Text(font));
     const std::shared_ptr<sf::Text> displayCostOption = std::make_shared<sf::Text>(sf::Text(font));
     const std::shared_ptr<sf::Text> displayPauseOption = std::make_shared<sf::Text>(sf::Text(font));
+    const std::shared_ptr<sf::Text> displayUpgradeOption = std::make_shared<sf::Text>(sf::Text(font));
     sf::RectangleShape sellButtonRectangle;
     sf::RectangleShape pauseButtonRectangle;
+    sf::RectangleShape upgradeButtonRectangle;
 
 public:
     DisplayTextManager() {
@@ -103,7 +107,14 @@ public:
             displayPauseOption->setStyle(sf::Text::Bold);
             displayPauseOption->setOutlineColor(sf::Color::Black);
             displayPauseOption->setOutlineThickness(1);
-            displayPauseOption->setPosition(sf::Vector2f(PLAY_START_RIGHT, STAT_GAP_Y * 17));
+            displayPauseOption->setPosition(sf::Vector2f(PLAY_START_RIGHT, DISPLAY_MAX_Y - static_cast<float>(100) * DISPLAY_MAX_Y_RATIO));
+
+            displayUpgradeOption->setCharacterSize(14);
+            displayUpgradeOption->setFillColor(sf::Color::Cyan);
+            displayUpgradeOption->setStyle(sf::Text::Bold);
+            displayUpgradeOption->setOutlineColor(sf::Color::Black);
+            displayUpgradeOption->setOutlineThickness(1);
+            displayUpgradeOption->setPosition(sf::Vector2f(PLAY_START_RIGHT - 40 * DISPLAY_MAX_X_RATIO, STAT_GAP_Y * 17.5f));
 
             sellButtonRectangle.setPosition(displaySellOption->getPosition());
             sellButtonRectangle.setSize(sf::Vector2f(100.f, 40.f));
@@ -111,6 +122,9 @@ public:
 
             pauseButtonRectangle.setPosition(displayPauseOption->getPosition());
             pauseButtonRectangle.setSize(sf::Vector2f(100.f, 40.f));
+
+            upgradeButtonRectangle.setPosition(displayUpgradeOption->getPosition());
+            upgradeButtonRectangle.setSize(sf::Vector2f(170.f, 40.f));
         }
     }
 
@@ -139,11 +153,13 @@ public:
     }
 
     void setPressureCompletionRateValue(const double newRate) const {
-        pressureCompletionRate->setString("Completion Rate: " + std::to_string(newRate).substr(0, countDigit(static_cast<int>(newRate)) + 3));
+        pressureCompletionRate->setString(
+            "Completion Rate: " + std::to_string(newRate).substr(0, countDigit(static_cast<int>(newRate)) + 3));
     }
 
     void setPressureProductionRateValue(const double newRate) const {
-        pressureAdditionRate->setString("Production Rate: " + std::to_string(newRate).substr(0, countDigit(static_cast<int>(newRate)) + 3));
+        pressureAdditionRate->setString(
+            "Production Rate: " + std::to_string(newRate).substr(0, countDigit(static_cast<int>(newRate)) + 3));
     }
 
     void setTowerDamageValue(const int newDamage) const {
@@ -152,7 +168,7 @@ public:
 
     void setTowerSpeedValue(const float newSpeed) const {
         std::ostringstream oss;
-        oss << std::fixed << std::setprecision(2) << newSpeed;  // Set precision to 2 decimal places
+        oss << std::fixed << std::setprecision(2) << newSpeed; // Set precision to 2 decimal places
         displaySpeed->setString("Speed: " + oss.str());
     }
 
@@ -172,10 +188,7 @@ public:
         displaySellOption->setString("Sell: " + oss.str());
     }
 
-    bool isSellButtonClicked(const sf::Vector2i& mousePosition) const {
-        // Check if the mouse click is within the bounds of the sell button (displaySellOption)
-        //const sf::FloatRect sellButtonBounds = displaySellOption->getGlobalBounds();
-        //return sellButtonBounds.contains(static_cast<sf::Vector2f>(mousePosition));
+    bool isSellButtonClicked(const sf::Vector2i &mousePosition) const {
         return sellButtonRectangle.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePosition));
     }
 
@@ -187,8 +200,22 @@ public:
         displayPauseOption->setString(isPaused);
     }
 
-    bool isPauseButtonClicked(const sf::Vector2i& mousePosition) const {
+    bool isPauseButtonClicked(const sf::Vector2i &mousePosition) const {
         return pauseButtonRectangle.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePosition));
+    }
+
+    void setUpgradeOption(const int upgradeLevel, const int cost) const {
+        std::ostringstream oss;
+        oss << std::fixed << upgradeLevel + 1 << "\n        for " << std::setprecision(0) << cost;
+        displayUpgradeOption->setString("Upgrade to LVL " + oss.str());
+    }
+
+    void setUpgradeMaxOption() const {
+        displayUpgradeOption->setString("Maximum Tower Level                          ");
+    }
+
+    bool isUpgradeButtonClicked(const sf::Vector2i &mousePosition) const {
+        return upgradeButtonRectangle.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePosition));
     }
 
     void removeTowerStats() const {
@@ -199,6 +226,7 @@ public:
         displayType->setString("          ");
         displayCostOption->setString("          ");
         displaySellOption->setString("          ");
+        displayUpgradeOption->setString("          ");
     }
 
 
@@ -217,7 +245,8 @@ public:
             displayType,
             displayCostOption,
             displaySellOption,
-            displayPauseOption
+            displayPauseOption,
+            displayUpgradeOption
         };
     }
 };

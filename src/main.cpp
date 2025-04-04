@@ -9,7 +9,6 @@
 #include "GameManager.h"
 #include "GraphicsManager.h"
 #include "display/StaticGraphicsManager.h"
-#include "entity/hit_texture/animated_sprite/AnimatedSprite.h"
 #include "helper/visual/FPS.h"
 #include "pressure/DecryptJob.h"
 #include "pressure/TowerPressureDecrypt.h"
@@ -50,20 +49,30 @@ void game_core() {
             }
 
             if (event->is<sf::Event::MouseButtonPressed>()) {
-                if (const auto buttonPressed = event->getIf<sf::Event::MouseButtonPressed>(); buttonPressed->button == sf::Mouse::Button::Left) {
+                if (const auto buttonPressed = event->getIf<sf::Event::MouseButtonPressed>();
+                    buttonPressed->button == sf::Mouse::Button::Left) {
                     const auto mousePosition = buttonPressed->position;
-                    // toggle pause when clicked
-                    if (displayTextManager.isPauseButtonClicked(mousePosition)){
-                        gameManager.togglePause();
-                        std::cout << "isPaused: " << std::boolalpha << gameManager.isPaused() << std::endl;
 
+                    if (activeTower && displayTextManager.isUpgradeButtonClicked(mousePosition) && activeTower !=
+                        nullptr) {
+                        // upgrade tower with 3 being the maximum tower level
+                        if (activeTower->getUpgradeValue() < 3) {
+                            gameManager.upgradeTowerLevel(activeTower);
+                        }
+                    }
+                    // end of upgrade tower
+
+                    // toggle pause when clicked
+                    if (displayTextManager.isPauseButtonClicked(mousePosition)) {
+                        gameManager.togglePause();
                     }
                     // toggle pause when clicked
                     if (!gameManager.isTowerAlreadySelected()) {
                         if (gameManager.attemptSelectingTower(mousePosition)) {
                             graphicsManager.addPriorityDrawable(gameManager.getHoveredTowerDrawable());
                             graphicsManager.addPriorityDrawable(gameManager.getHoveredTower()->getRangeIndicator());
-                        } else if (const auto& selectedTower = gameManager.attemptSelectingPlacedTower(mousePosition); selectedTower != nullptr) {
+                        } else if (const auto &selectedTower = gameManager.attemptSelectingPlacedTower(mousePosition);
+                            selectedTower != nullptr) {
                             if (activeTower != selectedTower) {
                                 if (activeTower) {
                                     graphicsManager.removeDrawable(activeTower->getRangeIndicator());
@@ -75,7 +84,14 @@ void game_core() {
                                 displayTextManager.setTowerSpeedValue(activeTower->getAttackSpeed());
                                 displayTextManager.setTowerType(activeTower->getType());
                                 displayTextManager.setCostOption(activeTower->getCost());
-                                displayTextManager.setSellOption(GameManager::getSellPrice(selectedTower));
+                                displayTextManager.setSellOption(gameManager.getSellPrice(selectedTower));
+
+                                if (activeTower->getUpgradeValue() < 3) {
+                                    displayTextManager.setUpgradeOption(activeTower->getUpgradeValue(),
+                                                                        gameManager.getTowerUpgradeCost());
+                                } else {
+                                    displayTextManager.setUpgradeMaxOption();
+                                }
                             }
                         } else {
                             if (activeTower && displayTextManager.isSellButtonClicked(mousePosition)) {
@@ -93,13 +109,12 @@ void game_core() {
                         graphicsManager.removeDrawable(gameManager.getHoveredTower()->getRangeIndicator());
                         gameManager.deselectTower();
                     }
-                } else if (buttonPressed->button == sf::Mouse::Button::Right) {
-                    gameManager.shrinkEnemyPath();
                 }
             }
 
             if (event->is<sf::Event::KeyPressed>()) {
-                if (const auto buttonPressed = event->getIf<sf::Event::KeyPressed>(); buttonPressed->code == sf::Keyboard::Key::Space) {
+                if (const auto buttonPressed = event->getIf<sf::Event::KeyPressed>();
+                    buttonPressed->code == sf::Keyboard::Key::Space) {
                     graphicsManager.setFramerateLimit(240);
                 } else {
                     graphicsManager.setFramerateLimit(60);
@@ -107,7 +122,8 @@ void game_core() {
             }
 
             if (event->is<sf::Event::MouseButtonReleased>()) {
-                if (const auto buttonReleased = event->getIf<sf::Event::MouseButtonReleased>(); buttonReleased->button == sf::Mouse::Button::Left) {
+                if (const auto buttonReleased = event->getIf<sf::Event::MouseButtonReleased>();
+                    buttonReleased->button == sf::Mouse::Button::Left) {
                     const sf::Vector2i mousePosition = buttonReleased->position;
                     if (gameManager.isTowerAlreadySelected()) {
                         const auto success = gameManager.addTower(gameManager.getHoveredTower());
@@ -122,9 +138,9 @@ void game_core() {
                         graphicsManager.removeDrawable(activeTower->getHitTexture()->getDisplayEntity());
                         graphicsManager.removeDrawable(activeTower->getRangeIndicator());
                         gameManager.sellTower(activeTower);
-                        activeTower = nullptr;  // Deselect the tower
+                        activeTower = nullptr; // Deselect the tower
                         displayTextManager.removeTowerStats();
-                        displayTextManager.setSellColorChange(sf::Color(255,255,0)); //Reset color
+                        displayTextManager.setSellColorChange(sf::Color(255, 255, 0)); //Reset color
                     }
                 }
             }
@@ -138,8 +154,7 @@ void game_core() {
                 displayTextManager.setTowerSpeedValue(selectedTower->getAttackSpeed());
                 displayTextManager.setTowerType(selectedTower->getType());
                 displayTextManager.setCostOption(selectedTower->getCost());
-                displayTextManager.setSellOption(GameManager::getSellPrice(selectedTower));
-
+                displayTextManager.setSellOption(gameManager.getSellPrice(selectedTower));
             }
         }
 

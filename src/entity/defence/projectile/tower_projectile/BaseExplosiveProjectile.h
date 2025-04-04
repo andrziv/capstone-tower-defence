@@ -32,12 +32,19 @@ public:
     }
 
     BaseExplosiveProjectile(const std::shared_ptr<AnimCircleHitTexture> &explosionTexture, const float posX,
+                            const float posY, const float direction, const int damage,
+                            const int speed, const float explosionSize, const float size)
+        : BaseExplosiveProjectile(explosionTexture, posX, posY, direction, damage, speed, explosionSize,
+                                  sf::Color(255, 84, 0, 100), size, sf::Color(70, 70, 70)) {
+    }
+
+    BaseExplosiveProjectile(const std::shared_ptr<AnimCircleHitTexture> &explosionTexture, const float posX,
                             const float posY, const float direction)
         : BaseExplosiveProjectile(explosionTexture, posX, posY, direction, 1, 10, 50.f,
                                   sf::Color(255, 84, 0, 100), 8.f, sf::Color(70, 70, 70)) {
     }
 
-    void handleEnemies(const std::vector<std::shared_ptr<Enemy> > &enemies) override {
+    void handleEnemies(const std::vector<std::shared_ptr<Enemy>> &enemies) override {
         bool projectileExploded = false;
         for (const auto &enemy: enemies) {
             if (!isValid()) {
@@ -84,20 +91,24 @@ public:
         }
     }
 
-    std::vector<std::shared_ptr<sf::Drawable> > getDisplayEffects() override {
-        std::vector<std::shared_ptr<sf::Drawable> > drawables;
+    std::vector<std::shared_ptr<sf::Drawable>> getDisplayEffects() override {
+        std::vector<std::shared_ptr<sf::Drawable>> drawables;
         if (exploded && !explosion->getAnimDisplayEntity()->isFinishedAnimation()) {
             drawables.push_back(explosion->getDisplayEntity());
         }
         return drawables;
     }
 
-    std::vector<std::shared_ptr<sf::Drawable> > getCompletedDisplayEffects() override {
-        std::vector<std::shared_ptr<sf::Drawable> > drawables;
+    std::vector<std::shared_ptr<sf::Drawable>> getCompletedDisplayEffects() override {
+        std::vector<std::shared_ptr<sf::Drawable>> drawables;
         if (explosion->getAnimDisplayEntity()->isFinishedAnimation()) {
             drawables.push_back(explosion->getDisplayEntity());
         }
         return drawables;
+    }
+
+    void setExplosionColour(const sf::Color newColor) const {
+        explosion->setDisplayEntityColor(newColor);
     }
 };
 

@@ -15,21 +15,22 @@ public:
         getHitTexture()->setDisplayEntityHeight(sizeScaler);
         getHitTexture()->setDisplayEntityWidth(sizeScaler);
         getHitTexture()->setHitboxColor(sf::Color::Transparent);
-        getHitTexture()->setHitboxWidth(static_cast<float>(animHitTexture->getAnimDisplayEntity()->getFrameSize().x) * sizeScaler);
-        getHitTexture()->setHitboxHeight(static_cast<float>(animHitTexture->getAnimDisplayEntity()->getFrameSize().y) * sizeScaler);
+        getHitTexture()->setHitboxWidth(
+            static_cast<float>(animHitTexture->getAnimDisplayEntity()->getFrameSize().x) * sizeScaler);
+        getHitTexture()->setHitboxHeight(
+            static_cast<float>(animHitTexture->getAnimDisplayEntity()->getFrameSize().y) * sizeScaler);
     }
 
     BaseTower(const std::shared_ptr<AnimRectangleHitTexture> &animHitTexture, const sf::Vector2f &position,
               const float range, const int towerCost, const float attackSpeed, const int damage,
               const std::string &type, const sf::Color color)
         : BaseTower(animHitTexture, position, 1.f, range, towerCost, attackSpeed, damage, type, color) {
-
     }
 
-    std::vector<std::shared_ptr<Projectile> > shootProjectile(std::vector<std::shared_ptr<Enemy> > &enemies) override {
+    std::vector<std::shared_ptr<Projectile>> shootProjectile(std::vector<std::shared_ptr<Enemy>> &enemies) override {
         const std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
         const auto timeDiff = std::chrono::duration_cast<std::chrono::seconds>(end - shootStart).count();
-        std::vector<std::shared_ptr<Projectile> > projectiles;
+        std::vector<std::shared_ptr<Projectile>> projectiles;
         if (static_cast<float>(timeDiff) >= getAttackSpeed()) {
             auto [aimAngle, enemyFound] = calculateAimAngle(enemies);
 
@@ -48,7 +49,7 @@ public:
 protected:
     std::chrono::steady_clock::time_point shootStart = std::chrono::steady_clock::now();
 
-    virtual std::pair<double, bool> calculateAimAngle(std::vector<std::shared_ptr<Enemy> > &enemies) const {
+    virtual std::pair<double, bool> calculateAimAngle(std::vector<std::shared_ptr<Enemy>> &enemies) const {
         double aimAngle = 0;
         double closestDistance = 10000;
         bool enemyFound = false;
@@ -69,7 +70,10 @@ protected:
         return {aimAngle, enemyFound};
     }
 
-    virtual std::vector<std::shared_ptr<Projectile> > generateProjectiles(double angle) = 0;
+    void upgradeTower(int upgradeValue) override {
+    }
+
+    virtual std::vector<std::shared_ptr<Projectile>> generateProjectiles(double angle) = 0;
 
     virtual std::string getPressurePattern() = 0;
 };
