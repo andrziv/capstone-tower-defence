@@ -13,7 +13,7 @@ class RadialShooterTower final : public BaseTower {
 public:
     explicit RadialShooterTower(const std::shared_ptr<TowerSpriteInjector> &towerSpriteInjector,
                                 const sf::Vector2f &position)
-        : BaseTower(towerSpriteInjector->createRadialMaxIdleHitTexture(), position, 100, 370, 1.5f, 100, "Radial",
+        : BaseTower(towerSpriteInjector->createRadialMinIdleHitTexture(), position, 100, 370, 1.5f, 100, "Radial",
                     sf::Color(252, 152, 3)) {
         this->towerSpriteInjector = towerSpriteInjector;
     }
@@ -57,10 +57,23 @@ protected:
             //lvl 3 bullet spread tightest
             bulletSpreadAngleDeg = 20;
             setDamage(300);
+            setAttackSpeed(1.f);
+            const auto &maxTowerSprite = towerSpriteInjector->createRadialMaxIdleSprite();
+            const auto &maxTowerSpriteSize = maxTowerSprite->getFrameSize();
+            getHitTexture()->getAnimDisplayEntity()->setTexture(maxTowerSprite->getSprite()->getTexture(),
+                                                                maxTowerSpriteSize.x, maxTowerSpriteSize.y,
+                                                                maxTowerSprite->getFrameCount(),
+                                                                maxTowerSprite->getFrameTime());
         } else if (upgradeValue == 2) {
             //lvl 2 bullet spread is tighter than 1
             bulletSpreadAngleDeg = 30;
             setDamage(200);
+            const auto &midTowerSprite = towerSpriteInjector->createRadialMidIdleSprite();
+            const auto &midTowerSpriteSize = midTowerSprite->getFrameSize();
+            getHitTexture()->getAnimDisplayEntity()->setTexture(midTowerSprite->getSprite()->getTexture(),
+                                                                midTowerSpriteSize.x, midTowerSpriteSize.y,
+                                                                midTowerSprite->getFrameCount(),
+                                                                midTowerSprite->getFrameTime());
         }
     }
 

@@ -16,7 +16,7 @@ class JoTower final : public BaseTower {
 
 public:
     explicit JoTower(const std::shared_ptr<TowerSpriteInjector> &towerSpriteInjector, const sf::Vector2f &position)
-        : BaseTower(towerSpriteInjector->createArcherMaxIdleHitTexture(), position, 250, 270, 3.f, 150, "Dart",
+        : BaseTower(towerSpriteInjector->createArcherMinIdleHitTexture(), position, 250, 270, 3.f, 150, "Dart",
                     sf::Color::White) {
         this->towerSpriteInjector = towerSpriteInjector;
     }
@@ -26,8 +26,8 @@ protected:
         return std::make_shared<JoTower>(*this);
     }
 
-    std::vector<std::shared_ptr<Projectile>> generateProjectiles(const double angle) override {
-        std::vector<std::shared_ptr<Projectile>> projectiles;
+    std::vector<std::shared_ptr<Projectile> > generateProjectiles(const double angle) override {
+        std::vector<std::shared_ptr<Projectile> > projectiles;
         if (getUpgradeValue() == 1) {
             const float towerCenterX = getPosition().x;
             const float towerCenterY = getPosition().y;
@@ -59,8 +59,20 @@ protected:
         if (upgradeValue == 3) {
             setAttackSpeed(1);
             setDamage(600);
+            const auto &maxTowerSprite = towerSpriteInjector->createArcherMaxIdleSprite();
+            const auto &maxTowerSpriteSize = maxTowerSprite->getFrameSize();
+            getHitTexture()->getAnimDisplayEntity()->setTexture(maxTowerSprite->getSprite()->getTexture(),
+                                                                maxTowerSpriteSize.x, maxTowerSpriteSize.y,
+                                                                maxTowerSprite->getFrameCount(),
+                                                                maxTowerSprite->getFrameTime());
         } else if (upgradeValue == 2) {
             setDamage(300);
+            const auto &midTowerSprite = towerSpriteInjector->createArcherMidIdleSprite();
+            const auto &midTowerSpriteSize = midTowerSprite->getFrameSize();
+            getHitTexture()->getAnimDisplayEntity()->setTexture(midTowerSprite->getSprite()->getTexture(),
+                                                                midTowerSpriteSize.x, midTowerSpriteSize.y,
+                                                                midTowerSprite->getFrameCount(),
+                                                                midTowerSprite->getFrameTime());
         }
     }
 };

@@ -106,6 +106,10 @@ public:
         }
         return drawables;
     }
+
+    void setExplosionColour(const sf::Color newColor) const {
+        explosion->setDisplayEntityColor(newColor);
+    }
 };
 
 

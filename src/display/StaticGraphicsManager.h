@@ -3,12 +3,13 @@
 #include <memory>
 
 #include "DisplayConsts.h"
-#include "../texture/TextureHolder.h"
 #include "SFML/Graphics/Drawable.hpp"
 #include "SFML/Graphics/RectangleShape.hpp"
+#include "SFML/Graphics/Texture.hpp"
 
 
 class StaticGraphicsManager {
+    const sf::Texture MAP_TEXTURE = sf::Texture("../../src/resources/textures/map.png");
     std::shared_ptr<sf::RectangleShape> selectionMenu;
     std::shared_ptr<sf::RectangleShape> menuStat;
     std::shared_ptr<sf::RectangleShape> backgroundMapTexture;

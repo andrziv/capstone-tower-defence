@@ -59,6 +59,20 @@ public:
         }
     }
 
+    void setTexture(const sf::Texture &texture, int frameWidth, int frameHeight, const int frameCount, const float frameTime) {
+        sprite->setTexture(texture);
+        sprite->setTextureRect(sf::IntRect({0, 0}, {frameWidth, frameHeight}));
+        this->frameWidth = frameWidth;
+        this->frameHeight = frameHeight;
+        this->frameTime = frameTime;
+        if (this->frameCount != frameCount) {
+            this->frameCount = frameCount;
+            this->currentFrame = 0;
+            this->elapsedTime = 0;
+        }
+
+    }
+
     [[nodiscard]] std::shared_ptr<sf::Sprite> getSprite() const {
         return sprite;
     }
