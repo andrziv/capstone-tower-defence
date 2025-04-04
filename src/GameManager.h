@@ -80,7 +80,7 @@ class GameManager {
                 tempSpawnMap[spawnTime] = std::pair(spawnInterval, enemies);
             }
         }
-        for (const auto &[spawnTime, enemyList]: tempSpawnMap) {
+        for (const auto& [spawnTime, enemyList] : tempSpawnMap) {
             enemySpawnTimeQueue.emplace(spawnTime, enemyList);
         }
         // pause after wave
@@ -181,7 +181,7 @@ public:
         penalizeForFinishedEnemies();
     }
 
-    bool attemptSelectingTower(const sf::Vector2i &mousePosition) {
+    bool attemptSelectingTower(const sf::Vector2i& mousePosition){
         return towerSelector.attemptSelectingTower(mousePosition);
     }
 
@@ -189,12 +189,11 @@ public:
         return TowerSelector::attemptSelectingPlacedTower(mousePosition, towerManager.getTowers());
     }
 
-    void dragSelectedTower(const sf::Vector2i &mousePosition) {
+    void dragSelectedTower(const sf::Vector2i& mousePosition) {
         towerSelector.dragSelectedTower(mousePosition);
         const auto towerOverlap = towerSelector.doesSelectedTowerOverlap(towerManager.getTowers());
         const auto towerPosX = towerSelector.getSelectedTower()->getPosition().x;
-        const auto menuStartX = SEL_MENU_START_X - towerSelector.getSelectedTower()->getHitTexture()->getRectHitbox()->
-                                getSize().x / 2;
+        const auto menuStartX = SEL_MENU_START_X - towerSelector.getSelectedTower()->getHitTexture()->getRectHitbox()->getSize().x / 2;
         const auto outOfBounds = towerPosX > menuStartX;
         if (towerOverlap || outOfBounds) {
             towerSelector.getSelectedTower()->invalidateRangeIndicator();

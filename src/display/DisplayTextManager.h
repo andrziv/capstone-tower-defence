@@ -1,6 +1,7 @@
 #ifndef DISPLAYTEXTMANAGER_H
 #define DISPLAYTEXTMANAGER_H
 #include <memory>
+#include <iomanip>
 
 #include "DisplayConsts.h"
 #include "../helper/Digits.h"

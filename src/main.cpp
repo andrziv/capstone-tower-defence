@@ -9,6 +9,7 @@
 #include "GameManager.h"
 #include "GraphicsManager.h"
 #include "display/StaticGraphicsManager.h"
+#include "entity/hit_texture/animated_sprite/AnimatedSprite.h"
 #include "helper/visual/FPS.h"
 #include "pressure/DecryptJob.h"
 #include "pressure/TowerPressureDecrypt.h"
@@ -17,7 +18,7 @@ std::chrono::steady_clock::time_point completionStart = std::chrono::steady_cloc
 Accumulator completionRate;
 
 [[noreturn]] void decryptSpawner() {
-    std::list<std::future<std::string> > results;
+    std::list<std::future<std::string>> results;
     int completions = 0;
     while (true) {
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
@@ -69,8 +70,7 @@ void game_core() {
             if (event->is<sf::Event::Closed>()) {
                 graphicsManager.deactivate();
                 for (int i = 0; i < drawnPath->getVertexCount(); i++) {
-                    printf("{{  %ff,   %ff}, sf::Color::Red, { 0.0f,  0.0f}}", drawnPath->operator[](i).position.x,
-                           drawnPath->operator[](i).position.y);
+                    printf("{{  %ff,   %ff}, sf::Color::Red, { 0.0f,  0.0f}}", drawnPath->operator[](i).position.x, drawnPath->operator[](i).position.y);
                     if (i != drawnPath->getVertexCount() - 1) {
                         printf(",\n");
                     } else {
@@ -78,7 +78,6 @@ void game_core() {
                     }
                 }
             }
-
 
             if (event->is<sf::Event::MouseButtonPressed>()) {
                 if (const auto buttonPressed = event->getIf<sf::Event::MouseButtonPressed>();
