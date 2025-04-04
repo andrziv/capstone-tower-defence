@@ -320,10 +320,6 @@ public:
         towerManager.removeInactiveProjectiles();
     }
 
-    void shrinkEnemyPath() const {
-        enemyManager.shrinkEnemyPath();
-    }
-
     [[nodiscard]] int getMaxWaveNumber() const {
         return waveLoader.getMaxWaves();
     }

@@ -46,7 +46,6 @@ class EnemyManager {
     }
 
 public:
-    // TODO: temp; just for testing atm
     EnemyManager() {
         enemyPath = std::make_shared<sf::VertexArray>(sf::VertexArray());
         enemyPath->setPrimitiveType(sf::PrimitiveType::LineStrip);
@@ -234,14 +233,6 @@ public:
 
     [[nodiscard]] unsigned long getNumberOfAliveEnemies() const {
         return enemies.size();
-    }
-
-    // TODO: temp; just for testing atm
-    void shrinkEnemyPath() const {
-        if (enemyPath->getVertexCount() - 1 > 0) {
-            enemyPath->resize(enemyPath->getVertexCount() - 1);
-            visualEnemyPath->resize(visualEnemyPath->getVertexCount() - 2);
-        }
     }
 };
 

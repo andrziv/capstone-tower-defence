@@ -90,7 +90,6 @@ public:
         window->display();
     }
 
-    // TODO: Temp, just for development and allowing us to increase the game speed to get to things faster
     void setFramerateLimit(const int frames) const {
         window->setFramerateLimit(frames);
     }
