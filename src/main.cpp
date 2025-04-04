@@ -169,7 +169,7 @@ void game_core() {
         displayTextManager.setFPSCounterValue(fps.getFPS());
 
         displayTextManager.setRemainingPressureValue(static_cast<int>(toDecrypt.size()) + currentOperations);
-        displayTextManager.setActivePressureJobsValue(currentOperations);
+        displayTextManager.setActivePressureJobsValue((currentOperations > activeCores) ? activeCores : currentOperations);
         displayTextManager.setPressureCompletionRateValue(completionRate.getAverageRate());
         displayTextManager.setPressureProductionRateValue(additionRate.getAverageRate());
     }
